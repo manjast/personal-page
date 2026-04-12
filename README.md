@@ -47,7 +47,7 @@ npm run dev
 - private planning and launch material,
 - unpublished companion repo material,
 - confidential client documents,
-- and any loose planning artifacts that do not belong in the committed plan set.
+- and any loose planning artifacts that do not belong in the public site repo.
 
 ## Contact form setup
 

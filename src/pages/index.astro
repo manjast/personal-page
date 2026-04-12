@@ -1,0 +1,196 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import Hero from '../components/Hero.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { fitGuidance, proofPoints, services, siteConfig } from '../config/site';
+
+const caseStudies = (await getCollection('case-studies'))
+  .sort((left, right) => left.data.order - right.data.order)
+  .slice(0, 2);
+---
+
+<BaseLayout pathname="/" title={siteConfig.defaultTitle} description={siteConfig.defaultDescription}>
+  <SiteHeader />
+
+  <main>
+    <Hero
+      title={siteConfig.heroTitle}
+      description={siteConfig.heroDescription}
+      primaryCta={siteConfig.heroPrimaryCta}
+      secondaryCta={siteConfig.heroSecondaryCta}
+    />
+
+    <ProofStrip items={proofPoints} />
+
+    <section class="section-space">
+      <div class="shell">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div class="max-w-3xl space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-marker">01 / selected work</span>
+              <p class="eyebrow">Selected work</p>
+            </div>
+            <h2 class="text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl">
+              Selected proof first: concrete delivery choices, system shape, and outcomes that mattered in real environments.
+            </h2>
+          </div>
+          <a class="text-sm font-semibold text-stone-950 transition hover:text-stone-700" href="/work">
+            See all work →
+          </a>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-2">
+          {caseStudies.map((entry) => <CaseStudyCard entry={entry} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div class="max-w-3xl space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-marker">02 / services</span>
+              <p class="eyebrow">How I help</p>
+            </div>
+            <h2 class="text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl">
+              Project-based build first, with hardening and advisory work where they improve delivery.
+            </h2>
+            <p class="text-base leading-8 text-stone-600">
+              The main fit is an internal workflow with real users, a concrete owner, and a reason the system needs to hold up
+              after launch. The service page goes deeper on project shapes and engagement flow.
+            </p>
+          </div>
+          <a class="text-sm font-semibold text-stone-950 transition hover:text-stone-700" href="/services">
+            See project shapes →
+          </a>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-3">
+          {services.map((service) => <ServiceCard service={service} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="panel panel-light grid gap-8 px-6 py-10 sm:px-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div class="space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-marker">03 / public proof</span>
+              <p class="eyebrow">Working style</p>
+            </div>
+            <h2 class="text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl">
+              A public proof point for the working style behind the delivery.
+            </h2>
+            <p class="text-base leading-8 text-stone-600">
+              The Agentic Development Playbook is not the main offer on this site. It is public evidence of how I keep AI
+              implementation scoped, reviewable, and evaluation-aware once work becomes repo-level and real delivery starts.
+            </p>
+          </div>
+
+          <div class="rounded-[1.35rem] border border-stone-200 bg-stone-50 p-6">
+            <p class="text-sm leading-7 text-stone-600">
+              Public artifact, not a private claims page: scoped tasks, verification before commit, repo files as the source
+              of truth, and a light PoC/evaluation path when early work still needs decision-grade evidence.
+            </p>
+            <a
+              class="mt-6 inline-flex text-sm font-semibold text-stone-950 transition hover:text-stone-700"
+              href={siteConfig.playbookUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View the Playbook →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">04 / fit</span>
+            <p class="eyebrow">Fit guidance</p>
+          </div>
+          <h2 class="text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl">
+            The strongest work starts with a concrete workflow, real users, and a reason the system needs to hold up after launch.
+          </h2>
+          <p class="text-base leading-8 text-stone-600">
+            This is a better fit for scoped build, hardening, or advisory work than for open-ended AI exploration without an
+            owner, workflow, or adoption path.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-2">
+          <article class="panel panel-light p-6">
+            <p class="eyebrow">Good fit</p>
+            <ul class="mt-6 space-y-3 text-sm leading-7 text-stone-700">
+              {fitGuidance.goodFit.map((item) => <li>• {item}</li>)}
+            </ul>
+          </article>
+
+          <article class="panel panel-light p-6">
+            <p class="eyebrow">Not a fit</p>
+            <ul class="mt-6 space-y-3 text-sm leading-7 text-stone-700">
+              {fitGuidance.notFit.map((item) => <li>• {item}</li>)}
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="panel panel-light grid gap-6 px-6 py-8 sm:px-10 lg:grid-cols-[1.2fr_0.8fr]">
+          <div class="max-w-3xl space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-marker">05 / context</span>
+              <p class="eyebrow">About Stefan</p>
+            </div>
+            <h2 class="text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl">
+              Current enterprise context, prior multi-unit delivery, and a bias toward systems that hold up in real use.
+            </h2>
+            <p class="text-base leading-8 text-stone-600">
+              I currently work in a Bosch enterprise and industrial context and previously spent four years at Delta Holding,
+              where the work moved from individual systems toward a broader AI delivery portfolio across multiple business units.
+              The common thread is not trend-following. It is building internal systems that are worth relying on after the
+              demo ends.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="technical-rule">
+              <p class="metric-label">Current context</p>
+              <p class="mt-2 text-sm leading-7 text-stone-700">Applied AI work in a Bosch enterprise and industrial environment.</p>
+            </div>
+            <div class="technical-rule">
+              <p class="metric-label">Previous proof base</p>
+              <p class="mt-2 text-sm leading-7 text-stone-700">Delta Holding work across internal assistants, credit workflows, and a 50+ use-case delivery portfolio.</p>
+            </div>
+            <div class="technical-rule">
+              <p class="metric-label">Operating bias</p>
+              <p class="mt-2 text-sm leading-7 text-stone-700">Evaluation, deployment discipline, and systems that remain useful after the initial excitement wears off.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      title="If the workflow is concrete enough to describe, I can usually tell quickly whether a build or advisory conversation makes sense."
+      description="I take on project-based build, hardening, and advisory work for internal AI systems. The strongest first conversations are about a real workflow, real users, and the constraints that will decide whether the system actually gets adopted."
+      primary={siteConfig.heroPrimaryCta}
+      secondary={{ href: '/services', label: 'See project shapes' }}
+    />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

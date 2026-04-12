@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { services, siteConfig } from '../config/site';
+---
+
+<BaseLayout
+  pathname="/services"
+  title="Services"
+  description="Project shapes, service modes, and delivery paths for internal AI systems that need disciplined evaluation and real-world usability."
+>
+  <SiteHeader />
+
+  <main>
+    <section class="section-space">
+      <div class="shell">
+        <div class="max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">01 / project shapes</span>
+            <p class="eyebrow">Services</p>
+          </div>
+          <h1 class="text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
+            Project shapes, delivery modes, and where I add the most leverage.
+          </h1>
+          <p class="text-base leading-8 text-stone-600">
+            This page is for teams that already have a concrete workflow, real users, and a reason the system needs to hold up
+            beyond the first demo. The main fit is project-based build work, with hardening and scoped advisory support where
+            they improve delivery.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-2">
+          <article class="panel panel-light p-6">
+            <p class="eyebrow">Best starting points</p>
+            <ul class="mt-6 space-y-3 text-sm leading-7 text-stone-700">
+              <li>• A workflow owner can describe the current pain clearly.</li>
+              <li>• The users are known, and there is already business pull for the work.</li>
+              <li>• The question is how to build or harden the system responsibly, not whether AI is fashionable.</li>
+            </ul>
+          </article>
+
+          <article class="panel panel-light p-6">
+            <p class="eyebrow">How I usually engage</p>
+            <ul class="mt-6 space-y-3 text-sm leading-7 text-stone-700">
+              <li>• Project-based builds for new internal systems.</li>
+              <li>• Scoped hardening work for prototypes or pilots already in motion.</li>
+              <li>• Advisory support tied to an actual delivery decision, not broad AI-transformation theater.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">02 / service modes</span>
+            <p class="eyebrow">Service modes</p>
+          </div>
+          <h2 class="text-3xl font-semibold tracking-tight text-stone-950 sm:text-4xl">
+            Build stays primary. Hardening and advisory work exist to support delivery quality.
+          </h2>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-3">
+          {services.map((service) => <ServiceCard service={service} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="panel panel-light px-6 py-8 sm:px-10">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">03 / delivery path</span>
+            <p class="eyebrow">Typical engagement shape</p>
+          </div>
+          <ol class="mt-6 grid gap-6 text-sm leading-7 text-stone-700 md:grid-cols-4">
+            <li>
+              <span class="block font-semibold text-stone-950">1. Scope</span>
+              Align on workflow, users, constraints, and what “useful” means in practice.
+            </li>
+            <li>
+              <span class="block font-semibold text-stone-950">2. Build</span>
+              Implement the first version with decisions that support real use, not demo optics.
+            </li>
+            <li>
+              <span class="block font-semibold text-stone-950">3. Harden</span>
+              Tighten evaluation, guard against failure modes, and make prototype-to-production behavior legible.
+            </li>
+            <li>
+              <span class="block font-semibold text-stone-950">4. Handoff</span>
+              Leave behind something your team can operate, review, and extend without mythology.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      title="If you already have a workflow owner, users, and constraints, I can usually tell quickly whether the project shape makes sense."
+      description="The strongest starting point is a short description of the workflow, the current stage, and whether you need a new build, a hardening pass, or scoped advisory help."
+      primary={siteConfig.heroPrimaryCta}
+      secondary={{ href: '/work', label: 'View case studies' }}
+    />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

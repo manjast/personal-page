@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'case-studies'>;
+}
+
+const { entry } = Astro.props;
+---
+
+<article class="panel panel-light flex h-full flex-col p-6">
+  <div class="flex items-start justify-between gap-4">
+    <div>
+      <div class="flex flex-wrap items-center gap-3">
+        <p class="eyebrow">{entry.data.client}</p>
+        <span class="metric-label">Case {String(entry.data.order).padStart(2, '0')}</span>
+      </div>
+      <h3 class="mt-3 text-2xl font-semibold tracking-tight text-stone-950">
+        <a class="transition hover:text-stone-700" href={`/work/${entry.slug}/`}>
+          {entry.data.title}
+        </a>
+      </h3>
+    </div>
+    {entry.data.featured && <span class="rounded-lg bg-stone-950 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-stone-50">Featured</span>}
+  </div>
+
+  <p class="mt-4 text-sm leading-7 text-stone-600">{entry.data.summary}</p>
+
+  <dl class="mt-6 space-y-3 text-sm">
+    <div>
+      <dt class="font-semibold text-stone-950">Context</dt>
+      <dd class="mt-1 text-stone-600">{entry.data.clientContext}</dd>
+    </div>
+    <div>
+      <dt class="font-semibold text-stone-950">Outcome</dt>
+      <dd class="mt-1 text-stone-600">{entry.data.outcome}</dd>
+    </div>
+  </dl>
+
+  <div class="mt-6 flex flex-wrap gap-2">
+    {
+      entry.data.technologies.map((technology) => (
+        <span class="rounded-lg border border-stone-200 px-3 py-1 text-[0.68rem] uppercase tracking-[0.12em] text-stone-600">{technology}</span>
+      ))
+    }
+  </div>
+
+  <div class="mt-8 pt-4">
+    <a class="text-sm font-semibold text-stone-950 transition hover:text-stone-700" href={`/work/${entry.slug}/`}>
+      Read the case study →
+    </a>
+  </div>
+</article>

@@ -1,0 +1,62 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  primaryCta: { href: string; label: string };
+  secondaryCta: { href: string; label: string };
+}
+
+const {
+  eyebrow = 'Internal AI systems delivery',
+  title,
+  description,
+  primaryCta,
+  secondaryCta,
+} = Astro.props;
+---
+
+<section class="section-space">
+  <div class="shell">
+    <div class="panel panel-light technical-grid overflow-hidden">
+      <div class="grid gap-10 px-6 py-14 sm:px-10 lg:grid-cols-[1.18fr_0.82fr] lg:px-12 lg:py-20">
+        <div class="space-y-6">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">00 / overview</span>
+            <p class="eyebrow">{eyebrow}</p>
+            <span class="metric-label">Belgrade / international</span>
+          </div>
+          <h1 class="max-w-3xl text-5xl font-semibold leading-none tracking-tight text-stone-950 sm:text-6xl">
+            {title}
+          </h1>
+          <p class="max-w-2xl text-lg leading-8 text-stone-700">{description}</p>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a class="button-primary" href={primaryCta.href}>{primaryCta.label}</a>
+            <a class="button-secondary" href={secondaryCta.href}>{secondaryCta.label}</a>
+          </div>
+        </div>
+
+        <div class="relative overflow-hidden rounded-[1.4rem] border border-stone-800 bg-stone-950 p-6 text-stone-100">
+          <div class="absolute inset-0 bg-[linear-gradient(rgba(245,245,244,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(245,245,244,0.06)_1px,transparent_1px)] bg-[size:18px_18px] opacity-70"></div>
+          <div class="relative">
+            <p class="eyebrow text-stone-500">Operating brief</p>
+            <dl class="mt-6 space-y-4 text-sm leading-7 text-stone-300">
+              <div class="border-t border-stone-800 pt-4">
+                <dt class="metric-label text-stone-500">Focus</dt>
+                <dd class="mt-1 text-stone-100">Internal assistants, knowledge-access workflows, and analyst-support systems that need to hold up after launch.</dd>
+              </div>
+              <div class="border-t border-stone-800 pt-4">
+                <dt class="metric-label text-stone-500">Position</dt>
+                <dd class="mt-1 text-stone-100">Project-based builder and advisory partner, not a broad AI-transformation pitch.</dd>
+              </div>
+              <div class="border-t border-stone-800 pt-4">
+                <dt class="metric-label text-stone-500">Reply window</dt>
+                <dd class="mt-1 text-stone-100">Good-fit inquiries get a response within 3 business days.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

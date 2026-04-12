@@ -1,0 +1,43 @@
+---
+import { navigation, siteConfig } from '../config/site';
+
+const pathname = Astro.url.pathname;
+
+function isActive(href: string) {
+  return href === '/' ? pathname === '/' : pathname.startsWith(href);
+}
+---
+
+<header class="border-b border-stone-300 bg-stone-50/88 backdrop-blur">
+  <div class="shell flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
+    <a href="/" class="group inline-flex flex-col">
+      <span class="text-lg font-semibold tracking-tight text-stone-950">{siteConfig.name}</span>
+      <span class="text-[0.72rem] uppercase tracking-[0.24em] text-stone-500" style="font-family: 'IBM Plex Mono', ui-monospace, monospace;">
+        {siteConfig.tagline}
+      </span>
+    </a>
+
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <nav
+        aria-label="Primary"
+        class="flex flex-wrap items-center gap-5 text-[0.72rem] font-medium uppercase tracking-[0.16em] text-stone-600"
+        style="font-family: 'IBM Plex Mono', ui-monospace, monospace;"
+      >
+        {
+          navigation.map((item) => (
+            <a
+              class:list={['transition hover:text-stone-950', isActive(item.href) && 'text-stone-950']}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              href={item.href}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <a class="button-primary" href={siteConfig.heroPrimaryCta.href}>
+        {siteConfig.heroPrimaryCta.label}
+      </a>
+    </div>
+  </div>
+</header>

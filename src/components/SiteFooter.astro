@@ -1,0 +1,29 @@
+---
+import { siteConfig } from '../config/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-stone-800 bg-stone-950 text-stone-100">
+  <div class="shell flex flex-col gap-8 py-10 sm:flex-row sm:items-end sm:justify-between">
+    <div class="max-w-xl space-y-3">
+      <p class="text-base font-semibold tracking-tight text-stone-50">{siteConfig.name}</p>
+      <p class="text-sm leading-7 text-stone-300">
+        Internal AI systems for enterprise workflows, with emphasis on evaluation,
+        deployment discipline, and delivery that holds up in real use.
+      </p>
+    </div>
+
+    <div class="space-y-2 text-sm text-stone-400 sm:text-right">
+      <a class="block transition hover:text-stone-50" href={`mailto:${siteConfig.email}`}>
+        {siteConfig.email}
+      </a>
+      <a class="block transition hover:text-stone-50" href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer">
+        LinkedIn
+      </a>
+      <a class="block transition hover:text-stone-50" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
+        GitHub
+      </a>
+      <p>© {year} {siteConfig.name}</p>
+    </div>
+  </div>
+</footer>

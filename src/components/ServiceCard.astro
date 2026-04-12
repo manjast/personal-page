@@ -1,0 +1,27 @@
+---
+interface Props {
+  service: {
+    name: string;
+    summary: string;
+    details: readonly string[];
+    featured: boolean;
+  };
+}
+
+const { service } = Astro.props;
+---
+
+<article class:list={['panel h-full p-6', service.featured ? 'panel-dark' : 'panel-light']}>
+  <p class:list={['eyebrow', service.featured && 'text-stone-400']}>
+    {service.featured ? 'Primary mode' : 'Secondary mode'}
+  </p>
+  <h3 class:list={['mt-4 text-2xl font-semibold tracking-tight', service.featured ? 'text-stone-50' : 'text-stone-950']}>
+    {service.name}
+  </h3>
+  <p class:list={['mt-4 text-sm leading-7', service.featured ? 'text-stone-300' : 'text-stone-600']}>
+    {service.summary}
+  </p>
+  <ul class:list={['mt-6 space-y-3 text-sm leading-7', service.featured ? 'text-stone-300' : 'text-stone-700']}>
+    {service.details.map((detail) => <li>• {detail}</li>)}
+  </ul>
+</article>

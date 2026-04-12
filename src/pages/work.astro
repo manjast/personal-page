@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { siteConfig } from '../config/site';
+
+const caseStudies = (await getCollection('case-studies')).sort((left, right) => left.data.order - right.data.order);
+---
+
+<BaseLayout
+  pathname="/work"
+  title="Selected work"
+  description="Case studies showing internal AI systems built for real workflows, with emphasis on delivery choices, system shape, and operational outcomes."
+>
+  <SiteHeader />
+
+  <main>
+    <section class="section-space">
+      <div class="shell">
+        <div class="max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">01 / selected work</span>
+            <p class="eyebrow">Selected work</p>
+          </div>
+          <h1 class="text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">
+            Case studies shaped around real delivery choices, not portfolio gloss.
+          </h1>
+          <p class="text-base leading-8 text-stone-600">
+            These write-ups are intentionally selective: enough to show the problem shape, system approach, and proof of execution,
+            without exposing internal material that should stay internal.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-2">
+          {caseStudies.map((entry) => <CaseStudyCard entry={entry} />)}
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      title="If you have a similar internal AI workflow to build or harden, I can review the project shape."
+      description="A short note on the workflow, users, current stage, and constraints is usually enough to tell whether build or advisory work makes sense."
+      primary={siteConfig.heroPrimaryCta}
+      secondary={{ href: '/services', label: 'See project shapes' }}
+    />
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

@@ -33,7 +33,10 @@ I implemented a self-hosted internal knowledge assistant with a retrieval-backed
 - a Dockerized Flask backend,
 - PostgreSQL plus pgvector for retrieval,
 - LangChain-based ingestion,
-- and Azure AD SSO for identity.
+- Azure AD SSO for identity,
+- structured logging,
+- usage analytics,
+- and user feedback capture.
 
 The point of that stack was not to collect logos. It was to support a system shape that made sense for internal enterprise use.
 
@@ -45,6 +48,7 @@ Self-hosting was part of the value proposition. In internal enterprise settings,
 
 - Retrieval needed to be grounded enough to make the assistant actually useful.
 - Identity and access had to fit enterprise expectations.
+- Structured logging, usage analytics, and user feedback capture made post-launch behavior observable instead of guesswork.
 - The build had to be maintainable by a real organization after the first version existed.
 
 ## Why this case matters

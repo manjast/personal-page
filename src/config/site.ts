@@ -45,8 +45,8 @@ export const proofPoints = [
   {
     eyebrow: 'Scale',
     value: '50+ use cases',
-    label: 'prioritized toward scaled delivery',
-    copy: 'Structured delivery path spanning finance, operations, logistics, and adjacent internal teams.',
+    label: 'from PoCs to first scaled delivery',
+    copy: 'AI work spanning finance, operations, logistics, and adjacent teams, from opportunity assessment through PoCs to rollout.',
   },
 ] as const;
 
@@ -57,7 +57,7 @@ export const services = [
       'Project-based delivery of internal AI systems for enterprise and mid-market teams with a concrete workflow to improve.',
     details: [
       'Internal assistants, knowledge-access systems, and analyst-support workflows',
-      'Evaluation-aware first versions built for real users',
+      'Evaluation-gated first versions built for real users',
       'Ownership from scoped workflow to shipped implementation',
     ],
     featured: true,

@@ -3,7 +3,7 @@ title: "LLM-assisted credit-risk workflow"
 summary: "A Delta Holding workflow redesign that used LLM assistance to reduce analysis time by roughly 75% while staying grounded in an existing analyst process."
 client: "Delta Holding"
 clientContext: "Enterprise finance and credit workflow context inside a diversified holding company."
-outcome: "~75% reduction in analysis time, with the workflow framed around analyst usefulness and recommendation quality."
+outcome: "~75% faster analysis, with 4.4 out of 5 analyst-rated quality and over 90% recommendation acceptance."
 order: 1
 featured: true
 services:
@@ -36,7 +36,7 @@ I helped shape and deliver an LLM-assisted workflow that produced summaries and 
 
 ## Outcome
 
-The result was a workflow that reduced analysis time by roughly **75%**. That is the strongest public signal from this case study, because it ties LLM assistance to a concrete operational improvement.
+The result was a workflow that reduced analysis time by roughly **75%**, with analyst quality rated at **4.4/5** and recommendation acceptance above **90%**. That is the strongest public signal from this case study, because it ties LLM assistance not only to speed, but to trust and actual workflow adoption.
 
 ## Why this case matters
 

@@ -33,32 +33,36 @@ const { Content } = await render(entry);
   <main>
     <section class="section-space">
       <div class="shell">
-        <a class="text-sm font-semibold text-stone-950 transition hover:text-stone-700" href="/work">
+        <a class="ink-link text-sm font-semibold transition" href="/work">
           ← Back to selected work
         </a>
 
-        <div class="mt-8 max-w-4xl space-y-6">
-          <p class="eyebrow">{entry.data.client}</p>
-          <h1 class="text-4xl font-semibold tracking-tight text-stone-950 sm:text-5xl">{entry.data.title}</h1>
-          <p class="text-lg leading-8 text-stone-700">{entry.data.summary}</p>
-
-          <div class="grid gap-4 md:grid-cols-2">
-            <div class="panel panel-light p-5">
-              <p class="text-sm font-semibold text-stone-950">Client context</p>
-              <p class="mt-2 text-sm leading-7 text-stone-600">{entry.data.clientContext}</p>
-            </div>
-            <div class="panel panel-light p-5">
-              <p class="text-sm font-semibold text-stone-950">Outcome signal</p>
-              <p class="mt-2 text-sm leading-7 text-stone-600">{entry.data.outcome}</p>
+        <div class="mt-8 grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
+          <div class="space-y-6">
+            <p class="eyebrow">{entry.data.client}</p>
+            <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{entry.data.title}</h1>
+            <p class="text-lg leading-8 muted-copy">{entry.data.summary}</p>
+            <div class="flex flex-wrap gap-2">
+              {entry.data.technologies.map((technology) => <span class="rounded-full border border-[color:var(--rule)] bg-white/55 px-3 py-1 text-[0.75rem] uppercase tracking-[0.08em] text-[color:var(--muted)]">{technology}</span>)}
             </div>
           </div>
 
-          <div class="flex flex-wrap gap-2">
-            {entry.data.technologies.map((technology) => <span class="rounded-full border border-stone-200 px-3 py-1 text-xs text-stone-600">{technology}</span>)}
+          <div class="panel panel-dark p-6">
+            <div class="accent-bar"></div>
+            <div class="space-y-5 text-sm">
+              <div class="border-t border-white/10 pt-4 first:border-t-0 first:pt-0">
+                <p class="metric-label">Client context</p>
+                <p class="mt-2 leading-7 text-[color:rgba(247,241,232,0.82)]">{entry.data.clientContext}</p>
+              </div>
+              <div class="border-t border-white/10 pt-4">
+                <p class="metric-label">Outcome signal</p>
+                <p class="mt-2 leading-7 text-[color:rgba(247,241,232,0.82)]">{entry.data.outcome}</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <article class="content-body mt-12 max-w-4xl">
+        <article class="content-body mt-12 max-w-4xl border-t border-[color:var(--rule)] pt-8">
           <Content />
         </article>
       </div>

@@ -8,25 +8,31 @@ function isActive(href: string) {
 }
 ---
 
-<header class="border-b border-stone-300 bg-stone-50/88 backdrop-blur">
-  <div class="shell flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
-    <a href="/" class="group inline-flex flex-col">
-      <span class="text-lg font-semibold tracking-tight text-stone-950">{siteConfig.name}</span>
-      <span class="text-[0.72rem] uppercase tracking-[0.24em] text-stone-500" style="font-family: 'IBM Plex Mono', ui-monospace, monospace;">
+<header class="sticky top-0 z-50 border-b border-[color:var(--rule)] bg-[rgba(243,240,232,0.9)] backdrop-blur-sm">
+  <div class="shell flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between sm:py-5">
+    <a href="/" class="group inline-flex flex-col gap-0.5">
+      <span class="text-lg font-semibold tracking-tight text-[color:var(--ink)]">{siteConfig.name}</span>
+      <span
+        class="site-tagline uppercase text-[color:var(--muted-soft)]"
+        style="font-family: 'IBM Plex Mono', ui-monospace, monospace;"
+      >
         {siteConfig.tagline}
       </span>
     </a>
 
-    <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+    <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
       <nav
         aria-label="Primary"
-        class="flex flex-wrap items-center gap-5 text-[0.72rem] font-medium uppercase tracking-[0.16em] text-stone-600"
+        class="site-nav flex flex-wrap items-center gap-x-4 gap-y-1 font-medium uppercase text-[color:var(--muted)] sm:gap-x-5"
         style="font-family: 'IBM Plex Mono', ui-monospace, monospace;"
       >
         {
           navigation.map((item) => (
             <a
-              class:list={['transition hover:text-stone-950', isActive(item.href) && 'text-stone-950']}
+              class:list={[
+                'inline-flex min-h-[44px] items-center px-1 py-2 transition hover:text-[color:var(--ink)]',
+                isActive(item.href) && 'text-[color:var(--accent)]',
+              ]}
               aria-current={isActive(item.href) ? 'page' : undefined}
               href={item.href}
             >
@@ -35,7 +41,7 @@ function isActive(href: string) {
           ))
         }
       </nav>
-      <a class="button-primary" href={siteConfig.heroPrimaryCta.href}>
+      <a class="button-primary self-start sm:self-auto" href={siteConfig.heroPrimaryCta.href}>
         {siteConfig.heroPrimaryCta.label}
       </a>
     </div>

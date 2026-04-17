@@ -12,16 +12,17 @@ const { service } = Astro.props;
 ---
 
 <article class:list={['panel h-full p-6', service.featured ? 'panel-dark' : 'panel-light']}>
-  <p class:list={['eyebrow', service.featured && 'text-stone-400']}>
+  <div class:list={['accent-bar', !service.featured && 'opacity-90']}></div>
+  <p class="eyebrow">
     {service.featured ? 'Primary mode' : 'Secondary mode'}
   </p>
-  <h3 class:list={['mt-4 text-2xl font-semibold tracking-tight', service.featured ? 'text-stone-50' : 'text-stone-950']}>
+  <h3 class:list={['mt-4 text-2xl font-semibold tracking-tight', service.featured ? 'text-[color:#f7f1e8]' : 'text-[color:var(--ink)]']}>
     {service.name}
   </h3>
-  <p class:list={['mt-4 text-sm leading-7', service.featured ? 'text-stone-300' : 'text-stone-600']}>
+  <p class:list={['mt-4 text-sm leading-7', service.featured ? 'text-[color:rgba(247,241,232,0.78)]' : 'muted-copy']}>
     {service.summary}
   </p>
-  <ul class:list={['mt-6 space-y-3 text-sm leading-7', service.featured ? 'text-stone-300' : 'text-stone-700']}>
+  <ul class:list={['mt-6 space-y-3 text-sm leading-7', service.featured ? 'text-[color:rgba(247,241,232,0.78)]' : 'text-[color:var(--ink-soft)]']}>
     {service.details.map((detail) => <li>• {detail}</li>)}
   </ul>
 </article>

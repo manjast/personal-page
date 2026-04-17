@@ -75,33 +75,33 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
                   Light qualification only: enough context to decide whether the conversation should move forward.
                 </p>
 
-                <form class="mt-8 space-y-5" method="POST" action={formAction}>
+                <form class="mt-8 space-y-6" method="POST" action={formAction}>
                   <input type="hidden" name="_subject" value="Project inquiry from stefanmanja.com" />
-                  <div class="grid gap-5 sm:grid-cols-2">
+                  <div class="grid gap-6 sm:grid-cols-2">
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                       Name
-                      <input class="mt-2 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="name" required />
+                      <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="name" required />
                     </label>
 
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                       Work email
-                      <input class="mt-2 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="email" name="email" required />
+                      <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="email" name="email" required />
                     </label>
                   </div>
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                     Company or team
-                    <input class="mt-2 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="company" />
+                    <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="company" />
                   </label>
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                     What are you trying to build or improve?
-                    <input class="mt-2 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="use_case" required />
+                    <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="use_case" required />
                   </label>
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                     Current stage
-                    <select class="mt-2 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" name="current_stage" required>
+                    <select class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" name="current_stage" required>
                       <option value="">Select one</option>
                       <option value="exploring">Exploring options</option>
                       <option value="prototype">Prototype exists</option>
@@ -112,7 +112,7 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                     Relevant context
-                    <textarea class="mt-2 min-h-40 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" name="context" required></textarea>
+                    <textarea class="mt-2.5 min-h-40 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" name="context" required></textarea>
                   </label>
 
                   <button class="button-primary" type="submit">

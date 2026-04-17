@@ -1,0 +1,27 @@
+# Stefan Manja
+
+Stefan Manja builds internal AI systems for enterprise and mid-market workflows.
+
+Site: https://stefanmanja.com
+Contact: stefan@stefanmanja.com
+
+Primary fit:
+- project-based build work for internal AI workflows
+- hardening and productionizing pilots or prototypes
+- scoped advisory work tied to real delivery decisions
+
+Good fit:
+- teams with a concrete internal workflow, real users, and a clear owner
+- internal assistants, knowledge-access systems, and analyst-support tools
+- work that needs disciplined evaluation, deployment, and post-launch usefulness
+
+Not a fit:
+- pure idea-stage exploration with no workflow owner or adoption path
+- generic AI transformation requests without a defined problem
+- marketing chatbot work where visual novelty matters more than operational quality
+
+Primary pages:
+- / : overview, proof, fit guidance, services
+- /work : selected case studies
+- /services : service modes and delivery path
+- /contact : contact and qualification

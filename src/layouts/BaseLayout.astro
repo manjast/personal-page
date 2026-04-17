@@ -21,6 +21,30 @@ const {
 const pageTitle = title === siteConfig.defaultTitle ? title : `${title} | ${siteConfig.defaultTitle}`;
 const canonical = new URL(pathname, siteConfig.siteUrl).toString();
 const socialImage = new URL(image, siteConfig.siteUrl).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteConfig.siteUrl}/#person`,
+      name: siteConfig.name,
+      url: siteConfig.siteUrl,
+      email: siteConfig.email,
+      sameAs: [siteConfig.linkedinUrl, siteConfig.githubUrl],
+      jobTitle: 'AI Systems Builder',
+      description: siteConfig.defaultDescription,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteConfig.siteUrl}/#website`,
+      url: siteConfig.siteUrl,
+      name: siteConfig.name,
+      description: siteConfig.defaultDescription,
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -30,11 +54,12 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3f0e8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
     />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -51,6 +76,8 @@ const socialImage = new URL(image, siteConfig.siteUrl).toString();
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="min-h-screen antialiased">
     <slot />

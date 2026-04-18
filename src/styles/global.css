@@ -257,8 +257,8 @@ a {
   }
 
   .site-nav {
-    font-size: 0.82rem;
-    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
   }
 
   @media (min-width: 640px) {

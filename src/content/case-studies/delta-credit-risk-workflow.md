@@ -14,6 +14,7 @@ technologies:
   - LLM APIs
   - Workflow design
   - Internal data context
+ogImage: "/og-credit-risk.png"
 ---
 
 ## Context

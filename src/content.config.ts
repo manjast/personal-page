@@ -12,6 +12,7 @@ const caseStudies = defineCollection({
     featured: z.boolean().default(false),
     services: z.array(z.enum(['Build', 'Productionize', 'Advise'])).default([]),
     technologies: z.array(z.string()).default([]),
+    ogImage: z.string().optional(),
   }),
 });
 

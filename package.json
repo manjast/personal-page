@@ -1,7 +1,7 @@
 {
   "name": "personal-page",
   "version": "1.0.0",
-  "description": "Focused personal website for Stefan Manja's independent GenAI project work.",
+  "description": "Personal website for Stefan Manja — internal AI systems builder for enterprise workflows.",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -11,7 +11,7 @@
   "keywords": [
     "astro",
     "personal-site",
-    "genai"
+    "ai-systems"
   ],
   "author": "Stefan Manja",
   "license": "MIT",

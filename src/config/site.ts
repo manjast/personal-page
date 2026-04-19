@@ -88,7 +88,7 @@ export const services = [
 
 export const fitGuidance = {
   goodFit: [
-    'Teams with a concrete internal workflow, real users, and a reason the system needs to hold up after launch.',
+    'Teams with a concrete internal workflow, real users, and a reason the system needs to earn continued use once it is deployed.',
     'Internal assistants, knowledge-access systems, and analyst-support tools that need disciplined evaluation and delivery.',
     'Project-based build, hardening, or advisory work with clear ownership and real business pull.',
   ],

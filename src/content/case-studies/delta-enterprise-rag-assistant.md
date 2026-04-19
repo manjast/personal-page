@@ -54,3 +54,9 @@ Self-hosting was part of the value proposition. In internal enterprise settings,
 ## Why this case matters
 
 This case matters because it shows practical system-building ability around internal knowledge access under enterprise constraints, not only experimentation. It is directly relevant to teams that need a reliable internal assistant, document-backed workflow, or knowledge-access system that has to live inside enterprise constraints.
+
+## Key tradeoffs
+
+The first tradeoff was cloud versus self-hosted. Cloud-hosted services would have been faster to deploy, but internal data governance and sensitivity constraints made self-hosting the right call — not a preference, a constraint. That architecture choice shaped everything downstream.
+
+The second tradeoff was retrieval quality versus simplicity. Useful retrieval requires real work on chunking, indexing, and grounding — the technology does not do it automatically. Structured logging, usage analytics, and user feedback capture were built in specifically because internal systems often become opaque after launch: observability was a design requirement, not an afterthought.

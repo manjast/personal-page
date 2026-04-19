@@ -42,3 +42,9 @@ The result was a workflow that reduced analysis time by roughly **75%**, with an
 ## Why this case matters
 
 This case matters because it shows how I think about internal workflows: identify a high-friction process, design the LLM layer around real user behavior, and keep the system tied to usefulness rather than hype.
+
+## Key tradeoffs
+
+The first tradeoff was speed versus trust. A workflow that saves time only matters if analysts actually use and accept the output — so calibration against real analyst judgment was as important as the speed gain itself. Getting to 90%+ acceptance required iteration on recommendation quality, not just throughput.
+
+The second tradeoff was process fit versus full automation. The decision to augment the existing analyst process rather than replace it was deliberate: the system had to fit into a workflow that already had ownership, accountability, and edge-case handling. Designing around that boundary was harder than building a standalone tool.

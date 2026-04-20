@@ -70,4 +70,4 @@ For GitHub Pages deployments, add the same value as a repository **Actions varia
 
 ## Analytics
 
-Analytics is intentionally omitted from the committed code in v1. Add it after domain and launch setup are in place.
+GoatCounter is active in the codebase for privacy-respecting pageview tracking, including contact-page event tracking for email link clicks and form submissions.

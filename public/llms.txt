@@ -4,24 +4,58 @@ Stefan Manja builds internal AI systems for enterprise and mid-market workflows.
 
 Site: https://stefanmanja.com
 Contact: stefan@stefanmanja.com
+Location: Belgrade, Serbia (CET)
+LinkedIn: https://www.linkedin.com/in/stefan-manja/
+GitHub: https://github.com/manjast
 
-Primary fit:
-- project-based build work for internal AI workflows
-- hardening and productionizing pilots or prototypes
-- scoped advisory work tied to real delivery decisions
+## Engagement model
 
-Good fit:
-- teams with a concrete internal workflow, real users, and a clear owner
-- internal assistants, knowledge-access systems, and analyst-support tools
-- work that needs disciplined evaluation, deployment, and post-launch usefulness
+Stefan is currently an AI engineer at Bosch (enterprise and industrial AI).
+He is selectively available for project-based consulting on internal AI systems alongside this role:
+build, hardening, and scoped advisory work.
+Engagements are project-scoped and typically serve enterprise or mid-market teams.
 
-Not a fit:
-- pure idea-stage exploration with no workflow owner or adoption path
-- generic AI transformation requests without a defined problem
-- marketing chatbot work where visual novelty matters more than operational quality
+## Primary fit
 
-Primary pages:
+- Project-based build work for internal AI workflows
+- Hardening and productionising pilots or prototypes
+- Scoped advisory work tied to real delivery decisions
+
+## Good fit
+
+- Teams with a concrete internal workflow, real users, and a clear owner
+- Internal assistants, knowledge-access systems, and analyst-support tools
+- Work that needs disciplined evaluation, deployment, and post-launch usefulness
+
+## Not a fit
+
+- Pure idea-stage exploration with no workflow owner or adoption path
+- Generic AI transformation requests without a defined problem
+- Marketing chatbot work where visual novelty matters more than operational quality
+
+## Proof points
+
+- ~75% reduction in credit-risk analysis time (Delta Holding)
+- 90%+ recommendation acceptance rate from analysts
+- 4.4/5 analyst-rated quality on LLM-assisted workflow
+- 50+ AI use cases from PoC through first scaled delivery
+- Self-hosted enterprise knowledge assistant (Docker, pgvector, Azure AD SSO)
+
+## Primary pages
+
 - / : overview, proof, fit guidance, services
-- /work : selected case studies
+- /work : internal AI case studies
+- /work/delta-credit-risk-workflow : LLM-assisted credit-risk workflow (Delta Holding)
+- /work/delta-enterprise-rag-assistant : self-hosted knowledge assistant (Delta Holding)
 - /services : service modes and delivery path
-- /contact : contact and qualification
+- /contact : contact and project qualification
+
+## Technical context
+
+Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD SSO,
+LLM APIs, and workflow automation for enterprise environments.
+
+## Public evidence of working method
+
+The Agentic Development Playbook (https://github.com/manjast/agentic-development-playbook)
+is public evidence of scoped, evaluation-gated AI delivery — not a product or tutorial.

@@ -28,6 +28,17 @@ const { Content } = await render(entry);
   title={entry.data.title}
   description={entry.data.summary}
   image={entry.data.ogImage}
+  pageSchema={[
+    {
+      '@type': 'Article',
+      '@id': `https://stefanmanja.com/work/${entry.slug}/#article`,
+      url: `https://stefanmanja.com/work/${entry.slug}/`,
+      headline: entry.data.title,
+      description: entry.data.summary,
+      author: { '@id': 'https://stefanmanja.com/#person' },
+      about: entry.data.technologies.map((t: string) => ({ '@type': 'Thing', name: t })),
+    },
+  ]}
 >
   <SiteHeader />
 

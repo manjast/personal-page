@@ -21,13 +21,13 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "^4.2.3",
     "astro": "^5.18.1",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
-    "@types/node": "^24.6.0",
+    "@types/node": "^24.12.2",
     "typescript": "^5.9.3"
   }
 }

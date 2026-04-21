@@ -1,9 +1,9 @@
 ---
 title: "Self-hosted internal knowledge assistant"
-summary: "A self-hosted internal assistant for Delta Holding, built to support enterprise knowledge access with practical architecture choices around hosting, retrieval, and identity."
+summary: "A self-hosted internal assistant for Delta Holding built as an enterprise-ready internal product with operator controls, org-aware access, and post-launch visibility."
 client: "Delta Holding"
-clientContext: "Internal enterprise knowledge-access and assistant use cases across a large business environment."
-outcome: "A production-minded, self-hosted internal assistant with Dockerized services, PostgreSQL + pgvector retrieval, LangChain ingestion, and Azure AD SSO."
+clientContext: "Internal enterprise knowledge-access system serving multiple business units, with requirements around access control, quality governance, and operational visibility."
+outcome: "A self-hosted internal assistant with operator controls, org-aware access, feedback-driven quality loops, and usage/cost observability for real internal use."
 order: 2
 featured: true
 services:
@@ -20,37 +20,75 @@ technologies:
 
 ## Context
 
-At Delta Holding, one of the high-value internal AI opportunities was an enterprise assistant that could work with internal knowledge in a way that fit the organization’s operational reality.
+At Delta Holding, one of the high-value internal AI opportunities was an
+assistant that could make internal knowledge more usable without ignoring the
+operational realities of a large business environment.
 
 ## Problem
 
-Internal assistant work becomes more serious once questions of hosting, identity, retrieval quality, and maintainability show up. A toy chatbot is easy. A useful internal system is not. The system had to be shaped for enterprise use rather than demo convenience.
+Internal assistant work becomes serious once the system has to be governable
+after launch. Hosting, identity, access boundaries, retrieval quality,
+operator controls, and post-launch visibility all matter. A basic
+retrieval-backed chatbot is easy to demo. A useful internal system is harder
+to run responsibly.
 
 ## What I built
 
-I implemented a self-hosted internal knowledge assistant with a retrieval-backed architecture that included:
+I implemented a self-hosted internal knowledge assistant built for real
+internal use, not just first-pass retrieval.
 
-- a Dockerized Flask backend,
-- PostgreSQL plus pgvector for retrieval,
-- LangChain-based ingestion,
-- Azure AD SSO for identity,
-- structured logging,
-- usage analytics,
-- and user feedback capture.
+The system included not only chat and retrieval, but also the operator layer
+needed to run it in practice, including:
 
-The point of that stack was not to collect logos. It was to support a system shape that made sense for internal enterprise use.
+- user and operator controls
+- org-aware access behavior
+- feedback review and answer-quality visibility
+- structured logging and health visibility
+- usage analytics and post-launch observability
+
+The point of the architecture was not to collect infrastructure labels. It was
+to support a system that could be operated, reviewed, and improved after
+launch.
+
+## Delivery context
+
+### My role
+
+I implemented the assistant and the operator-facing layer around retrieval,
+access, logging, and feedback signals needed for real internal use.
+
+### Team shape
+
+The work connected business-side internal knowledge needs with the operational
+expectations of the people who would have to run, review, and support the
+system after launch.
+
+### Constraints
+
+The architecture had to respect self-hosting, enterprise identity and access
+expectations, and the need for post-launch visibility from the first version
+onward.
 
 ## Why self-hosted mattered
 
-Self-hosting was part of the value proposition. In internal enterprise settings, architecture choices often matter as much as model behavior. This case reflects the kind of work I want to do more of: systems where operational posture, trust, and usability are part of the implementation problem.
+Self-hosting was part of the product posture. In enterprise settings,
+architecture choices are tightly connected to trust, governance, and
+operational fit. This system was shaped to live inside those constraints
+rather than bypass them for demo convenience.
 
 ## Operational choices
 
-- Retrieval needed to be grounded enough to make the assistant actually useful.
+- Retrieval had to be grounded enough to support real internal use.
 - Identity and access had to fit enterprise expectations.
-- Structured logging, usage analytics, and user feedback capture made post-launch behavior observable instead of guesswork.
-- The build had to be maintainable by a real organization after the first version existed.
+- The operator layer had to exist from the start instead of being retrofitted
+  later.
+- Feedback loops and usage visibility made post-launch behavior observable
+  instead of guesswork.
+- The build had to be maintainable by a real organization once the first
+  version existed.
 
 ## Why this case matters
 
-This case matters because it shows practical system-building ability around internal knowledge access under enterprise constraints, not only experimentation. It is directly relevant to teams that need a reliable internal assistant, document-backed workflow, or knowledge-access system that has to live inside enterprise constraints.
+This case matters because it shows internal AI product work beyond the
+prototype layer: self-hosted, operator-managed, org-aware, and built to remain
+usable after the first demo.

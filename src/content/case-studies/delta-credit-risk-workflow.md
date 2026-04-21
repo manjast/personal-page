@@ -1,9 +1,9 @@
 ---
-title: "LLM-assisted credit-risk workflow"
-summary: "A Delta Holding workflow redesign that used LLM assistance to reduce analysis time by roughly 75% while staying grounded in an existing analyst process."
+title: "Credit-risk decision-support workflow"
+summary: "An analyst-assistive credit-risk workflow for Delta Holding that combined public-company risk signals with internal operating context to produce structured, analyst-ready recommendations."
 client: "Delta Holding"
-clientContext: "Enterprise finance and credit workflow context inside a diversified holding company."
-outcome: "~75% faster analysis, with 4.4 out of 5 analyst-rated quality and over 90% recommendation acceptance."
+clientContext: "B2B credit-risk analysis and limit-setting workflow inside a multi-entity enterprise finance function."
+outcome: "Observed workflow outcomes included ~75% faster analysis, 4.4/5 analyst-rated quality, and 90%+ recommendation acceptance."
 order: 1
 featured: true
 services:
@@ -13,32 +13,88 @@ technologies:
   - Python
   - LLM APIs
   - Workflow design
-  - Internal data context
+  - Structured decision support
 ogImage: "/og-credit-risk.png"
 ---
 
 ## Context
 
-Delta Holding had credit analysis work that was valuable but time-intensive. The opportunity was not to replace analysts with a generic chatbot. It was to make the existing process faster and more usable without removing the need for judgment.
+Delta Holding had credit analysis work that was valuable but time-intensive.
+Analysts were working across two layers of information: public-company risk
+signals and internal operating context like cooperation history, payment
+behavior, and exposure across business entities.
+
+The opportunity was not to replace analysts with a generic chatbot. It was to
+make the existing process faster and more usable by combining both signal
+layers into a structured workflow without removing the need for judgment.
 
 ## Problem
 
-The core challenge was operational, not cosmetic: analysts still needed useful summaries and recommendations, but the workflow had enough repetition that it was a poor use of expert time. Any LLM-assisted path also had to fit the existing decision process instead of behaving like a disconnected demo.
+The core challenge was operational, not cosmetic: analysts still needed useful
+assessments and limit recommendations, but assembling the relevant context
+from multiple sources was a poor use of expert time. Any AI-assisted path also
+had to fit the existing decision process and produce outputs analysts would
+actually trust and use, not disconnected summaries with no workflow home.
 
 ## What I built
 
-I helped shape and deliver an LLM-assisted workflow that produced summaries and limit recommendations across business lines. The point was not only text generation. The point was reducing analyst effort in a way that still fit a real credit workflow.
+I helped shape and deliver a credit-risk decision-support workflow that
+combined public-company risk signals with internal operating and payment
+context to produce structured, analyst-ready recommendations across business
+lines.
+
+The output was not just a free-form summary. It was closer to a constrained
+recommendation layer that could support outcomes like approve, decline,
+reduced limit, conditional approval, or further review.
+
+The system was designed to support analyst judgment, not replace it. Trust
+came from workflow fit, constrained output shapes, and the reviewability of
+every recommendation.
+
+## Delivery context
+
+### My role
+
+I worked across workflow shaping, recommendation design, and implementation
+decisions that made the first version usable inside the existing analyst
+process.
+
+### Team shape
+
+The work sat between domain users who owned the credit decision flow and the
+technical path required to turn scattered inputs into a structured
+recommendation workflow.
+
+### Constraints
+
+The system had to fit an existing analyst-owned process, combine external and
+internal context safely, and keep every recommendation reviewable instead of
+pushing black-box automation.
 
 ## Production-minded choices
 
-- The workflow was designed around an existing analyst process instead of treating the model as a stand-alone product.
-- The focus stayed on usefulness, recommendation quality, and business acceptance rather than novelty.
-- The implementation had to earn trust from users, because a speed gain without trust would not hold in practice.
+- The workflow was designed around an existing analyst process instead of
+  treating the model as a stand-alone product.
+- The focus stayed on usefulness, recommendation quality, and business
+  acceptance rather than novelty.
+- The implementation had to earn trust from users, because a speed gain
+  without trust would not hold in practice.
+- The work evolved from tenant-specific proofs of concept toward a shared
+  internal platform shape, with reusable architecture and governance
+  considerations built in from early stages.
 
 ## Outcome
 
-The result was a workflow that reduced analysis time by roughly **75%**, with analyst quality rated at **4.4/5** and recommendation acceptance above **90%**. That is the strongest public signal from this case study, because it ties LLM assistance not only to speed, but to trust and actual workflow adoption.
+The strongest public outcome evidence from this case was workflow-level:
+analysis time dropped by roughly **75%**, analyst-rated quality reached
+**4.4/5**, and recommendation acceptance was above **90%**.
+
+Those signals matter because they point not only to speed, but to trust,
+consistency, and real workflow adoption.
 
 ## Why this case matters
 
-This case matters because it shows how I think about internal workflows: identify a high-friction process, design the LLM layer around real user behavior, and keep the system tied to usefulness rather than hype.
+This case matters because it shows how I approach internal AI systems in
+higher-trust workflows: make the data blend useful, keep outputs structured
+and reviewable, and design the system so it supports real decisions instead of
+sounding impressive in a demo.

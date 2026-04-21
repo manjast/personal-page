@@ -34,13 +34,13 @@ export const proofPoints = [
     eyebrow: 'Outcome',
     value: '~75% faster',
     label: 'credit-risk workflow analysis',
-    copy: 'LLM-assisted workflow design focused on analyst usefulness instead of demo value.',
+    copy: 'Analyst-assistive workflow combining public-company risk signals with internal context into structured recommendations.',
   },
   {
     eyebrow: 'System',
     value: 'Self-hosted assistant',
     label: 'enterprise knowledge-access build',
-    copy: 'Dockerized Flask backend, PostgreSQL + pgvector retrieval, LangChain ingestion, and Azure AD SSO.',
+    copy: 'Self-hosted enterprise assistant with operator controls, org-aware access, and post-launch observability.',
   },
   {
     eyebrow: 'Scale',
@@ -88,8 +88,8 @@ export const services = [
 
 export const fitGuidance = {
   goodFit: [
-    'Teams with a concrete internal workflow, real users, and a reason the system needs to hold up after launch.',
-    'Internal assistants, knowledge-access systems, and analyst-support tools that need disciplined evaluation and delivery.',
+    'Teams with a concrete internal workflow, real users, and a reason the system needs to earn continued use once it is deployed.',
+    'Decision-support, knowledge-access, and internal tooling systems that need disciplined evaluation and delivery.',
     'Project-based build, hardening, or advisory work with clear ownership and real business pull.',
   ],
   notFit: [

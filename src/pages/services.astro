@@ -8,9 +8,20 @@ import { services, siteConfig } from '../config/site';
 ---
 
 <BaseLayout
-  pathname="/services"
-  title="Services"
+  pathname="/services/"
+  title="Internal AI Build, Hardening & Advisory"
   description="Project shapes, service modes, and delivery paths for internal AI systems that need disciplined evaluation and real-world usability."
+  pageSchema={[
+    {
+      '@type': 'Service',
+      '@id': `${siteConfig.siteUrl}/services/#service`,
+      name: 'Internal AI Build, Hardening & Advisory',
+      provider: { '@id': 'https://stefanmanja.com/#person' },
+      serviceType: ['Build', 'Productionize', 'Advise'],
+      description: 'Project-based build, hardening, and advisory work for internal AI systems in enterprise and mid-market workflows.',
+      url: `${siteConfig.siteUrl}/services/`,
+    },
+  ]}
 >
   <SiteHeader />
 
@@ -26,8 +37,8 @@ import { services, siteConfig } from '../config/site';
             Project shapes, delivery modes, and where I add the most leverage.
           </h1>
           <p class="text-base leading-8 muted-copy">
-            This page is for teams that already have a concrete workflow, real users, and a reason the system needs to hold up
-            beyond the first demo. The main fit is project-based build work, with hardening and scoped advisory support where
+            This page is for teams that already have a concrete workflow, real users, and a reason the system needs to work past
+            the first demo. The main fit is project-based build work, with hardening and scoped advisory support where
             they improve delivery.
           </p>
         </div>

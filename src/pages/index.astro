@@ -15,7 +15,30 @@ const caseStudies = (await getCollection('case-studies'))
   .slice(0, 2);
 ---
 
-<BaseLayout pathname="/" title={siteConfig.defaultTitle} description={siteConfig.defaultDescription}>
+<BaseLayout
+  pathname="/"
+  title="Internal AI Systems for Enterprise Workflows"
+  description={siteConfig.defaultDescription}
+  pageSchema={[
+    {
+      '@type': 'WebPage',
+      '@id': 'https://stefanmanja.com/#webpage',
+      url: 'https://stefanmanja.com/',
+      name: 'Internal AI Systems for Enterprise Workflows | Stefan Manja',
+      description: siteConfig.defaultDescription,
+      author: { '@id': 'https://stefanmanja.com/#person' },
+    },
+    {
+      '@type': 'Service',
+      '@id': 'https://stefanmanja.com/#service',
+      name: 'Internal AI Systems — Build, Harden, Advise',
+      provider: { '@id': 'https://stefanmanja.com/#person' },
+      serviceType: ['Build', 'Productionize', 'Advise'],
+      description: siteConfig.defaultDescription,
+      areaServed: 'Worldwide',
+    },
+  ]}
+>
   <SiteHeader />
 
   <main>

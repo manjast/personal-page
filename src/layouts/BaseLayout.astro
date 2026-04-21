@@ -58,11 +58,19 @@ const jsonLd = {
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f3f0e8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="preload"
+      href="/fonts/ibm-plex-sans-latin-var-v23.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ibm-plex-sans-condensed-latin-600-v15.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

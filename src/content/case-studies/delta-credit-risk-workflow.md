@@ -8,7 +8,7 @@ order: 1
 featured: true
 services:
   - Build
-  - Productionize
+  - Hardening
 technologies:
   - Python
   - LLM APIs
@@ -51,6 +51,30 @@ The system was designed to support analyst judgment, not replace it. Trust
 came from workflow fit, constrained output shapes, and the reviewability of
 every recommendation.
 
+<figure class="my-8 overflow-hidden rounded-[1.2rem] border border-[color:var(--rule)] bg-[color:var(--surface-strong)]">
+  <div class="grid gap-px bg-[color:var(--rule)] sm:grid-cols-2 lg:grid-cols-4">
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Input layer</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Public-company risk signals and market-facing context.</p>
+    </div>
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Internal context</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Operating history, payment behavior, and exposure context across business entities.</p>
+    </div>
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Recommendation layer</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Structured analyst-ready outputs such as approve, decline, reduced limit, conditional approval, or further review.</p>
+    </div>
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Final ownership</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Analyst review remained the decision boundary; the workflow accelerated judgment instead of replacing it.</p>
+    </div>
+  </div>
+  <figcaption class="border-t border-[color:var(--rule)] px-4 py-3 text-xs leading-6 text-[color:var(--muted)]">
+    Workflow-first capability view — not internal architecture. Exact thresholds, source mappings, and scoring logic are intentionally omitted.
+  </figcaption>
+</figure>
+
 ## Delivery context
 
 ### My role
@@ -70,6 +94,8 @@ recommendation workflow.
 The system had to fit an existing analyst-owned process, combine external and
 internal context safely, and keep every recommendation reviewable instead of
 pushing black-box automation.
+
+Platform framing: the reusable layer was the workflow normalization and recommendation scaffolding around the analyst process, not a claim of shared scoring logic across every tenant or buyer context.
 
 ## Production-minded choices
 

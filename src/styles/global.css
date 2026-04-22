@@ -333,11 +333,11 @@ a {
      a warm-light muted tone instead of the default dark-on-light muted tone.
      This means components don't need fragile per-instance utility overrides. */
   .panel-dark .eyebrow {
-    color: rgba(245, 235, 218, 0.50);
+    color: rgba(245, 235, 218, 0.62);
   }
 
   .panel-dark .metric-label {
-    color: rgba(245, 235, 218, 0.50);
+    color: rgba(245, 235, 218, 0.62);
   }
 
   .panel-dark .muted-copy,

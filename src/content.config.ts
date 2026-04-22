@@ -10,9 +10,10 @@ const caseStudies = defineCollection({
     outcome: z.string(),
     order: z.number(),
     featured: z.boolean().default(false),
-    services: z.array(z.enum(['Build', 'Productionize', 'Advise'])).default([]),
+    services: z.array(z.enum(['Build', 'Hardening', 'Advisory'])).default([]),
     technologies: z.array(z.string()).default([]),
     ogImage: z.string().optional(),
+    signalLabel: z.string().optional(),
   }),
 });
 

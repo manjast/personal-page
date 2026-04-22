@@ -8,7 +8,7 @@ order: 2
 featured: true
 services:
   - Build
-  - Productionize
+  - Hardening
 technologies:
   - Flask
   - Docker
@@ -16,6 +16,8 @@ technologies:
   - pgvector
   - LangChain
   - Azure AD SSO
+ogImage: "/og-default.png"
+signalLabel: "Delivered system"
 ---
 
 ## Context
@@ -49,6 +51,38 @@ needed to run it in practice, including:
 The point of the architecture was not to collect infrastructure labels. It was
 to support a system that could be operated, reviewed, and improved after
 launch.
+
+<figure class="my-8 overflow-hidden rounded-[1.2rem] border border-[color:var(--rule)] bg-[color:var(--surface-strong)]">
+  <div class="grid gap-px bg-[color:var(--rule)] sm:grid-cols-2 lg:grid-cols-3">
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Access layer</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Enterprise identity and org-aware access behavior shaped who could use what.</p>
+    </div>
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Assistant surface</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Internal users interacted through a self-hosted assistant rather than a public SaaS interface.</p>
+    </div>
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Retrieval core</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Grounded retrieval, indexing, and response generation supported internal knowledge access.</p>
+    </div>
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Operator controls</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">The system included controls for review, configuration, and operational oversight.</p>
+    </div>
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Feedback loop</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Answer-quality signals and user feedback created a path for iterative improvement.</p>
+    </div>
+    <div class="bg-[color:var(--surface-strong)] p-4">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Observability</p>
+      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Logging, health visibility, and usage/cost signals made post-launch behavior legible.</p>
+    </div>
+  </div>
+  <figcaption class="border-t border-[color:var(--rule)] px-4 py-3 text-xs leading-6 text-[color:var(--muted)]">
+    Public-safe operating-model view of the system after launch: enough to clarify how it was run, without exposing sensitive internal details.
+  </figcaption>
+</figure>
 
 ## Delivery context
 

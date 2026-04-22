@@ -8,7 +8,7 @@ export const siteConfig = {
     'Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, reliable deployment, and real-world usefulness.',
   heroTitle: 'Internal AI systems that hold up in real use',
   heroDescription:
-    'I work with enterprise and mid-market teams to build, evaluate, and harden internal AI systems for real workflows - with disciplined deployment, clear system behavior, and delivery choices that hold up after launch.',
+    'I work with enterprise and mid-market teams to build, evaluate, and harden internal AI systems for real workflows — with disciplined deployment, clear system behavior, and delivery choices that stay sound after launch.',
   heroPrimaryCta: {
     href: '/contact',
     label: 'Discuss a project',
@@ -38,14 +38,14 @@ export const proofPoints = [
   },
   {
     eyebrow: 'System',
-    value: 'Self-hosted assistant',
-    label: 'enterprise knowledge-access build',
+    value: 'Self-hosted',
+    label: 'enterprise knowledge assistant',
     copy: 'Self-hosted enterprise assistant with operator controls, org-aware access, and post-launch observability.',
   },
   {
     eyebrow: 'Scale',
-    value: '50+ use cases',
-    label: 'from PoCs to first scaled delivery',
+    value: '50+ workflows',
+    label: 'from assessment to first scaled rollout',
     copy: 'AI work spanning finance, operations, logistics, and adjacent teams, from opportunity assessment through PoCs to rollout.',
   },
 ] as const;
@@ -63,7 +63,7 @@ export const services = [
     featured: true,
   },
   {
-    name: 'Productionize',
+    name: 'Hardening',
     summary:
       'Take a prototype or pilot already in motion and make it more reliable, testable, observable, and ready for real use.',
     details: [
@@ -74,7 +74,7 @@ export const services = [
     featured: false,
   },
   {
-    name: 'Advise',
+    name: 'Advisory',
     summary:
       'Scoped advisory work that sharpens system shape, delivery path, and implementation risk before or alongside build work.',
     details: [
@@ -101,8 +101,6 @@ export const fitGuidance = {
 
 export const contactExpectations = {
   responseTime: 'I reply to good-fit inquiries within 3 business days.',
-  availability:
-    'I take on project-based build, hardening, and advisory work when the workflow, scope, and ownership are concrete enough for a useful conversation.',
   fitNote:
     'The best first conversations describe the workflow, the users, the current stage, and the constraints that will matter in practice.',
   emailPrompt:

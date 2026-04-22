@@ -18,7 +18,7 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
       '@id': `${siteConfig.siteUrl}/contact/#webpage`,
       url: `${siteConfig.siteUrl}/contact/`,
       name: 'Discuss an Internal AI Project | Stefan Manja',
-      author: { '@id': 'https://stefanmanja.com/#person' },
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
     },
   ]}
 >
@@ -31,7 +31,7 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
           <div class="space-y-6">
             <div class="page-lead">
               <div class="flex flex-wrap items-center gap-3">
-                <span class="section-marker">01 / contact</span>
+               <span class="section-marker">01 / contact</span>
                 <p class="eyebrow">Contact</p>
               </div>
               <h1 class="page-title">

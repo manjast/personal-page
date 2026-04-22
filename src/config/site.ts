@@ -46,7 +46,7 @@ export const proofPoints = [
     eyebrow: 'Scale',
     value: '50+ workflows',
     label: 'from assessment to first scaled rollout',
-    copy: 'AI work spanning finance, operations, logistics, and adjacent teams, from opportunity assessment through PoCs to rollout.',
+    copy: 'AI work spanning finance, operations, logistics, and adjacent teams, from opportunity assessment through PoCs to first scaled rollout.',
   },
 ] as const;
 

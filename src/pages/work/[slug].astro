@@ -40,7 +40,7 @@ const articleImage = new URL(entry.data.ogImage ?? '/og-default.png', siteConfig
       description: entry.data.summary,
       image: articleImage,
       mainEntityOfPage: canonicalUrl,
-      author: { '@id': 'https://stefanmanja.com/#person' },
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
       publisher: { '@id': `${siteConfig.siteUrl}/#person` },
       about: entry.data.technologies.map((t: string) => ({ '@type': 'Thing', name: t })),
     },

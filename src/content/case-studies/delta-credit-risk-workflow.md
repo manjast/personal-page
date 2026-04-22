@@ -51,26 +51,46 @@ The system was designed to support analyst judgment, not replace it. Trust
 came from workflow fit, constrained output shapes, and the reviewability of
 every recommendation.
 
-<figure class="my-8 overflow-hidden rounded-[1.2rem] border border-[color:var(--rule)] bg-[color:var(--surface-strong)]">
-  <div class="grid gap-px bg-[color:var(--rule)] sm:grid-cols-2 lg:grid-cols-4">
-    <div class="bg-[color:var(--surface-strong)] p-4">
-      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Input layer</p>
-      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Public-company risk signals and market-facing context.</p>
+At a public-safe level, the workflow shape looked roughly like this:
+
+<figure class="panel panel-light technical-grid" style="margin-top: 1.5rem; padding: 1rem;">
+  <div class="panel" style="margin-bottom: 0.9rem; border: 1px solid var(--rule); background: rgba(255, 252, 247, 0.72); border-radius: 1rem; padding: 0.8rem 0.95rem;">
+    <p class="metric-label" style="margin: 0;">Platform framing</p>
+    <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+      Reusable platform guardrails sat around the workflow: tenant-specific normalization, governed templates, run history, and reviewable outputs.
+    </p>
+  </div>
+  <div style="display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));">
+    <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
+      <p class="metric-label" style="margin: 0;">01 / signals</p>
+      <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Public-company risk signals</p>
+      <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+        Ratings, filings, blockages, disputes, and other external indicators.
+      </p>
     </div>
-    <div class="bg-[color:var(--surface-strong)] p-4">
-      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Internal context</p>
-      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Operating history, payment behavior, and exposure context across business entities.</p>
+    <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
+      <p class="metric-label" style="margin: 0;">02 / context</p>
+      <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Internal operating and payment context</p>
+      <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+        Cooperation history, payment terms, exposure, overdue debt, and delay patterns.
+      </p>
     </div>
-    <div class="bg-[color:var(--surface-strong)] p-4">
-      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Recommendation layer</p>
-      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Structured analyst-ready outputs such as approve, decline, reduced limit, conditional approval, or further review.</p>
+    <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
+      <p class="metric-label" style="margin: 0;">03 / recommendation</p>
+      <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Structured recommendation layer</p>
+      <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+        Analyst-ready outputs such as approve, decline, reduced limit, conditional approval, or further review.
+      </p>
     </div>
-    <div class="bg-[color:var(--surface-strong)] p-4">
-      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[color:var(--muted-soft)]">Final ownership</p>
-      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Analyst review remained the decision boundary; the workflow accelerated judgment instead of replacing it.</p>
+    <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
+      <p class="metric-label" style="margin: 0;">04 / review</p>
+      <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Analyst review and final decision</p>
+      <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+        The system supported judgment; final ownership stayed with the analyst process.
+      </p>
     </div>
   </div>
-  <figcaption class="border-t border-[color:var(--rule)] px-4 py-3 text-xs leading-6 text-[color:var(--muted)]">
+  <figcaption style="margin-top: 0.85rem; color: var(--muted); font-size: 0.88rem; line-height: 1.45;">
     Workflow-first capability view — not internal architecture. Exact thresholds, source mappings, and scoring logic are intentionally omitted.
   </figcaption>
 </figure>
@@ -94,8 +114,6 @@ recommendation workflow.
 The system had to fit an existing analyst-owned process, combine external and
 internal context safely, and keep every recommendation reviewable instead of
 pushing black-box automation.
-
-Platform framing: the reusable layer was the workflow normalization and recommendation scaffolding around the analyst process, not a claim of shared scoring logic across every tenant or buyer context.
 
 ## Production-minded choices
 

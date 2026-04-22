@@ -22,20 +22,21 @@ const caseStudies = (await getCollection('case-studies'))
   pageSchema={[
     {
       '@type': 'WebPage',
-      '@id': 'https://stefanmanja.com/#webpage',
-      url: 'https://stefanmanja.com/',
+      '@id': `${siteConfig.siteUrl}/#webpage`,
+      url: `${siteConfig.siteUrl}/`,
       name: 'Internal AI Systems for Enterprise Workflows | Stefan Manja',
       description: siteConfig.defaultDescription,
-      author: { '@id': 'https://stefanmanja.com/#person' },
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
     },
     {
       '@type': 'Service',
-      '@id': 'https://stefanmanja.com/#service',
+      '@id': `${siteConfig.siteUrl}/#service`,
       name: 'Internal AI Build, Hardening & Advisory',
-      provider: { '@id': 'https://stefanmanja.com/#person' },
+      provider: { '@id': `${siteConfig.siteUrl}/#person` },
       serviceType: ['Build', 'Hardening', 'Advisory'],
       description: 'Project-based build, hardening, and advisory work for internal AI systems in enterprise and mid-market workflows.',
       url: `${siteConfig.siteUrl}/services/`,
+      areaServed: 'Worldwide',
     },
   ]}
 >
@@ -77,8 +78,8 @@ const caseStudies = (await getCollection('case-studies'))
 
     <section class="section-space pt-0">
       <div class="shell">
-        <div class="section-break panel panel-light grid gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[1.22fr_0.78fr] lg:items-start">
-          <div class="space-y-5">
+        <div class="section-break panel panel-light grid gap-6 px-6 py-8 sm:px-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+          <div class="max-w-3xl space-y-4">
             <div class="flex flex-wrap items-center gap-3">
               <span class="section-marker">02 / context</span>
               <p class="eyebrow">About Stefan</p>
@@ -86,13 +87,12 @@ const caseStudies = (await getCollection('case-studies'))
             <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
               Current enterprise context, earlier delivery proof, and a bias toward systems that stay reliable in practice.
             </h2>
-            <p class="max-w-3xl text-base leading-8 muted-copy">
+            <p class="text-base leading-8 muted-copy">
               I currently work in an enterprise and industrial context and previously spent four years at Delta Holding, where
               the work moved from individual systems toward first scaled AI delivery across multiple business units. The
               common thread is not trend-following. The harder question is rarely whether a model can produce an answer — it is whether the system will remain worth trusting after the demo ends.
             </p>
-
-            <div class="space-y-4">
+            <div class="space-y-4 pt-2">
               <div class="technical-rule">
                 <p class="metric-label">Current context</p>
                 <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Applied AI in an enterprise and industrial environment.</p>
@@ -108,14 +108,15 @@ const caseStudies = (await getCollection('case-studies'))
             </div>
           </div>
 
-          <div class="mx-auto w-full max-w-[18rem] lg:ml-auto lg:mr-0">
-            <div class="overflow-hidden rounded-[1.25rem] border border-[color:var(--rule)] bg-[color:var(--canvas-strong)] shadow-[0_24px_70px_-52px_rgba(24,22,19,0.45)]">
+          <div class="lg:pt-32">
+            <div class="mx-auto w-full max-w-[16rem] overflow-hidden rounded-[1.2rem] border border-[color:var(--rule)] bg-white/70 sm:max-w-[17rem] lg:max-w-[18rem]">
               <img
                 src="/stefan-manja-context.webp"
                 alt="Stefan Manja"
-                class="aspect-[4/5] h-auto w-full object-cover"
+                width="720"
+                height="900"
                 loading="lazy"
-                decoding="async"
+                class="block h-auto w-full"
               />
             </div>
           </div>

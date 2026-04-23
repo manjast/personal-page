@@ -38,9 +38,9 @@ export const proofPoints = [
   },
   {
     eyebrow: 'System',
-    value: 'Self-hosted',
-    label: 'enterprise knowledge assistant',
-    copy: 'Self-hosted enterprise assistant with operator controls, org-aware access, and post-launch observability.',
+    value: 'Governed access',
+    label: 'internal knowledge assistant',
+    copy: 'Internal assistant with operator controls, scoped access, and post-launch visibility.',
   },
   {
     eyebrow: 'Scale',
@@ -102,7 +102,7 @@ export const fitGuidance = {
 export const contactExpectations = {
   responseTime: 'I reply to good-fit inquiries within 3 business days.',
   fitNote:
-    'The best first conversations describe the workflow, the users, the current stage, and the constraints that will matter in practice.',
+    'A rough workflow outline is enough for a first fit check; the key details are the workflow, users, current stage, and the constraints that will matter in practice.',
   emailPrompt:
-    'A short email covering the workflow, owner, current stage, and trust requirements is enough to decide whether the conversation should move forward.',
+    'A rough outline covering the workflow, owner, current stage, and trust requirements is enough to decide whether the conversation should move forward.',
 } as const;

@@ -1,8 +1,8 @@
 ---
 title: "Credit-risk decision-support workflow"
 summary: "An analyst-assistive credit-risk workflow for Delta Holding that combined public-company risk signals with internal operating context to produce structured, analyst-ready recommendations."
-client: "Delta Holding"
-clientContext: "B2B credit-risk analysis and limit-setting workflow inside a multi-entity enterprise finance function."
+organization: "Delta Holding"
+workContext: "B2B credit-risk analysis and limit-setting workflow inside a multi-entity enterprise finance function."
 outcome: "Observed workflow outcomes included ~75% faster analysis, 4.4/5 analyst-rated quality, and 90%+ recommendation acceptance."
 order: 1
 featured: true
@@ -102,6 +102,10 @@ At a public-safe level, the workflow shape looked roughly like this:
 I worked across workflow shaping, recommendation design, and implementation
 decisions that made the first version usable inside the existing analyst
 process.
+
+This work was done in-house at Delta Holding, where I progressed from AI
+Specialist to AI Innovation Lead, led a small AI team, and continued
+contributing hands-on across delivery.
 
 ### Team shape
 

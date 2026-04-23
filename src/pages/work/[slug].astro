@@ -57,7 +57,7 @@ const articleImage = new URL(entry.data.ogImage ?? '/og-default.png', siteConfig
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
           <div class="space-y-6">
-            <p class="eyebrow">{entry.data.client}</p>
+            <p class="eyebrow">{entry.data.organization}</p>
             <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{entry.data.title}</h1>
             <p class="text-lg leading-8 muted-copy">{entry.data.summary}</p>
             <div class="flex flex-wrap gap-2">
@@ -69,8 +69,8 @@ const articleImage = new URL(entry.data.ogImage ?? '/og-default.png', siteConfig
             <div class="accent-bar"></div>
             <div class="space-y-5 text-sm">
               <div class="border-t border-white/10 pt-4 first:border-t-0 first:pt-0">
-                <p class="metric-label">Client context</p>
-                <p class="mt-2 leading-7 text-[color:rgba(247,241,232,0.82)]">{entry.data.clientContext}</p>
+                <p class="metric-label">Work context</p>
+                <p class="mt-2 leading-7 text-[color:rgba(247,241,232,0.82)]">{entry.data.workContext}</p>
               </div>
               <div class="border-t border-white/10 pt-4">
                 <p class="metric-label">{entry.data.signalLabel ?? 'Outcome signal'}</p>

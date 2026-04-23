@@ -1,10 +1,10 @@
 ---
 title: "Self-hosted internal knowledge assistant"
-summary: "A self-hosted internal assistant for Delta Holding built as an enterprise-ready internal product with operator controls, org-aware access, and post-launch visibility."
-client: "Delta Holding"
-clientContext: "Internal enterprise knowledge-access system serving multiple business units, with requirements around access control, quality governance, and operational visibility."
-outcome: "A self-hosted internal assistant with operator controls, org-aware access, feedback-driven quality loops, and usage/cost observability for real internal use."
-signalLabel: "Delivered system"
+summary: "An internal knowledge assistant for Delta Holding with Azure AD-scoped access, operator/admin surfaces, and post-launch visibility built in from the first version."
+organization: "Delta Holding"
+workContext: "Internal enterprise knowledge-access system serving multiple business units, with requirements around access control, quality governance, and operational visibility."
+outcome: "An internal assistant paired with admin surfaces for content, users, feedback, analytics, and system health from the first version."
+signalLabel: "Operational result"
 order: 2
 featured: true
 services:
@@ -34,14 +34,22 @@ operator controls, and post-launch visibility all matter. A basic
 retrieval-backed chatbot is easy to demo. A useful internal system is harder
 to run responsibly.
 
+That was the real bar here. The system needed to work as an employee-facing
+assistant without becoming opaque to the people who would have to manage
+content, permissions, quality issues, and operating cost once it was live.
+
 ## What I built
 
 I implemented a self-hosted internal knowledge assistant built for real
 internal use, using a Dockerized Flask/PostgreSQL stack, pgvector-based
 retrieval, LangChain-assisted document ingestion, and Azure AD SSO.
 
+The practical result was a governed internal assistant that employees could use
+against approved knowledge while operators could review feedback, knowledge
+gaps, usage, and cost after launch.
+
 The visible layer was chat and retrieval. The more important part was the
-operator layer around it, including:
+operator/admin layer around it, including:
 
 - resource and knowledge-base management for the underlying document set
 - user and role controls with company- and department-aware access behavior
@@ -50,9 +58,18 @@ operator layer around it, including:
 - usage analytics and cost visibility for post-launch monitoring
 - structured logging, health checks, and admin views for ongoing operation
 
-The point of the architecture was not to collect infrastructure labels. It was
-to support a system that could be operated, reviewed, and improved after
-launch.
+At a product level, that meant the first version included more than an employee
+chat surface. It also included the kinds of operational surfaces that make an
+internal system workable in practice:
+
+- Azure AD sign-in and org-aware access boundaries
+- admin capabilities for resources, users, settings, and analytics
+- schema and health visibility for support and deployment checks
+- a deployment posture backed by structured logging, load testing, and go-live
+  runtime checks
+
+The point was not to collect infrastructure labels. It was to support a system
+that could be operated, reviewed, and improved after launch.
 
 At a public-safe level, the operating model looked roughly like this:
 
@@ -130,6 +147,10 @@ I implemented the assistant and the operator-facing surfaces around retrieval,
 access, quality signals, and operational visibility needed for real internal
 use.
 
+This work was done in-house at Delta Holding, where I progressed from AI
+Specialist to AI Innovation Lead, led a small AI team, and stayed hands-on in
+the system design and implementation work.
+
 ### Team shape
 
 The work connected internal knowledge-access needs with the operational
@@ -144,10 +165,10 @@ visibility from the first version onward.
 
 ## Why self-hosted mattered
 
-Self-hosting was part of the product posture. In enterprise settings,
-architecture choices are tightly connected to trust, governance, and
-operational fit. This system was shaped to live inside those constraints
-rather than bypass them for demo convenience.
+Self-hosting was part of the product posture. In this kind of environment,
+identity, access boundaries, operator controls, and operational ownership all
+sit close to the delivery choice. The system was shaped to live inside those
+constraints rather than bypass them for demo convenience.
 
 ## Operational choices
 
@@ -159,11 +180,14 @@ rather than bypass them for demo convenience.
   response attribution after launch.
 - Usage and cost observability had to make real adoption visible instead of
   leaving the system opaque once deployed.
+- Operational readiness had to include health checks, logging, and deployment
+  visibility, not just an app that worked in development.
 - The build had to be maintainable by a real organization once the first
   version existed.
 
 ## Why this case matters
 
 This case matters because it shows internal AI product work beyond the
-prototype layer: self-hosted, operator-managed, org-aware, and designed to
-remain usable and governable after the first demo.
+prototype layer: employee-facing use, admin/operations surfaces, org-aware
+access, and a deployment posture designed to stay workable after the first
+demo.

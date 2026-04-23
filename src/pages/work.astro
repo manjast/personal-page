@@ -14,6 +14,16 @@ const caseStudies = (await getCollection('case-studies')).sort((left, right) => 
   pathname="/work/"
   title="Internal AI Case Studies"
   description="Case studies showing internal AI systems built for real workflows, with emphasis on delivery choices, system shape, and operational outcomes."
+  pageSchema={[
+    {
+      '@type': 'CollectionPage',
+      '@id': `${siteConfig.siteUrl}/work/#webpage`,
+      url: `${siteConfig.siteUrl}/work/`,
+      name: 'Internal AI Case Studies | Stefan Manja',
+      description: 'Case studies showing internal AI systems built for real workflows, with emphasis on delivery choices, system shape, and operational outcomes.',
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
+    },
+  ]}
 >
   <SiteHeader />
 

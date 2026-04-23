@@ -7,6 +7,7 @@ interface Props {
   description?: string;
   pathname?: string;
   image?: string;
+  ogType?: string;
   noindex?: boolean;
   pageSchema?: Record<string, unknown>[];
 }
@@ -16,6 +17,7 @@ const {
   description = siteConfig.defaultDescription,
   pathname = Astro.url.pathname,
   image = '/og-default.png',
+  ogType = 'website',
   noindex = false,
   pageSchema,
 } = Astro.props;
@@ -79,12 +81,13 @@ const jsonLd = {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={siteConfig.defaultTitle} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialImage} />
+    {ogType === 'article' && <meta property="article:author" content={siteConfig.linkedinUrl} />}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />

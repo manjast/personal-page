@@ -21,6 +21,8 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const canonicalUrl = `${siteConfig.siteUrl}/work/${entry.slug}/`;
+const articleImage = new URL(entry.data.ogImage ?? '/og-default.png', siteConfig.siteUrl).toString();
 ---
 
 <BaseLayout
@@ -28,14 +30,18 @@ const { Content } = await render(entry);
   title={entry.data.title}
   description={entry.data.summary}
   image={entry.data.ogImage}
+  ogType="article"
   pageSchema={[
     {
       '@type': 'Article',
-      '@id': `https://stefanmanja.com/work/${entry.slug}/#article`,
-      url: `https://stefanmanja.com/work/${entry.slug}/`,
+      '@id': `${canonicalUrl}#article`,
+      url: canonicalUrl,
       headline: entry.data.title,
       description: entry.data.summary,
-      author: { '@id': 'https://stefanmanja.com/#person' },
+      image: articleImage,
+      mainEntityOfPage: canonicalUrl,
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
+      publisher: { '@id': `${siteConfig.siteUrl}/#person` },
       about: entry.data.technologies.map((t: string) => ({ '@type': 'Thing', name: t })),
     },
   ]}
@@ -45,7 +51,7 @@ const { Content } = await render(entry);
   <main>
     <section class="section-space">
       <div class="shell">
-        <a class="ink-link text-sm font-semibold transition" href="/work">
+        <a class="ink-link inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/work">
           ← Back to selected work
         </a>
 
@@ -67,14 +73,14 @@ const { Content } = await render(entry);
                 <p class="mt-2 leading-7 text-[color:rgba(247,241,232,0.82)]">{entry.data.clientContext}</p>
               </div>
               <div class="border-t border-white/10 pt-4">
-                <p class="metric-label">Outcome signal</p>
+                <p class="metric-label">{entry.data.signalLabel ?? 'Outcome signal'}</p>
                 <p class="mt-2 leading-7 text-[color:rgba(247,241,232,0.82)]">{entry.data.outcome}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <article class="content-body mt-12 max-w-4xl border-t border-[color:var(--rule)] pt-8">
+        <article class="content-body mt-12 max-w-3xl border-t border-[color:var(--rule)] pt-8">
           <Content />
         </article>
       </div>

@@ -22,19 +22,20 @@ const caseStudies = (await getCollection('case-studies'))
   pageSchema={[
     {
       '@type': 'WebPage',
-      '@id': 'https://stefanmanja.com/#webpage',
-      url: 'https://stefanmanja.com/',
+      '@id': `${siteConfig.siteUrl}/#webpage`,
+      url: `${siteConfig.siteUrl}/`,
       name: 'Internal AI Systems for Enterprise Workflows | Stefan Manja',
       description: siteConfig.defaultDescription,
-      author: { '@id': 'https://stefanmanja.com/#person' },
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
     },
     {
       '@type': 'Service',
-      '@id': 'https://stefanmanja.com/#service',
-      name: 'Internal AI Systems — Build, Harden, Advise',
-      provider: { '@id': 'https://stefanmanja.com/#person' },
-      serviceType: ['Build', 'Productionize', 'Advise'],
-      description: siteConfig.defaultDescription,
+      '@id': `${siteConfig.siteUrl}/#service`,
+      name: 'Internal AI Build, Hardening & Advisory',
+      provider: { '@id': `${siteConfig.siteUrl}/#person` },
+      serviceType: ['Build', 'Hardening', 'Advisory'],
+      description: 'Project-based build, hardening, and advisory work for internal AI systems in enterprise and mid-market workflows.',
+      url: `${siteConfig.siteUrl}/services/`,
       areaServed: 'Worldwide',
     },
   ]}
@@ -68,7 +69,7 @@ const caseStudies = (await getCollection('case-studies'))
         </div>
 
         <div class="mt-6">
-          <a class="ink-link text-sm font-semibold transition" href="/work">
+          <a class="ink-link inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/work">
             See all work →
           </a>
         </div>
@@ -77,7 +78,7 @@ const caseStudies = (await getCollection('case-studies'))
 
     <section class="section-space pt-0">
       <div class="shell">
-        <div class="section-break panel panel-light grid gap-6 px-6 py-8 sm:px-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="section-break panel panel-light grid gap-6 px-6 py-8 sm:px-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
           <div class="max-w-3xl space-y-4">
             <div class="flex flex-wrap items-center gap-3">
               <span class="section-marker">02 / context</span>
@@ -91,20 +92,32 @@ const caseStudies = (await getCollection('case-studies'))
               the work moved from individual systems toward first scaled AI delivery across multiple business units. The
               common thread is not trend-following. The harder question is rarely whether a model can produce an answer — it is whether the system will remain worth trusting after the demo ends.
             </p>
+            <div class="space-y-4 pt-2">
+              <div class="technical-rule">
+                <p class="metric-label">Current context</p>
+                <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Applied AI in an enterprise and industrial environment.</p>
+              </div>
+              <div class="technical-rule">
+                <p class="metric-label">Previous proof base</p>
+                <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Delta Holding work across internal assistants, credit workflows, and AI delivery from opportunity assessment through PoCs to first scaled rollout.</p>
+              </div>
+              <div class="technical-rule">
+                <p class="metric-label">Operating bias</p>
+                <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Evaluation, deployment discipline, and systems that remain useful after the initial excitement wears off.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="space-y-4">
-            <div class="technical-rule">
-              <p class="metric-label">Current context</p>
-              <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Applied AI in an enterprise and industrial environment.</p>
-            </div>
-            <div class="technical-rule">
-              <p class="metric-label">Previous proof base</p>
-              <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Delta Holding work across internal assistants, credit workflows, and AI delivery from opportunity assessment through PoCs to first scaled rollout.</p>
-            </div>
-            <div class="technical-rule">
-              <p class="metric-label">Operating bias</p>
-              <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Evaluation, deployment discipline, and systems that remain useful after the initial excitement wears off.</p>
+          <div class="lg:pt-32">
+            <div class="mx-auto w-full max-w-[16rem] overflow-hidden rounded-[1.2rem] border border-[color:var(--rule)] bg-white/70 sm:max-w-[17rem] lg:max-w-[18rem]">
+              <img
+                src="/stefan-manja-context.webp"
+                alt="Stefan Manja"
+                width="720"
+                height="900"
+                loading="lazy"
+                class="block h-auto w-full"
+              />
             </div>
           </div>
         </div>

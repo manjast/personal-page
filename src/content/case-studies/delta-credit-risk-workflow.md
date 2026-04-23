@@ -8,7 +8,7 @@ order: 1
 featured: true
 services:
   - Build
-  - Productionize
+  - Hardening
 technologies:
   - Python
   - LLM APIs
@@ -50,6 +50,50 @@ reduced limit, conditional approval, or further review.
 The system was designed to support analyst judgment, not replace it. Trust
 came from workflow fit, constrained output shapes, and the reviewability of
 every recommendation.
+
+At a public-safe level, the workflow shape looked roughly like this:
+
+<figure class="panel panel-light technical-grid" style="margin-top: 1.5rem; padding: 1rem;">
+  <div class="panel" style="margin-bottom: 0.9rem; border: 1px solid var(--rule); background: rgba(255, 252, 247, 0.72); border-radius: 1rem; padding: 0.8rem 0.95rem;">
+    <p class="metric-label" style="margin: 0;">Platform framing</p>
+    <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+      Reusable platform guardrails sat around the workflow: tenant-specific normalization, governed templates, run history, and reviewable outputs.
+    </p>
+  </div>
+  <div style="display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+    <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
+      <p class="metric-label" style="margin: 0;">01 / signals</p>
+      <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Public-company risk signals</p>
+      <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+        Ratings, filings, blockages, disputes, and other external indicators.
+      </p>
+    </div>
+    <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
+      <p class="metric-label" style="margin: 0;">02 / context</p>
+      <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Internal operating and payment context</p>
+      <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+        Cooperation history, payment terms, exposure, overdue debt, and delay patterns.
+      </p>
+    </div>
+    <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
+      <p class="metric-label" style="margin: 0;">03 / recommendation</p>
+      <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Structured recommendation layer</p>
+      <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+        Analyst-ready outputs such as approve, decline, reduced limit, conditional approval, or further review.
+      </p>
+    </div>
+    <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
+      <p class="metric-label" style="margin: 0;">04 / review</p>
+      <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Analyst review and final decision</p>
+      <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
+        The system supported judgment; final ownership stayed with the analyst process.
+      </p>
+    </div>
+  </div>
+  <figcaption style="margin-top: 0.85rem; color: var(--muted); font-size: 0.88rem; line-height: 1.45;">
+    Workflow-first capability view — not internal architecture. Exact thresholds, source mappings, and scoring logic are intentionally omitted.
+  </figcaption>
+</figure>
 
 ## Delivery context
 

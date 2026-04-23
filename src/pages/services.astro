@@ -14,10 +14,10 @@ import { services, siteConfig } from '../config/site';
   pageSchema={[
     {
       '@type': 'Service',
-      '@id': `${siteConfig.siteUrl}/services/#service`,
+      '@id': `${siteConfig.siteUrl}/#service`,
       name: 'Internal AI Build, Hardening & Advisory',
-      provider: { '@id': 'https://stefanmanja.com/#person' },
-      serviceType: ['Build', 'Productionize', 'Advise'],
+      provider: { '@id': `${siteConfig.siteUrl}/#person` },
+      serviceType: ['Build', 'Hardening', 'Advisory'],
       description: 'Project-based build, hardening, and advisory work for internal AI systems in enterprise and mid-market workflows.',
       url: `${siteConfig.siteUrl}/services/`,
     },
@@ -34,7 +34,7 @@ import { services, siteConfig } from '../config/site';
             <p class="eyebrow">Services</p>
           </div>
           <h1 class="page-title">
-            Project shapes, delivery modes, and where I add the most leverage.
+            Project shapes, delivery modes, and the engagement patterns that create real leverage.
           </h1>
           <p class="text-base leading-8 muted-copy">
             This page is for teams that already have a concrete workflow, real users, and a reason the system needs to work past
@@ -92,7 +92,7 @@ import { services, siteConfig } from '../config/site';
             <span class="section-marker">03 / delivery path</span>
             <p class="eyebrow">Typical engagement shape</p>
           </div>
-          <ol class="mt-6 grid gap-6 text-sm leading-7 text-[color:var(--ink-soft)] md:grid-cols-4">
+          <ol class="mt-6 grid gap-6 text-sm leading-7 text-[color:var(--ink-soft)] sm:grid-cols-2 lg:grid-cols-4">
             <li>
               <span class="block font-semibold text-[color:var(--ink)]">1. Scope</span>
               Align on workflow, users, constraints, and what “useful” means in practice.
@@ -110,6 +110,9 @@ import { services, siteConfig } from '../config/site';
               Leave behind something your team can operate, review, and extend without mythology.
             </li>
           </ol>
+          <p class="mt-8 border-t border-[color:var(--rule)] pt-6 text-sm leading-7 text-[color:var(--muted)]">
+            Most engagements are bounded around a concrete build or hardening goal rather than open-ended transformation support.
+          </p>
         </div>
       </div>
     </section>

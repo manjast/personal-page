@@ -1,6 +1,6 @@
 # Stefan Manja
 
-Stefan Manja builds internal AI systems for enterprise and mid-market workflows.
+Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, reliable deployment, and real-world usefulness.
 
 Site: https://stefanmanja.com
 Contact: stefan@stefanmanja.com
@@ -10,7 +10,7 @@ GitHub: https://github.com/manjast
 
 ## Engagement model
 
-Stefan is currently an AI engineer at Bosch (enterprise and industrial AI).
+Stefan currently works in an enterprise and industrial AI context.
 He is selectively available for project-based consulting on internal AI systems alongside this role:
 build, hardening, and scoped advisory work.
 Engagements are project-scoped and typically serve enterprise or mid-market teams.
@@ -37,16 +37,16 @@ Engagements are project-scoped and typically serve enterprise or mid-market team
 
 - ~75% reduction in credit-risk analysis time (Delta Holding)
 - 90%+ recommendation acceptance rate from analysts
-- 4.4/5 analyst-rated quality on LLM-assisted workflow
-- 50+ AI use cases from PoC through first scaled delivery
-- Self-hosted enterprise knowledge assistant (Docker, pgvector, Azure AD SSO)
+- 4.4/5 analyst-rated quality on credit-risk decision-support workflow
+- 50+ AI workflows across opportunity assessment, PoCs, and first scaled rollout
+- Self-hosted enterprise assistant with operator controls, org-aware access, and post-launch observability
 
 ## Primary pages
 
 - / : overview, proof, fit guidance, services
 - /work : internal AI case studies
-- /work/delta-credit-risk-workflow : LLM-assisted credit-risk workflow (Delta Holding)
-- /work/delta-enterprise-rag-assistant : self-hosted knowledge assistant (Delta Holding)
+- /work/delta-credit-risk-workflow : Credit-risk decision-support workflow (Delta Holding)
+- /work/delta-enterprise-rag-assistant : Self-hosted internal knowledge assistant (Delta Holding)
 - /services : service modes and delivery path
 - /contact : contact and project qualification
 

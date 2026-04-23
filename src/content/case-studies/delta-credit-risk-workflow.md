@@ -1,6 +1,6 @@
 ---
 title: "Credit-risk decision-support workflow"
-summary: "An analyst-assistive credit-risk workflow for Delta Holding that combined public-company risk signals with internal operating context to produce structured, analyst-ready recommendations."
+summary: "A credit-risk decision-support workflow built in-house at Delta Holding, combining public-company risk signals with internal operating context into structured, analyst-ready recommendations."
 organization: "Delta Holding"
 workContext: "B2B credit-risk analysis and limit-setting workflow inside a multi-entity enterprise finance function."
 outcome: "Observed workflow outcomes included ~75% faster analysis, 4.4/5 analyst-rated quality, and 90%+ recommendation acceptance."

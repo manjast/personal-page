@@ -38,9 +38,9 @@ export const proofPoints = [
   },
   {
     eyebrow: 'System',
-    value: 'Governed access',
+    value: 'Self-hosted',
     label: 'internal knowledge assistant',
-    copy: 'Internal assistant with operator controls, scoped access, and post-launch visibility.',
+    copy: 'Internal assistant with operator controls, scoped access, and post-launch observability.',
   },
   {
     eyebrow: 'Scale',
@@ -95,7 +95,7 @@ export const fitGuidance = {
   notFit: [
     'Pure idea-stage exploration with no real workflow owner or adoption path.',
     'Generic “AI transformation” requests without a defined problem to solve.',
-    'Marketing-style chatbot work where visual novelty matters more than operational quality.',
+    'Chatbot or demo-first work where operational quality and adoption are not the goal.',
   ],
 } as const;
 

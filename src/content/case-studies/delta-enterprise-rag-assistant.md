@@ -1,10 +1,10 @@
 ---
 title: "Self-hosted internal knowledge assistant"
-summary: "An internal knowledge assistant for Delta Holding with Azure AD-scoped access, operator/admin surfaces, and post-launch visibility built in from the first version."
+summary: "A self-hosted internal knowledge assistant built in-house at Delta Holding, with Azure AD-scoped access, operator/admin surfaces, and post-launch observability built in from the first version."
 organization: "Delta Holding"
 workContext: "Internal enterprise knowledge-access system serving multiple business units, with requirements around access control, quality governance, and operational visibility."
 outcome: "An internal assistant paired with admin surfaces for content, users, feedback, analytics, and system health from the first version."
-signalLabel: "Operational result"
+signalLabel: "Delivered system"
 order: 2
 featured: true
 services:
@@ -56,17 +56,8 @@ operator/admin layer around it, including:
 - feedback and quality loops, including answer reactions, negative-feedback
   signals, knowledge-gap review, and response attribution
 - usage analytics and cost visibility for post-launch monitoring
-- structured logging, health checks, and admin views for ongoing operation
-
-At a product level, that meant the first version included more than an employee
-chat surface. It also included the kinds of operational surfaces that make an
-internal system workable in practice:
-
-- Azure AD sign-in and org-aware access boundaries
-- admin capabilities for resources, users, settings, and analytics
-- schema and health visibility for support and deployment checks
-- a deployment posture backed by structured logging, load testing, and go-live
-  runtime checks
+- structured logging, load testing, health checks, and admin views for ongoing
+  operation
 
 The point was not to collect infrastructure labels. It was to support a system
 that could be operated, reviewed, and improved after launch.

@@ -60,7 +60,7 @@ At a public-safe level, the workflow shape looked roughly like this:
       Reusable platform guardrails sat around the workflow: tenant-specific normalization, governed templates, run history, and reviewable outputs.
     </p>
   </div>
-  <div style="display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));">
+  <div style="display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
     <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
       <p class="metric-label" style="margin: 0;">01 / signals</p>
       <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Public-company risk signals</p>

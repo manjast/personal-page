@@ -42,7 +42,7 @@ const caseStudies = (await getCollection('case-studies'))
 >
   <SiteHeader />
 
-  <main>
+  <main id="main">
     <Hero
       title={siteConfig.heroTitle}
       description={siteConfig.heroDescription}
@@ -59,9 +59,7 @@ const caseStudies = (await getCollection('case-studies'))
             <span class="section-marker">01 / selected work</span>
             <p class="eyebrow">Selected work</p>
           </div>
-          <h2 class="page-title">
-            Selected proof first: concrete delivery choices, system shape, and outcomes that mattered in real environments.
-          </h2>
+          <h2 class="page-title">Concrete delivery choices, system shape, and outcomes that mattered.</h2>
         </div>
 
         <div class="mt-10 grid gap-4 lg:grid-cols-2">

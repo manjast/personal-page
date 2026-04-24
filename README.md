@@ -1,5 +1,7 @@
 # Stefan Manja personal site
 
+Live: https://stefanmanja.com
+
 Focused Astro site for **independent project lead generation** around internal AI systems for enterprise workflows, with emphasis on evaluation, deployment discipline, and real-world usefulness.
 
 ## Purpose
@@ -40,6 +42,11 @@ npm run dev
 - `src/content/case-studies/` — public case-study content used on `/work` and `/work/[slug]`
 
 The public site currently ships only case-study content. Add writing back only when there is a real first piece ready to publish.
+
+## Licensing note
+
+- Source code, configuration, and reusable implementation remain available under the MIT License in [`LICENSE`](./LICENSE).
+- Original written site copy, case-study/editorial content, and repository documentation prose are covered by [`CONTENT-LICENSE.md`](./CONTENT-LICENSE.md).
 
 ## What stays out of this repo
 

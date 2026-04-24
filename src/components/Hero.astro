@@ -5,6 +5,7 @@ interface Props {
   description: string;
   primaryCta: { href: string; label: string };
   secondaryCta: { href: string; label: string };
+  portrait?: { src: string; alt: string };
 }
 
 const {
@@ -13,31 +14,45 @@ const {
   description,
   primaryCta,
   secondaryCta,
+  portrait,
 } = Astro.props;
 ---
 
-<section class="pt-8 pb-10 sm:py-20 sm:pb-12">
+<section class="pt-4 pb-8 sm:py-20 sm:pb-12">
   <div class="shell">
     <div class="panel overflow-hidden border border-[color:var(--rule-strong)] bg-[rgba(255,251,245,0.7)]">
       <div class="grid gap-0 lg:grid-cols-[1.12fr_0.88fr]">
-        <div class="technical-grid space-y-6 px-6 py-10 sm:px-10 sm:py-14 lg:px-12 lg:py-18">
-          <div class="flex flex-wrap items-center gap-3">
+        <div class="technical-grid space-y-5 px-5 py-8 sm:space-y-6 sm:px-10 sm:py-14 lg:flex lg:min-h-full lg:flex-col lg:justify-center lg:px-12 lg:py-18 lg:pr-8">
+          <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
             <span class="section-marker">00 / overview</span>
-            <p class="eyebrow">{eyebrow}</p>
+            <p class="eyebrow hidden sm:block">{eyebrow}</p>
             <span class="metric-label">Belgrade, Serbia / international</span>
           </div>
-          <h1 class="max-w-3xl text-5xl font-semibold leading-none sm:text-6xl lg:text-[4.2rem]">
+          <h1 class="max-w-3xl text-[2.35rem] font-semibold leading-none tracking-tight sm:text-6xl lg:text-[4.2rem]">
             {title}
           </h1>
-          <p class="max-w-2xl text-lg leading-8 muted-copy">{description}</p>
+          <p class="max-w-2xl text-base leading-7 muted-copy sm:text-lg sm:leading-8">{description}</p>
           <div class="flex flex-col gap-3 sm:flex-row">
-            <a class="button-primary" href={primaryCta.href}>{primaryCta.label}</a>
-            <a class="button-secondary" href={secondaryCta.href}>{secondaryCta.label}</a>
+            <a class="button-primary min-h-[44px]" href={primaryCta.href}>{primaryCta.label}</a>
+            <a class="button-secondary min-h-[44px]" href={secondaryCta.href}>{secondaryCta.label}</a>
           </div>
         </div>
 
         <div class="panel-dark rounded-none border-0 border-t border-white/8 p-6 sm:p-8 lg:border-t-0 lg:border-l lg:border-white/8">
-          <div class="accent-bar"></div>
+          {portrait ? (
+            <div class="mx-auto aspect-[4/4.9] w-full max-w-[17.5rem] overflow-hidden rounded-[1.2rem] border border-white/10 bg-[rgba(255,255,255,0.06)] lg:max-w-[18.5rem]">
+              <img
+                src={portrait.src}
+                alt={portrait.alt}
+                width="720"
+                height="900"
+                loading="eager"
+                decoding="async"
+                class="h-full w-full object-cover object-top"
+              />
+            </div>
+          ) : null}
+          <div class:list={['accent-bar', portrait && 'mt-6']}></div>
           <p class="eyebrow">Operating brief</p>
           <dl class="mt-6 space-y-4 text-sm leading-7 text-[color:rgba(247,241,232,0.78)]">
             <div class="border-t border-white/10 pt-4">

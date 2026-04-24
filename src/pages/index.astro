@@ -48,6 +48,7 @@ const caseStudies = (await getCollection('case-studies'))
       description={siteConfig.heroDescription}
       primaryCta={siteConfig.heroPrimaryCta}
       secondaryCta={siteConfig.heroSecondaryCta}
+      portrait={{ src: '/stefan-manja-context.webp', alt: 'Stefan Manja' }}
     />
 
     <ProofStrip items={proofPoints} />
@@ -108,16 +109,43 @@ const caseStudies = (await getCollection('case-studies'))
             </div>
           </div>
 
-          <div class="lg:pt-32">
-            <div class="mx-auto w-full max-w-[16rem] overflow-hidden rounded-[1.2rem] border border-[color:var(--rule)] bg-white/70 sm:max-w-[17rem] lg:max-w-[18rem]">
-              <img
-                src="/stefan-manja-context.webp"
-                alt="Stefan Manja"
-                width="720"
-                height="900"
-                loading="lazy"
-                class="block h-auto w-full"
-              />
+          <div class="lg:pt-20">
+            <div class="panel panel-light p-6">
+              <div class="accent-bar"></div>
+              <p class="eyebrow">Operating model</p>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+                  <p class="metric-label">01 / scope</p>
+                  <p class="mt-2 font-semibold text-[color:var(--ink)]">Align on workflow and constraints</p>
+                  <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
+                    Define the users, ownership, timing, and what useful needs to mean in practice.
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+                  <p class="metric-label">02 / build</p>
+                  <p class="mt-2 font-semibold text-[color:var(--ink)]">Ship a first version</p>
+                  <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
+                    Use decisions that support real use, feedback, and reliable deployment.
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+                  <p class="metric-label">03 / harden</p>
+                  <p class="mt-2 font-semibold text-[color:var(--ink)]">Tighten the failure modes</p>
+                  <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
+                    Make evaluation, reviewability, and operator visibility part of the system.
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+                  <p class="metric-label">04 / handoff</p>
+                  <p class="mt-2 font-semibold text-[color:var(--ink)]">Leave something operable</p>
+                  <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
+                    The team should be able to run, review, and extend the work without mythology.
+                  </p>
+                </div>
+              </div>
+              <p class="mt-4 text-sm leading-7 text-[color:var(--muted)]">
+                A simple model: scope → build → harden → handoff.
+              </p>
             </div>
           </div>
         </div>

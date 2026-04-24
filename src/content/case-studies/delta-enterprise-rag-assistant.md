@@ -48,10 +48,7 @@ The practical result was a governed internal assistant that employees could use
 against approved knowledge while operators could review feedback, knowledge
 gaps, usage, and cost after launch.
 
-At the public-safe level I can state, the system was deployed across roughly
-1,500 eligible users, saw 300+ actual users, and explicit thumbs-up/down
-feedback was more than 85% positive. That feedback also generated useful ideas
-for follow-on features and operating improvements.
+The public-safe adoption and feedback signal is summarized below.
 
 The visible layer was chat and retrieval. The more important part was the
 operator/admin layer around it, including:
@@ -180,6 +177,17 @@ constraints rather than bypass them for demo convenience.
   visibility, not just an app that worked in development.
 - The build had to be maintainable by a real organization once the first
   version existed.
+
+## Adoption signal
+
+At the public-safe level, the system was deployed across roughly 1,500 eligible
+users, saw 300+ actual users, and explicit thumbs-up/down feedback was more
+than 85% positive.
+
+That matters because it shows the assistant was used by a meaningful share of
+the eligible audience, not just shown in a demo. The positive feedback rate
+suggests the retrieval and access choices were usually good enough for real
+workflows, and the feedback stream also produced useful follow-on feature ideas.
 
 ## Why this case matters
 

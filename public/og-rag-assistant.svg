@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Case Study - Self-hosted internal knowledge assistant</title>
+  <desc id="desc">Self-hosted internal knowledge assistant with scoped access, operator controls, and post-launch observability at Delta Holding.</desc>
+  <rect width="1200" height="630" fill="#f5f5f4" />
+  <rect x="60" y="63" width="1080" height="504" rx="36" fill="#ffffff" stroke="#e7e5e4" />
+  <text x="120" y="158" fill="#a8a29e" font-family="'IBM Plex Mono', monospace" font-size="20" font-weight="500" letter-spacing="4">CASE STUDY</text>
+  <text x="120" y="240" fill="#1c1917" font-family="'IBM Plex Sans', sans-serif" font-size="56" font-weight="700">Internal Knowledge</text>
+  <text x="120" y="306" fill="#1c1917" font-family="'IBM Plex Sans', sans-serif" font-size="56" font-weight="700">Assistant</text>
+  <text x="120" y="372" fill="#57534e" font-family="'IBM Plex Sans', sans-serif" font-size="26">Self-hosted internal assistant with scoped access and operator surfaces</text>
+  <text x="120" y="440" fill="#44403c" font-family="'IBM Plex Mono', monospace" font-size="24" font-weight="500">Self-hosted</text>
+  <text x="296" y="440" fill="#a8a29e" font-family="'IBM Plex Mono', monospace" font-size="24">·</text>
+  <text x="326" y="440" fill="#44403c" font-family="'IBM Plex Mono', monospace" font-size="24" font-weight="500">Scoped access</text>
+  <text x="560" y="440" fill="#a8a29e" font-family="'IBM Plex Mono', monospace" font-size="24">·</text>
+  <text x="590" y="440" fill="#44403c" font-family="'IBM Plex Mono', monospace" font-size="24" font-weight="500">Operator controls</text>
+  <text x="120" y="484" fill="#a8a29e" font-family="'IBM Plex Sans', sans-serif" font-size="18">Delta Holding</text>
+  <text x="120" y="540" fill="#78716c" font-family="'IBM Plex Mono', monospace" font-size="20" font-weight="500">stefanmanja.com/work</text>
+</svg>

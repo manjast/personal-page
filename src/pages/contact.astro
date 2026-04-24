@@ -6,6 +6,7 @@ import { contactExpectations, fitGuidance, siteConfig } from '../config/site';
 
 const formId = import.meta.env.PUBLIC_FORMSPREE_FORM_ID;
 const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
+const formSuccessPath = '/contact/sent/';
 ---
 
 <BaseLayout
@@ -24,7 +25,7 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
 >
   <SiteHeader />
 
-  <main>
+  <main id="main">
     <section class="section-space">
       <div class="shell">
         <div class="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
@@ -89,24 +90,25 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
 
                 <form id="contact-form" class="mt-8 space-y-6" method="POST" action={formAction}>
                   <input type="hidden" name="_subject" value="Project inquiry from stefanmanja.com" />
+                  <input id="contact-form-next" type="hidden" name="_next" value={formSuccessPath} />
                   <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
                     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
                   </div>
                   <div class="grid gap-6 sm:grid-cols-2">
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                       Name
-                      <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="name" required />
+                      <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="name" autocomplete="name" required />
                     </label>
 
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                       Work email
-                      <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="email" name="email" required />
+                      <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="email" name="email" autocomplete="email" required />
                     </label>
                   </div>
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
                     Company or team
-                    <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="company" />
+                    <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="company" autocomplete="organization" />
                   </label>
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
@@ -133,6 +135,9 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
                   <button class="button-primary" type="submit">
                     Send project inquiry
                   </button>
+                  <p class="text-sm leading-7 muted-copy">
+                    Submissions are sent via Formspree and used only to reply to your inquiry.
+                  </p>
                 </form>
               </div>
             ) : (
@@ -159,6 +164,12 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
 
   <SiteFooter />
   <script is:inline>
+    const contactFormNext = document.getElementById('contact-form-next');
+
+    if (contactFormNext instanceof HTMLInputElement) {
+      contactFormNext.value = `${window.location.origin}${contactFormNext.value}`;
+    }
+
     document.getElementById('contact-email-link')?.addEventListener('click', function () {
       if (window.goatcounter && window.goatcounter.count) {
         window.goatcounter.count({ path: 'contact-email-click', title: 'Contact: Email Click', event: true });

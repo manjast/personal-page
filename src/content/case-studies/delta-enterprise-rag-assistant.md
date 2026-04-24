@@ -17,7 +17,7 @@ technologies:
   - pgvector
   - LangChain
   - Azure AD SSO
-ogImage: "/og-default.png"
+ogImage: "/og-rag-assistant.png"
 ---
 
 ## Context

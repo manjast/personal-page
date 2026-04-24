@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { siteConfig } from '../../config/site';
+---
+
+<BaseLayout
+  pathname="/contact/sent/"
+  title="Inquiry sent"
+  description="Confirmation page for project inquiries sent through stefanmanja.com."
+  noindex={true}
+  pageSchema={[
+    {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.siteUrl}/contact/sent/#webpage`,
+      url: `${siteConfig.siteUrl}/contact/sent/`,
+      name: 'Inquiry sent | Stefan Manja',
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
+    },
+  ]}
+>
+  <SiteHeader />
+
+  <main id="main" class="section-space">
+    <div class="shell">
+      <div class="panel panel-light max-w-3xl p-8 sm:p-10">
+        <div class="accent-bar"></div>
+        <p class="eyebrow">Inquiry sent</p>
+        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--ink)]">Thanks - your inquiry was sent.</h1>
+        <p class="mt-4 text-base leading-8 muted-copy">
+          If the project looks like a fit, I will reply within 3 business days. If you want to add context now, email
+          <a class="ink-link font-semibold" href={`mailto:${siteConfig.email}?subject=Project inquiry`}>{siteConfig.email}</a>.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a class="button-primary" href="/services">Review project shapes</a>
+          <a class="button-secondary" href="/work">See selected work</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

@@ -36,7 +36,14 @@ const jsonLd = {
       url: siteConfig.siteUrl,
       email: siteConfig.email,
       sameAs: [siteConfig.linkedinUrl, siteConfig.githubUrl],
-      jobTitle: 'AI Systems Builder',
+      jobTitle: 'Independent AI Systems Consultant',
+      knowsAbout: [
+        'Internal AI systems',
+        'Enterprise AI deployment',
+        'AI evaluation',
+        'Decision-support workflows',
+        'Retrieval-augmented generation',
+      ],
       description: siteConfig.defaultDescription,
     },
     {
@@ -105,6 +112,12 @@ const jsonLd = {
     ></script>
   </head>
   <body class="min-h-screen antialiased">
+    <a
+      href="#main"
+      class="sr-only rounded-lg bg-[color:var(--ink)] px-4 py-3 text-sm font-semibold text-[color:var(--canvas)] shadow-lg focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
+    >
+      Skip to content
+    </a>
     <slot />
   </body>
 </html>

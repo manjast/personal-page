@@ -138,7 +138,8 @@ const caseStudies = (await getCollection('case-studies'))
               Project-based build first, with hardening and advisory work where they improve delivery.
             </h2>
             <p class="text-base leading-8 muted-copy">
-              The main fit is an internal workflow with real users, a concrete owner, and a reason the system needs to keep working once it ships. The service page goes deeper on project shapes and engagement flow.
+              Build is the main entry point. The service page goes deeper on project shapes, engagement flow, and where
+              hardening or advisory work help delivery.
             </p>
           </div>
           <a class="ink-link text-sm font-semibold transition" href="/services">
@@ -173,7 +174,8 @@ const caseStudies = (await getCollection('case-studies'))
             <div class="accent-bar"></div>
             <p class="text-sm leading-7 text-stone-300">
               Public artifact, not a private claims page: scoped tasks, verification before commit, repo files as the source
-              of truth, and a light PoC/evaluation path when early work still needs decision-grade evidence.
+              of truth, and a light PoC/evaluation path when early work still needs decision-grade evidence. That discipline
+              is what makes delivered work auditable, operable, and easier for your team to extend after the engagement ends.
             </p>
             <a
               class="mt-6 inline-flex text-sm font-semibold text-stone-100 transition hover:text-[color:var(--accent-strong)]"
@@ -222,7 +224,7 @@ const caseStudies = (await getCollection('case-studies'))
 
     <CTASection
       title="If the workflow is concrete enough to describe, I can usually tell quickly whether a build or advisory conversation makes sense."
-      description="I take on project-based build, hardening, and advisory work for internal AI systems. The strongest first conversations are about a concrete workflow, the current stage, and the constraints that will decide whether the system actually gets adopted."
+      description="I take on project-based build, hardening, and advisory work for internal AI systems. A short description of the workflow, the current stage, and the key constraints is enough to tell whether the engagement makes sense."
       primary={siteConfig.heroPrimaryCta}
       secondary={{ href: '/services', label: 'See project shapes' }}
     />

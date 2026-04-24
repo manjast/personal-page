@@ -4,16 +4,20 @@ Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds
 
 Site: https://stefanmanja.com
 Contact: stefan@stefanmanja.com
-Location: Belgrade, Serbia (CET)
+Location: Belgrade, Serbia
+Timezone: Europe/Belgrade (CET/CEST)
 LinkedIn: https://www.linkedin.com/in/stefan-manja/
 GitHub: https://github.com/manjast
 
 ## Engagement model
 
 Stefan currently works in an enterprise and industrial AI context.
-He is selectively available for project-based consulting on internal AI systems alongside this role:
-build, hardening, and scoped advisory work.
-Engagements are project-scoped and typically serve enterprise or mid-market teams.
+
+He is selectively available for project-based consulting on internal AI systems
+alongside this role: build, hardening, and scoped advisory work.
+
+Engagements are project-scoped and typically serve enterprise or mid-market
+teams.
 
 ## Primary fit
 
@@ -52,8 +56,8 @@ Engagements are project-scoped and typically serve enterprise or mid-market team
 
 ## Technical context
 
-Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD SSO,
-LLM APIs, and workflow automation for enterprise environments.
+Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD
+SSO, LLM APIs, and workflow automation for enterprise environments.
 
 ## Public evidence of working method
 

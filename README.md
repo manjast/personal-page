@@ -38,7 +38,8 @@ npm run dev
 ## Content structure
 
 - `src/content/case-studies/` — public case-study content used on `/work` and `/work/[slug]`
-- `src/content/writing/` — scaffolded for future writing, intentionally unused in v1 navigation
+
+The public site currently ships only case-study content. Add writing back only when there is a real first piece ready to publish.
 
 ## What stays out of this repo
 

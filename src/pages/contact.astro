@@ -38,9 +38,8 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
                 Start with the workflow.
               </h1>
               <p class="text-base leading-8 muted-copy">
-                I selectively take on a small number of project-based build, hardening, and advisory engagements alongside my
-                current role, when the workflow, users, ownership, and constraints are concrete enough for the conversation to
-                be useful.
+                I take on a small number of senior, scoped engagements where the workflow, users, ownership, and constraints
+                are concrete enough for the work to be useful.
               </p>
             </div>
 
@@ -91,7 +90,7 @@ const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
                 <form id="contact-form" class="mt-8 space-y-6" method="POST" action={formAction}>
                   <input type="hidden" name="_subject" value="Project inquiry from stefanmanja.com" />
                   <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
-                    <label>Do not fill this in <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" /></label>
+                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
                   </div>
                   <div class="grid gap-6 sm:grid-cols-2">
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]">

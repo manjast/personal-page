@@ -37,7 +37,7 @@ import { services, siteConfig } from '../config/site';
             Project shapes, delivery modes, and the engagement patterns that create real leverage.
           </h1>
           <p class="text-base leading-8 muted-copy">
-            This page is for teams that already have a concrete workflow, real users, and a defined owner. The main fit is
+            This page is for teams that already have a real workflow, known users, and a defined owner. The main fit is
             project-based build work, with hardening and scoped advisory support where they improve delivery.
           </p>
         </div>
@@ -59,9 +59,19 @@ import { services, siteConfig } from '../config/site';
             <ul class="mt-6 space-y-3 text-sm leading-7 text-[color:var(--ink-soft)]">
               <li>• Project-based builds for new internal systems.</li>
               <li>• Scoped hardening work for prototypes or pilots already in motion.</li>
-              <li>• Advisory support tied to an actual delivery decision, not broad AI-transformation theater.</li>
+              <li>• Advisory support tied to an actual delivery decision, not broad transformation work without something concrete to ship or improve.</li>
             </ul>
           </article>
+        </div>
+
+        <div class="mt-4 panel panel-light p-6">
+          <div class="accent-bar"></div>
+          <p class="eyebrow">What this usually looks like</p>
+          <ul class="mt-6 space-y-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+            <li>• Analysts pulling context from multiple systems before a repeatable decision, where the current process is slow, inconsistent, or hard to review.</li>
+            <li>• An internal assistant that is useful in a demo, but still needs scoped access, feedback loops, and operator visibility before broader use.</li>
+            <li>• A prototype with clear business pull that still lacks evaluation, failure handling, or handoff discipline once it has to survive real use.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -91,34 +101,46 @@ import { services, siteConfig } from '../config/site';
             <span class="section-marker">03 / delivery path</span>
             <p class="eyebrow">Typical engagement shape</p>
           </div>
-          <ol class="mt-6 grid gap-6 text-sm leading-7 text-[color:var(--ink-soft)] sm:grid-cols-2 lg:grid-cols-4">
+          <ol class="mt-6 grid list-inside list-decimal gap-6 text-sm leading-7 text-[color:var(--ink-soft)] sm:grid-cols-2 lg:grid-cols-4">
             <li>
-              <span class="block font-semibold text-[color:var(--ink)]">1. Scope</span>
-              Align on workflow, users, constraints, and what “useful” means in practice.
+              <span class="font-semibold text-[color:var(--ink)]">Scope</span>
+              <span class="mt-1 block">Align on workflow, users, constraints, and what “useful” means in practice.</span>
             </li>
             <li>
-              <span class="block font-semibold text-[color:var(--ink)]">2. Build</span>
-              Implement the first version with decisions that support real use, not demo optics.
+              <span class="font-semibold text-[color:var(--ink)]">Build</span>
+              <span class="mt-1 block">Implement the first version with decisions that support real use, not demo optics.</span>
             </li>
             <li>
-              <span class="block font-semibold text-[color:var(--ink)]">3. Harden</span>
-              Tighten evaluation, guard against failure modes, and make prototype-to-production behavior legible.
+              <span class="font-semibold text-[color:var(--ink)]">Harden</span>
+              <span class="mt-1 block">Tighten evaluation, guard against failure modes, and make prototype-to-production behavior legible.</span>
             </li>
             <li>
-              <span class="block font-semibold text-[color:var(--ink)]">4. Handoff</span>
-              Leave behind something your team can operate, review, and extend without mythology.
+              <span class="font-semibold text-[color:var(--ink)]">Handoff</span>
+              <span class="mt-1 block">Leave behind something your team can operate, review, and extend without mythology.</span>
             </li>
           </ol>
           <p class="mt-8 border-t border-[color:var(--rule)] pt-6 text-sm leading-7 text-[color:var(--muted)]">
             Most engagements are bounded around a concrete build or hardening goal rather than open-ended transformation support.
+            The first step is usually a short scope conversation - enough to align on what the work involves, what a useful
+            outcome looks like, and whether the engagement shape makes sense.
           </p>
+          <div class="mt-8 grid gap-4 border-t border-[color:var(--rule)] pt-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p class="eyebrow">Typical outputs / What you get</p>
+            </div>
+            <ul class="space-y-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              <li>• A tighter scope, clearer ownership, and a delivery path for the workflow in question.</li>
+              <li>• Implemented changes or a concrete hardening plan, depending on whether the work is build-first or recovery-focused.</li>
+              <li>• Reviewable notes on evaluation, risks, and handoff so your team can keep moving after the engagement.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
     <CTASection
-      title="If you already have a workflow owner, users, and constraints, I can usually tell quickly whether the project shape makes sense."
-      description="The strongest starting point is a short description of the workflow, the current stage, and whether you need a new build, a hardening pass, or scoped advisory help."
+      title="If the workflow is real enough to scope, I can usually tell quickly whether the project shape makes sense."
+      description="A short outline of the workflow, the current stage, and whether this is build, hardening, or scoped advisory work is usually enough for a first pass."
       primary={siteConfig.heroPrimaryCta}
       secondary={{ href: '/work', label: 'View case studies' }}
     />

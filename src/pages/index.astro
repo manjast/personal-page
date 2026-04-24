@@ -204,16 +204,16 @@ const caseStudies = (await getCollection('case-studies'))
           <article class="panel panel-light p-6">
             <div class="accent-bar"></div>
             <p class="eyebrow">Good fit</p>
-            <ul class="mt-6 space-y-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-              {fitGuidance.goodFit.map((item) => <li>• {item}</li>)}
+            <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
+              {fitGuidance.goodFit.map((item) => <li>{item}</li>)}
             </ul>
           </article>
 
           <article class="panel panel-light p-6">
             <div class="accent-bar"></div>
-            <p class="eyebrow">Not a fit</p>
-            <ul class="mt-6 space-y-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-              {fitGuidance.notFit.map((item) => <li>• {item}</li>)}
+            <p class="eyebrow">Usually too early</p>
+            <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
+              {fitGuidance.notFit.map((item) => <li>{item}</li>)}
             </ul>
           </article>
         </div>

@@ -22,7 +22,7 @@ const { service } = Astro.props;
   <p class:list={['mt-4 text-sm leading-7', service.featured ? 'text-[color:rgba(247,241,232,0.78)]' : 'muted-copy']}>
     {service.summary}
   </p>
-  <ul class:list={['mt-6 space-y-3 text-sm leading-7', service.featured ? 'text-[color:rgba(247,241,232,0.78)]' : 'text-[color:var(--ink-soft)]']}>
-    {service.details.map((detail) => <li>• {detail}</li>)}
+  <ul class:list={['mt-6 list-disc space-y-3 pl-5 text-sm leading-7', service.featured ? 'text-[color:rgba(247,241,232,0.78)] marker:text-[color:rgba(247,241,232,0.42)]' : 'text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]']}>
+    {service.details.map((detail) => <li>{detail}</li>)}
   </ul>
 </article>

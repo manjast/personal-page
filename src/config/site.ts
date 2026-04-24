@@ -100,7 +100,7 @@ export const fitGuidance = {
 } as const;
 
 export const contactExpectations = {
-  responseTime: 'I reply to good-fit inquiries within 3 business days.',
+  responseTime: 'Clear project inquiries usually get a response within 3 business days.',
   fitNote:
     'A rough workflow outline is enough for a first fit check; the key details are the workflow, users, current stage, and the constraints that will matter in practice.',
   emailPrompt:

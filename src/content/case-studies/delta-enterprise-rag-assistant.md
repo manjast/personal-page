@@ -3,8 +3,8 @@ title: "Self-hosted internal knowledge assistant"
 summary: "A self-hosted internal knowledge assistant built in-house at Delta Holding, with Azure AD-scoped access, operator/admin surfaces, and post-launch observability built in from the first version."
 organization: "Delta Holding"
 workContext: "Internal enterprise knowledge-access system serving multiple business units, with requirements around access control, quality governance, and operational visibility."
-outcome: "An internal assistant paired with admin surfaces for content, users, feedback, analytics, and system health from the first version."
-signalLabel: "Delivered system"
+outcome: "Deployed across roughly 1,500 eligible users, with 300+ actual users and 85%+ positive explicit feedback on thumbs-up/down responses."
+signalLabel: "Adoption and feedback signal"
 order: 2
 featured: true
 services:
@@ -47,6 +47,11 @@ retrieval, LangChain-assisted document ingestion, and Azure AD SSO.
 The practical result was a governed internal assistant that employees could use
 against approved knowledge while operators could review feedback, knowledge
 gaps, usage, and cost after launch.
+
+At the public-safe level I can state, the system was deployed across roughly
+1,500 eligible users, saw 300+ actual users, and explicit thumbs-up/down
+feedback was more than 85% positive. That feedback also generated useful ideas
+for follow-on features and operating improvements.
 
 The visible layer was chat and retrieval. The more important part was the
 operator/admin layer around it, including:

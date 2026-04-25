@@ -188,6 +188,8 @@ That matters because it shows the assistant was used by a meaningful share of
 the eligible audience, not just shown in a demo. The positive feedback rate
 suggests the retrieval and access choices were usually good enough for real
 workflows, and the feedback stream also produced useful follow-on feature ideas.
+Workflow-time impact was not measured at v1; the public-safe measurement scope
+was adoption and explicit feedback after first deployment.
 
 ## Why this case matters
 

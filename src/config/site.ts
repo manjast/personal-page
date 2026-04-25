@@ -11,7 +11,7 @@ export const siteConfig = {
     'I work with enterprise and mid-market teams to build, evaluate, and harden internal AI systems for real workflows — with disciplined deployment, clear system behavior, and delivery choices that stay sound after launch.',
   heroPrimaryCta: {
     href: '/contact',
-    label: 'Discuss a project',
+    label: 'Check project fit',
   },
   heroSecondaryCta: {
     href: '/work',
@@ -37,10 +37,10 @@ export const proofPoints = [
     copy: 'Analyst-assistive workflow combining public-company risk signals with internal context into structured recommendations.',
   },
   {
-    eyebrow: 'System',
-    value: 'Self-hosted',
-    label: 'internal knowledge assistant',
-    copy: 'Internal assistant with operator controls, scoped access, and post-launch observability.',
+    eyebrow: 'Adoption',
+    value: '300+ users',
+    label: 'self-hosted internal assistant',
+    copy: '300+ users out of roughly 1,500 eligible, with 85%+ positive explicit feedback after launch.',
   },
   {
     eyebrow: 'Scale',

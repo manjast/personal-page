@@ -140,6 +140,13 @@ analysis time dropped by roughly **75%**, analyst-rated quality reached
 Those signals matter because they point not only to speed, but to trust,
 consistency, and real workflow adoption.
 
+## Stakeholder signal
+
+A senior risk analyst at DMD said the system made it possible not only to
+handle credit-limit increase analyses coming through sales, but also to
+introduce more regular periodic analyses for all buyers that had not been done
+before.
+
 ## Why this case matters
 
 This case matters because it shows how I approach internal AI systems in

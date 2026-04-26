@@ -59,7 +59,7 @@ teams.
 - /work : internal AI case studies
 - /work/delta-credit-risk-workflow : Credit-risk decision-support workflow (Delta Holding)
 - /work/delta-enterprise-rag-assistant : Self-hosted internal knowledge assistant (Delta Holding)
-- /services : service modes and delivery path
+- /services : workflow starting points, service modes, and delivery path
 - /contact : workflow review and fit check
 
 ## Technical context

@@ -33,7 +33,7 @@ const caseStudies = (await getCollection('case-studies'))
       '@id': `${siteConfig.siteUrl}/#service`,
       name: 'Internal AI Build, Hardening & Advisory',
       provider: { '@id': `${siteConfig.siteUrl}/#person` },
-      serviceType: ['Build', 'Hardening', 'Advisory'],
+      serviceType: ['Build', 'Hardening', 'Advisory', 'AI workflow feasibility review', 'AI pilot hardening review', 'Decision-support workflow build'],
       description: 'Project-based build, hardening, and advisory work for internal AI systems in enterprise and mid-market workflows.',
       url: `${siteConfig.siteUrl}/services/`,
       areaServed: 'Worldwide',
@@ -48,6 +48,7 @@ const caseStudies = (await getCollection('case-studies'))
       description={siteConfig.heroDescription}
       primaryCta={siteConfig.heroPrimaryCta}
       secondaryCta={siteConfig.heroSecondaryCta}
+      locationBadge={siteConfig.locationBadge}
       portrait={{ src: '/stefan-manja-context.webp', alt: 'Stefan Manja' }}
     />
 
@@ -89,14 +90,22 @@ const caseStudies = (await getCollection('case-studies'))
             <p class="text-base leading-8 muted-copy">
               I currently work in an enterprise and industrial environment and previously spent four years at Delta Holding,
               progressing from AI Specialist to AI Innovation Lead while helping move internal AI from early opportunity framing
-              to first scaled rollout across multiple business units. Before that, I spent years building decision-support systems
-              in operational settings where field constraints, adoption, and workflow fit mattered more than model novelty.
-              That continuity still shapes how I approach enterprise AI work now.
+              to first scaled rollout across multiple business units.
+            </p>
+            <p class="text-base leading-8 muted-copy">
+              Before the current AI cycle, I worked on decision-support systems in operational agriculture and BI settings:
+              predictive plant-protection and irrigation workflows, IoT-backed field data, ETL, KPI reporting, and teams that
+              only adopted tools if they helped the real operating work. That background is why I treat system shape, adoption
+              path, and ownership as first-order design constraints, not implementation cleanup.
             </p>
             <div class="space-y-4 pt-2">
               <div class="technical-rule">
                 <p class="metric-label">Availability</p>
                 <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Available for selective project work.</p>
+              </div>
+              <div class="technical-rule">
+                <p class="metric-label">Current work</p>
+                <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Applied AI for internal industrial workflows and data-intensive engineering contexts. Public description is intentionally limited to workflow and problem shape.</p>
               </div>
               <div class="technical-rule">
                 <p class="metric-label">Delivery environments</p>
@@ -174,14 +183,14 @@ const caseStudies = (await getCollection('case-studies'))
               <p class="eyebrow">How I help</p>
             </div>
             <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Project-based build first, with hardening and advisory work where they improve delivery.
+              Project-based build first, with hardening and advisory work where they improve reliability, reviewability, and handoff.
             </h2>
             <p class="text-base leading-8 muted-copy">
               Build is the main entry point. The service page goes deeper on project shapes, engagement flow, and where
-              hardening or advisory work help delivery.
+              hardening or advisory work help a system survive real operating conditions.
             </p>
           </div>
-          <a class="ink-link text-sm font-semibold transition" href="/services">
+          <a class="ink-link inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/services">
             See project shapes →
           </a>
         </div>
@@ -217,7 +226,7 @@ const caseStudies = (await getCollection('case-studies'))
               is what makes delivered work auditable, operable, and easier for your team to extend after the engagement ends.
             </p>
             <a
-              class="mt-6 inline-flex text-sm font-semibold text-stone-100 transition hover:text-[color:var(--accent-strong)]"
+              class="mt-6 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold text-stone-100 transition hover:text-[color:var(--accent-strong)]"
               href={siteConfig.playbookUrl}
               target="_blank"
               rel="noreferrer"

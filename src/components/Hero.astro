@@ -5,6 +5,7 @@ interface Props {
   description: string;
   primaryCta: { href: string; label: string };
   secondaryCta: { href: string; label: string };
+  locationBadge?: string;
   portrait?: { src: string; alt: string };
 }
 
@@ -14,6 +15,7 @@ const {
   description,
   primaryCta,
   secondaryCta,
+  locationBadge = 'Belgrade, Serbia · works internationally',
   portrait,
 } = Astro.props;
 ---
@@ -26,7 +28,7 @@ const {
           <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
             <span class="section-marker">00 / overview</span>
             <p class="eyebrow hidden sm:block">{eyebrow}</p>
-            <span class="metric-label">Belgrade, Serbia · works internationally</span>
+            <span class="metric-label">{locationBadge}</span>
           </div>
           <h1 class="max-w-3xl text-[2.35rem] font-semibold leading-none tracking-tight sm:text-6xl lg:text-[4.2rem]">
             {title}
@@ -57,15 +59,15 @@ const {
           <dl class="mt-6 space-y-4 text-sm leading-7 text-[color:rgba(247,241,232,0.78)]">
             <div class="border-t border-white/10 pt-4">
               <dt class="metric-label">Focus</dt>
-              <dd class="mt-1 text-[color:#f7f1e8]">Internal assistants, knowledge-access workflows, and analyst-support systems built to stay reliable after launch.</dd>
+              <dd class="mt-1 text-[color:#f7f1e8]">Analyst-support, knowledge-access, and internal workflow systems where trust, adoption, and operating constraints matter.</dd>
             </div>
             <div class="border-t border-white/10 pt-4">
               <dt class="metric-label">Position</dt>
-              <dd class="mt-1 text-[color:#f7f1e8]">Project-based builder and advisory partner, not a broad AI-transformation pitch.</dd>
+              <dd class="mt-1 text-[color:#f7f1e8]">Project-based build and hardening, with advisory tied to real delivery decisions.</dd>
             </div>
             <div class="border-t border-white/10 pt-4">
-              <dt class="metric-label">Reply window</dt>
-              <dd class="mt-1 text-[color:#f7f1e8]">Clear project outlines usually get a response within 3 business days.</dd>
+              <dt class="metric-label">Delivery posture</dt>
+              <dd class="mt-1 text-[color:#f7f1e8]">Evaluation, cost visibility, human review, access boundaries, and handoff are treated as part of the system.</dd>
             </div>
           </dl>
         </div>

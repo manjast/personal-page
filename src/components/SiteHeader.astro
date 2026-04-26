@@ -10,7 +10,7 @@ function isActive(href: string) {
 
 <header class="sticky top-0 z-50 border-b border-[color:var(--rule)] bg-[rgba(243,240,232,0.9)] backdrop-blur-sm">
   <div class="shell flex flex-col gap-1.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:py-5">
-    <a href="/" class="group inline-flex flex-col gap-0.5">
+    <a href="/" class="group inline-flex min-h-[44px] flex-col justify-center gap-0.5">
       <span class="text-lg font-semibold tracking-tight text-[color:var(--ink)]">{siteConfig.name}</span>
       <span
         class="site-tagline hidden uppercase text-[color:var(--muted-soft)] sm:block"
@@ -30,7 +30,7 @@ function isActive(href: string) {
           navigation.map((item) => (
             <a
               class:list={[
-                'inline-flex min-h-[44px] items-center py-2 transition hover:text-[color:var(--ink)] sm:px-1',
+                'inline-flex min-h-[44px] items-center px-2 py-2 transition hover:text-[color:var(--ink)] sm:px-1',
                 isActive(item.href) && 'text-[color:var(--accent)]',
               ]}
               aria-current={isActive(item.href) ? 'page' : undefined}

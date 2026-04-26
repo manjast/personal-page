@@ -5,13 +5,14 @@ export const siteConfig = {
   email: 'stefan@stefanmanja.com',
   defaultTitle: 'Stefan Manja',
   defaultDescription:
-    'Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, reliable deployment, and real-world usefulness.',
+    'Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.',
+  locationBadge: 'Belgrade, Serbia · works internationally',
   heroTitle: 'Internal AI systems that hold up in real use',
   heroDescription:
-    'I work with enterprise and mid-market teams to build, evaluate, and harden internal AI systems for real workflows — with disciplined deployment, clear system behavior, and delivery choices that stay sound after launch.',
+    'Many internal AI systems can work in a demo. I build and harden the ones that need to survive real users, real operators, and real operating costs, with evaluation, access boundaries, cost visibility, and handoff designed in from the start.',
   heroPrimaryCta: {
     href: '/contact',
-    label: 'Check project fit',
+    label: 'Send a workflow for review',
   },
   heroSecondaryCta: {
     href: '/work',
@@ -44,9 +45,60 @@ export const proofPoints = [
   },
   {
     eyebrow: 'Scale',
-    value: '50+ workflows',
-    label: 'from assessment to first scaled rollout',
-    copy: 'AI work spanning finance, operations, logistics, and adjacent teams, from opportunity assessment through PoCs to first scaled rollout.',
+    value: '50+ workflows assessed',
+    label: 'from opportunity framing to rollout decisions',
+    copy: 'AI work across finance, operations, logistics, and adjacent teams, separating useful systems from interesting ideas across assessment, PoCs, and first scaled rollout.',
+  },
+] as const;
+
+export const startingPoints = [
+  {
+    name: 'AI workflow feasibility review',
+    summary: 'For teams deciding whether an AI system is worth building.',
+    useWhen:
+      'Use when you have a workflow, users, and pressure to move, but need a grounded recommendation before committing to a build.',
+    outcomes: [
+      'Workflow boundary and user/owner map',
+      'Automation vs assistive design choice',
+      'Risk, evaluation, hosting, and cost path',
+      'Build, harden, simplify, or stop recommendation',
+    ],
+  },
+  {
+    name: 'AI pilot hardening review',
+    summary: 'For teams with a prototype that works in a demo but is not ready for real use.',
+    useWhen:
+      'Use when business pull exists, but evaluation, access, observability, cost, review path, or handoff are still weak.',
+    outcomes: [
+      'Hardening findings and readiness risks',
+      'Evaluation and failure-mode backlog',
+      'Access, review, observability, and cost requirements',
+      'Next-version delivery plan',
+    ],
+  },
+  {
+    name: 'Internal knowledge assistant readiness',
+    summary: 'For teams building or rescuing a RAG or internal assistant.',
+    useWhen:
+      'Use when the hard part is not the chat interface, but access boundaries, retrieval quality, feedback loops, content ownership, usage visibility, and governance.',
+    outcomes: [
+      'Knowledge-source and ownership model',
+      'Access boundary and retrieval-quality plan',
+      'Operator feedback loop',
+      'Adoption and cost visibility model',
+    ],
+  },
+  {
+    name: 'Decision-support workflow build',
+    summary: 'For analyst workflows where people assemble context before recommendations or decisions.',
+    useWhen:
+      'Use when the bottleneck is repeatable context gathering, synthesis, recommendation quality, reviewability, or consistency.',
+    outcomes: [
+      'Workflow model and structured output design',
+      'Context integration shape',
+      'Human review path',
+      'First-version build plan or implementation',
+    ],
   },
 ] as const;
 
@@ -54,22 +106,22 @@ export const services = [
   {
     name: 'Build',
     summary:
-      'Project-based delivery of internal AI systems for enterprise and mid-market teams with a concrete workflow to improve.',
+      'Project-based delivery of internal AI systems for enterprise and mid-market teams with a concrete workflow to improve and a real operating context to support.',
     details: [
       'Internal assistants, knowledge-access systems, and analyst-support workflows',
-      'Evaluation-gated first versions built for real users',
-      'Ownership from scoped workflow to shipped implementation',
+      'Evaluation-gated first versions with review and access decisions made explicit',
+      'Ownership from scoped workflow to shipped implementation and handoff',
     ],
     featured: true,
   },
   {
     name: 'Hardening',
     summary:
-      'Take a prototype or pilot already in motion and make it more reliable, testable, observable, and ready for real use.',
+      'Take a prototype or pilot already in motion and make it more reliable, reviewable, observable, and ready for real use.',
     details: [
-      'Evaluation and failure-mode hardening',
-      'Deployment and monitoring readiness',
-      'Prototype-to-production cleanup',
+      'Evaluation, failure-mode, and review-path hardening',
+      'Access model, observability, usage signals, and cost visibility',
+      'Prototype-to-production cleanup and handoff readiness',
     ],
     featured: false,
   },

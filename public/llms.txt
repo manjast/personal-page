@@ -1,6 +1,6 @@
 # Stefan Manja
 
-Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, reliable deployment, and real-world usefulness.
+Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.
 
 Site: https://stefanmanja.com
 Contact: stefan@stefanmanja.com
@@ -13,6 +13,9 @@ GitHub: https://github.com/manjast
 
 Stefan currently works in an enterprise and industrial AI context.
 
+Current public-safe work signal: applied AI for internal industrial workflows
+and data-intensive engineering contexts.
+
 He is selectively available for project-based consulting on internal AI systems:
 build, hardening, and scoped advisory work.
 
@@ -24,12 +27,17 @@ teams.
 - Project-based build work for internal AI workflows
 - Hardening and productionising pilots or prototypes
 - Scoped advisory work tied to real delivery decisions
+- Workflow feasibility review for teams deciding whether an AI system is worth building
+- Internal knowledge assistant readiness review for RAG and enterprise assistant work
+- Evaluation, human review, access boundaries, cost and usage visibility, and
+  handoff for internal AI systems
 
 ## Good fit
 
 - Teams with a concrete internal workflow, real users, and a clear owner
 - Internal assistants, knowledge-access systems, and analyst-support tools
 - Work that needs disciplined evaluation, deployment, and post-launch usefulness
+- Prototypes or pilots that need to become reviewable, observable, and operable
 
 ## Not a fit
 
@@ -42,7 +50,7 @@ teams.
 - ~75% reduction in credit-risk analysis time (Delta Holding)
 - 90%+ recommendation acceptance rate from analysts
 - 4.4/5 analyst-rated quality on credit-risk decision-support workflow
-- 50+ AI workflows across opportunity assessment, PoCs, and first scaled rollout
+- 50+ AI workflows assessed across opportunity framing, PoCs, and first scaled rollout
 - Self-hosted internal assistant deployed to roughly 1,500 eligible users, with 300+ actual users and 85%+ positive explicit feedback after launch
 
 ## Primary pages
@@ -58,6 +66,19 @@ teams.
 
 Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD
 SSO, LLM APIs, and workflow automation for enterprise environments.
+
+## Relevant search and LLM terms
+
+- AI pilot hardening
+- AI prototype-to-production
+- RAG production readiness
+- internal knowledge assistant
+- AI workflow evaluation
+- AI cost observability
+- human-in-the-loop AI workflows
+- AI decision-support systems
+- agentic AI readiness
+- AI workflow feasibility
 
 ## Public evidence of working method
 

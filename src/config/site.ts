@@ -61,6 +61,7 @@ export const startingPoints = [
       'Workflow boundary and user/owner map',
       'Automation vs assistive design choice',
       'Risk, evaluation, hosting, and cost path',
+      'Vendor or architecture direction sanity check, when relevant',
       'Build, harden, simplify, or stop recommendation',
     ],
   },

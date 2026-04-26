@@ -134,7 +134,7 @@ const formSuccessPath = '/contact/sent/';
                       <option value="worth-building">Deciding whether this is worth building</option>
                       <option value="prototype-hardening">Prototype exists but needs hardening</option>
                       <option value="assistant-readiness">Internal assistant / RAG system needs readiness review</option>
-                      <option value="decision-support">Analyst workflow needs decision support</option>
+                      <option value="decision-support">Analyst workflow needs decision-support</option>
                       <option value="second-opinion">Need second opinion on vendor or architecture direction</option>
                       <option value="other">Other</option>
                     </select>
@@ -178,10 +178,21 @@ const formSuccessPath = '/contact/sent/';
                     </div>
                   </fieldset>
 
-                  <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
-                    Relevant context
-                    <textarea class="mt-2.5 min-h-40 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" name="context" required></textarea>
-                  </label>
+                  <div>
+                    <label class="block text-sm font-medium text-[color:var(--ink-soft)]" for="context">
+                      Relevant context
+                    </label>
+                    <textarea
+                      id="context"
+                      class="mt-2.5 min-h-40 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]"
+                      name="context"
+                      aria-describedby="context-hint"
+                      required
+                    ></textarea>
+                    <p id="context-hint" class="mt-2 text-xs leading-5 muted-copy">
+                      Current tooling, team size, timeline pressure, or trust requirements - whatever is already clear.
+                    </p>
+                  </div>
 
                   <button class="button-primary" type="submit">
                     Send workflow for review
@@ -206,7 +217,7 @@ const formSuccessPath = '/contact/sent/';
                 <p class="mt-3 text-sm leading-7 text-stone-300">{contactExpectations.emailPrompt}</p>
                 <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
                   <li>The workflow and who uses it today</li>
-                  <li>The primary concern: feasibility, hardening, assistant readiness, decision support, or second opinion</li>
+                  <li>The primary concern: feasibility, hardening, assistant readiness, decision-support, or second opinion</li>
                   <li>What would need to be trustworthy for the system to be useful</li>
                   <li>Any timeline, hosting, identity, or compliance constraints that already matter</li>
                 </ul>

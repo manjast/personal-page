@@ -13,8 +13,8 @@ GitHub: https://github.com/manjast
 
 Stefan currently works in an enterprise and industrial AI context.
 
-He is selectively available for project-based consulting on internal AI systems
-alongside this role: build, hardening, and scoped advisory work.
+He is selectively available for project-based consulting on internal AI systems:
+build, hardening, and scoped advisory work.
 
 Engagements are project-scoped and typically serve enterprise or mid-market
 teams.
@@ -43,7 +43,7 @@ teams.
 - 90%+ recommendation acceptance rate from analysts
 - 4.4/5 analyst-rated quality on credit-risk decision-support workflow
 - 50+ AI workflows across opportunity assessment, PoCs, and first scaled rollout
-- Self-hosted enterprise assistant with operator controls, org-aware access, and post-launch observability
+- Self-hosted internal assistant deployed to roughly 1,500 eligible users, with 300+ actual users and 85%+ positive explicit feedback after launch
 
 ## Primary pages
 
@@ -52,7 +52,7 @@ teams.
 - /work/delta-credit-risk-workflow : Credit-risk decision-support workflow (Delta Holding)
 - /work/delta-enterprise-rag-assistant : Self-hosted internal knowledge assistant (Delta Holding)
 - /services : service modes and delivery path
-- /contact : contact and project qualification
+- /contact : contact and project fit check
 
 ## Technical context
 

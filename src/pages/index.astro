@@ -33,7 +33,7 @@ const caseStudies = (await getCollection('case-studies'))
       '@id': `${siteConfig.siteUrl}/#service`,
       name: 'Internal AI Build, Hardening & Advisory',
       provider: { '@id': `${siteConfig.siteUrl}/#person` },
-      serviceType: ['Build', 'Hardening', 'Advisory'],
+      serviceType: ['Build', 'Hardening', 'Advisory', 'AI workflow feasibility review', 'AI pilot hardening review', 'Decision-support workflow build'],
       description: 'Project-based build, hardening, and advisory work for internal AI systems in enterprise and mid-market workflows.',
       url: `${siteConfig.siteUrl}/services/`,
       areaServed: 'Worldwide',
@@ -48,6 +48,7 @@ const caseStudies = (await getCollection('case-studies'))
       description={siteConfig.heroDescription}
       primaryCta={siteConfig.heroPrimaryCta}
       secondaryCta={siteConfig.heroSecondaryCta}
+      locationBadge={siteConfig.locationBadge}
       portrait={{ src: '/stefan-manja-context.webp', alt: 'Stefan Manja' }}
     />
 
@@ -89,9 +90,13 @@ const caseStudies = (await getCollection('case-studies'))
             <p class="text-base leading-8 muted-copy">
               I currently work in an enterprise and industrial environment and previously spent four years at Delta Holding,
               progressing from AI Specialist to AI Innovation Lead while helping move internal AI from early opportunity framing
-              to first scaled rollout across multiple business units. Before that, I spent years building decision-support systems
-              in operational settings where field constraints, adoption, and workflow fit mattered more than model novelty.
-              That continuity still shapes how I approach enterprise AI work now.
+              to first scaled rollout across multiple business units.
+            </p>
+            <p class="text-base leading-8 muted-copy">
+              Before the current AI cycle, I worked on decision-support systems in operational agriculture and BI settings:
+              predictive plant-protection and irrigation workflows, IoT-backed field data, ETL, KPI reporting, and teams that
+              only adopted tools if they helped the real operating work. That background is why I treat system shape, adoption
+              path, and ownership as first-order design constraints, not implementation cleanup.
             </p>
             <div class="space-y-4 pt-2">
               <div class="technical-rule">
@@ -100,7 +105,7 @@ const caseStudies = (await getCollection('case-studies'))
               </div>
               <div class="technical-rule">
                 <p class="metric-label">Current work</p>
-                <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Applied AI for internal industrial workflows and data-intensive engineering contexts, described here only at the workflow and problem level.</p>
+                <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Applied AI for internal industrial workflows and data-intensive engineering contexts. Public description is intentionally limited to workflow and problem shape.</p>
               </div>
               <div class="technical-rule">
                 <p class="metric-label">Delivery environments</p>

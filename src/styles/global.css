@@ -60,6 +60,21 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   min-height: 100vh;
   background-color: var(--canvas);
@@ -176,7 +191,7 @@ a {
   }
 
   .button-primary {
-    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-[0.8125rem] font-semibold uppercase tracking-[0.12em] transition;
+    @apply inline-flex max-w-full items-center justify-center whitespace-normal rounded-xl px-5 py-3 text-center text-[0.8125rem] font-semibold uppercase leading-5 tracking-[0.12em] transition;
     background: var(--ink);
     color: #f8f4ed;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
@@ -187,7 +202,7 @@ a {
   }
 
   .button-secondary {
-    @apply inline-flex items-center justify-center rounded-xl border px-5 py-3 text-[0.8125rem] font-semibold uppercase tracking-[0.12em] transition;
+    @apply inline-flex max-w-full items-center justify-center whitespace-normal rounded-xl border px-5 py-3 text-center text-[0.8125rem] font-semibold uppercase leading-5 tracking-[0.12em] transition;
     border-color: var(--rule-strong);
     background: rgba(255, 252, 247, 0.76);
     color: var(--ink);
@@ -200,7 +215,7 @@ a {
   }
 
   .button-secondary-dark {
-    @apply inline-flex items-center justify-center rounded-xl border px-5 py-3 text-[0.8125rem] font-semibold uppercase tracking-[0.12em] transition;
+    @apply inline-flex max-w-full items-center justify-center whitespace-normal rounded-xl border px-5 py-3 text-center text-[0.8125rem] font-semibold uppercase leading-5 tracking-[0.12em] transition;
     border-color: rgba(255, 255, 255, 0.18);
     background: transparent;
     color: #f7f1e8;
@@ -347,7 +362,7 @@ a {
 
   /* Inverted primary button — white/cream for use on dark panels */
   .button-primary-invert {
-    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-[0.8125rem] font-semibold uppercase tracking-[0.12em] transition;
+    @apply inline-flex max-w-full items-center justify-center whitespace-normal rounded-xl px-5 py-3 text-center text-[0.8125rem] font-semibold uppercase leading-5 tracking-[0.12em] transition;
     background: #f8f4ed;
     color: var(--ink);
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);

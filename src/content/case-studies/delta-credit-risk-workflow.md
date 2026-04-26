@@ -95,6 +95,16 @@ At a public-safe level, the workflow shape looked roughly like this:
   </figcaption>
 </figure>
 
+## Why this shape, not a chatbot or full automation?
+
+A chatbot would have been too loose for a credit-risk workflow. Full
+automation would have removed too much judgment from a decision that still
+needed analyst ownership.
+
+The useful middle was a constrained recommendation layer: structured enough to
+improve speed and consistency, reviewable enough to preserve trust, and
+bounded enough to fit the existing decision process.
+
 ## Delivery context
 
 ### My role

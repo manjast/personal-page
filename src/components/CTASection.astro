@@ -20,11 +20,11 @@ const { title, description, primary, secondary } = Astro.props;
           <p class="max-w-2xl text-base leading-8 text-[color:rgba(247,241,232,0.78)]">{description}</p>
         </div>
         <div class="flex flex-col gap-3 sm:flex-row lg:shrink-0">
-          <a class="button-primary-invert whitespace-nowrap" href={primary.href}>
+          <a class="button-primary-invert" href={primary.href}>
             {primary.label}
           </a>
           {secondary && (
-            <a class="button-secondary-dark whitespace-nowrap" href={secondary.href}>
+            <a class="button-secondary-dark" href={secondary.href}>
               {secondary.label}
             </a>
           )}

@@ -5,6 +5,7 @@ interface Props {
   description: string;
   primaryCta: { href: string; label: string };
   secondaryCta: { href: string; label: string };
+  locationBadge?: string;
   portrait?: { src: string; alt: string };
 }
 
@@ -14,6 +15,7 @@ const {
   description,
   primaryCta,
   secondaryCta,
+  locationBadge = 'Belgrade, Serbia · works internationally',
   portrait,
 } = Astro.props;
 ---
@@ -26,7 +28,7 @@ const {
           <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
             <span class="section-marker">00 / overview</span>
             <p class="eyebrow hidden sm:block">{eyebrow}</p>
-            <span class="metric-label">Belgrade, Serbia · works internationally</span>
+            <span class="metric-label">{locationBadge}</span>
           </div>
           <h1 class="max-w-3xl text-[2.35rem] font-semibold leading-none tracking-tight sm:text-6xl lg:text-[4.2rem]">
             {title}

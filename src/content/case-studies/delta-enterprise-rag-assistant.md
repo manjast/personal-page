@@ -132,6 +132,15 @@ At a public-safe level, the operating model looked roughly like this:
   </figcaption>
 </figure>
 
+## What made it more than chat over documents?
+
+The important layer was not the chat interface. It was the operating model
+around it: identity, scoped access, content ownership, feedback review, usage
+visibility, cost monitoring, and health checks.
+
+Those choices made the assistant something the organization could operate,
+not just something employees could try.
+
 ## Delivery context
 
 ### My role

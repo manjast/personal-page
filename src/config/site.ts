@@ -5,10 +5,10 @@ export const siteConfig = {
   email: 'stefan@stefanmanja.com',
   defaultTitle: 'Stefan Manja',
   defaultDescription:
-    'Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, reliable deployment, and real-world usefulness.',
+    'Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.',
   heroTitle: 'Internal AI systems that hold up in real use',
   heroDescription:
-    'I work with enterprise and mid-market teams to build, evaluate, and harden internal AI systems for real workflows — with disciplined deployment, clear system behavior, and delivery choices that stay sound after launch.',
+    'I help enterprise and mid-market teams build or harden internal AI systems for real workflows, with evaluation, cost visibility, human review, access boundaries, and operational handoff designed in from the start.',
   heroPrimaryCta: {
     href: '/contact',
     label: 'Check project fit',
@@ -54,22 +54,22 @@ export const services = [
   {
     name: 'Build',
     summary:
-      'Project-based delivery of internal AI systems for enterprise and mid-market teams with a concrete workflow to improve.',
+      'Project-based delivery of internal AI systems for enterprise and mid-market teams with a concrete workflow to improve and a real operating context to support.',
     details: [
       'Internal assistants, knowledge-access systems, and analyst-support workflows',
-      'Evaluation-gated first versions built for real users',
-      'Ownership from scoped workflow to shipped implementation',
+      'Evaluation-gated first versions with review and access decisions made explicit',
+      'Ownership from scoped workflow to shipped implementation and handoff',
     ],
     featured: true,
   },
   {
     name: 'Hardening',
     summary:
-      'Take a prototype or pilot already in motion and make it more reliable, testable, observable, and ready for real use.',
+      'Take a prototype or pilot already in motion and make it more reliable, reviewable, observable, and ready for real use.',
     details: [
-      'Evaluation and failure-mode hardening',
-      'Deployment and monitoring readiness',
-      'Prototype-to-production cleanup',
+      'Evaluation, failure-mode, and review-path hardening',
+      'Access model, observability, usage signals, and cost visibility',
+      'Prototype-to-production cleanup and handoff readiness',
     ],
     featured: false,
   },

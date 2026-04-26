@@ -1,6 +1,6 @@
 ---
 title: "Self-hosted internal knowledge assistant"
-summary: "A self-hosted internal knowledge assistant built in-house at Delta Holding, with Azure AD-scoped access, operator/admin surfaces, and post-launch observability built in from the first version."
+summary: "A self-hosted internal knowledge assistant built in-house at Delta Holding, with Azure AD-scoped access, operator/admin surfaces, feedback loops, and usage and cost observability built in from the first version."
 organization: "Delta Holding"
 workContext: "Internal enterprise knowledge-access system serving multiple business units, with requirements around access control, quality governance, and operational visibility."
 outcome: "Deployed across roughly 1,500 eligible users, with 300+ actual users and 85%+ positive explicit feedback on thumbs-up/down responses."
@@ -46,7 +46,7 @@ retrieval, LangChain-assisted document ingestion, and Azure AD SSO.
 
 The practical result was a governed internal assistant that employees could use
 against approved knowledge while operators could review feedback, knowledge
-gaps, usage, and cost after launch.
+gaps, usage, cost, and system health after launch.
 
 The public-safe adoption and feedback signal is summarized below.
 
@@ -159,9 +159,10 @@ visibility from the first version onward.
 ## Why self-hosted mattered
 
 Self-hosting was part of the product posture. In this kind of environment,
-identity, access boundaries, operator controls, and operational ownership all
-sit close to the delivery choice. The system was shaped to live inside those
-constraints rather than bypass them for demo convenience.
+identity, access boundaries, operator controls, usage and cost visibility, and
+operational ownership all sit close to the delivery choice. The system was
+shaped to live inside those constraints rather than bypass them for demo
+convenience.
 
 ## Operational choices
 

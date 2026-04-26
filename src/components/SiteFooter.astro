@@ -15,13 +15,13 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="space-y-2 text-sm text-stone-400 sm:text-right">
-      <a class="block transition hover:text-[color:var(--accent-strong)]" href={`mailto:${siteConfig.email}`}>
+      <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={`mailto:${siteConfig.email}`}>
         {siteConfig.email}
       </a>
-      <a class="block transition hover:text-[color:var(--accent-strong)]" href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer">
+      <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer">
         LinkedIn
       </a>
-      <a class="block transition hover:text-[color:var(--accent-strong)]" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
+      <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
         GitHub
       </a>
       <p>© {year} {siteConfig.name}</p>

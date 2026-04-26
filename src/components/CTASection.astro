@@ -15,16 +15,16 @@ const { title, description, primary, secondary } = Astro.props;
       <div class="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <div class="max-w-3xl space-y-4">
           <div class="accent-bar"></div>
-          <p class="eyebrow">Project inquiry</p>
+          <p class="eyebrow">Project fit check</p>
           <h2 class="text-3xl font-semibold tracking-tight text-[color:#f7f1e8] sm:text-4xl">{title}</h2>
           <p class="max-w-2xl text-base leading-8 text-[color:rgba(247,241,232,0.78)]">{description}</p>
         </div>
-        <div class="flex flex-col gap-3 sm:flex-row">
-          <a class="button-primary-invert" href={primary.href}>
+        <div class="flex flex-col gap-3 sm:flex-row lg:shrink-0">
+          <a class="button-primary-invert whitespace-nowrap" href={primary.href}>
             {primary.label}
           </a>
           {secondary && (
-            <a class="button-secondary-dark" href={secondary.href}>
+            <a class="button-secondary-dark whitespace-nowrap" href={secondary.href}>
               {secondary.label}
             </a>
           )}

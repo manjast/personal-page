@@ -33,7 +33,7 @@ const formSuccessPath = '/contact/sent/';
             <div class="page-lead">
               <div class="flex flex-wrap items-center gap-3">
                <span class="section-marker">01 / contact</span>
-                 <p class="eyebrow">Project fit check</p>
+                 <p class="eyebrow">Workflow review</p>
               </div>
               <h1 class="page-title">
                 Start with the workflow.
@@ -41,7 +41,7 @@ const formSuccessPath = '/contact/sent/';
                 <p class="text-base leading-8 muted-copy">
                  I take on a small number of senior, scoped engagements where the operating problem, owner, and boundaries
                  are concrete enough for the work to be useful. You do not need the solution shaped yet; the useful starting
-                 point is the workflow and what needs to become easier, faster, safer, or more reviewable. Project
+                 point is the workflow and what needs to become easier, faster, safer, or more reviewable. Workflow
                  conversations are handled discreetly, and internal context is treated with care.
                </p>
             </div>
@@ -85,13 +85,13 @@ const formSuccessPath = '/contact/sent/';
             formAction ? (
               <div class="panel panel-light p-6 sm:p-8">
                 <div class="accent-bar"></div>
-                <p class="text-sm font-semibold text-[color:var(--ink)]">Project fit check</p>
+                <p class="text-sm font-semibold text-[color:var(--ink)]">Workflow review</p>
                 <p class="mt-3 text-sm leading-7 muted-copy">
-                  Light qualification only: enough context for a first fit check.
+                  Light qualification only: enough context for a first workflow review.
                 </p>
 
                 <form id="contact-form" class="mt-8 space-y-6" method="POST" action={formAction}>
-                  <input type="hidden" name="_subject" value="Project fit check from stefanmanja.com" />
+                  <input type="hidden" name="_subject" value="Workflow review from stefanmanja.com" />
                   <input id="contact-form-next" type="hidden" name="_next" value={formSuccessPath} />
                   <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
                     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
@@ -202,7 +202,7 @@ const formSuccessPath = '/contact/sent/';
             ) : (
               <div class="panel panel-dark p-6 sm:p-8 lg:sticky lg:top-28">
                 <div class="accent-bar"></div>
-                <p class="text-sm font-semibold text-stone-50">What to include in a fit check</p>
+                <p class="text-sm font-semibold text-stone-50">What to include in a workflow review</p>
                 <p class="mt-3 text-sm leading-7 text-stone-300">{contactExpectations.emailPrompt}</p>
                 <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
                   <li>The workflow and who uses it today</li>
@@ -210,8 +210,8 @@ const formSuccessPath = '/contact/sent/';
                   <li>What would need to be trustworthy for the system to be useful</li>
                   <li>Any timeline, hosting, identity, or compliance constraints that already matter</li>
                 </ul>
-                <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Project fit check`}>
-                  Email project details
+                <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Workflow review`}>
+                  Email workflow outline
                 </a>
               </div>
             )

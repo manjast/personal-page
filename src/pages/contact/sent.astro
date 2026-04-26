@@ -7,15 +7,15 @@ import { siteConfig } from '../../config/site';
 
 <BaseLayout
   pathname="/contact/sent/"
-  title="Project details sent"
-  description="Confirmation page for project details sent through stefanmanja.com."
+  title="Workflow outline sent"
+  description="Confirmation page for workflow outlines sent through stefanmanja.com."
   noindex={true}
   pageSchema={[
     {
       '@type': 'WebPage',
       '@id': `${siteConfig.siteUrl}/contact/sent/#webpage`,
       url: `${siteConfig.siteUrl}/contact/sent/`,
-      name: 'Project details sent | Stefan Manja',
+      name: 'Workflow outline sent | Stefan Manja',
       author: { '@id': `${siteConfig.siteUrl}/#person` },
     },
   ]}
@@ -26,19 +26,19 @@ import { siteConfig } from '../../config/site';
     <div class="shell">
       <div class="panel panel-light max-w-3xl p-8 sm:p-10">
         <div class="accent-bar"></div>
-        <p class="eyebrow">Project details sent</p>
-        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--ink)]">Thanks - your project details were sent.</h1>
+        <p class="eyebrow">Workflow outline sent</p>
+        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--ink)]">Thanks - your workflow outline was sent.</h1>
         <p class="mt-4 text-base leading-8 muted-copy">
-          If the project looks like a fit, I will reply within 3 business days. If you want to add context now, email me here:
+          If the workflow looks like a fit, I will reply within 3 business days. If you want to add context now, email me here:
         </p>
         <a
           class="ink-link mt-2 inline-flex h-11 items-center font-semibold"
-          href={`mailto:${siteConfig.email}?subject=Project fit check`}
+          href={`mailto:${siteConfig.email}?subject=Workflow review follow-up`}
         >
           {siteConfig.email}
         </a>
         <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a class="button-primary" href="/services">Review project shapes</a>
+          <a class="button-primary" href="/services">Review workflow starting points</a>
           <a class="button-secondary" href="/work">See selected work</a>
         </div>
       </div>

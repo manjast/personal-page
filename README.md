@@ -2,13 +2,13 @@
 
 Live: https://stefanmanja.com
 
-Focused Astro site for **independent project lead generation** around internal AI systems for enterprise workflows, with emphasis on evaluation, deployment discipline, and real-world usefulness.
+Public Astro site for Stefan Manja's work on internal AI systems for enterprise workflows, with emphasis on evaluation, deployment discipline, cost visibility, reviewability, and real-world usefulness.
 
 ## Purpose
 
 This repository is intentionally narrow:
 
-- a conversion-focused personal site,
+- a public personal website,
 - two public Delta-based case studies,
 - a featured methodology artifact (the Agentic Development Playbook),
 - and a clean deployment path to GitHub Pages behind a custom domain.
@@ -41,7 +41,7 @@ npm run dev
 
 - `src/content/case-studies/` — public case-study content used on `/work` and `/work/[slug]`
 
-The public site currently ships only case-study content. Add writing back only when there is a real first piece ready to publish.
+The public site currently ships only case-study content. Writing should be added only when there is a real first piece ready to publish.
 
 ## Licensing note
 

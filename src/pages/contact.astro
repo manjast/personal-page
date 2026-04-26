@@ -11,14 +11,14 @@ const formSuccessPath = '/contact/sent/';
 
 <BaseLayout
   pathname="/contact/"
-  title="Discuss an Internal AI Project"
-  description="Start a project-based or advisory conversation about an internal AI workflow with Stefan Manja."
+  title="Review an Internal AI Workflow"
+  description="Send an internal AI workflow for a focused review with Stefan Manja."
   pageSchema={[
     {
       '@type': 'ContactPage',
       '@id': `${siteConfig.siteUrl}/contact/#webpage`,
       url: `${siteConfig.siteUrl}/contact/`,
-      name: 'Discuss an Internal AI Project | Stefan Manja',
+      name: 'Review an Internal AI Workflow | Stefan Manja',
       author: { '@id': `${siteConfig.siteUrl}/#person` },
     },
   ]}
@@ -66,7 +66,7 @@ const formSuccessPath = '/contact/sent/';
                 <p class="text-sm font-semibold text-[color:var(--ink)]">Useful first emails</p>
                 <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
                   <li>The workflow and users are easy to describe.</li>
-                  <li>You can say whether this is a new build, a hardening effort, or scoped advisory work.</li>
+                  <li>You can describe whether this is a new build, an existing prototype, or a workflow decision that needs review.</li>
                   <li>There is already an owner, a current stage, and a constraint that will matter in practice.</li>
                 </ul>
               </article>

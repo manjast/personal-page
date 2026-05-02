@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getSiteContent } from '../../config/site';
+import { localizedHref } from '../../i18n/routing';
+
+const locale = 'sr';
+const content = getSiteContent(locale);
+const { siteConfig } = content;
+const caseStudies = (await getCollection('case-studies'))
+  .filter((entry) => entry.data.locale === locale)
+  .sort((left, right) => left.data.order - right.data.order);
+const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, siteConfig.heroPrimaryCta.href) };
+---
+
+<BaseLayout
+  locale={locale}
+  pathname="/sr/work/"
+  title="Прикази интерних система вештачке интелигенције"
+  description="Прикази интерних система вештачке интелигенције изграђених за стварне радне токове, са нагласком на одлуке испоруке, облик система и оперативне исходе."
+  pageSchema={[
+    {
+      '@type': 'CollectionPage',
+      '@id': `${siteConfig.siteUrl}/sr/work/#webpage`,
+      url: `${siteConfig.siteUrl}/sr/work/`,
+      name: 'Прикази интерних система вештачке интелигенције | Stefan Manja',
+      description: 'Прикази интерних система вештачке интелигенције изграђених за стварне радне токове, са нагласком на одлуке испоруке, облик система и оперативне исходе.',
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
+      inLanguage: 'sr-Cyrl',
+    },
+  ]}
+>
+  <SiteHeader locale={locale} />
+
+  <main id="main">
+    <section class="section-space">
+      <div class="shell">
+        <div class="page-lead">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">01 / изабрани рад</span>
+            <p class="eyebrow">Изабрани рад</p>
+          </div>
+          <h1 class="page-title">
+            Одлуке испоруке, облик система и исходи из стварног интерног рада са вештачком интелигенцијом.
+          </h1>
+          <p class="text-base leading-8 muted-copy">
+            Ови прикази су намерно селективни: довољни да покажу облик проблема, системски приступ и доказ извршења,
+            без откривања интерног материјала који треба да остане интерни. Тренутни јавни случајеви долазе из рада у Delta Holdingu;
+            спољни клијентски рад биће додат када објављивање буде дозвољено.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-2">
+          {caseStudies.map((entry) => <CaseStudyCard entry={entry} locale={locale} />)}
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      eyebrow={content.ui.ctaEyebrow}
+      title="Ако имате сличан интерни радни ток, могу брзо да проценим да ли му треба изградња, ојачавање или саветовање."
+      description="Кратка порука о радном току, корисницима, тренутној фази и ограничењима обично је довољна да се процени да ли изградња или саветовање имају смисла."
+      primary={primaryCta}
+      secondary={{ href: '/sr/services/', label: 'Погледајте почетне тачке' }}
+    />
+  </main>
+
+  <SiteFooter locale={locale} />
+</BaseLayout>

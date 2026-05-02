@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import { getSiteContent } from '../../../config/site';
+
+const locale = 'sr';
+const { siteConfig } = getSiteContent(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  pathname="/sr/contact/sent/"
+  title="Опис радног тока је послат"
+  description="Страница потврде за описе радних токова послате преко stefanmanja.com."
+  noindex={true}
+  pageSchema={[
+    {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.siteUrl}/sr/contact/sent/#webpage`,
+      url: `${siteConfig.siteUrl}/sr/contact/sent/`,
+      name: 'Опис радног тока је послат | Stefan Manja',
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
+      inLanguage: 'sr-Cyrl',
+    },
+  ]}
+>
+  <SiteHeader locale={locale} />
+
+  <main id="main" class="section-space">
+    <div class="shell">
+      <div class="panel panel-light max-w-3xl p-8 sm:p-10">
+        <div class="accent-bar"></div>
+        <p class="eyebrow">Опис радног тока је послат</p>
+        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--ink)]">Хвала - ваш опис радног тока је послат.</h1>
+        <p class="mt-4 text-base leading-8 muted-copy">
+          Ако радни ток изгледа као добро уклапање, одговорићу у року од 3 радна дана. Ако желите сада да додате контекст, пишите ми овде:
+        </p>
+        <a
+          class="ink-link mt-2 inline-flex h-11 items-center font-semibold"
+          href={`mailto:${siteConfig.email}?subject=Додатни контекст за преглед радног тока`}
+        >
+          {siteConfig.email}
+        </a>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a class="button-primary" href="/sr/services/">Прегледајте почетне тачке</a>
+          <a class="button-secondary" href="/sr/work/">Погледајте изабрани рад</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <SiteFooter locale={locale} />
+</BaseLayout>

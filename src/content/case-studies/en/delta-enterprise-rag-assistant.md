@@ -1,4 +1,7 @@
 ---
+locale: "en"
+translationKey: "delta-enterprise-rag-assistant"
+routeSlug: "delta-enterprise-rag-assistant"
 title: "Self-hosted internal knowledge assistant"
 summary: "A self-hosted internal knowledge assistant built in-house at Delta Holding, with Azure AD-scoped access, operator/admin surfaces, feedback loops, and usage and cost observability built in from the first version."
 organization: "Delta Holding"

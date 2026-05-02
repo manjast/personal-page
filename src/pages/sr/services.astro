@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getSiteContent } from '../../config/site';
+import { localizedHref } from '../../i18n/routing';
+
+const locale = 'sr';
+const content = getSiteContent(locale);
+const { services, siteConfig, startingPoints } = content;
+const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, siteConfig.heroPrimaryCta.href) };
+---
+
+<BaseLayout
+  locale={locale}
+  pathname="/sr/services/"
+  title="Изградња, ојачавање и саветовање за интерне системе вештачке интелигенције"
+  description="Почетне тачке радних токова, начини услуге и путеви испоруке за интерне системе вештачке интелигенције који захтевају дисциплиновану проверу, видљивост трошкова, границе приступа и стварну употребљивост."
+  pageSchema={[
+    {
+      '@type': 'Service',
+      '@id': `${siteConfig.siteUrl}/sr/#service`,
+      name: 'Изградња, ојачавање и саветовање за интерне системе вештачке интелигенције',
+      provider: { '@id': `${siteConfig.siteUrl}/#person` },
+      serviceType: ['Изградња', 'Ојачавање', 'Саветовање', 'Преглед изводљивости радног тока', 'Ојачавање пилота', 'Спремност интерног асистента знања', 'Изградња радног тока за подршку одлукама'],
+      description: 'Пројектна изградња, ојачавање и саветовање за интерне системе вештачке интелигенције у предузећима и средње великим организацијама, са нагласком на проверу, границе приступа, видљивост трошкова и предају.',
+      url: `${siteConfig.siteUrl}/sr/services/`,
+      inLanguage: 'sr-Cyrl',
+    },
+  ]}
+>
+  <SiteHeader locale={locale} />
+
+  <main id="main">
+    <section class="section-space">
+      <div class="shell">
+        <div class="page-lead">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">01 / почетне тачке радних токова</span>
+            <p class="eyebrow">Услуге</p>
+          </div>
+          <h1 class="page-title">
+            Почетне тачке радних токова, начини испоруке и врсте пројеката у којима је овај рад користан.
+          </h1>
+          <p class="text-base leading-8 muted-copy">
+            Ова страница је за тимове са јасним оперативним проблемом, дефинисаним власником и стварном одлуком о испоруци.
+            Најбоље одговара пројектна изградња, уз ојачавање и ограничену саветодавну подршку када побољшавају проверу,
+            границе приступа, видљивост трошкова или предају.
+          </p>
+        </div>
+
+        <div class="mt-10 section-break">
+          <div class="max-w-3xl space-y-4">
+            <p class="eyebrow">Честе почетне тачке</p>
+            <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Већина добрих ангажмана почиње јасним уским грлом у радном току, не избором технологије.
+            </h2>
+            <p class="text-base leading-8 muted-copy">
+              Ово су ситуације у којима сам најкориснији. Обично су ограничене око конкретне изградње,
+              прегледа или ојачавања и трају недељама, не као отворени ретенери.
+            </p>
+          </div>
+
+          <div class="mt-8 grid gap-4 lg:grid-cols-2">
+            {
+              startingPoints.map((point) => (
+                <article class="panel panel-light h-full p-6">
+                  <div class="accent-bar"></div>
+                  <p class="eyebrow">Почетна тачка</p>
+                  <h3 class="mt-4 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">
+                    {point.name}
+                  </h3>
+                  <p class="mt-3 text-sm leading-7 muted-copy">{point.summary}</p>
+                  <div class="mt-6 space-y-5">
+                    <div>
+                      <p class="metric-label text-[color:var(--accent)]">Користите када</p>
+                      <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">{point.useWhen}</p>
+                    </div>
+                    <div>
+                      <p class="metric-label text-[color:var(--accent)]">Добијате</p>
+                      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
+                        {point.outcomes.map((outcome) => <li>{outcome}</li>)}
+                      </ul>
+                    </div>
+                  </div>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-2">
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Системско расуђивање</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Не треба сваком радном току агент.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-stone-300">
+              Неким радним токовима треба ограничен слој препорука. Некима треба боље проналажење и операторски преглед.
+              Некима треба класична аутоматизација, боље повезивање података или никакав систем вештачке интелигенције. Облик система треба да прати
+              радни ток, економику, ризик и пут усвајања.
+            </p>
+          </article>
+
+          <article class="panel panel-light p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Видљивост трошкова</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Видљивост трошкова значи више од праћења потрошње токена.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Корисно питање је колико систем кошта по радном току, кориснику, решеном захтеву или циклусу подршке одлуци,
+              и да ли тај трошак има смисла уз усвајање, напор прегледа, хостинг и оперативни ризик.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">02 / начини услуге</span>
+            <p class="eyebrow">Како се ангажујем</p>
+          </div>
+          <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Изградња остаје примарна. Ојачавање и саветовање постоје да испоруку учине проверљивом, оперативном и лакшом за одржавање после пуштања у рад.
+          </h2>
+        </div>
+
+        <div class="mt-10 grid gap-4 lg:grid-cols-3">
+          {services.map((service) => <ServiceCard service={service} locale={locale} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break panel panel-light px-6 py-8 sm:px-10">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">03 / пут испоруке</span>
+            <p class="eyebrow">Типичан облик ангажмана</p>
+          </div>
+          <ol class="mt-6 grid gap-4 text-sm leading-7 text-[color:var(--ink-soft)] sm:grid-cols-2">
+            <li class="rounded-2xl border border-[color:var(--rule)] bg-white/70 p-5">
+              <span class="metric-label text-[color:var(--accent)]" aria-hidden="true">Корак 01</span>
+              <span class="mt-3 block font-semibold text-[color:var(--ink)]">Обим</span>
+              <span class="mt-2 block">Ускладити радни ток, кориснике, ограничења и шта „корисно” значи у пракси.</span>
+            </li>
+            <li class="rounded-2xl border border-[color:var(--rule)] bg-white/70 p-5">
+              <span class="metric-label text-[color:var(--accent)]" aria-hidden="true">Корак 02</span>
+              <span class="mt-3 block font-semibold text-[color:var(--ink)]">Изградња</span>
+              <span class="mt-2 block">Имплементирати прву верзију са одлукама које подржавају стварну употребу, не демонстрациони утисак.</span>
+            </li>
+            <li class="rounded-2xl border border-[color:var(--rule)] bg-white/70 p-5">
+              <span class="metric-label text-[color:var(--accent)]" aria-hidden="true">Корак 03</span>
+              <span class="mt-3 block font-semibold text-[color:var(--ink)]">Ојачавање</span>
+              <span class="mt-2 block">Ојачати проверу, заштитити од начина отказа и учинити понашање од прототипа до продукције читљивим.</span>
+            </li>
+            <li class="rounded-2xl border border-[color:var(--rule)] bg-white/70 p-5">
+              <span class="metric-label text-[color:var(--accent)]" aria-hidden="true">Корак 04</span>
+              <span class="mt-3 block font-semibold text-[color:var(--ink)]">Предаја</span>
+              <span class="mt-2 block">Оставити нешто што ваш тим може да води, прегледа и проширује без митологије.</span>
+            </li>
+          </ol>
+          <p class="mt-8 border-t border-[color:var(--rule)] pt-6 text-sm leading-7 text-[color:var(--muted)]">
+            Већина ангажмана је ограничена око конкретне изградње или ојачавања и траје недељама, не као отворен ретенер.
+            Први корак је обично кратак разговор о обиму, како би се ускладили радни ток, користан исход и да ли има смисла
+            пут изградње, ојачавања или саветовања.
+          </p>
+          <div class="mt-8 border-t border-[color:var(--rule)] pt-6">
+            <div class="rounded-2xl border border-[color:var(--rule)] bg-[rgba(255,252,247,0.72)] p-5">
+              <p class="eyebrow">Шта добијате</p>
+              <div class="mt-4 grid gap-4 sm:grid-cols-3">
+                <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+                  <p class="metric-label text-[color:var(--accent)]">01 / план</p>
+                  <p class="mt-2 font-semibold text-[color:var(--ink)]">План изградње са дефинисаним обимом</p>
+                  <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
+                    Граница радног тока, модел власништва и пут испоруке на једном месту.
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+                  <p class="metric-label text-[color:var(--accent)]">02 / испорука</p>
+                  <p class="mt-2 font-semibold text-[color:var(--ink)]">Испоручена имплементација</p>
+                  <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
+                    Промене прво кроз изградњу или конкретан пакет следећих корака када је ангажман прво саветодаван.
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+                  <p class="metric-label text-[color:var(--accent)]">03 / предаја</p>
+                  <p class="mt-2 font-semibold text-[color:var(--ink)]">Пакет провере и предаје</p>
+                  <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
+                    Белешке из којих ваш тим може да ради без тога да се рад објашњава два пута.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTASection
+      eyebrow={content.ui.ctaEyebrow}
+      title="Ако је радни ток довољно јасан за обим, обично могу брзо да кажем који пут има смисла."
+      description="Кратак опис радног тока, тренутне фазе, главне бриге и кључних ограничења обично је довољан за први пролаз."
+      primary={primaryCta}
+      secondary={{ href: '/sr/work/', label: 'Погледајте приказе рада' }}
+    />
+  </main>
+
+  <SiteFooter locale={locale} />
+</BaseLayout>

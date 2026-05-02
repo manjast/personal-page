@@ -1,5 +1,9 @@
 ---
+import { getSiteContent } from '../config/site';
+import type { Locale } from '../i18n/routing';
+
 interface Props {
+  locale?: Locale;
   service: {
     name: string;
     summary: string;
@@ -8,13 +12,14 @@ interface Props {
   };
 }
 
-const { service } = Astro.props;
+const { locale = 'en', service } = Astro.props;
+const labels = getSiteContent(locale).ui.serviceCard;
 ---
 
 <article class:list={['panel h-full p-6', service.featured ? 'panel-dark' : 'panel-light']}>
   <div class:list={['accent-bar', !service.featured && 'opacity-90']}></div>
   <p class="eyebrow">
-    {service.featured ? 'Primary mode' : 'Secondary mode'}
+    {service.featured ? labels.primaryMode : labels.secondaryMode}
   </p>
   <h3 class:list={['mt-4 text-2xl font-semibold tracking-tight', service.featured ? 'text-[color:#f7f1e8]' : 'text-[color:var(--ink)]']}>
     {service.name}

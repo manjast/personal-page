@@ -89,6 +89,10 @@ body {
   font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+html[lang^="sr"] body {
+  font-family: "DejaVu Sans", "Noto Sans", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+}
+
 a {
   text-underline-offset: 0.18em;
 }
@@ -99,9 +103,17 @@ a {
   h3,
   h4 {
     font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-    letter-spacing: -0.04em;
+    letter-spacing: 0;
     color: var(--ink);
   }
+}
+
+html[lang^="sr"] h1,
+html[lang^="sr"] h2,
+html[lang^="sr"] h3,
+html[lang^="sr"] h4 {
+  font-family: "DejaVu Sans Condensed", "DejaVu Sans", "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0;
 }
 
 @layer base {
@@ -371,5 +383,76 @@ a {
   .button-primary-invert:hover {
     background: var(--canvas-strong);
     color: var(--ink);
+  }
+}
+
+.tracking-tight {
+  letter-spacing: 0;
+}
+
+html[lang^="sr"] .eyebrow,
+html[lang^="sr"] .metric-label,
+html[lang^="sr"] .site-tagline,
+html[lang^="sr"] .site-nav,
+html[lang^="sr"] .section-marker,
+html[lang^="sr"] .language-switcher {
+  font-family: "DejaVu Sans Mono", "Noto Sans Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+html[lang^="sr"] .eyebrow {
+  letter-spacing: 0.08em;
+}
+
+html[lang^="sr"] .metric-label,
+html[lang^="sr"] .site-tagline {
+  letter-spacing: 0.06em;
+}
+
+html[lang^="sr"] .site-nav,
+html[lang^="sr"] .section-marker,
+html[lang^="sr"] .language-switcher {
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 360px) {
+  html[lang^="sr"] h1,
+  html[lang^="sr"] h2,
+  html[lang^="sr"] h3,
+  html[lang^="sr"] h4 {
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
+  html[lang^="sr"] .metric-label,
+  html[lang^="sr"] .section-marker,
+  html[lang^="sr"] .button-primary,
+  html[lang^="sr"] .button-secondary,
+  html[lang^="sr"] .button-primary-invert,
+  html[lang^="sr"] .button-secondary-dark {
+    overflow-wrap: anywhere;
+  }
+
+  html[lang^="sr"] h1 {
+    font-size: 1.9rem;
+    line-height: 1.08;
+  }
+
+  html[lang^="sr"] h2 {
+    font-size: 1.9rem;
+    line-height: 1.08;
+  }
+
+  html[lang^="sr"] h3 {
+    font-size: 1.45rem;
+    line-height: 1.12;
+  }
+
+  html[lang^="sr"] .page-title {
+    font-size: 1.75rem;
+    line-height: 1.08;
+  }
+
+  html[lang^="sr"] .panel {
+    border-radius: 1rem;
   }
 }

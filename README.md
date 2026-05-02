@@ -4,6 +4,8 @@ Live: https://stefanmanja.com
 
 Public Astro site for Stefan Manja's work on internal AI systems for enterprise workflows, with emphasis on evaluation, deployment discipline, cost visibility, reviewability, and real-world usefulness.
 
+English remains the default public site. A Serbian Cyrillic version is served from `/sr/` with page-level alternates and self-canonical URLs.
+
 ## Purpose
 
 This repository is intentionally narrow:
@@ -40,6 +42,7 @@ npm run dev
 ## Content structure
 
 - `src/content/case-studies/` — public case-study content used on `/work` and `/work/[slug]`
+- `src/content/case-studies/en/` and `src/content/case-studies/sr/` — localized case-study Markdown with stable slugs
 
 The public site currently ships only case-study content. Writing should be added only when there is a real first piece ready to publish.
 

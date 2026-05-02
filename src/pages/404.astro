@@ -4,25 +4,68 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 ---
 
-<BaseLayout pathname="/404" title="Page not found" noindex={true}>
-  <SiteHeader />
+<BaseLayout locale="en" pathname="/404" title="Page not found" noindex={true}>
+  <div data-not-found-locale="en">
+    <SiteHeader />
 
-  <main id="main" class="section-space">
-    <div class="shell">
-      <div class="panel panel-light max-w-3xl p-8 sm:p-10">
-        <div class="accent-bar"></div>
-        <p class="eyebrow">404</p>
-        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--ink)]">That page does not exist.</h1>
-        <p class="mt-4 text-base leading-8 muted-copy">
-          The best path back is usually the homepage, the selected work page, or the contact page.
-        </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a class="button-primary" href="/">Go home</a>
-          <a class="button-secondary" href="/work">View selected work</a>
+    <main id="main" class="section-space">
+      <div class="shell">
+        <div class="panel panel-light max-w-3xl p-8 sm:p-10">
+          <div class="accent-bar"></div>
+          <p class="eyebrow">404</p>
+          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--ink)]">That page does not exist.</h1>
+          <p class="mt-4 text-base leading-8 muted-copy">
+            The best path back is usually the homepage, the selected work page, or the contact page.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a class="button-primary" href="/">Go home</a>
+            <a class="button-secondary" href="/work/">View selected work</a>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <SiteFooter />
+    <SiteFooter />
+  </div>
+
+  <div data-not-found-locale="sr" hidden>
+    <SiteHeader locale="sr" />
+
+    <main id="main-sr" class="section-space">
+      <div class="shell">
+        <div class="panel panel-light max-w-3xl p-8 sm:p-10">
+          <div class="accent-bar"></div>
+          <p class="eyebrow">404</p>
+          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--ink)]">Та страница не постоји.</h1>
+          <p class="mt-4 text-base leading-8 muted-copy">
+            Најбољи пут назад је обично почетна страна, страница изабраног рада или контакт страница.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a class="button-primary" href="/sr/">На почетну</a>
+            <a class="button-secondary" href="/sr/work/">Погледајте изабрани рад</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <SiteFooter locale="sr" />
+  </div>
+
+  <script is:inline>
+    const isSerbian404 = window.location.pathname === '/sr' || window.location.pathname.startsWith('/sr/');
+
+    if (isSerbian404) {
+      document.documentElement.lang = 'sr-Cyrl-RS';
+      document.title = 'Страница није пронађена | Stefan Manja';
+
+      const skipLink = document.querySelector('a[href="#main"]');
+      if (skipLink instanceof HTMLAnchorElement) {
+        skipLink.href = '#main-sr';
+        skipLink.textContent = 'Прескочите на садржај';
+      }
+
+      document.querySelector('[data-not-found-locale="en"]')?.setAttribute('hidden', '');
+      document.querySelector('[data-not-found-locale="sr"]')?.removeAttribute('hidden');
+    }
+  </script>
 </BaseLayout>

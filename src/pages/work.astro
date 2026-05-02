@@ -7,10 +7,13 @@ import CaseStudyCard from '../components/CaseStudyCard.astro';
 import CTASection from '../components/CTASection.astro';
 import { siteConfig } from '../config/site';
 
-const caseStudies = (await getCollection('case-studies')).sort((left, right) => left.data.order - right.data.order);
+const caseStudies = (await getCollection('case-studies'))
+  .filter((entry) => entry.data.locale === 'en')
+  .sort((left, right) => left.data.order - right.data.order);
 ---
 
 <BaseLayout
+  locale="en"
   pathname="/work/"
   title="Internal AI Case Studies"
   description="Case studies showing internal AI systems built for real workflows, with emphasis on delivery choices, system shape, and operational outcomes."
@@ -22,6 +25,7 @@ const caseStudies = (await getCollection('case-studies')).sort((left, right) => 
       name: 'Internal AI Case Studies | Stefan Manja',
       description: 'Case studies showing internal AI systems built for real workflows, with emphasis on delivery choices, system shape, and operational outcomes.',
       author: { '@id': `${siteConfig.siteUrl}/#person` },
+      inLanguage: 'en',
     },
   ]}
 >
@@ -46,7 +50,7 @@ const caseStudies = (await getCollection('case-studies')).sort((left, right) => 
         </div>
 
         <div class="mt-10 grid gap-4 lg:grid-cols-2">
-          {caseStudies.map((entry) => <CaseStudyCard entry={entry} />)}
+          {caseStudies.map((entry) => <CaseStudyCard entry={entry} locale="en" />)}
         </div>
       </div>
     </section>

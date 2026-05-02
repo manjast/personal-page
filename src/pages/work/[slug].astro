@@ -10,7 +10,7 @@ export async function getStaticPaths() {
   const entries = await getCollection('case-studies');
 
   return entries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
@@ -21,12 +21,12 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const canonicalUrl = `${siteConfig.siteUrl}/work/${entry.slug}/`;
+const canonicalUrl = `${siteConfig.siteUrl}/work/${entry.id}/`;
 const articleImage = new URL(entry.data.ogImage ?? '/og-default.png', siteConfig.siteUrl).toString();
 ---
 
 <BaseLayout
-  pathname={`/work/${entry.slug}/`}
+  pathname={`/work/${entry.id}/`}
   title={entry.data.title}
   description={entry.data.summary}
   image={entry.data.ogImage}

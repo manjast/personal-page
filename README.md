@@ -17,8 +17,8 @@ It is **not** a general scratch repo, note dump, or raw-material archive.
 
 ## Project standards
 
-- **Runtime:** Node 22 LTS (`.nvmrc`)
-- **Framework:** Astro 5
+- **Runtime:** Node 24 LTS (`.nvmrc`)
+- **Framework:** Astro 6
 - **Styling:** Tailwind 4 via `@tailwindcss/vite`
 - **Hosting target:** GitHub Pages + custom domain
 

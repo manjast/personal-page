@@ -16,16 +16,16 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
 <BaseLayout
   locale={locale}
   pathname="/sr/services/"
-  title="Изградња, ојачавање и саветовање за интерне системе вештачке интелигенције"
-  description="Почетне тачке радних токова, начини услуге и путеви испоруке за интерне системе вештачке интелигенције који захтевају дисциплиновану проверу, видљивост трошкова, границе приступа и стварну употребљивост."
+  title="Изградња, стабилизација и саветовање за интерне AI системе"
+  description="Полазне тачке, модели рада и ток испоруке за интерне AI системе који захтевају дисциплиновану евалуацију, увид у трошкове, границе приступа и стварну употребљивост."
   pageSchema={[
     {
       '@type': 'Service',
       '@id': `${siteConfig.siteUrl}/sr/#service`,
-      name: 'Изградња, ојачавање и саветовање за интерне системе вештачке интелигенције',
+      name: 'Изградња, стабилизација и саветовање за интерне AI системе',
       provider: { '@id': `${siteConfig.siteUrl}/#person` },
-      serviceType: ['Изградња', 'Ојачавање', 'Саветовање', 'Преглед изводљивости радног тока', 'Ојачавање пилота', 'Спремност интерног асистента знања', 'Изградња радног тока за подршку одлукама'],
-      description: 'Пројектна изградња, ојачавање и саветовање за интерне системе вештачке интелигенције у предузећима и средње великим организацијама, са нагласком на проверу, границе приступа, видљивост трошкова и предају.',
+      serviceType: ['Изградња', 'Стабилизација', 'Саветовање', 'Процена изводљивости AI процеса', 'Процена пилота пре продукције', 'Спремност интерног асистента знања', 'Изградња процеса за подршку одлукама'],
+      description: 'Пројектна изградња, стабилизација и саветовање за интерне AI системе у великим и средњим организацијама, са нагласком на евалуацију, границе приступа, увид у трошкове и предају тиму.',
       url: `${siteConfig.siteUrl}/sr/services/`,
       inLanguage: 'sr-Cyrl',
     },
@@ -38,28 +38,28 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
       <div class="shell">
         <div class="page-lead">
           <div class="flex flex-wrap items-center gap-3">
-            <span class="section-marker">01 / почетне тачке радних токова</span>
+            <span class="section-marker">01 / полазне тачке</span>
             <p class="eyebrow">Услуге</p>
           </div>
           <h1 class="page-title">
-            Почетне тачке радних токова, начини испоруке и врсте пројеката у којима је овај рад користан.
+            Полазне тачке, модели рада и типови пројеката у којима је овај рад користан.
           </h1>
           <p class="text-base leading-8 muted-copy">
-            Ова страница је за тимове са јасним оперативним проблемом, дефинисаним власником и стварном одлуком о испоруци.
-            Најбоље одговара пројектна изградња, уз ојачавање и ограничену саветодавну подршку када побољшавају проверу,
-            границе приступа, видљивост трошкова или предају.
+            Ова страница је за тимове са јасним оперативним проблемом, одређеним власником и стварном одлуком о испоруци.
+            Главни модел је пројектна изградња, уз стабилизацију и саветовање када они побољшавају евалуацију,
+            границе приступа, увид у трошкове или предају тиму.
           </p>
         </div>
 
         <div class="mt-10 section-break">
           <div class="max-w-3xl space-y-4">
-            <p class="eyebrow">Честе почетне тачке</p>
+            <p class="eyebrow">Честе полазне тачке</p>
             <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Већина добрих ангажмана почиње јасним уским грлом у радном току, не избором технологије.
+              Добри ангажмани најчешће почињу конкретним уским грлом у процесу, не избором технологије.
             </h2>
             <p class="text-base leading-8 muted-copy">
-              Ово су ситуације у којима сам најкориснији. Обично су ограничене око конкретне изградње,
-              прегледа или ојачавања и трају недељама, не као отворени ретенери.
+              Ово су ситуације у којима сам најкориснији. Обично су везане за конкретну изградњу,
+              процену или стабилизацију и трају недељама, не као неодређени дугорочни ангажмани.
             </p>
           </div>
 
@@ -68,14 +68,14 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
               startingPoints.map((point) => (
                 <article class="panel panel-light h-full p-6">
                   <div class="accent-bar"></div>
-                  <p class="eyebrow">Почетна тачка</p>
+                  <p class="eyebrow">Полазна тачка</p>
                   <h3 class="mt-4 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">
                     {point.name}
                   </h3>
                   <p class="mt-3 text-sm leading-7 muted-copy">{point.summary}</p>
                   <div class="mt-6 space-y-5">
                     <div>
-                      <p class="metric-label text-[color:var(--accent)]">Користите када</p>
+                      <p class="metric-label text-[color:var(--accent)]">Када има смисла</p>
                       <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">{point.useWhen}</p>
                     </div>
                     <div>
@@ -98,14 +98,14 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
         <div class="section-break grid gap-4 lg:grid-cols-2">
           <article class="panel panel-dark p-6 sm:p-8">
             <div class="accent-bar"></div>
-            <p class="eyebrow">Системско расуђивање</p>
+            <p class="eyebrow">Процена решења</p>
             <h2 class="mt-4 text-3xl font-semibold tracking-tight">
-              Не треба сваком радном току агент.
+              Не треба сваком процесу агент.
             </h2>
             <p class="mt-4 text-sm leading-7 text-stone-300">
-              Неким радним токовима треба ограничен слој препорука. Некима треба боље проналажење и операторски преглед.
-              Некима треба класична аутоматизација, боље повезивање података или никакав систем вештачке интелигенције. Облик система треба да прати
-              радни ток, економику, ризик и пут усвајања.
+              Неким процесима треба ограничен слој препорука. Некима треба боља претрага знања и људска провера.
+              Некима треба класична аутоматизација, боља интеграција података или никакав AI систем. Решење треба да
+              прати процес, економику, ризик и пут до усвајања.
             </p>
           </article>
 
@@ -128,11 +128,11 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
       <div class="shell">
         <div class="section-break max-w-3xl space-y-4">
           <div class="flex flex-wrap items-center gap-3">
-            <span class="section-marker">02 / начини услуге</span>
-            <p class="eyebrow">Како се ангажујем</p>
+            <span class="section-marker">02 / модели рада</span>
+            <p class="eyebrow">Како радим</p>
           </div>
           <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Изградња остаје примарна. Ојачавање и саветовање постоје да испоруку учине проверљивом, оперативном и лакшом за одржавање после пуштања у рад.
+            Изградња остаје главни модел. Стабилизација и саветовање постоје да испоруку учине проверљивом, употребљивом и лакшом за тим после пуштања у рад.
           </h2>
         </div>
 
@@ -146,35 +146,35 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
       <div class="shell">
         <div class="section-break panel panel-light px-6 py-8 sm:px-10">
           <div class="flex flex-wrap items-center gap-3">
-            <span class="section-marker">03 / пут испоруке</span>
-            <p class="eyebrow">Типичан облик ангажмана</p>
+            <span class="section-marker">03 / ток сарадње</span>
+            <p class="eyebrow">Типичан ток сарадње</p>
           </div>
           <ol class="mt-6 grid gap-4 text-sm leading-7 text-[color:var(--ink-soft)] sm:grid-cols-2">
             <li class="rounded-2xl border border-[color:var(--rule)] bg-white/70 p-5">
               <span class="metric-label text-[color:var(--accent)]" aria-hidden="true">Корак 01</span>
               <span class="mt-3 block font-semibold text-[color:var(--ink)]">Обим</span>
-              <span class="mt-2 block">Ускладити радни ток, кориснике, ограничења и шта „корисно” значи у пракси.</span>
+              <span class="mt-2 block">Ускладити процес, кориснике, ограничења и шта „корисно” значи у пракси.</span>
             </li>
             <li class="rounded-2xl border border-[color:var(--rule)] bg-white/70 p-5">
               <span class="metric-label text-[color:var(--accent)]" aria-hidden="true">Корак 02</span>
               <span class="mt-3 block font-semibold text-[color:var(--ink)]">Изградња</span>
-              <span class="mt-2 block">Имплементирати прву верзију са одлукама које подржавају стварну употребу, не демонстрациони утисак.</span>
+              <span class="mt-2 block">Испоручити прву верзију са одлукама које подржавају стварну употребу, не демо утисак.</span>
             </li>
             <li class="rounded-2xl border border-[color:var(--rule)] bg-white/70 p-5">
               <span class="metric-label text-[color:var(--accent)]" aria-hidden="true">Корак 03</span>
-              <span class="mt-3 block font-semibold text-[color:var(--ink)]">Ојачавање</span>
-              <span class="mt-2 block">Ојачати проверу, заштитити од начина отказа и учинити понашање од прототипа до продукције читљивим.</span>
+              <span class="mt-3 block font-semibold text-[color:var(--ink)]">Стабилизација</span>
+              <span class="mt-2 block">Уредити евалуацију, затворити слабе тачке и учинити понашање система разумљивим на путу ка продукцији.</span>
             </li>
             <li class="rounded-2xl border border-[color:var(--rule)] bg-white/70 p-5">
               <span class="metric-label text-[color:var(--accent)]" aria-hidden="true">Корак 04</span>
               <span class="mt-3 block font-semibold text-[color:var(--ink)]">Предаја</span>
-              <span class="mt-2 block">Оставити нешто што ваш тим може да води, прегледа и проширује без митологије.</span>
+              <span class="mt-2 block">Оставити систем који ваш тим може да води, проверава и проширује без ослањања на аутора.</span>
             </li>
           </ol>
           <p class="mt-8 border-t border-[color:var(--rule)] pt-6 text-sm leading-7 text-[color:var(--muted)]">
-            Већина ангажмана је ограничена око конкретне изградње или ојачавања и траје недељама, не као отворен ретенер.
-            Први корак је обично кратак разговор о обиму, како би се ускладили радни ток, користан исход и да ли има смисла
-            пут изградње, ојачавања или саветовања.
+            Већина ангажмана је везана за конкретну изградњу или стабилизацију и траје недељама, не као неодређен
+            дугорочни ангажман. Први корак је обично кратак разговор о обиму, како бисмо ускладили процес, користан
+            исход и да ли има смисла пут изградње, стабилизације или саветовања.
           </p>
           <div class="mt-8 border-t border-[color:var(--rule)] pt-6">
             <div class="rounded-2xl border border-[color:var(--rule)] bg-[rgba(255,252,247,0.72)] p-5">
@@ -184,21 +184,21 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
                   <p class="metric-label text-[color:var(--accent)]">01 / план</p>
                   <p class="mt-2 font-semibold text-[color:var(--ink)]">План изградње са дефинисаним обимом</p>
                   <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
-                    Граница радног тока, модел власништва и пут испоруке на једном месту.
+                    Граница процеса, модел власништва и пут испоруке на једном месту.
                   </p>
                 </div>
                 <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
                   <p class="metric-label text-[color:var(--accent)]">02 / испорука</p>
                   <p class="mt-2 font-semibold text-[color:var(--ink)]">Испоручена имплементација</p>
                   <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
-                    Промене прво кроз изградњу или конкретан пакет следећих корака када је ангажман прво саветодаван.
+                    Испоручене измене када је ангажман изградња, или конкретан пакет следећих корака када је ангажман саветодаван.
                   </p>
                 </div>
                 <div class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
                   <p class="metric-label text-[color:var(--accent)]">03 / предаја</p>
-                  <p class="mt-2 font-semibold text-[color:var(--ink)]">Пакет провере и предаје</p>
+                  <p class="mt-2 font-semibold text-[color:var(--ink)]">Пакет евалуације и предаје</p>
                   <p class="mt-2 text-sm leading-6 text-[color:var(--ink-soft)]">
-                    Белешке из којих ваш тим може да ради без тога да се рад објашњава два пута.
+                    Белешке из којих ваш тим може да ради без поновног објашњавања.
                   </p>
                 </div>
               </div>
@@ -210,10 +210,10 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
 
     <CTASection
       eyebrow={content.ui.ctaEyebrow}
-      title="Ако је радни ток довољно јасан за обим, обично могу брзо да кажем који пут има смисла."
-      description="Кратак опис радног тока, тренутне фазе, главне бриге и кључних ограничења обично је довољан за први пролаз."
+      title="Ако је процес довољно конкретан за процену обима, обично могу брзо да кажем да ли има смисла изградња, стабилизација или саветодавни рад."
+      description="Кратак опис процеса, тренутне фазе, главне бриге и кључних ограничења обично је довољан за прву процену."
       primary={primaryCta}
-      secondary={{ href: '/sr/work/', label: 'Погледајте приказе рада' }}
+      secondary={{ href: '/sr/work/', label: 'Погледајте пројекте' }}
     />
   </main>
 

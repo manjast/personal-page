@@ -53,7 +53,7 @@ const jsonLd = {
     {
       '@type': 'Person',
       '@id': `${siteConfig.siteUrl}/#person`,
-      name: siteConfig.name,
+      name: localizedSiteConfig.name,
       url: siteConfig.siteUrl,
       email: siteConfig.email,
       sameAs: [siteConfig.linkedinUrl, siteConfig.githubUrl],
@@ -66,7 +66,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': `${siteConfig.siteUrl}/#website`,
       url: siteConfig.siteUrl,
-      name: siteConfig.name,
+      name: localizedSiteConfig.name,
       description: localizedSiteConfig.defaultDescription,
       author: { '@id': `${siteConfig.siteUrl}/#person` },
       inLanguage: language.hreflang,
@@ -84,20 +84,26 @@ const jsonLd = {
     <title>{pageTitle}</title>
     <meta name="description" content={resolvedDescription} />
     <meta name="theme-color" content="#f3f0e8" />
-    <link
-      rel="preload"
-      href="/fonts/ibm-plex-sans-latin-var-v23.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/ibm-plex-sans-condensed-latin-600-v15.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    {
+      locale !== 'sr' && (
+        <>
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-sans-latin-var-v23.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+          />
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-sans-condensed-latin-600-v15.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+          />
+        </>
+      )
+    }
     {
       !noindex && (
         <>
@@ -115,7 +121,7 @@ const jsonLd = {
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content={siteConfig.defaultTitle} />
+    <meta property="og:site_name" content={localizedSiteConfig.defaultTitle} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={resolvedDescription} />
     <meta property="og:url" content={canonical} />

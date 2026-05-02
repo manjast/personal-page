@@ -390,6 +390,12 @@ html[lang^="sr"] h4 {
   letter-spacing: 0;
 }
 
+.site-tagline,
+.site-nav,
+.language-switcher {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
 html[lang^="sr"] .eyebrow,
 html[lang^="sr"] .metric-label,
 html[lang^="sr"] .site-tagline,

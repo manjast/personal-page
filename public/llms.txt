@@ -16,7 +16,7 @@ Stefan currently works in an enterprise and industrial AI context.
 Current public-safe work signal: applied AI for internal industrial workflows
 and data-intensive engineering contexts.
 
-He is selectively available for project-based consulting on internal AI systems:
+He is selectively available for project-based work on internal AI systems:
 build, hardening, and scoped advisory work.
 
 Engagements are project-scoped and typically serve enterprise or mid-market
@@ -25,7 +25,7 @@ teams.
 ## Primary fit
 
 - Project-based build work for internal AI workflows
-- Hardening and productionising pilots or prototypes
+- Hardening pilots or prototypes for real use
 - Scoped advisory work tied to real delivery decisions
 - Workflow feasibility review for teams deciding whether an AI system is worth building
 - Internal knowledge assistant readiness review for RAG and enterprise assistant work
@@ -60,7 +60,7 @@ teams.
 - /work/delta-credit-risk-workflow : Credit-risk decision-support workflow (Delta Holding)
 - /work/delta-enterprise-rag-assistant : Self-hosted internal knowledge assistant (Delta Holding)
 - /services : workflow starting points, service modes, and delivery path
-- /contact : workflow review and fit check
+- /contact : workflow review and initial inquiry
 
 ## Technical context
 

@@ -28,8 +28,8 @@ function isActive(href: string) {
 ---
 
 <header class="sticky top-0 z-50 border-b border-[color:var(--rule)] bg-[rgba(243,240,232,0.9)] backdrop-blur-sm">
-  <div class="shell flex flex-col gap-1.5 py-3 sm:py-5 lg:flex-row lg:items-center lg:justify-between lg:gap-5">
-    <a href={localizedHref(locale, '/')} class="group inline-flex min-h-[44px] min-w-0 flex-col justify-center gap-0.5">
+  <div class="shell grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-3 py-3 sm:py-5 lg:flex lg:items-center lg:justify-between lg:gap-5">
+    <a href={localizedHref(locale, '/')} class="group col-start-1 row-start-1 inline-flex min-h-[44px] min-w-0 flex-col justify-center gap-0.5">
       <span class="text-lg font-semibold tracking-tight text-[color:var(--ink)]">{siteConfig.name}</span>
       <span
         class="site-tagline hidden uppercase text-[color:var(--muted-soft)] sm:block"
@@ -38,16 +38,16 @@ function isActive(href: string) {
       </span>
     </a>
 
-    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between lg:shrink-0">
+    <div class="contents lg:flex lg:shrink-0 lg:items-center lg:gap-3">
       <nav
         aria-label={content.ui.navAriaLabel}
-        class="site-nav flex flex-wrap items-center gap-x-3 gap-y-1 font-medium uppercase text-[color:var(--muted)] sm:gap-x-5 lg:flex-nowrap"
+        class="site-nav col-[1/-1] row-start-2 flex w-full flex-wrap items-center justify-between gap-x-2 gap-y-1 font-medium uppercase text-[color:var(--muted)] sm:justify-start sm:gap-x-5 lg:w-auto lg:flex-nowrap"
       >
         {
           navigation.map((item) => (
             <a
               class:list={[
-                'inline-flex min-h-[44px] items-center px-2 py-2 transition hover:text-[color:var(--ink)] sm:px-1',
+                'inline-flex min-h-[40px] items-center px-1 py-2 whitespace-nowrap transition hover:text-[color:var(--ink)] sm:min-h-[44px] sm:px-1',
                 isActive(item.href) && 'text-[color:var(--accent)]',
               ]}
               aria-current={isActive(item.href) ? 'page' : undefined}
@@ -60,13 +60,13 @@ function isActive(href: string) {
       </nav>
       <div
         aria-label={content.ui.languageSwitcherLabel}
-        class="language-switcher flex w-fit items-center rounded-xl border border-[color:var(--rule)] bg-white/60 p-1 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-[color:var(--muted)]"
+        class="language-switcher col-start-2 row-start-1 self-start flex w-fit items-center rounded-xl border border-[color:var(--rule)] bg-white/60 p-1 text-[0.68rem] font-semibold uppercase tracking-[0.06em] text-[color:var(--muted)] sm:text-[0.72rem] sm:tracking-[0.08em] lg:self-auto"
       >
         {
           (['en', 'sr'] as const).map((targetLocale) => (
             <a
               class:list={[
-                'inline-flex min-h-[44px] items-center rounded-lg px-2.5 transition hover:text-[color:var(--ink)]',
+                'inline-flex min-h-[40px] items-center rounded-lg px-2 transition hover:text-[color:var(--ink)] sm:min-h-[44px] sm:px-2.5',
                 locale === targetLocale && 'bg-[color:var(--ink)] text-[color:var(--canvas)] hover:text-[color:var(--canvas)]',
               ]}
               href={alternatePaths[targetLocale]}

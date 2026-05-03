@@ -362,8 +362,8 @@ html[lang^="sr"] h4,
   }
 
   .site-nav {
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
   }
 
   @media (min-width: 640px) {
@@ -464,14 +464,25 @@ html[lang^="sr"] .site-tagline,
   letter-spacing: 0.06em;
 }
 
-html[lang^="sr"] .site-nav,
-html[lang^="sr"] .section-marker,
-html[lang^="sr"] .language-switcher,
-.serbian-locale-scope .site-nav,
-.serbian-locale-scope .section-marker,
-.serbian-locale-scope .language-switcher {
-  letter-spacing: 0.04em;
-}
+  html[lang^="sr"] .site-nav,
+  html[lang^="sr"] .section-marker,
+  html[lang^="sr"] .language-switcher,
+  .serbian-locale-scope .site-nav,
+  .serbian-locale-scope .section-marker,
+  .serbian-locale-scope .language-switcher {
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 420px) {
+    .site-nav {
+      letter-spacing: 0.02em;
+    }
+
+    html[lang^="sr"] .site-nav,
+    .serbian-locale-scope .site-nav {
+      letter-spacing: 0.02em;
+    }
+  }
 
 @media (max-width: 360px) {
   html[lang^="sr"] h1,

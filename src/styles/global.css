@@ -126,7 +126,7 @@ body {
 }
 
 html[lang^="sr"] body,
-:lang(sr) {
+.serbian-locale-scope {
   font-family: "IBM Plex Sans Serbian", "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -149,10 +149,10 @@ html[lang^="sr"] h1,
 html[lang^="sr"] h2,
 html[lang^="sr"] h3,
 html[lang^="sr"] h4,
-:lang(sr) h1,
-:lang(sr) h2,
-:lang(sr) h3,
-:lang(sr) h4 {
+.serbian-locale-scope h1,
+.serbian-locale-scope h2,
+.serbian-locale-scope h3,
+.serbian-locale-scope h4 {
   font-family: "IBM Plex Sans Serbian", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0;
 }
@@ -443,33 +443,33 @@ html[lang^="sr"] .site-tagline,
 html[lang^="sr"] .site-nav,
 html[lang^="sr"] .section-marker,
 html[lang^="sr"] .language-switcher,
-:lang(sr) .eyebrow,
-:lang(sr) .metric-label,
-:lang(sr) .site-tagline,
-:lang(sr) .site-nav,
-:lang(sr) .section-marker,
-:lang(sr) .language-switcher {
+.serbian-locale-scope .eyebrow,
+.serbian-locale-scope .metric-label,
+.serbian-locale-scope .site-tagline,
+.serbian-locale-scope .site-nav,
+.serbian-locale-scope .section-marker,
+.serbian-locale-scope .language-switcher {
   font-family: "IBM Plex Mono Serbian", "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 html[lang^="sr"] .eyebrow,
-:lang(sr) .eyebrow {
+.serbian-locale-scope .eyebrow {
   letter-spacing: 0.08em;
 }
 
 html[lang^="sr"] .metric-label,
 html[lang^="sr"] .site-tagline,
-:lang(sr) .metric-label,
-:lang(sr) .site-tagline {
+.serbian-locale-scope .metric-label,
+.serbian-locale-scope .site-tagline {
   letter-spacing: 0.06em;
 }
 
 html[lang^="sr"] .site-nav,
 html[lang^="sr"] .section-marker,
 html[lang^="sr"] .language-switcher,
-:lang(sr) .site-nav,
-:lang(sr) .section-marker,
-:lang(sr) .language-switcher {
+.serbian-locale-scope .site-nav,
+.serbian-locale-scope .section-marker,
+.serbian-locale-scope .language-switcher {
   letter-spacing: 0.04em;
 }
 
@@ -478,10 +478,10 @@ html[lang^="sr"] .language-switcher,
   html[lang^="sr"] h2,
   html[lang^="sr"] h3,
   html[lang^="sr"] h4,
-  :lang(sr) h1,
-  :lang(sr) h2,
-  :lang(sr) h3,
-  :lang(sr) h4 {
+  .serbian-locale-scope h1,
+  .serbian-locale-scope h2,
+  .serbian-locale-scope h3,
+  .serbian-locale-scope h4 {
     hyphens: auto;
     overflow-wrap: break-word;
   }
@@ -492,41 +492,41 @@ html[lang^="sr"] .language-switcher,
   html[lang^="sr"] .button-secondary,
   html[lang^="sr"] .button-primary-invert,
   html[lang^="sr"] .button-secondary-dark,
-  :lang(sr) .metric-label,
-  :lang(sr) .section-marker,
-  :lang(sr) .button-primary,
-  :lang(sr) .button-secondary,
-  :lang(sr) .button-primary-invert,
-  :lang(sr) .button-secondary-dark {
+  .serbian-locale-scope .metric-label,
+  .serbian-locale-scope .section-marker,
+  .serbian-locale-scope .button-primary,
+  .serbian-locale-scope .button-secondary,
+  .serbian-locale-scope .button-primary-invert,
+  .serbian-locale-scope .button-secondary-dark {
     overflow-wrap: anywhere;
   }
 
   html[lang^="sr"] h1,
-  :lang(sr) h1 {
+  .serbian-locale-scope h1 {
     font-size: 1.9rem;
     line-height: 1.08;
   }
 
   html[lang^="sr"] h2,
-  :lang(sr) h2 {
+  .serbian-locale-scope h2 {
     font-size: 1.9rem;
     line-height: 1.08;
   }
 
   html[lang^="sr"] h3,
-  :lang(sr) h3 {
+  .serbian-locale-scope h3 {
     font-size: 1.45rem;
     line-height: 1.12;
   }
 
   html[lang^="sr"] .page-title,
-  :lang(sr) .page-title {
+  .serbian-locale-scope .page-title {
     font-size: 1.75rem;
     line-height: 1.08;
   }
 
   html[lang^="sr"] .panel,
-  :lang(sr) .panel {
+  .serbian-locale-scope .panel {
     border-radius: 1rem;
   }
 }

@@ -15,14 +15,14 @@ const formSuccessPath = '/sr/contact/sent/';
 <BaseLayout
   locale={locale}
   pathname="/sr/contact/"
-  title="Процена интерног AI процеса"
-  description="Пошаљите интерни AI процес на фокусирану процену код Стефана Мање."
+  title="Процена примене AI у интерном процесу"
+  description="Пошаљите опис интерног процеса за фокусирану процену са Стефаном Мањом."
   pageSchema={[
     {
       '@type': 'ContactPage',
       '@id': `${siteConfig.siteUrl}/sr/contact/#webpage`,
       url: `${siteConfig.siteUrl}/sr/contact/`,
-      name: 'Процена интерног AI процеса | Стефан Мања',
+      name: 'Процена примене AI у интерном процесу | Стефан Мања',
       author: { '@id': `${siteConfig.siteUrl}/#person` },
       inLanguage: 'sr-Cyrl',
     },
@@ -44,8 +44,8 @@ const formSuccessPath = '/sr/contact/sent/';
                  Почните од процеса.
               </h1>
                 <p class="text-base leading-8 muted-copy">
-                  Радим на малом броју пројеката у којима су оперативни проблем, власник и границе довољно конкретни
-                  да рад има смисла. Не морате унапред имати обликовано решење; корисна почетна тачка је сам процес
+                  Радим на малом броју пројеката у којима су оперативни проблем, власник и ограничења довољно конкретни
+                  да ангажман има смисла. Не морате унапред имати готово решење; корисна почетна тачка је сам процес
                   и шта треба да постане лакше, брже, безбедније или проверљивије. Разговори се воде поверљиво,
                   а интерни контекст се третира пажљиво.
                 </p>
@@ -71,7 +71,7 @@ const formSuccessPath = '/sr/contact/sent/';
                 <p class="text-sm font-semibold text-[color:var(--ink)]">Добар први имејл</p>
                 <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
                   <li>Процес и корисници могу лако да се опишу.</li>
-                  <li>Можете да кажете да ли је реч о новој изградњи, постојећем прототипу или одлуци коју треба проверити.</li>
+                    <li>Можете да кажете да ли је реч о новом систему, постојећем прототипу или одлуци коју треба проверити.</li>
                   <li>Већ постоје власник, тренутна фаза и ограничење које ће у пракси бити важно.</li>
                 </ul>
               </article>
@@ -94,7 +94,7 @@ const formSuccessPath = '/sr/contact/sent/';
                 <p class="mt-3 text-sm leading-7 muted-copy">Довољно контекста за прву процену.</p>
 
                 <form id="contact-form" class="mt-8 space-y-6" method="POST" action={formAction}>
-                  <input type="hidden" name="_subject" value="Процена интерног AI процеса — stefanmanja.com" />
+                    <input type="hidden" name="_subject" value="Процена примене AI у интерном процесу — stefanmanja.com" />
                   <input id="contact-form-next" type="hidden" name="_next" value={formSuccessPath} />
                   <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
                     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
@@ -118,7 +118,7 @@ const formSuccessPath = '/sr/contact/sent/';
 
                   <div>
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]" for="use-case">
-                      Шта желите да изградите или побољшате?
+                      Шта желите да развијете или побољшате?
                     </label>
                     <textarea
                       id="use-case"
@@ -134,11 +134,11 @@ const formSuccessPath = '/sr/contact/sent/';
                     Главна брига
                     <select id="primary-concern" class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" name="primary_concern" required>
                       <option value="">Изаберите једно</option>
-                      <option value="worth-building">Одлучујемо да ли ово вреди градити</option>
+                      <option value="worth-building">Одлучујемо да ли ово вреди развијати</option>
                       <option value="prototype-hardening">Имамо прототип, али није спреман за стварну употребу</option>
-                      <option value="assistant-readiness">Интерни асистент / RAG систем треба проверу спремности</option>
-                      <option value="decision-support">Аналитичком процесу треба подршка у одлучивању</option>
-                      <option value="second-opinion">Треба нам друго мишљење о добављачу или архитектури</option>
+                      <option value="assistant-readiness">Интерном асистенту / RAG систему потребна је провера спремности</option>
+                      <option value="decision-support">Аналитичком процесу треба подршка доношењу одлука</option>
+                      <option value="second-opinion">Треба нам додатно мишљење о добављачу или архитектури</option>
                       <option value="other">Друго</option>
                     </select>
                   </label>
@@ -150,12 +150,12 @@ const formSuccessPath = '/sr/contact/sent/';
                       <option value="exploring">Процес је дефинисан, приступ се још бира</option>
                       <option value="prototype">Прототип постоји</option>
                       <option value="hardening">Потребна је припрема за продукцију</option>
-                      <option value="replace-rescue">Мењамо или спасавамо постојећи процес</option>
+                        <option value="replace-rescue">Мењамо или спасавамо постојеће решење</option>
                     </select>
                   </label>
 
                   <fieldset class="space-y-3">
-                    <legend class="text-sm font-medium text-[color:var(--ink-soft)]">Позната ограничења</legend>
+                      <legend class="text-sm font-medium text-[color:var(--ink-soft)]">Постојећа ограничења</legend>
                     <div class="grid gap-3 sm:grid-cols-2">
                       {
                         [
@@ -193,7 +193,7 @@ const formSuccessPath = '/sr/contact/sent/';
                       required
                     ></textarea>
                     <p id="context-hint" class="mt-2 text-xs leading-5 muted-copy">
-                      Тренутни алати, величина тима, притисак рокова или захтеви поверења - шта год је већ јасно.
+                      Тренутни алати, величина тима, притисак рокова или услови под којима би систем морао да буде поуздан — шта год је већ јасно.
                     </p>
                   </div>
 
@@ -205,13 +205,13 @@ const formSuccessPath = '/sr/contact/sent/';
                   </p>
                 </form>
                 <div class="mt-8 border-t border-[color:var(--rule)] pt-6">
-                  <p class="text-sm font-semibold text-[color:var(--ink)]">Шта се дешава следеће</p>
-                  <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
-                    <li>Прегледам процес, тренутну фазу и ограничења.</li>
-                    <li>Ако делује као пројекат где могу да допринесем, одговарам у року од 3 радна дана.</li>
-                    <li>Ако је корисно, указујем на вероватан следећи корак: изградња, стабилизација, поједностављење, заустављање или краћи саветодавни разговор.</li>
-                    <li>Ако није прави тип пројекта, обично то кажем директно.</li>
-                  </ul>
+                    <p class="text-sm font-semibold text-[color:var(--ink)]">Шта се дешава даље</p>
+                    <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
+                      <li>Прегледам процес, тренутну фазу и ограничења.</li>
+                      <li>Ако делује као пројекат где могу да допринесем, одговарам у року од 3 радна дана.</li>
+                      <li>Ако је корисно, указујем на вероватан следећи корак: израда система, стабилизација, поједностављење, заустављање или краћи саветодавни разговор.</li>
+                      <li>Ако није прави тип пројекта, обично то кажем директно.</li>
+                    </ul>
                 </div>
               </div>
             ) : (
@@ -221,13 +221,13 @@ const formSuccessPath = '/sr/contact/sent/';
                 <p class="mt-3 text-sm leading-7 text-stone-300">{contactExpectations.emailPrompt}</p>
                 <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
                   <li>Процес и ко га данас користи</li>
-                  <li>Главна брига: изводљивост, стабилизација, спремност асистента, подршка одлукама или друго мишљење</li>
-                  <li>Шта би морало да буде поуздано да би систем био користан</li>
-                  <li>Рокови, хостинг, идентитет или ограничења усклађености која већ нешто значе</li>
-                </ul>
-                <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Процена интерног AI процеса`}>
-                  Пошаљите опис имејлом
-                </a>
+                    <li>Главна брига: изводљивост, стабилизација, спремност асистента, подршка доношењу одлука или додатно мишљење</li>
+                    <li>Шта би морало да буде поуздано да би систем био користан</li>
+                    <li>Рокови, хостинг, управљање приступом или ограничења усклађености која су већ важна</li>
+                  </ul>
+                  <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Процена примене AI у интерном процесу`}>
+                    Пошаљите опис имејлом
+                  </a>
               </div>
             )
           }

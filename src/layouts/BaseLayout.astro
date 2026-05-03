@@ -85,7 +85,24 @@ const jsonLd = {
     <meta name="description" content={resolvedDescription} />
     <meta name="theme-color" content="#f3f0e8" />
     {
-      locale !== 'sr' && (
+      locale === 'sr' ? (
+        <>
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-sans-var-complete.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+          />
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-sans-condensed-complete-600.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+          />
+        </>
+      ) : (
         <>
           <link
             rel="preload"

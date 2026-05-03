@@ -106,7 +106,7 @@ ogImage: "/og-rag-assistant.png"
         </div>
         <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.9); border-radius: 1rem; padding: 0.95rem;">
           <p class="metric-label" style="margin: 0;">06 / видљивост</p>
-          <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Коришћење, трошкови и здравље</p>
+          <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Коришћење, трошкови и стање система</p>
           <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
             Администраторски увид у коришћење, трошкове и стање система после пуштања у рад.
           </p>

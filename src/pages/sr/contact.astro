@@ -93,9 +93,15 @@ const formSuccessPath = '/sr/contact/sent/';
                 <p class="text-sm font-semibold text-[color:var(--ink)]">Процена процеса</p>
                 <p class="mt-3 text-sm leading-7 muted-copy">Довољно контекста за прву процену.</p>
 
-                <form id="contact-form" class="mt-8 space-y-6" method="POST" action={formAction}>
-                    <input type="hidden" name="_subject" value="Процена примене AI у интерном процесу — stefanmanja.com" />
-                  <input id="contact-form-next" type="hidden" name="_next" value={formSuccessPath} />
+                <form
+                  id="contact-form"
+                  class="mt-8 space-y-6"
+                  method="POST"
+                  action={formAction}
+                  data-success-path={formSuccessPath}
+                  data-error-message="Порука тренутно не може да се пошаље. Покушајте поново или пошаљите имејл директно."
+                >
+                    <input type="hidden" name="subject" value="Процена примене AI у интерном процесу — stefanmanja.com" />
                   <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
                     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
                   </div>
@@ -203,6 +209,7 @@ const formSuccessPath = '/sr/contact/sent/';
                   <p class="text-sm leading-7 muted-copy">
                     Поруке се шаљу преко Formspree-ја и користе се само за одговор на вашу поруку.
                   </p>
+                  <p id="contact-form-status" class="text-sm leading-7 text-[color:var(--accent)]" hidden aria-live="polite"></p>
                 </form>
                 <div class="mt-8 border-t border-[color:var(--rule)] pt-6">
                     <p class="text-sm font-semibold text-[color:var(--ink)]">Шта се дешава даље</p>
@@ -226,7 +233,7 @@ const formSuccessPath = '/sr/contact/sent/';
                     <li>Рокови, хостинг, управљање приступом или ограничења усклађености која су већ важна</li>
                   </ul>
                   <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Процена примене AI у интерном процесу`}>
-                    Пошаљите опис имејлом
+                    Пошаљите опис процеса
                   </a>
               </div>
             )
@@ -238,11 +245,8 @@ const formSuccessPath = '/sr/contact/sent/';
 
   <SiteFooter locale={locale} />
   <script is:inline>
-    const contactFormNext = document.getElementById('contact-form-next');
-
-    if (contactFormNext instanceof HTMLInputElement) {
-      contactFormNext.value = `${window.location.origin}${contactFormNext.value}`;
-    }
+    const contactForm = document.getElementById('contact-form');
+    const contactFormStatus = document.getElementById('contact-form-status');
 
     document.getElementById('contact-email-link')?.addEventListener('click', function () {
       if (window.goatcounter && window.goatcounter.count) {
@@ -250,10 +254,55 @@ const formSuccessPath = '/sr/contact/sent/';
       }
     });
 
-    document.getElementById('contact-form')?.addEventListener('submit', function () {
-      if (window.goatcounter && window.goatcounter.count) {
-        window.goatcounter.count({ path: 'contact-form-submit', title: 'Contact: Form Submit', event: true });
-      }
-    });
+    if (contactForm instanceof HTMLFormElement) {
+      contactForm.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        if (window.goatcounter && window.goatcounter.count) {
+          window.goatcounter.count({ path: 'contact-form-submit', title: 'Contact: Form Submit', event: true });
+        }
+
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = true;
+          submitButton.setAttribute('aria-busy', 'true');
+        }
+
+        if (contactFormStatus instanceof HTMLElement) {
+          contactFormStatus.hidden = true;
+          contactFormStatus.textContent = '';
+        }
+
+        try {
+          const response = await fetch(contactForm.action, {
+            method: contactForm.method,
+            body: new FormData(contactForm),
+            headers: { Accept: 'application/json' },
+          });
+
+          if (!response.ok) {
+            throw new Error(contactForm.dataset.errorMessage || 'Submission failed');
+          }
+
+          const successPath = contactForm.dataset.successPath;
+          if (successPath) {
+            window.location.assign(successPath);
+          }
+        } catch (error) {
+          if (contactFormStatus instanceof HTMLElement) {
+            contactFormStatus.textContent =
+              error instanceof Error && error.message
+                ? error.message
+                : 'Порука тренутно не може да се пошаље. Покушајте поново или пошаљите имејл директно.';
+            contactFormStatus.hidden = false;
+          }
+
+          if (submitButton instanceof HTMLButtonElement) {
+            submitButton.disabled = false;
+            submitButton.removeAttribute('aria-busy');
+          }
+        }
+      });
+    }
   </script>
 </BaseLayout>

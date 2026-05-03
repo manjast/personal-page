@@ -40,18 +40,21 @@
 @font-face {
   font-family: "IBM Plex Sans Serbian";
   font-style: normal;
-  font-weight: 100 700;
+  font-weight: 400 700;
   font-stretch: 100%;
   font-display: swap;
-  src: url("/fonts/ibm-plex-sans-var-complete.woff2") format("woff2");
+  src: url("/fonts/ibm-plex-sans-cyrillic-ext-v23.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
 @font-face {
-  font-family: "IBM Plex Sans Condensed Serbian";
+  font-family: "IBM Plex Sans Serbian";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400 700;
+  font-stretch: 100%;
   font-display: swap;
-  src: url("/fonts/ibm-plex-sans-condensed-complete-600.woff2") format("woff2");
+  src: url("/fonts/ibm-plex-sans-cyrillic-v23.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 
 @font-face {
@@ -122,7 +125,8 @@ body {
   font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-html[lang^="sr"] body {
+html[lang^="sr"] body,
+:lang(sr) {
   font-family: "IBM Plex Sans Serbian", "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -144,8 +148,12 @@ a {
 html[lang^="sr"] h1,
 html[lang^="sr"] h2,
 html[lang^="sr"] h3,
-html[lang^="sr"] h4 {
-  font-family: "IBM Plex Sans Condensed Serbian", "IBM Plex Sans Serbian", "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+html[lang^="sr"] h4,
+:lang(sr) h1,
+:lang(sr) h2,
+:lang(sr) h3,
+:lang(sr) h4 {
+  font-family: "IBM Plex Sans Serbian", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0;
 }
 
@@ -434,22 +442,34 @@ html[lang^="sr"] .metric-label,
 html[lang^="sr"] .site-tagline,
 html[lang^="sr"] .site-nav,
 html[lang^="sr"] .section-marker,
-html[lang^="sr"] .language-switcher {
+html[lang^="sr"] .language-switcher,
+:lang(sr) .eyebrow,
+:lang(sr) .metric-label,
+:lang(sr) .site-tagline,
+:lang(sr) .site-nav,
+:lang(sr) .section-marker,
+:lang(sr) .language-switcher {
   font-family: "IBM Plex Mono Serbian", "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
-html[lang^="sr"] .eyebrow {
+html[lang^="sr"] .eyebrow,
+:lang(sr) .eyebrow {
   letter-spacing: 0.08em;
 }
 
 html[lang^="sr"] .metric-label,
-html[lang^="sr"] .site-tagline {
+html[lang^="sr"] .site-tagline,
+:lang(sr) .metric-label,
+:lang(sr) .site-tagline {
   letter-spacing: 0.06em;
 }
 
 html[lang^="sr"] .site-nav,
 html[lang^="sr"] .section-marker,
-html[lang^="sr"] .language-switcher {
+html[lang^="sr"] .language-switcher,
+:lang(sr) .site-nav,
+:lang(sr) .section-marker,
+:lang(sr) .language-switcher {
   letter-spacing: 0.04em;
 }
 
@@ -457,7 +477,11 @@ html[lang^="sr"] .language-switcher {
   html[lang^="sr"] h1,
   html[lang^="sr"] h2,
   html[lang^="sr"] h3,
-  html[lang^="sr"] h4 {
+  html[lang^="sr"] h4,
+  :lang(sr) h1,
+  :lang(sr) h2,
+  :lang(sr) h3,
+  :lang(sr) h4 {
     hyphens: auto;
     overflow-wrap: break-word;
   }
@@ -467,31 +491,42 @@ html[lang^="sr"] .language-switcher {
   html[lang^="sr"] .button-primary,
   html[lang^="sr"] .button-secondary,
   html[lang^="sr"] .button-primary-invert,
-  html[lang^="sr"] .button-secondary-dark {
+  html[lang^="sr"] .button-secondary-dark,
+  :lang(sr) .metric-label,
+  :lang(sr) .section-marker,
+  :lang(sr) .button-primary,
+  :lang(sr) .button-secondary,
+  :lang(sr) .button-primary-invert,
+  :lang(sr) .button-secondary-dark {
     overflow-wrap: anywhere;
   }
 
-  html[lang^="sr"] h1 {
+  html[lang^="sr"] h1,
+  :lang(sr) h1 {
     font-size: 1.9rem;
     line-height: 1.08;
   }
 
-  html[lang^="sr"] h2 {
+  html[lang^="sr"] h2,
+  :lang(sr) h2 {
     font-size: 1.9rem;
     line-height: 1.08;
   }
 
-  html[lang^="sr"] h3 {
+  html[lang^="sr"] h3,
+  :lang(sr) h3 {
     font-size: 1.45rem;
     line-height: 1.12;
   }
 
-  html[lang^="sr"] .page-title {
+  html[lang^="sr"] .page-title,
+  :lang(sr) .page-title {
     font-size: 1.75rem;
     line-height: 1.08;
   }
 
-  html[lang^="sr"] .panel {
+  html[lang^="sr"] .panel,
+  :lang(sr) .panel {
     border-radius: 1rem;
   }
 }

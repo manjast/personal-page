@@ -16,7 +16,7 @@ technologies:
   - Python
   - LLM API-ји
   - Дизајн процеса
-  - Структурисана подршка одлучивању
+  - Структурисана подршка доношењу одлука
 ogImage: "/og-credit-risk.png"
 ---
 
@@ -47,7 +47,7 @@ ogImage: "/og-credit-risk.png"
       Око самог процеса постојао је поново употребљив платформски оквир: нормализација по пословном ентитету, контролисани шаблони, историја извршавања и излази који могу да се провере.
     </p>
   </div>
-  <div style="display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+  <div style="display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));">
     <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
       <p class="metric-label" style="margin: 0;">01 / сигнали</p>
       <p style="margin: 0.45rem 0 0; color: var(--ink); font-weight: 600;">Јавни сигнали ризика компанија</p>

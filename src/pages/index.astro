@@ -11,11 +11,13 @@ import CTASection from '../components/CTASection.astro';
 import { fitGuidance, proofPoints, services, siteConfig } from '../config/site';
 
 const caseStudies = (await getCollection('case-studies'))
+  .filter((entry) => entry.data.locale === 'en')
   .sort((left, right) => left.data.order - right.data.order)
   .slice(0, 2);
 ---
 
 <BaseLayout
+  locale="en"
   pathname="/"
   title="Internal AI Systems for Enterprise Workflows"
   description={siteConfig.defaultDescription}
@@ -27,6 +29,7 @@ const caseStudies = (await getCollection('case-studies'))
       name: 'Internal AI Systems for Enterprise Workflows | Stefan Manja',
       description: siteConfig.defaultDescription,
       author: { '@id': `${siteConfig.siteUrl}/#person` },
+      inLanguage: 'en',
     },
     {
       '@type': 'Service',
@@ -37,6 +40,7 @@ const caseStudies = (await getCollection('case-studies'))
       description: 'Project-based build, hardening, and advisory work for internal AI systems in enterprise and mid-market workflows.',
       url: `${siteConfig.siteUrl}/services/`,
       areaServed: 'Worldwide',
+      inLanguage: 'en',
     },
   ]}
 >
@@ -65,7 +69,7 @@ const caseStudies = (await getCollection('case-studies'))
         </div>
 
         <div class="mt-10 grid gap-4 lg:grid-cols-2">
-          {caseStudies.map((entry) => <CaseStudyCard entry={entry} />)}
+          {caseStudies.map((entry) => <CaseStudyCard entry={entry} locale="en" />)}
         </div>
 
         <div class="mt-6">
@@ -201,7 +205,7 @@ const caseStudies = (await getCollection('case-studies'))
         </div>
 
         <div class="mt-10 grid gap-4 lg:grid-cols-3">
-          {services.map((service) => <ServiceCard service={service} />)}
+          {services.map((service) => <ServiceCard service={service} locale="en" />)}
         </div>
       </div>
     </section>

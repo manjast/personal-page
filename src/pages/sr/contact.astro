@@ -1,31 +1,34 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import { contactExpectations, fitGuidance, siteConfig } from '../config/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { getSiteContent } from '../../config/site';
 
+const locale = 'sr';
+const content = getSiteContent(locale);
+const { contactExpectations, fitGuidance, siteConfig } = content;
 const formId = import.meta.env.PUBLIC_FORMSPREE_FORM_ID;
 const formAction = formId ? `https://formspree.io/f/${formId}` : undefined;
-const formSuccessPath = '/contact/sent/';
+const formSuccessPath = '/sr/contact/sent/';
 ---
 
 <BaseLayout
-  locale="en"
-  pathname="/contact/"
-  title="Review an Internal AI Workflow"
-  description="Send an internal AI workflow for a focused review with Stefan Manja."
+  locale={locale}
+  pathname="/sr/contact/"
+  title="Процена примене AI у интерном процесу"
+  description="Пошаљите опис интерног процеса за фокусирану процену са Стефаном Мањом."
   pageSchema={[
     {
       '@type': 'ContactPage',
-      '@id': `${siteConfig.siteUrl}/contact/#webpage`,
-      url: `${siteConfig.siteUrl}/contact/`,
-      name: 'Review an Internal AI Workflow | Stefan Manja',
+      '@id': `${siteConfig.siteUrl}/sr/contact/#webpage`,
+      url: `${siteConfig.siteUrl}/sr/contact/`,
+      name: 'Процена примене AI у интерном процесу | Стефан Мања',
       author: { '@id': `${siteConfig.siteUrl}/#person` },
-      inLanguage: 'en',
+      inLanguage: 'sr-Cyrl',
     },
   ]}
 >
-  <SiteHeader />
+  <SiteHeader locale={locale} />
 
   <main id="main">
     <section class="section-space">
@@ -34,23 +37,23 @@ const formSuccessPath = '/contact/sent/';
           <div class="space-y-6">
             <div class="page-lead">
               <div class="flex flex-wrap items-center gap-3">
-               <span class="section-marker">01 / contact</span>
-                 <p class="eyebrow">Workflow review</p>
+                <span class="section-marker">01 / контакт</span>
+                  <p class="eyebrow">Процена процеса</p>
               </div>
               <h1 class="page-title">
-                Start with the workflow.
+                 Почните од процеса.
               </h1>
                 <p class="text-base leading-8 muted-copy">
-                 I take on a small number of projects where the operating problem, owner, and boundaries are concrete enough
-                 for the work to be useful. You do not need the solution shaped yet; the useful starting point is the
-                 workflow and what needs to become easier, faster, safer, or more reviewable. Workflow conversations are
-                 handled discreetly, and internal context is treated with care.
-               </p>
+                  Радим на малом броју пројеката у којима су оперативни проблем, власник и ограничења довољно конкретни
+                  да ангажман има смисла. Не морате унапред имати готово решење; корисна почетна тачка је сам процес
+                  и шта треба да постане лакше, брже, безбедније или проверљивије. Разговори се воде поверљиво,
+                  а интерни контекст се третира пажљиво.
+                </p>
             </div>
 
             <div class="panel panel-light p-6">
               <div class="accent-bar"></div>
-              <p class="text-sm font-semibold text-[color:var(--ink)]">Direct email</p>
+              <p class="text-sm font-semibold text-[color:var(--ink)]">Директан имејл</p>
               <a
                 id="contact-email-link"
                 class="mt-3 inline-flex h-11 items-center text-base font-semibold text-[color:var(--ink)] transition hover:text-[color:var(--accent)]"
@@ -65,17 +68,17 @@ const formSuccessPath = '/contact/sent/';
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-1">
               <article class="panel panel-light p-6">
                 <div class="accent-bar"></div>
-                <p class="text-sm font-semibold text-[color:var(--ink)]">Useful first emails</p>
+                <p class="text-sm font-semibold text-[color:var(--ink)]">Добар први имејл</p>
                 <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
-                  <li>The workflow and users are easy to describe.</li>
-                  <li>You can describe whether this is a new build, an existing prototype, or a workflow decision that needs review.</li>
-                  <li>There is already an owner, a current stage, and a constraint that will matter in practice.</li>
+                  <li>Процес и корисници могу лако да се опишу.</li>
+                    <li>Можете да кажете да ли је реч о новом систему, постојећем прототипу или одлуци коју треба проверити.</li>
+                  <li>Већ постоје власник, тренутна фаза и ограничење које ће у пракси бити важно.</li>
                 </ul>
               </article>
 
               <article class="panel panel-light p-6">
                 <div class="accent-bar"></div>
-                <p class="text-sm font-semibold text-[color:var(--ink)]">Usually too early or not the right shape</p>
+                <p class="text-sm font-semibold text-[color:var(--ink)]">Обично прерано или није прави тип пројекта</p>
                 <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
                   {fitGuidance.notFit.map((item) => <li>{item}</li>)}
                 </ul>
@@ -87,8 +90,8 @@ const formSuccessPath = '/contact/sent/';
             formAction ? (
               <div class="panel panel-light p-6 sm:p-8">
                 <div class="accent-bar"></div>
-                <p class="text-sm font-semibold text-[color:var(--ink)]">Workflow review</p>
-                <p class="mt-3 text-sm leading-7 muted-copy">Enough context for a first workflow review.</p>
+                <p class="text-sm font-semibold text-[color:var(--ink)]">Процена процеса</p>
+                <p class="mt-3 text-sm leading-7 muted-copy">Довољно контекста за прву процену.</p>
 
                 <form
                   id="contact-form"
@@ -96,32 +99,32 @@ const formSuccessPath = '/contact/sent/';
                   method="POST"
                   action={formAction}
                   data-success-path={formSuccessPath}
-                  data-error-message="The message could not be sent right now. Please try again or email me directly."
+                  data-error-message="Порука тренутно не може да се пошаље. Покушајте поново или пошаљите имејл директно."
                 >
-                  <input type="hidden" name="subject" value="Workflow review from stefanmanja.com" />
+                    <input type="hidden" name="subject" value="Процена примене AI у интерном процесу — stefanmanja.com" />
                   <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
                     <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
                   </div>
                   <div class="grid gap-6 sm:grid-cols-2">
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
-                      Name
+                      Име
                       <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="name" autocomplete="name" required />
                     </label>
 
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
-                      Work email
+                      Пословни имејл
                       <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="email" name="email" autocomplete="email" required />
                     </label>
                   </div>
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]">
-                    Company or team
+                    Компанија или тим
                     <input class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" type="text" name="company" autocomplete="organization" />
                   </label>
 
                   <div>
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]" for="use-case">
-                      What are you trying to build or improve?
+                      Шта желите да развијете или побољшате?
                     </label>
                     <textarea
                       id="use-case"
@@ -130,45 +133,45 @@ const formSuccessPath = '/contact/sent/';
                       aria-describedby="use-case-hint"
                       required
                     ></textarea>
-                    <p id="use-case-hint" class="mt-2 text-xs leading-5 muted-copy">One or two sentences are enough.</p>
+                    <p id="use-case-hint" class="mt-2 text-xs leading-5 muted-copy">Једна или две реченице су довољне.</p>
                   </div>
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]" for="primary-concern">
-                    Primary concern
+                    Главна брига
                     <select id="primary-concern" class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" name="primary_concern" required>
-                      <option value="">Select one</option>
-                      <option value="worth-building">Deciding whether this is worth building</option>
-                      <option value="prototype-hardening">Prototype exists but needs hardening</option>
-                      <option value="assistant-readiness">Internal assistant / RAG system needs readiness review</option>
-                      <option value="decision-support">Analyst workflow needs decision-support</option>
-                      <option value="second-opinion">Need second opinion on vendor or architecture direction</option>
-                      <option value="other">Other</option>
+                      <option value="">Изаберите једно</option>
+                      <option value="worth-building">Одлучујемо да ли ово вреди развијати</option>
+                      <option value="prototype-hardening">Имамо прототип, али није спреман за стварну употребу</option>
+                      <option value="assistant-readiness">Интерном асистенту / RAG систему потребна је провера спремности</option>
+                      <option value="decision-support">Аналитичком процесу треба подршка доношењу одлука</option>
+                      <option value="second-opinion">Треба нам додатно мишљење о добављачу или архитектури</option>
+                      <option value="other">Друго</option>
                     </select>
                   </label>
 
                   <label class="block text-sm font-medium text-[color:var(--ink-soft)]" for="current-stage">
-                    Current stage
+                    Тренутна фаза
                     <select id="current-stage" class="mt-2.5 w-full rounded-2xl border border-[color:var(--rule)] bg-white/85 px-4 py-3 text-sm text-[color:var(--ink)] outline-none transition focus:border-[color:var(--accent)]" name="current_stage" required>
-                      <option value="">Select one</option>
-                      <option value="exploring">Workflow defined, exploring approach</option>
-                      <option value="prototype">Prototype exists</option>
-                      <option value="hardening">Needs production hardening</option>
-                      <option value="replace-rescue">Replacing or rescuing an existing workflow</option>
+                      <option value="">Изаберите једно</option>
+                      <option value="exploring">Процес је дефинисан, приступ се још бира</option>
+                      <option value="prototype">Прототип постоји</option>
+                      <option value="hardening">Потребна је припрема за продукцију</option>
+                        <option value="replace-rescue">Мењамо или спасавамо постојеће решење</option>
                     </select>
                   </label>
 
                   <fieldset class="space-y-3">
-                    <legend class="text-sm font-medium text-[color:var(--ink-soft)]">Known constraints</legend>
+                      <legend class="text-sm font-medium text-[color:var(--ink-soft)]">Постојећа ограничења</legend>
                     <div class="grid gap-3 sm:grid-cols-2">
                       {
                         [
-                          'Data or access restrictions',
-                          'Human review required',
-                          'Cost or usage concern',
-                          'Compliance or governance concern',
-                          'Existing prototype or vendor',
-                          'Timeline pressure',
-                          'Internal handoff required',
+                          'Ограничења података или приступа',
+                          'Неопходна је људска провера',
+                          'Брига о трошковима или коришћењу',
+                          'Захтеви усклађености или интерна правила',
+                          'Постојећи прототип или добављач',
+                          'Притисак рокова',
+                          'Потребна је интерна предаја',
                         ].map((constraint) => (
                           <label class="flex min-h-[44px] items-start gap-3 rounded-2xl border border-[color:var(--rule)] bg-white/65 px-4 py-3 text-sm leading-6 text-[color:var(--ink-soft)]">
                             <input
@@ -186,7 +189,7 @@ const formSuccessPath = '/contact/sent/';
 
                   <div>
                     <label class="block text-sm font-medium text-[color:var(--ink-soft)]" for="context">
-                      Relevant context
+                      Релевантан контекст
                     </label>
                     <textarea
                       id="context"
@@ -196,42 +199,42 @@ const formSuccessPath = '/contact/sent/';
                       required
                     ></textarea>
                     <p id="context-hint" class="mt-2 text-xs leading-5 muted-copy">
-                      Current tooling, team size, timeline pressure, or trust requirements - whatever is already clear.
+                      Тренутни алати, величина тима, притисак рокова или услови под којима би систем морао да буде поуздан — шта год је већ јасно.
                     </p>
                   </div>
 
                   <button class="button-primary" type="submit">
-                    Send workflow for review
+                    Пошаљите опис процеса
                   </button>
                   <p class="text-sm leading-7 muted-copy">
-                    Submissions are sent via Formspree and used only to reply to your message.
+                    Поруке се шаљу преко Formspree-ја и користе се само за одговор на вашу поруку.
                   </p>
                   <p id="contact-form-status" class="text-sm leading-7 text-[color:var(--accent)]" hidden aria-live="polite"></p>
                 </form>
                 <div class="mt-8 border-t border-[color:var(--rule)] pt-6">
-                  <p class="text-sm font-semibold text-[color:var(--ink)]">What happens next</p>
-                  <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
-                    <li>I review the workflow, current stage, and constraints.</li>
-                    <li>If it looks like a fit, I reply within 3 business days.</li>
-                    <li>If useful, I point to the likely next path: build, harden, simplify, stop, or a scoped advisory conversation.</li>
-                    <li>If it is not the right shape, I will usually say that directly.</li>
-                  </ul>
+                    <p class="text-sm font-semibold text-[color:var(--ink)]">Шта се дешава даље</p>
+                    <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
+                      <li>Прегледам процес, тренутну фазу и ограничења.</li>
+                      <li>Ако делује као пројекат где могу да допринесем, одговарам у року од 3 радна дана.</li>
+                      <li>Ако је корисно, указујем на вероватан следећи корак: израда система, стабилизација, поједностављење, заустављање или краћи саветодавни разговор.</li>
+                      <li>Ако није прави тип пројекта, обично то кажем директно.</li>
+                    </ul>
                 </div>
               </div>
             ) : (
               <div class="panel panel-dark p-6 sm:p-8 lg:sticky lg:top-28">
                 <div class="accent-bar"></div>
-                <p class="text-sm font-semibold text-stone-50">What to include in a workflow review</p>
+                <p class="text-sm font-semibold text-stone-50">Шта укључити у опис процеса</p>
                 <p class="mt-3 text-sm leading-7 text-stone-300">{contactExpectations.emailPrompt}</p>
                 <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
-                  <li>The workflow and who uses it today</li>
-                  <li>The primary concern: feasibility, hardening, assistant readiness, decision-support, or second opinion</li>
-                  <li>What would need to be trustworthy for the system to be useful</li>
-                  <li>Any timeline, hosting, identity, or compliance constraints that already matter</li>
-                </ul>
-                <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Workflow review`}>
-                  Email workflow outline
-                </a>
+                  <li>Процес и ко га данас користи</li>
+                    <li>Главна брига: изводљивост, стабилизација, спремност асистента, подршка доношењу одлука или додатно мишљење</li>
+                    <li>Шта би морало да буде поуздано да би систем био користан</li>
+                    <li>Рокови, хостинг, управљање приступом или ограничења усклађености која су већ важна</li>
+                  </ul>
+                  <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Процена примене AI у интерном процесу`}>
+                    Пошаљите опис процеса
+                  </a>
               </div>
             )
           }
@@ -240,7 +243,7 @@ const formSuccessPath = '/contact/sent/';
     </section>
   </main>
 
-  <SiteFooter />
+  <SiteFooter locale={locale} />
   <script is:inline>
     const contactForm = document.getElementById('contact-form');
     const contactFormStatus = document.getElementById('contact-form-status');
@@ -290,7 +293,7 @@ const formSuccessPath = '/contact/sent/';
             contactFormStatus.textContent =
               error instanceof Error && error.message
                 ? error.message
-                : 'The message could not be sent right now. Please try again or email me directly.';
+                : 'Порука тренутно не може да се пошаље. Покушајте поново или пошаљите имејл директно.';
             contactFormStatus.hidden = false;
           }
 

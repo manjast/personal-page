@@ -1,5 +1,13 @@
 ---
-import { siteConfig } from '../config/site';
+import { getSiteContent } from '../config/site';
+import type { Locale } from '../i18n/routing';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'en' } = Astro.props;
+const { siteConfig, ui } = getSiteContent(locale);
 const year = new Date().getFullYear();
 ---
 
@@ -9,8 +17,7 @@ const year = new Date().getFullYear();
       <div class="accent-bar"></div>
       <p class="text-base font-semibold tracking-tight text-stone-50">{siteConfig.name}</p>
       <p class="text-sm leading-7 text-stone-300">
-        Internal AI systems for enterprise workflows, with emphasis on evaluation,
-        deployment discipline, and systems your team can operate after handoff.
+        {ui.footerDescription}
       </p>
     </div>
 

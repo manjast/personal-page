@@ -1,8 +1,17 @@
-export const siteConfig = {
+import type { Locale } from '../i18n/routing';
+
+const sharedSiteConfig = {
   name: 'Stefan Manja',
-  tagline: 'Internal AI systems for enterprise workflows',
   siteUrl: 'https://stefanmanja.com',
   email: 'stefan@stefanmanja.com',
+  linkedinUrl: 'https://www.linkedin.com/in/stefan-manja/',
+  githubUrl: 'https://github.com/manjast',
+  playbookUrl: 'https://github.com/manjast/agentic-development-playbook',
+} as const;
+
+const enSiteConfig = {
+  ...sharedSiteConfig,
+  tagline: 'Internal AI systems for enterprise workflows',
   defaultTitle: 'Stefan Manja',
   defaultDescription:
     'Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.',
@@ -18,19 +27,44 @@ export const siteConfig = {
     href: '/work',
     label: 'View selected work',
   },
-  linkedinUrl: 'https://www.linkedin.com/in/stefan-manja/',
-  githubUrl: 'https://github.com/manjast',
-  playbookUrl: 'https://github.com/manjast/agentic-development-playbook',
 } as const;
 
-export const navigation = [
+const srSiteConfig = {
+  ...sharedSiteConfig,
+  name: 'Стефан Мања',
+  tagline: 'Интерни AI системи за пословне процесе',
+  defaultTitle: 'Стефан Мања',
+  defaultDescription:
+    'Интерни AI системи за велике и средње организације. Стефан Мања развија и доводи до продукције системе који морају да имају јасну евалуацију, увид у трошкове и коришћење, поуздан пут до продукције и стварну употребну вредност.',
+  locationBadge: 'Београд, Србија · ради са међународним тимовима',
+  heroTitle: 'Интерни AI системи који раде и када је важно',
+  heroDescription:
+    'Многи интерни AI системи добро изгледају у демоу. Ја развијам и доводим до продукције системе који морају да раде са стварним корисницима, у стварним условима и са стварним трошковима — са евалуацијом, правилима приступа, увидом у трошкове и предајом планираном од почетка.',
+  heroPrimaryCta: {
+    href: '/contact',
+    label: 'Пошаљите опис процеса',
+  },
+  heroSecondaryCta: {
+    href: '/work',
+    label: 'Погледајте пројекте',
+  },
+} as const;
+
+const enNavigation = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
-export const proofPoints = [
+const srNavigation = [
+  { href: '/', label: 'Почетна' },
+  { href: '/work', label: 'Пројекти' },
+  { href: '/services', label: 'Услуге' },
+  { href: '/contact', label: 'Контакт' },
+] as const;
+
+const enProofPoints = [
   {
     eyebrow: 'Outcome',
     value: '~75% faster',
@@ -51,7 +85,28 @@ export const proofPoints = [
   },
 ] as const;
 
-export const startingPoints = [
+const srProofPoints = [
+  {
+    eyebrow: 'Исход',
+    value: '~75% брже',
+    label: 'анализа кредитног ризика',
+    copy: 'AI систем за подршку аналитичарима: јавни сигнали ризика и интерни контекст обједињени у структурисане препоруке.',
+  },
+  {
+    eyebrow: 'Коришћење',
+    value: '300+ корисника',
+    label: 'интерно хостован асистент',
+    copy: 'Више од 300 активних корисника од око 1.500 са правом приступа, уз преко 85% позитивних оцена на одговоре.',
+  },
+  {
+    eyebrow: 'Обим',
+    value: '50+ процеса процењено',
+    label: 'од процене прилике до одлуке о увођењу',
+    copy: 'AI пројекти у финансијама, операцијама, логистици и сродним тимовима — уз јасно раздвајање корисних система од занимљивих идеја.',
+  },
+] as const;
+
+const enStartingPoints = [
   {
     name: 'AI workflow feasibility review',
     summary: 'For teams deciding whether an AI system is worth building.',
@@ -103,7 +158,59 @@ export const startingPoints = [
   },
 ] as const;
 
-export const services = [
+const srStartingPoints = [
+  {
+    name: 'Процена изводљивости примене AI у процесу',
+    summary: 'За тимове који одлучују да ли вреди развијати AI систем.',
+    useWhen:
+      'Када имате конкретан пословни процес, кориснике и притисак да кренете, али вам је потребна утемељена препорука пре него што уђете у развој система.',
+    outcomes: [
+      'Обухват процеса и мапа корисника и власника',
+      'Одлука: аутоматизација или систем који помаже људима у раду',
+      'План за ризике, евалуацију, хостинг и трошкове',
+      'Провера избора добављача или архитектурног правца, када је потребна',
+      'Препорука: развијати, стабилизовати, поједноставити или зауставити',
+    ],
+  },
+  {
+    name: 'Процена пута од пилота до продукције',
+    summary: 'За тимове са прототипом који ради у демонстрацији, али није спреман за стварну употребу.',
+    useWhen:
+      'Када постоји пословна потреба, али су евалуација, приступ, надзор, трошкови, људска провера или предаја тиму и даље недовољно јасни.',
+    outcomes: [
+      'Налази о слабим тачкама пилота и ризици на путу до продукције',
+      'Листа провера и типичних места где систем може да погреши',
+      'Захтеви у погледу приступа, људске провере, надзора и трошкова',
+      'План за следећу верзију или припрему за продукцију',
+    ],
+  },
+  {
+    name: 'Спремност интерног асистента за приступ знању',
+    summary: 'За тимове који развијају или спасавају RAG систем или интерног асистента.',
+    useWhen:
+      'Када тежак део није чет интерфејс, већ правила приступа, квалитет проналажења информација, прикупљање повратних информација, власништво над садржајем, увид у коришћење и управљање системом.',
+    outcomes: [
+      'Попис извора знања и јасно власништво над садржајем',
+      'План правила приступа и квалитета проналажења информација',
+      'Прикупљање повратних информација за администраторе и тим који управља системом',
+      'Модел коришћења система и увида у трошкове',
+    ],
+  },
+  {
+    name: 'Израда система за подршку доношењу одлука',
+    summary: 'За аналитичке процесе у којима људи прикупљају контекст пре препорука или доношења одлука.',
+    useWhen:
+      'Када је уско грло понављајуће прикупљање контекста, синтеза, квалитет препоруке, могућност провере или доследност.',
+    outcomes: [
+      'Модел процеса и дизајн структурисаног излаза',
+      'Начин интеграције контекста',
+      'Начин људске провере',
+      'План за израду прве верзије или сама израда',
+    ],
+  },
+] as const;
+
+const enServices = [
   {
     name: 'Build',
     summary:
@@ -139,7 +246,43 @@ export const services = [
   },
 ] as const;
 
-export const fitGuidance = {
+const srServices = [
+  {
+    name: 'Израда',
+    summary:
+      'Пројектна испорука интерних AI система за велике и средње организације, када постоји конкретан процес који треба унапредити и стварни оперативни контекст у ком систем мора да ради.',
+    details: [
+      'Интерни асистенти, системи за приступ знању и процеси за подршку аналитичарима',
+      'Прве верзије са јасном евалуацијом, људском провером и одлукама о приступу',
+      'Одговорност од дефинисања процеса до испоручене имплементације и предаје тиму',
+    ],
+    featured: true,
+  },
+  {
+    name: 'Стабилизација',
+    summary:
+      'Прототип или пилот који већ постоји довести до поузданије, проверљивије и мерљивије употребе у пракси.',
+    details: [
+      'Евалуација, типичне грешке и начин људске провере',
+      'Модел приступа, надзор, сигнали коришћења и увид у трошкове',
+      'Сређивање прелаза од прототипа до продукције и припрема за предају тиму',
+    ],
+    featured: false,
+  },
+  {
+    name: 'Саветовање',
+    summary:
+      'Ограничен саветодавни рад који пре или током израде система помаже да се разјасне архитектура, ток испоруке и ризици имплементације.',
+    details: [
+      'Преглед архитектуре и пословног процеса',
+      'Дефинисање use case-а, власништва и опсега испоруке',
+      'Планирање ризика имплементације и предаје тиму',
+    ],
+    featured: false,
+  },
+] as const;
+
+const enFitGuidance = {
   goodFit: [
     'Teams with a concrete internal workflow, real users, and a reason the system needs to earn continued use once it is deployed.',
     'Decision-support, knowledge-access, and internal tooling systems that need disciplined evaluation and delivery.',
@@ -152,10 +295,192 @@ export const fitGuidance = {
   ],
 } as const;
 
-export const contactExpectations = {
+const srFitGuidance = {
+  goodFit: [
+    'Тимови са конкретним интерним процесом, стварним корисницима и разлогом да систем мора да заслужи наставак употребе после увођења.',
+    'Системи за подршку доношењу одлука, приступ знању и интерни алати који захтевају дисциплиновану евалуацију и испоруку.',
+    'Конкретни пројекти израде, стабилизације или саветовања са јасним власништвом и стварном пословном потребом.',
+  ],
+  notFit: [
+    'Истраживање на нивоу идеје, без власника процеса или пута до коришћења у пракси.',
+    'Општи захтеви за „AI трансформацију” без дефинисаног проблема.',
+    'Четбот или демо-пројекат где оперативни квалитет и стварно коришћење нису циљ.',
+  ],
+} as const;
+
+const enContactExpectations = {
   responseTime: 'Clear workflow outlines usually get a response within 3 business days.',
   fitNote:
     'A rough workflow outline is enough for a first review; the key details are the workflow, users, current stage, and the constraints that will matter in practice.',
   emailPrompt:
     'A rough outline covering the workflow, owner, current stage, and trust requirements is enough to decide whether the conversation should move forward.',
 } as const;
+
+const srContactExpectations = {
+  responseTime: 'Конкретни описи процеса обично добијају одговор у року од 3 радна дана.',
+  fitNote:
+    'Кратак опис процеса је довољан за прву процену; кључни детаљи су процес, корисници, тренутна фаза и ограничења која ће у пракси бити важна.',
+  emailPrompt:
+    'Кратак опис процеса, власника, тренутне фазе и услова под којима би систем био поуздан довољан је да се процени да ли разговор има смисла.',
+} as const;
+
+const enUi = {
+  skipLink: 'Skip to content',
+  navAriaLabel: 'Primary',
+  languageSwitcherLabel: 'Language',
+  switchLanguageLabel: 'Switch language',
+  footerDescription:
+    'Internal AI systems for enterprise workflows, with emphasis on evaluation, deployment discipline, and systems your team can operate after handoff.',
+  heroEyebrow: 'Internal AI systems delivery',
+  heroMarker: '00 / overview',
+  operatingBrief: {
+    eyebrow: 'Operating brief',
+    items: [
+      {
+        label: 'Focus',
+        value:
+          'Analyst-support, knowledge-access, and internal workflow systems where trust, adoption, and operating constraints matter.',
+      },
+      {
+        label: 'Position',
+        value: 'Project-based build and hardening, with advisory tied to real delivery decisions.',
+      },
+      {
+        label: 'Delivery posture',
+        value:
+          'Evaluation, cost visibility, human review, access boundaries, and handoff are treated as part of the system.',
+      },
+    ],
+  },
+  ctaEyebrow: 'Workflow review',
+  serviceCard: {
+    primaryMode: 'Primary mode',
+    secondaryMode: 'Secondary mode',
+  },
+  caseStudyCard: {
+    caseLabel: 'Case',
+    contextLabel: 'Context',
+    outcomeLabel: 'Outcome',
+    readLabel: 'Read the case study',
+  },
+  caseStudyDetail: {
+    backLabel: 'Back to selected work',
+    workContextLabel: 'Work context',
+    outcomeSignalLabel: 'Outcome signal',
+  },
+  schema: {
+    jobTitle: 'Independent AI Systems Consultant',
+    knowsAbout: [
+      'Internal AI systems',
+      'Enterprise AI deployment',
+      'AI evaluation',
+      'AI workflow feasibility',
+      'AI pilot hardening',
+      'AI prototype-to-production',
+      'AI cost observability',
+      'Human-in-the-loop AI workflows',
+      'Internal knowledge assistants',
+      'Decision-support workflows',
+      'Retrieval-augmented generation',
+      'Agentic AI readiness',
+    ],
+  },
+} as const;
+
+const srUi = {
+  skipLink: 'Прескочи на садржај',
+  navAriaLabel: 'Главна навигација',
+  languageSwitcherLabel: 'Језик',
+  switchLanguageLabel: 'Промени језик',
+  footerDescription:
+    'Интерни AI системи за пословне процесе, са нагласком на евалуацији, дисциплини у испоруци и системима којима тим може да управља после предаје.',
+  heroEyebrow: 'Испорука интерних AI система',
+  heroMarker: '00 / преглед',
+  operatingBrief: {
+    eyebrow: 'Оквир рада',
+    items: [
+      {
+        label: 'Фокус',
+        value:
+          'Подршка аналитичарима, приступ знању и интерни процеси у којима су поверење, коришћење и оперативна ограничења важни.',
+      },
+      {
+        label: 'Шта радим',
+        value: 'Израда и стабилизација система кроз конкретне пројекте, уз саветовање везано за стварне одлуке о испоруци.',
+      },
+      {
+        label: 'Како испоручујем',
+        value:
+          'Евалуација, увид у трошкове, људска провера, правила приступа и предаја тиму третирају се као део система.',
+      },
+    ],
+  },
+  ctaEyebrow: 'Процена процеса',
+  serviceCard: {
+    primaryMode: 'Главни модел',
+    secondaryMode: 'Додатни модел',
+  },
+  caseStudyCard: {
+    caseLabel: 'Пројекат',
+    contextLabel: 'Контекст',
+    outcomeLabel: 'Исход',
+    readLabel: 'Прочитајте приказ пројекта',
+  },
+  caseStudyDetail: {
+    backLabel: 'Назад на пројекте',
+    workContextLabel: 'Контекст пројекта',
+    outcomeSignalLabel: 'Показатељ исхода',
+  },
+  schema: {
+    jobTitle: 'Независни консултант за AI системе',
+    knowsAbout: [
+      'Интерни AI системи',
+      'AI увођење у предузећима',
+      'AI евалуација',
+      'Процена изводљивости примене AI у процесу',
+      'Стабилизација AI пилота',
+      'Од прототипа до продукције',
+      'Увид у трошкове AI система',
+      'AI системи са људском провером',
+      'Интерни асистенти за приступ знању',
+      'Системи за подршку доношењу одлука',
+      'RAG системи',
+      'Спремност за агентске системе',
+    ],
+  },
+} as const;
+
+export const localizedContent = {
+  en: {
+    siteConfig: enSiteConfig,
+    navigation: enNavigation,
+    proofPoints: enProofPoints,
+    startingPoints: enStartingPoints,
+    services: enServices,
+    fitGuidance: enFitGuidance,
+    contactExpectations: enContactExpectations,
+    ui: enUi,
+  },
+  sr: {
+    siteConfig: srSiteConfig,
+    navigation: srNavigation,
+    proofPoints: srProofPoints,
+    startingPoints: srStartingPoints,
+    services: srServices,
+    fitGuidance: srFitGuidance,
+    contactExpectations: srContactExpectations,
+    ui: srUi,
+  },
+} as const;
+
+export function getSiteContent(locale: Locale = 'en') {
+  return localizedContent[locale];
+}
+
+export const siteConfig = localizedContent.en.siteConfig;
+export const navigation = localizedContent.en.navigation;
+export const proofPoints = localizedContent.en.proofPoints;
+export const startingPoints = localizedContent.en.startingPoints;
+export const services = localizedContent.en.services;
+export const fitGuidance = localizedContent.en.fitGuidance;
+export const contactExpectations = localizedContent.en.contactExpectations;

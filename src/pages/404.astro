@@ -1,28 +1,54 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
 ---
 
-<BaseLayout pathname="/404" title="Page not found" noindex={true}>
-  <SiteHeader />
-
+<BaseLayout
+  locale="en"
+  pathname="/404"
+  title="Page not found / Страница није пронађена"
+  description="The page could not be found. Страница није пронађена."
+  noindex={true}
+>
   <main id="main" class="section-space">
     <div class="shell">
-      <div class="panel panel-light max-w-3xl p-8 sm:p-10">
+      <div class="panel panel-light max-w-4xl p-8 sm:p-10">
         <div class="accent-bar"></div>
         <p class="eyebrow">404</p>
-        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-[color:var(--ink)]">That page does not exist.</h1>
-        <p class="mt-4 text-base leading-8 muted-copy">
-          The best path back is usually the homepage, the selected work page, or the contact page.
+        <h1 class="mt-4 break-words text-4xl font-semibold tracking-tight text-[color:var(--ink)] [overflow-wrap:anywhere]">
+          Page not found / Страница није пронађена.
+        </h1>
+        <p class="mt-4 max-w-3xl text-base leading-8 muted-copy">
+          This fallback page is intentionally bilingual so missing English and Serbian URLs both remain understandable on static hosting.
         </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a class="button-primary" href="/">Go home</a>
-          <a class="button-secondary" href="/work">View selected work</a>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          <section class="panel border border-[color:var(--rule)] bg-white/70 p-6">
+            <p class="eyebrow">English</p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">That page does not exist.</h2>
+            <p class="mt-3 text-sm leading-7 muted-copy">
+              The best path back is usually the homepage, the work page, or the contact page.
+            </p>
+            <div class="mt-6 flex flex-col gap-3">
+              <a class="button-primary" href="/">Go home</a>
+              <a class="button-secondary" href="/work/">View work</a>
+              <a class="button-secondary" href="/contact/">Contact</a>
+            </div>
+          </section>
+
+          <section lang="sr-Cyrl-RS" class="panel border border-[color:var(--rule)] bg-white/70 p-6">
+            <p class="eyebrow">Српски</p>
+            <h2 class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">Та страница не постоји.</h2>
+            <p class="mt-3 text-sm leading-7 muted-copy">
+              Најбољи пут назад је обично почетна страна, страница пројеката или контакт страница.
+            </p>
+            <div class="mt-6 flex flex-col gap-3">
+              <a class="button-primary" href="/sr/">На почетну</a>
+              <a class="button-secondary" href="/sr/work/">Погледајте пројекте</a>
+              <a class="button-secondary" href="/sr/contact/">Контакт</a>
+            </div>
+          </section>
         </div>
       </div>
     </div>
   </main>
-
-  <SiteFooter />
 </BaseLayout>

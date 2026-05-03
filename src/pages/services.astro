@@ -8,6 +8,7 @@ import { services, siteConfig, startingPoints } from '../config/site';
 ---
 
 <BaseLayout
+  locale="en"
   pathname="/services/"
   title="Internal AI Build, Hardening & Advisory"
   description="Workflow starting points, service modes, and delivery paths for internal AI systems that need disciplined evaluation, cost visibility, access boundaries, and real-world usability."
@@ -20,6 +21,7 @@ import { services, siteConfig, startingPoints } from '../config/site';
       serviceType: ['Build', 'Hardening', 'Advisory', 'AI workflow feasibility review', 'AI pilot hardening review', 'Internal knowledge assistant readiness', 'Decision-support workflow build'],
       description: 'Project-based build, hardening, and advisory work for internal AI systems in enterprise and mid-market workflows, with emphasis on evaluation, access boundaries, cost visibility, and handoff.',
       url: `${siteConfig.siteUrl}/services/`,
+      inLanguage: 'en',
     },
   ]}
 >
@@ -129,7 +131,7 @@ import { services, siteConfig, startingPoints } from '../config/site';
         </div>
 
         <div class="mt-10 grid gap-4 lg:grid-cols-3">
-          {services.map((service) => <ServiceCard service={service} />)}
+          {services.map((service) => <ServiceCard service={service} locale="en" />)}
         </div>
       </div>
     </section>

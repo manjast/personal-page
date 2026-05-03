@@ -3,6 +3,8 @@
 Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.
 
 Site: https://stefanmanja.com
+Default language: English
+Serbian Cyrillic version: https://stefanmanja.com/sr/
 Contact: stefan@stefanmanja.com
 Location: Belgrade, Serbia
 Timezone: Europe/Belgrade (CET/CEST)
@@ -56,11 +58,20 @@ teams.
 ## Primary pages
 
 - / : overview, proof, fit guidance, services
-- /work : internal AI case studies
-- /work/delta-credit-risk-workflow : Credit-risk decision-support workflow (Delta Holding)
-- /work/delta-enterprise-rag-assistant : Self-hosted internal knowledge assistant (Delta Holding)
-- /services : workflow starting points, service modes, and delivery path
-- /contact : workflow review and initial inquiry
+- /work/ : internal AI case studies
+- /work/delta-credit-risk-workflow/ : Credit-risk decision-support workflow (Delta Holding)
+- /work/delta-enterprise-rag-assistant/ : Self-hosted internal knowledge assistant (Delta Holding)
+- /services/ : workflow starting points, service modes, and delivery path
+- /contact/ : workflow review and initial inquiry
+
+## Serbian Cyrillic pages
+
+- /sr/ : преглед, докази, смернице уклапања, услуге
+- /sr/work/ : прикази интерних система вештачке интелигенције
+- /sr/work/delta-credit-risk-workflow/ : Радни ток за подршку одлукама о кредитном ризику (Delta Holding)
+- /sr/work/delta-enterprise-rag-assistant/ : Интерни асистент знања у сопственом хостингу (Delta Holding)
+- /sr/services/ : почетне тачке радних токова, начини услуге и пут испоруке
+- /sr/contact/ : преглед радног тока и почетни контакт
 
 ## Technical context
 

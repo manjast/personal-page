@@ -1,6 +1,13 @@
 ---
 import '../styles/global.css';
-import { siteConfig } from '../config/site';
+import { getSiteContent, siteConfig } from '../config/site';
+import {
+  absoluteUrl,
+  getAlternatePaths,
+  localeMeta,
+  normalizePath,
+  type Locale,
+} from '../i18n/routing';
 
 interface Props {
   title?: string;
@@ -9,21 +16,35 @@ interface Props {
   image?: string;
   ogType?: string;
   noindex?: boolean;
+  locale?: Locale;
+  alternates?: Partial<Record<Locale | 'x-default', string>>;
   pageSchema?: Record<string, unknown>[];
 }
 
 const {
-  title = siteConfig.defaultTitle,
-  description = siteConfig.defaultDescription,
+  locale = 'en',
+  title,
+  description,
   pathname = Astro.url.pathname,
   image = '/og-default.png',
   ogType = 'website',
   noindex = false,
+  alternates,
   pageSchema,
 } = Astro.props;
 
-const pageTitle = title === siteConfig.defaultTitle ? title : `${title} | ${siteConfig.defaultTitle}`;
-const canonical = new URL(pathname, siteConfig.siteUrl).toString();
+const content = getSiteContent(locale);
+const localizedSiteConfig = content.siteConfig;
+const language = localeMeta[locale];
+const resolvedTitle = title ?? localizedSiteConfig.defaultTitle;
+const resolvedDescription = description ?? localizedSiteConfig.defaultDescription;
+const pageTitle =
+  resolvedTitle === localizedSiteConfig.defaultTitle
+    ? resolvedTitle
+    : `${resolvedTitle} | ${localizedSiteConfig.defaultTitle}`;
+const canonicalPath = normalizePath(pathname);
+const canonical = absoluteUrl(siteConfig.siteUrl, canonicalPath);
+const alternatePaths = { ...getAlternatePaths(canonicalPath), ...(alternates ?? {}) };
 const socialImage = new URL(image, siteConfig.siteUrl).toString();
 
 const jsonLd = {
@@ -32,34 +53,23 @@ const jsonLd = {
     {
       '@type': 'Person',
       '@id': `${siteConfig.siteUrl}/#person`,
-      name: siteConfig.name,
+      name: localizedSiteConfig.name,
       url: siteConfig.siteUrl,
       email: siteConfig.email,
       sameAs: [siteConfig.linkedinUrl, siteConfig.githubUrl],
-      jobTitle: 'Independent AI Systems Consultant',
-      knowsAbout: [
-        'Internal AI systems',
-        'Enterprise AI deployment',
-        'AI evaluation',
-        'AI workflow feasibility',
-        'AI pilot hardening',
-        'AI prototype-to-production',
-        'AI cost observability',
-        'Human-in-the-loop AI workflows',
-        'Internal knowledge assistants',
-        'Decision-support workflows',
-        'Retrieval-augmented generation',
-        'Agentic AI readiness',
-      ],
-      description: siteConfig.defaultDescription,
+      jobTitle: content.ui.schema.jobTitle,
+      knowsAbout: content.ui.schema.knowsAbout,
+      description: localizedSiteConfig.defaultDescription,
+      inLanguage: language.hreflang,
     },
     {
       '@type': 'WebSite',
       '@id': `${siteConfig.siteUrl}/#website`,
       url: siteConfig.siteUrl,
-      name: siteConfig.name,
-      description: siteConfig.defaultDescription,
+      name: localizedSiteConfig.name,
+      description: localizedSiteConfig.defaultDescription,
       author: { '@id': `${siteConfig.siteUrl}/#person` },
+      inLanguage: language.hreflang,
     },
     ...(pageSchema ?? []),
   ],
@@ -67,28 +77,53 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={language.lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={resolvedDescription} />
     <meta name="theme-color" content="#f3f0e8" />
-    <link
-      rel="preload"
-      href="/fonts/ibm-plex-sans-latin-var-v23.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/ibm-plex-sans-condensed-latin-600-v15.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="canonical" href={canonical} />
+    {
+      locale === 'sr' ? (
+        <>
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-sans-cyrillic-v23.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+          />
+        </>
+      ) : (
+        <>
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-sans-latin-var-v23.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+          />
+          <link
+            rel="preload"
+            href="/fonts/ibm-plex-sans-condensed-latin-600-v15.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin
+          />
+        </>
+      )
+    }
+    {
+      !noindex && (
+        <>
+          <link rel="canonical" href={canonical} />
+          <link rel="alternate" hreflang={localeMeta.en.hreflang} href={absoluteUrl(siteConfig.siteUrl, alternatePaths.en)} />
+          <link rel="alternate" hreflang={localeMeta.sr.hreflang} href={absoluteUrl(siteConfig.siteUrl, alternatePaths.sr)} />
+          <link rel="alternate" hreflang="x-default" href={absoluteUrl(siteConfig.siteUrl, alternatePaths['x-default'])} />
+        </>
+      )
+    }
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
@@ -96,16 +131,17 @@ const jsonLd = {
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content={siteConfig.defaultTitle} />
+    <meta property="og:site_name" content={localizedSiteConfig.defaultTitle} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={resolvedDescription} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={locale === 'sr' ? 'sr_RS' : 'en_US'} />
     <meta property="og:image" content={socialImage} />
     {ogType === 'article' && <meta property="article:author" content={siteConfig.linkedinUrl} />}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={resolvedDescription} />
     <meta name="twitter:image" content={socialImage} />
 
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -123,7 +159,7 @@ const jsonLd = {
       href="#main"
       class="sr-only inline-flex min-h-[44px] items-center rounded-lg bg-[color:var(--ink)] px-4 py-3 text-sm font-semibold text-[color:var(--canvas)] shadow-lg focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50"
     >
-      Skip to content
+      {content.ui.skipLink}
     </a>
     <slot />
   </body>

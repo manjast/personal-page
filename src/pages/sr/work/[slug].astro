@@ -1,14 +1,14 @@
 ---
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import SiteHeader from '../../components/SiteHeader.astro';
-import SiteFooter from '../../components/SiteFooter.astro';
-import CTASection from '../../components/CTASection.astro';
-import { getSiteContent, siteConfig } from '../../config/site';
-import { caseStudyPath, getAlternatePaths, type Locale } from '../../i18n/routing';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SiteHeader from '../../../components/SiteHeader.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import CTASection from '../../../components/CTASection.astro';
+import { getSiteContent } from '../../../config/site';
+import { caseStudyPath, getAlternatePaths, localizedHref, type Locale } from '../../../i18n/routing';
 
 export async function getStaticPaths() {
-  const entries = (await getCollection('case-studies')).filter((entry) => entry.data.locale === 'en');
+  const entries = (await getCollection('case-studies')).filter((entry) => entry.data.locale === 'sr');
 
   return entries.map((entry) => ({
     params: { slug: entry.data.routeSlug },
@@ -16,11 +16,13 @@ export async function getStaticPaths() {
   }));
 }
 
+const locale = 'sr';
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const content = getSiteContent('en');
+const content = getSiteContent(locale);
+const { siteConfig } = content;
 const labels = content.ui.caseStudyDetail;
-const detailPath = caseStudyPath('en', entry.data.routeSlug);
+const detailPath = caseStudyPath(locale, entry.data.routeSlug);
 const translatedEntries = (await getCollection('case-studies')).filter(
   (candidate) => candidate.data.translationKey === entry.data.translationKey,
 );
@@ -34,14 +36,15 @@ const translatedAlternates = translatedEntries.reduce(
 const alternates = {
   ...getAlternatePaths(detailPath),
   ...translatedAlternates,
-  'x-default': translatedAlternates.en ?? detailPath,
+  'x-default': translatedAlternates.en ?? caseStudyPath('en', entry.data.routeSlug),
 };
 const canonicalUrl = `${siteConfig.siteUrl}${detailPath}`;
 const articleImage = new URL(entry.data.ogImage ?? '/og-default.png', siteConfig.siteUrl).toString();
+const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, siteConfig.heroPrimaryCta.href) };
 ---
 
 <BaseLayout
-  locale="en"
+  locale={locale}
   pathname={detailPath}
   title={entry.data.title}
   description={entry.data.summary}
@@ -60,16 +63,16 @@ const articleImage = new URL(entry.data.ogImage ?? '/og-default.png', siteConfig
       author: { '@id': `${siteConfig.siteUrl}/#person` },
       publisher: { '@id': `${siteConfig.siteUrl}/#person` },
       about: entry.data.technologies.map((t: string) => ({ '@type': 'Thing', name: t })),
-      inLanguage: 'en',
+      inLanguage: 'sr-Cyrl',
     },
   ]}
 >
-  <SiteHeader alternates={alternates} />
+  <SiteHeader locale={locale} alternates={alternates} />
 
   <main id="main">
     <section class="section-space">
       <div class="shell">
-        <a class="ink-link inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/work/">
+        <a class="ink-link inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/sr/work/">
           ← {labels.backLabel}
         </a>
 
@@ -105,12 +108,13 @@ const articleImage = new URL(entry.data.ogImage ?? '/og-default.png', siteConfig
     </section>
 
     <CTASection
-      title="If your team has a similar workflow, I can usually tell quickly whether it needs a build, hardening pass, or scoped advisory help."
-      description="The best starting point is a short description of the workflow, the owner, the current stage, and what would need to be trustworthy for the system to be useful."
-      primary={siteConfig.heroPrimaryCta}
-      secondary={{ href: '/services', label: 'See workflow starting points' }}
+      eyebrow={content.ui.ctaEyebrow}
+      title="За сличан AI процес могу брзо да проценим да ли има смисла израда система, стабилизација или саветодавни рад."
+      description="Најбоља почетна тачка је кратак опис процеса, власника, тренутне фазе и онога што би морало да буде поуздано да би систем био користан."
+      primary={primaryCta}
+      secondary={{ href: '/sr/services/', label: 'Погледајте полазне тачке' }}
     />
   </main>
 
-  <SiteFooter />
+  <SiteFooter locale={locale} />
 </BaseLayout>

@@ -1,4 +1,7 @@
 ---
+locale: "en"
+translationKey: "delta-credit-risk-workflow"
+routeSlug: "delta-credit-risk-workflow"
 title: "Credit-risk decision-support workflow"
 summary: "A credit-risk decision-support workflow built in-house at Delta Holding, combining public-company risk signals with internal operating context into structured, analyst-ready recommendations."
 organization: "Delta Holding"

@@ -10,8 +10,8 @@ outcome: "Забележени исходи процеса укључивали 
 order: 1
 featured: true
 services:
-  - Build
-  - Hardening
+  - Израда
+  - Стабилизација
 technologies:
   - Python
   - LLM API-ји

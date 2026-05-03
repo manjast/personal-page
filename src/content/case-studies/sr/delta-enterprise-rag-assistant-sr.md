@@ -11,8 +11,8 @@ signalLabel: "Коришћење и повратне оцене"
 order: 2
 featured: true
 services:
-  - Build
-  - Hardening
+  - Израда
+  - Стабилизација
 technologies:
   - Flask
   - Docker

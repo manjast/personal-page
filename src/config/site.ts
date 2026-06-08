@@ -369,7 +369,7 @@ const enUi = {
     outcomeSignalLabel: 'Outcome signal',
   },
   schema: {
-    jobTitle: 'Independent AI Systems Consultant',
+    jobTitle: 'Applied AI Engineer | Internal AI Systems Consultant',
     knowsAbout: [
       'Internal AI systems',
       'Enterprise AI deployment',

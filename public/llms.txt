@@ -95,3 +95,5 @@ SSO, LLM APIs, and workflow automation for enterprise environments.
 
 The Agentic Development Playbook (https://github.com/manjast/agentic-development-playbook)
 is public evidence of scoped, evaluation-gated AI delivery — not a product or tutorial.
+
+Adopting the Playbook into an existing project: https://github.com/manjast/agentic-development-playbook/blob/main/docs/migration.md

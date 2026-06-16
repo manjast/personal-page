@@ -7,7 +7,7 @@ summary: "A self-hosted internal knowledge assistant built in-house at Delta Hol
 organization: "Delta Holding"
 workContext: "Internal enterprise knowledge-access system serving multiple business units, with requirements around access control, quality governance, and operational visibility."
 outcome: "Deployed across roughly 1,500 eligible users, with 300+ actual users and 85%+ positive explicit feedback on thumbs-up/down responses."
-signalLabel: "Adoption and feedback signal"
+metricType: "adoption"
 order: 2
 featured: true
 services:

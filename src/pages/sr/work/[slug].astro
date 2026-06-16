@@ -94,7 +94,7 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
                 <p class="mt-2 leading-7 text-[color:rgba(247,241,232,0.82)]">{entry.data.workContext}</p>
               </div>
               <div class="border-t border-white/10 pt-4">
-                <p class="metric-label">{entry.data.signalLabel ?? labels.outcomeSignalLabel}</p>
+                <p class="metric-label">{labels.metricLabels[entry.data.metricType ?? 'outcome']}</p>
                 <p class="mt-2 leading-7 text-[color:rgba(247,241,232,0.82)]">{entry.data.outcome}</p>
               </div>
             </div>

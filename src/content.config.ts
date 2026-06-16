@@ -14,7 +14,7 @@ const commonCaseStudyFields = {
   featured: z.boolean().default(false),
   technologies: z.array(z.string()).default([]),
   ogImage: z.string().optional(),
-  signalLabel: z.string().optional(),
+  metricType: z.enum(['outcome', 'adoption', 'scale', 'feedback', 'cost', 'other']).optional(),
 } as const;
 
 const caseStudies = defineCollection({

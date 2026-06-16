@@ -41,7 +41,7 @@ const href = caseStudyPath(locale, entry.data.routeSlug);
       <dd class="mt-1 muted-copy">{entry.data.workContext}</dd>
     </div>
     <div>
-      <dt class="font-semibold text-[color:var(--ink)]">{entry.data.signalLabel ?? labels.outcomeLabel}</dt>
+      <dt class="font-semibold text-[color:var(--ink)]">{labels.metricLabels[entry.data.metricType ?? 'outcome']}</dt>
       <dd class="mt-1 muted-copy">{entry.data.outcome}</dd>
     </div>
   </dl>

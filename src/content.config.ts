@@ -33,6 +33,22 @@ const caseStudies = defineCollection({
   ]),
 });
 
+const writing = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/writing' }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    publishedAt: z.coerce.date(),
+    displayDate: z.string(),
+    ogImage: z.string().optional(),
+    locale: z.enum(['en', 'sr']),
+    translationKey: z.string(),
+    routeSlug: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   'case-studies': caseStudies,
+  'writing': writing,
 };

@@ -1,0 +1,80 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+
+const entries = (await getCollection('writing'))
+  .filter((entry) => !entry.data.draft && entry.data.locale === 'en')
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const pageSchema = [
+  {
+    '@type': 'CollectionPage',
+    '@id': 'https://stefanmanja.com/writing/#webpage',
+    url: 'https://stefanmanja.com/writing/',
+    name: 'Selected writing | Stefan Manja',
+    description: 'Long-form posts on internal AI for enterprise workflows, RAG evaluation, decision-support design, and the methodology behind the audit.',
+    author: { '@id': 'https://stefanmanja.com/#person' },
+    inLanguage: 'en',
+  },
+];
+---
+
+<BaseLayout
+  locale="en"
+  pathname="/writing/"
+  title="Selected writing"
+  description="Long-form posts on internal AI for enterprise workflows, RAG evaluation, decision-support design, and the methodology behind the audit."
+  ogType="website"
+  pageSchema={pageSchema}
+>
+  <SiteHeader />
+
+  <main id="main">
+    <section class="section-space">
+      <div class="shell">
+        <div class="page-lead">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">02 / writing</span>
+            <p class="eyebrow">Selected writing</p>
+          </div>
+          <h1 class="page-title">
+            Long-form posts on internal AI for enterprise workflows, RAG evaluation, decision-support design, and the methodology behind the audit.
+          </h1>
+        </div>
+
+        <div class="mt-10 grid gap-6">
+          {
+            entries.map((entry) => {
+              const slug = entry.data.routeSlug;
+              return (
+                <article class="panel panel-light p-6">
+                  <div class="accent-bar"></div>
+                  <p class="eyebrow">{entry.data.displayDate}</p>
+                  <h2 class="mt-3 text-2xl font-semibold tracking-tight">
+                    <a
+                      class="ink-link transition hover:text-[color:var(--accent)]"
+                      href={`/writing/${slug}/`}
+                    >
+                      {entry.data.title}
+                    </a>
+                  </h2>
+                  <p class="mt-3 text-base leading-7 muted-copy">{entry.data.summary}</p>
+                  <a
+                    class="mt-4 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold text-[color:var(--ink)] transition hover:text-[color:var(--accent)]"
+                    href={`/writing/${slug}/`}
+                  >
+                    Read the post →
+                  </a>
+                </article>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

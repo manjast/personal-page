@@ -54,6 +54,7 @@ const enNavigation = [
   { href: '/', label: 'Home' },
   { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
+  { href: '/writing', label: 'Writing' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 

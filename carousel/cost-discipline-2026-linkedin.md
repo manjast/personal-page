@@ -47,23 +47,23 @@ Result: capability composite ≠ cost. The strongest (GLM 5.2) is 3-8x cheaper. 
 
 ### Slide 3 — Format
 
-**Prompt format: ~12% end-to-end, in the best case.**
+**Prompt format: 11.9% end-to-end, in the best case.**
 
-TOON and GCF cut prompt tokens 30-45% on uniform-array data. End-to-end cost saving is smaller — ~12% in the best case at gpt-5-mini high. Same accuracy as JSON on this workload (30 trials, internal ranking, ~200 candidates per call). Other workloads may differ. Reasoning tokens offset some of the prompt saving. Format-dependent.
+TOON and GCF cut prompt tokens 30-45% on uniform-array data. End-to-end cost saving is smaller — 11.9% on the gcf-hint cell, 30 trials, internal ranking, ~200 candidates per call. 10-row × 30-trial sample unpowered for accuracy. Other workloads may differ. Reasoning tokens offset some of the prompt saving. Format-dependent.
 
-Result: format saves tokens, not dollars. ~12% is real but small. The bigger savings are model + architecture.
+Result: format saves tokens, not dollars. 11.9% is real but small. The bigger savings are model + architecture.
 
 ### Slide 4 — Architecture
 
 **Three architecture levers.**
 
-1. **1M-context.** Standard for 4 of 5 (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, MiMo-V2.5-Pro); Kimi K2.6 at 256K. Long context is the lever for single-document ingest; RAG is the lever for cross-document scale (10K+ docs). Complementary, not substitutes.
+1. **1M context** is a capability lever, not a cost discipline lever. It costs more per query than focused RAG. Use 1M context for single-document ingest (one or a few large docs); RAG is still the lever for cross-document scale (10K+ documents). 4 of 5 ship with 1M context (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, MiMo-V2.5-Pro); Kimi K2.6 at 256K.
 
 2. **Hybrid + rerank.** Hybrid retrieval (vector + keyword) + cross-encoder reranking. Now the default. Reduces retrieval failures 35-50% per Anthropic's Contextual Retrieval (Sep 2024).
 
-3. **Prompt caching.** 5-10x reduction in repeated-prefix cost. Anthropic, OpenAI, DeepSeek, Moonshot, and Z.ai all offer it. For RAG systems with stable system prompts + long context, the savings are material.
+3. **Prompt caching.** 5-10x reduction in repeated-prefix cost. Anthropic, OpenAI, DeepSeek, Moonshot, and Z.ai all offer it. Cache-hit pricing is typically 5-10x lower than cache-miss pricing (per 1M tokens read from cache). For RAG systems with stable system prompts + long context, the savings are material.
 
-Result: architecture compounds. 1M context + hybrid + rerank + caching together decide whether the system holds up at 1K+ queries/day.
+Result: architecture compounds. Hybrid + rerank + caching decide whether the system holds up at 1K+ queries/day.
 
 ### Slide 5 — Summary + closing question
 

@@ -135,7 +135,7 @@
   .model-name {
     font-family: "IBM Plex Serif", "Charter", Georgia, serif;
     font-size: 28px; line-height: 1.2; font-weight: 600;
-    color: var(--ink); min-width: 220px;
+    color: var(--ink); width: 280px; flex-shrink: 0;
   }
   .model-detail {
     font-size: 19px; line-height: 1.4; color: var(--ink);
@@ -269,10 +269,10 @@
   <div class="folio folio-r"><span class="num">03</span></div>
 
   <span class="marker accent-rule">2  ·  F O R M A T</span>
-  <h1 class="slide-title">Prompt format: <em>~12%</em> end-to-end, in the best case.</h1>
+  <h1 class="slide-title">Prompt format: <em>11.9%</em> end-to-end, in the best case.</h1>
 
   <div class="lede">
-    TOON (Token-Oriented Object Notation) and GCF cut prompt tokens 30-45% on uniform-array data. End-to-end cost saving is smaller — <span class="num">~12% in the best case</span> at gpt-5-mini high, 30 trials, internal ranking, ~200 candidates per call. Other workloads may differ.
+    TOON (Token-Oriented Object Notation) and GCF cut prompt tokens 30-45% on uniform-array data. End-to-end cost saving is smaller — <span class="num">11.9% on the gcf-hint cell</span>, 30 trials, internal ranking, ~200 candidates per call. 10-row × 30-trial sample unpowered for accuracy. Other workloads may differ.
   </div>
 
   <hr class="divider">
@@ -287,7 +287,7 @@
     <div class="axis">
       <div class="axis-title">E N D - T O - E N D · S A V I N G</div>
       <div class="axis-body">
-        <span class="num">~12%</span> in the best case. Reasoning tokens offset some of the prompt saving. Hit@10 = 50% on all 7 cells (including JSON), so accuracy is unpowered in this sample.
+        <span class="num">11.9%</span> on the gcf-hint cell. Reasoning tokens offset some of the prompt saving. Hit@10 = 50% on all 7 cells (including JSON); the 10-row × 30-trial sample is unpowered for accuracy.
       </div>
     </div>
     <div class="axis">
@@ -299,7 +299,7 @@
   </div>
 
   <div class="result-note">
-    result: <em>format saves tokens, not dollars</em>. ~12% is a real but small lever. The bigger savings are model + architecture.
+    result: <em>format saves tokens, not dollars</em>. 11.9% is real but small. The bigger savings are model + architecture.
   </div>
 
   <div class="byline">— stefan manja  ·  applied AI engineer</div>
@@ -321,7 +321,7 @@
     <div class="axis">
       <div class="axis-title">1  ·  1 M · C O N T E X T</div>
       <div class="axis-body">
-        <span class="num">1M-context</span> windows now standard for 4 of 5 (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, MiMo-V2.5-Pro); Kimi K2.6 at 256K. Long context is the lever for <em>single-document ingest</em> (one or a few large docs); RAG is still the lever for <em>cross-document scale</em> (10K+ documents). The two are complementary, not substitutes.
+        <span class="num">1M context</span> is a <em>capability</em> lever, not a cost discipline lever. It costs more per query than focused RAG. Use 1M context for <em>single-document ingest</em> (one or a few large docs); RAG is still the lever for <em>cross-document scale</em> (10K+ documents). 4 of 5 ship with 1M context (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, MiMo-V2.5-Pro); Kimi K2.6 at 256K.
       </div>
     </div>
     <div class="axis">
@@ -333,7 +333,7 @@
     <div class="axis">
       <div class="axis-title">3  ·  P R O M P T · C A C H I N G</div>
       <div class="axis-body">
-        <span class="num">5-10x</span> reduction in repeated-prefix cost. Anthropic, OpenAI, DeepSeek, Moonshot, and Z.ai all offer prompt caching. The cost is per-cache-hit, not per-token. For RAG systems with stable system prompts + long context windows, the savings are material.
+        <span class="num">5-10x</span> reduction in repeated-prefix cost. Anthropic, OpenAI, DeepSeek, Moonshot, and Z.ai all offer prompt caching. <em>Cache-hit pricing is typically 5-10x lower than cache-miss pricing (per 1M tokens read from cache).</em> For RAG systems with stable system prompts + long context windows, the savings are material.
       </div>
     </div>
   </div>
@@ -393,17 +393,17 @@
 
   <div class="cite">
     <div class="cite-label">METHODOLOGY</div>
-    5 open-weight / open-routing models evaluated against frontier closed-API. AA Intelligence Index v4.1 (2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page. The "open-weight" framing applies to all 5 except where noted (MiniMax M3 uses a restrictive `minimax-community` license; see below).
+    5 open-weight / open-routing models evaluated against frontier closed-API. AA Intelligence Index v4.1 (2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page.
 
     <div class="cite-label">DATA · TOP-5 OPEN-WEIGHT · $ / 1M TOKENS · ordered by capability (AA Index v4.1)</div>
-    — GLM 5.2:           $1.40 in / $4.40 out · AA Index 51, leading open weights · Z.ai on BIS Entity List
-    — MiniMax M3:        $0.30 in / $1.20 out · standard tier, ≤512k · AA Index 44 · 30.9% agentic abstention (vendor-reported, Frontier Coding claim) · restrictive `minimax-community` license
-    — DeepSeek V4-Pro:   $0.435 in / $0.870 out · direct API, not 3rd-party hosted · AA Index 44 · 40-45x cheaper than Opus 4.8 on cost-per-task
-    — Kimi K2.6:         $0.95 in / $4.00 out · cache-miss rate · AA Index 43 · 256K context · modified-MIT license
-    — MiMo-V2.5-Pro:     AA Index 42 · 1M context · strong new open-weight entrant (Xiaomi, June 2026)
+    — GLM 5.2:           $1.40 in / $4.40 out · AA Index 51
+    — MiniMax M3:        $0.30 in / $1.20 out · AA Index 44
+    — DeepSeek V4-Pro:   $0.435 in / $0.870 out · AA Index 44
+    — Kimi K2.6:         $0.95 in / $4.00 out · AA Index 43
+    — MiMo-V2.5-Pro:     AA Index 42
 
     <div class="cite-label">PRIVACY · DEPLOYMENT</div>
-    For sensitive enterprise data, deploy via cloud-provider paths (AWS, Azure, Google Cloud, Oracle Cloud) or self-host. Direct APIs of Chinese providers route data through China. <em>MiniMax M3: EU / Singapore endpoints available</em> — data outside China. <em>Z.ai (GLM 5.2) is on the BIS Entity List (Jan 2025)</em> — direct API use is restricted for US persons; use cloud-provider paths only. Frontier APIs (OpenAI, Anthropic) are default-safe under their DPAs.
+    For sensitive enterprise data, deploy via cloud-provider paths (AWS, Azure, Google Cloud, Oracle Cloud) or self-host. <em>Z.ai (GLM 5.2) is on the BIS Entity List (Jan 2025)</em> — direct API use is restricted for US persons. <em>MiniMax M3: EU / Singapore endpoints available</em> — data outside China.
 
     <div class="cite-label">PRICING · VERIFIED 2026-06-17</div>
     — GLM 5.2:           <span class="url">docs.z.ai</span>
@@ -413,13 +413,6 @@
     — MiMo-V2.5-Pro:     <span class="url">huggingface.co/xiaomi</span>
     — GPT-5.5:           <span class="url">platform.openai.com</span>
     — Claude Opus 4.8:   <span class="url">anthropic.com</span>
-
-    <div class="cite-label">INDEX METHODOLOGY</div>
-    AA Index v4.1 — composite of MMLU-Pro, GPQA-Diamond, MATH, HumanEval, LiveCodeBench, Terminal-Bench. See <span class="url">artificialanalysis.ai/methodology</span>
-
-    <div class="cite-label">COMPANION CAROUSEL</div>
-    the 3 RAG operational gaps — same operational discipline, applied to retrieval:<br>
-    <span class="url">stefanmanja.com</span> (carousel 01) · <span class="url">stefanmanja.com/writing/rag-pilot-failures/</span>
 
     <div class="cite-label">FULL POST</div>
     methodology + cost data + 5-model comparison:<br>

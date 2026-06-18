@@ -204,7 +204,7 @@
   <h1 class="slide-title">Build the eval <em>before</em> the build.</h1>
 
   <div class="pattern-body">
-    A team builds a RAG system against 20–30 sample questions, picks a chunking strategy that "looks right," iterates on the prompt until the sample outputs read well, and ships.
+    A team builds a RAG system against 20–30 sample questions, picks a retrieval strategy that "looks right," iterates on the prompt until the sample outputs read well, and ships.
   </div>
 
   <hr class="divider">
@@ -367,7 +367,7 @@
   <h1 class="slide-title">Log cost per query from <em>day one</em>.</h1>
 
   <div class="pattern-body">
-    The team builds a RAG system, ships to a small group, then a larger group, then is surprised when the monthly bill jumps 10x. The system is doing what it was told — top-k=20, 70B model, 500-token answer — but the cost per query is $0.15 and the team is running 50,000 queries a day.
+    The team builds a RAG system, ships to a small group, then a larger group, then is surprised when the monthly bill jumps 10x. The system is doing what it was told — top-k=20 chunks at 1k tokens each, frontier model (GPT-5.5 in the most recent case), 500-token answer — but the cost per query is around $0.15 and the team is running 50,000 queries a day.
   </div>
 
   <hr class="divider">
@@ -456,7 +456,7 @@
     <div class="axis">
       <div class="axis-title">3 · ARCHITECTURE</div>
       <div class="axis-body">
-        top-k=20 → top-k=5 + reranker cut cost <span class="num">4x</span>. Prompt caching reduces repeated-prefix cost 5–10x. <span class="num">1M-context</span> windows now standard (GLM 5.2, MiniMax M3, Qwen 3.7 Max, Kimi K2.6 at 256K) — long context is the lever for single-document ingest (one or a few large docs); RAG is still the lever for cross-document scale (10K+ documents). The two are <span class="num">complementary</span>, not substitutes. The cheapest lever is still the RAG-side one: a 10-line chunker change, not a 10-week migration.
+        top-k=20 → top-k=5 + reranker cut cost <span class="num">4x</span>. <span class="num">1M context</span> is a <em>capability</em> lever, not a cost discipline lever — it costs more per query than focused RAG. Use it for single-doc ingest; RAG is still the lever for cross-doc scale (10K+ documents). The cost discipline comes from <span class="num">prompt caching</span> (cache-hit pricing 5-10x lower than cache-miss, per 1M tokens read) and from <span class="num">hybrid retrieval + cross-encoder rerank</span> (fewer chunks to the model). The cheapest lever is still the RAG-side one: a 10-line chunker change, not a 10-week migration.
       </div>
     </div>
   </div>
@@ -488,14 +488,14 @@
     4 enterprise RAG engagements, 2024–2026. Referred to throughout as "in past enterprise AI projects." The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production.
 
     <div class="cite-label">DATA · TOP-5 OPEN-WEIGHT · $ / 1M TOKENS · ordered by capability (AA Index v4.1)</div>
-    — GLM 5.2:        $1.40 in / $4.40 out · AA Index 51, leading open weights as of 2026-06-17 · Z.ai on BIS Entity List
-    — MiniMax M3:     $0.30 in / $1.20 out · standard tier, ≤512k · AA Index 44 · 30.9% agentic abstention (vendor-reported, Frontier Coding claim)
-    — Qwen 3.7 Max:   $1.25 in / $3.75 out · AA Index 46 (2026-06-18) · proprietary, Alibaba Cloud Model Studio only — no public weights
-    — DeepSeek V4-Pro: $0.435 in / $0.870 out · direct API, not 3rd-party hosted · AA Index 44
-    — Kimi K2.6:      $0.95 in / $4.00 out · cache-miss rate · AA Index 43
+    — GLM 5.2:        $1.40 in / $4.40 out · AA Index 51
+    — MiniMax M3:     $0.30 in / $1.20 out · AA Index 44
+    — Qwen 3.7 Max:   $1.25 in / $3.75 out · AA Index 46
+    — DeepSeek V4-Pro: $0.435 in / $0.870 out · AA Index 44
+    — Kimi K2.6:      $0.95 in / $4.00 out · AA Index 43
 
     <div class="cite-label">PRIVACY · DEPLOYMENT</div>
-    For sensitive enterprise data, deploy via cloud-provider paths (AWS, Azure, Google Cloud, Oracle Cloud) or self-host. Direct APIs of Chinese providers route data through China. <em>MiniMax M3: EU / Singapore endpoints available</em> — data outside China. Frontier APIs (OpenAI, Anthropic) are default-safe under their DPAs. <em>Z.ai (GLM 5.2) is on the BIS Entity List (Jan 2025)</em> — direct API use is restricted for US persons; use cloud-provider paths only.
+    For sensitive enterprise data, deploy via cloud-provider paths (AWS, Azure, Google Cloud, Oracle Cloud) or self-host. <em>Z.ai (GLM 5.2) is on the BIS Entity List (Jan 2025)</em> — direct API use is restricted for US persons. <em>MiniMax M3: EU / Singapore endpoints available</em> — data outside China.
 
     <div class="cite-label">PRICING · VERIFIED 2026-06-17</div>
     — GLM 5.2:        <span class="url">docs.z.ai</span>
@@ -506,15 +506,8 @@
     — GPT-5.5:        <span class="url">platform.openai.com</span>
     — Claude Opus 4.8: <span class="url">anthropic.com</span>
 
-    <div class="cite-label">INDEX METHODOLOGY</div>
-    AA Index v4.1 — composite of MMLU-Pro, GPQA-Diamond, MATH, HumanEval, LiveCodeBench, Terminal-Bench. See <span class="url">artificialanalysis.ai/methodology</span>
-
-    <div class="cite-label">FOLLOW-UP CAROUSEL</div>
-    the 2026 cost discipline — 5 cost-competitive models ranked, with cost data and deployment paths:<br>
-    <span class="url">stefanmanja.com</span> (carousel 02) · <span class="url">stefanmanja.com/writing/cost-discipline-2026/</span>
-
     <div class="cite-label">FULL POST</div>
-    methodology + cost data + 3 fixes:<br>
+    methodology + cost data + 3 fixes + 2026 differentiators:<br>
     <span class="url">stefanmanja.com/writing/rag-pilot-failures/</span>
   </div>
 

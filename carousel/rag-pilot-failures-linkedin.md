@@ -46,25 +46,23 @@ The carousel below is what I wish I had known at the start.
 
 ### Slide 4 — Fix 3: Log cost per query from day one
 
-**The pattern.** The team builds a RAG system, ships to a small group, then a larger group, then is surprised when the monthly bill jumps 10x. The system is doing what it was told — top-k=20, 70B model, 500-token answer — but the cost per query is $0.15 and the team is running 50,000 queries a day.
+**The pattern.** The team builds a RAG system, ships to a small group, then a larger group, then is surprised when the monthly bill jumps 10x. The system is doing what it was told — top-k=20 chunks at 1k tokens each, frontier model (GPT-5.5 in the most recent case), 500-token answer — but the cost per query is around $0.15 and the team is running 50,000 queries a day.
 
 **The fix.** Log per-query cost from day one. Every retrieval has a cost. Every LLM call has a cost. The first question after go-live: "what is the cost per query, and who is the top-10% of users by cost?"
 
-**The data.** One team cut cost 4x with a single change: top-k=20 → top-k=5 + reranker. Quality went up (reranker is more selective than dense retrieval). Cost went down (fewer chunks to process). They had been paying 4x more for worse answers.
+**The data.** One team cut cost 3-4x with a single change: top-k=20 → top-k=5 with a cross-encoder reranker. Quality went up (reranker is more selective than dense retrieval). Cost went down (fewer chunks to process, fewer tokens to the model). They had been paying 3-4x more for worse answers.
 
 ### Slide 5 — Cost-spiral: the 2026 angle
 
 **The 2026 cost discipline**
 
-Frontier model API prices look stable. They are subsidized by VC funding — the post-IPO price is widely expected to be higher than today's. Build the cost discipline now, while the pricing is in your favor.
-
 Three axes of cost reduction:
 
-1. **Model.** Open-weight alternatives — DeepSeek V4-Pro, GLM 5.2, Qwen 3.7 Max, Kimi K2.6, MiniMax M3 — ship at 10-30x lower cost than frontier closed-API. Deployable on the same major cloud providers (AWS Bedrock, Azure AI Foundry, Google Vertex, OCI). Deployment flexibility + pricing leverage + the option to self-host on dedicated infrastructure.
+1. **Model.** Cost-competitive alternatives — DeepSeek V4-Pro, GLM 5.2, Qwen 3.7 Max, Kimi K2.6, MiniMax M3 — ship at 3-45x lower cost than frontier closed-API. DeepSeek V4-Pro lands at 40-45x cheaper (AA cost-per-task, $0.04). MiniMax M3 at ~10x. GLM 5.2, Kimi K2.6, and Qwen 3.7 Max land 3-8x lower. Deployable on the same major cloud providers (AWS Bedrock, Azure AI Foundry, Google Vertex, OCI). Deployment flexibility + pricing room + the option to self-host on dedicated infrastructure.
 
-2. **Format.** Toon cuts input tokens 30-40%, net +12% cost reduction. GCF goes further but adds reasoning cost.
+2. **Format.** TOON and GCF cut prompt tokens 30-45% on uniform-array data. End-to-end cost saving is smaller — ~12% in the best case at gpt-5-mini high. Same accuracy as JSON on this workload (30 trials, internal ranking, ~200 candidates per call). Other workloads may differ. Reasoning tokens offset some of the prompt saving. Format-dependent.
 
-3. **Architecture.** top-k=20 → top-k=5 + reranker cut cost 4x. Prompt caching reduces repeated-prefix cost 5-10x.
+3. **Architecture.** top-k=20 → top-k=5 + reranker cut cost 4x. Prompt caching reduces repeated-prefix cost 5-10x. 1M context is a capability lever, not a cost discipline lever — use it for single-doc ingest; RAG is still the lever for cross-doc scale.
 
 The era of "as much AI as you can" is over. The era of "as much AI as cost-justified" is here.
 

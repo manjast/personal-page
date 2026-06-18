@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>rag-pilot-failures — variant d: lab notebook</title>
+<style>
+  /* Variant D — Lab Notebook
+     Reference: arXiv preprint, Nature Methods figure, scientific lab notebook
+     Palette: warm white, dark ink, teal + orange accents
+     Typography: Charter / Source Serif body, IBM Plex Mono numbers
+     Diagrams: data plots (bar / line charts)
+  */
+  :root {
+    --paper: #FAFAF8;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --ink-faint: #8A8A8A;
+    --rule: #D8D8D0;
+    --accent-teal: #2A6F6B;
+    --accent-orange: #C76B3D;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #2A2924; }
+  body { font-family: "Charter", "Source Serif Pro", "IBM Plex Serif", Georgia, serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    background: var(--paper);
+    position: relative;
+    margin: 24px auto;
+    padding: 80px 88px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    overflow: hidden;
+    page-break-after: always;
+  }
+  @media print {
+    body { background: white; }
+    .slide { margin: 0; box-shadow: none; page-break-after: always; }
+    @page { size: 1080px 1350px; margin: 0; }
+  }
+  .top-line { position: absolute; top: 56px; left: 88px; right: 88px; height: 2px; background: var(--ink); }
+  .bottom-line { position: absolute; bottom: 56px; left: 88px; right: 88px; height: 1px; background: var(--ink); }
+  .header {
+    position: absolute;
+    top: 32px;
+    left: 88px;
+    right: 88px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  h1.cover-title {
+    font-family: "Charter", "Source Serif Pro", Georgia, serif;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-top: 60px;
+  }
+  h1.cover-title em { font-style: italic; color: var(--accent-orange); }
+  h1.cover-title .sub {
+    display: block;
+    font-size: 32px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 16px;
+  }
+  h1.slide-title {
+    font-family: "Charter", "Source Serif Pro", Georgia, serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-top: 32px;
+  }
+  h1.slide-title em { font-style: italic; color: var(--accent-orange); }
+  .subtitle {
+    font-size: 18px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-top: 32px;
+    max-width: 780px;
+    font-style: italic;
+  }
+  .lede { font-size: 18px; line-height: 1.55; color: var(--ink); margin-top: 24px; max-width: 880px; }
+  .section-label {
+    font-family: "IBM Plex Sans", "Inter", sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    font-weight: 700;
+    margin-top: 36px;
+    margin-bottom: 12px;
+  }
+  .body { font-size: 19px; line-height: 1.6; color: var(--ink); margin-top: 12px; }
+  .body em { font-style: italic; color: var(--ink-soft); }
+  .num-mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 48px;
+    color: var(--accent-orange);
+    letter-spacing: -0.02em;
+    margin-top: 24px;
+    line-height: 1;
+    font-weight: 600;
+  }
+  .num-sub {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    font-style: italic;
+  }
+  .axis-grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .axis {
+    background: white;
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent-teal);
+    padding: 20px 18px;
+  }
+  .axis-label {
+    font-family: "IBM Plex Sans", "Inter", sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-teal);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .axis-body { font-size: 13px; line-height: 1.55; color: var(--ink); font-family: "IBM Plex Sans", "Inter", sans-serif; }
+  .axis-body em { font-style: italic; }
+  .axis-body .hl { color: var(--accent-orange); font-weight: 700; }
+  .closing-q {
+    font-size: 24px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-top: 40px;
+    font-style: italic;
+  }
+  .closing-q .q { color: var(--accent-orange); font-weight: 700; font-style: normal; }
+  .diagram { margin: 24px 0; width: 100%; }
+  .footer {
+    position: absolute;
+    bottom: 32px;
+    left: 88px;
+    right: 88px;
+    display: flex;
+    justify-content: space-between;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .cite { font-size: 13px; line-height: 1.7; color: var(--ink-soft); margin-top: 24px; font-family: "IBM Plex Sans", "Inter", sans-serif; }
+  .cite .url { color: var(--accent-teal); font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  .cite-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .data-line {
+    stroke: var(--accent-teal);
+    stroke-width: 2.5;
+    fill: none;
+  }
+  .data-line-orange { stroke: var(--accent-orange); }
+  .data-line-dim { stroke: var(--ink-faint); stroke-width: 1.5; stroke-dasharray: 4 3; fill: none; }
+  .data-axis { stroke: var(--ink); stroke-width: 1; fill: none; }
+  .data-label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; fill: var(--ink-soft); }
+  .data-label-strong { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; fill: var(--accent-orange); font-weight: 700; }
+  .data-bar { fill: var(--accent-teal); }
+  .data-bar-orange { fill: var(--accent-orange); }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — COVER -->
+<section class="slide" id="slide-1">
+  <div class="top-line"></div>
+  <div class="bottom-line"></div>
+  <div class="header">
+    <span>RAG FIELD NOTES  ·  N=4</span>
+    <span>stefanmanja.com</span>
+  </div>
+
+  <h1 class="cover-title">
+    3 operational gaps.<br>
+    4 enterprise RAG pilots.
+    <span class="sub">The model was <em>rarely</em> the problem.</span>
+  </h1>
+
+  <div class="subtitle">
+    Drawn from 4 enterprise RAG deployments, 2024–2026, anonymized as "in past enterprise AI projects." Quantitative observations + 3 specific fixes.
+  </div>
+
+  <div class="footer">
+    <span>STEFAN MANJA  ·  NOTES FROM A RAG OPERATOR</span>
+    <span>2026</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 2 — FIX 1 -->
+<section class="slide" id="slide-2">
+  <div class="top-line"></div>
+  <div class="bottom-line"></div>
+  <div class="header">
+    <span>FIX 01  ·  EVAL HARNESS</span>
+    <span>stefanmanja.com  ·  02 / 06</span>
+  </div>
+
+  <h1 class="slide-title">Build the eval <em>before</em> the build.</h1>
+
+  <div class="section-label">PATTERN</div>
+  <div class="body">
+    A team builds a RAG system against 20–30 sample questions, picks a chunking strategy that "looks right," iterates on the prompt until the sample outputs read well, and ships.
+  </div>
+
+  <div class="section-label">FIX</div>
+  <div class="body">
+    Build the eval first. 50–100 questions from <em>real users</em> (not synthesized), graded 1–5 by the people who will use the system, run after every change. The eval answers one specific question: is the new system better than the old one, on the questions the users will ask?
+  </div>
+
+  <svg class="diagram" viewBox="0 0 880 200" xmlns="http://www.w3.org/2000/svg">
+    <text class="data-label" x="0" y="18">FIG. 1 — ANSWER-QUALITY SCORE, 1 CHUNKING CHANGE</text>
+    <line class="data-axis" x1="100" y1="170" x2="800" y2="170" />
+    <line class="data-axis" x1="100" y1="40" x2="100" y2="170" />
+    <text class="data-label" x="40" y="105" transform="rotate(-90 50 105)">score (1–5)</text>
+    <text class="data-label" x="780" y="190">questions</text>
+
+    <line class="data-line-dim" x1="100" y1="120" x2="800" y2="120" />
+    <text class="data-label" x="105" y="115">y = 3.1</text>
+
+    <line class="data-line" x1="120" y1="120" x2="780" y2="76" />
+    <circle cx="120" cy="120" r="6" fill="var(--accent-teal)" />
+    <circle cx="780" cy="76" r="6" fill="var(--accent-orange)" />
+
+    <text class="data-label-strong" x="450" y="60">3.1 → 3.7</text>
+    <text class="data-label" x="430" y="76">on 80 questions, 1 chunking change</text>
+    <text class="data-label" x="100" y="195" fill="var(--ink-faint)">source: anonymized RAG engagement, 2025-2026</text>
+  </svg>
+
+  <div class="num-mono">3.1 → 3.7</div>
+  <div class="num-sub">
+    on 80 questions, after one chunking change. Two pilots I worked on built the eval late, after 200+ users were in production. Both spent 3 weeks reverting prompt + chunking + retrieval changes that had been merged without measurement.
+  </div>
+
+  <div class="footer">
+    <span>FIX 01  ·  EVAL HARNESS</span>
+    <span>stefanmanja.com  ·  02 / 06</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 3 — FIX 2 -->
+<section class="slide" id="slide-3">
+  <div class="top-line"></div>
+  <div class="bottom-line"></div>
+  <div class="header">
+    <span>FIX 02  ·  RETRIEVAL DIAGNOSTICS</span>
+    <span>stefanmanja.com  ·  03 / 06</span>
+  </div>
+
+  <h1 class="slide-title">Trace retrieval on every <em>failed</em> answer.</h1>
+
+  <div class="section-label">PATTERN</div>
+  <div class="body">
+    When the system gives a wrong answer, the team rewrites the prompt. The system gives a different wrong answer. The team rewrites the prompt again.
+  </div>
+
+  <div class="section-label">FIX</div>
+  <div class="body">
+    Trace the retrieval first. For every failed answer, log the top-k chunks, similarity scores, source documents. The question is not "why did the model say this" — it is "did the retrieval find the right source, and did the model read it?"
+  </div>
+
+  <svg class="diagram" viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg">
+    <text class="data-label" x="0" y="18">FIG. 2 — TIME-TO-FIX, BEFORE / AFTER DIAGNOSTIC</text>
+    <line class="data-axis" x1="100" y1="190" x2="800" y2="190" />
+    <line class="data-axis" x1="100" y1="40" x2="100" y2="190" />
+    <text class="data-label" x="40" y="115" transform="rotate(-90 50 115)">time-to-fix (days)</text>
+    <text class="data-label" x="780" y="210">condition</text>
+
+    <rect class="data-bar" x="160" y="50" width="180" height="140" />
+    <text class="data-label-strong" x="170" y="100">2–3 weeks</text>
+    <text class="data-label" x="170" y="120">prompt-engineering</text>
+    <text class="data-label" x="170" y="135">rabbit hole</text>
+    <text class="data-label" x="170" y="170" fill="var(--ink-faint)">no diagnostics</text>
+
+    <rect class="data-bar-orange" x="540" y="170" width="180" height="20" />
+    <text class="data-label-strong" x="550" y="165">2–3 days</text>
+    <text class="data-label" x="550" y="155">actual fix</text>
+    <text class="data-label" x="550" y="140" fill="var(--ink-faint)">with diagnostics</text>
+
+    <line class="data-line-dim" x1="100" y1="170" x2="800" y2="170" />
+    <text class="data-label" x="105" y="165">2 days</text>
+  </svg>
+
+  <div class="num-mono">2–3 weeks → 2–3 days</div>
+  <div class="num-sub">
+    Prompt-engineering rabbit hole vs. the actual fix, once retrieval diagnostics were in place. One pilot: a chunker that had split a table across 2 chunks. 10-line change. No prompt change.
+  </div>
+
+  <div class="footer">
+    <span>FIX 02  ·  RETRIEVAL DIAGNOSTICS</span>
+    <span>stefanmanja.com  ·  03 / 06</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 4 — FIX 3 -->
+<section class="slide" id="slide-4">
+  <div class="top-line"></div>
+  <div class="bottom-line"></div>
+  <div class="header">
+    <span>FIX 03  ·  COST PER QUERY</span>
+    <span>stefanmanja.com  ·  04 / 06</span>
+  </div>
+
+  <h1 class="slide-title">Log cost per query from <em>day one</em>.</h1>
+
+  <div class="section-label">PATTERN</div>
+  <div class="body">
+    The team builds a RAG system, ships to a small group, then a larger group, then is surprised when the monthly bill jumps 10x. The system is doing what it was told — top-k=20, 70B model, 500-token answer — but the cost per query is $0.15 and the team is running 50,000 queries a day.
+  </div>
+
+  <div class="section-label">FIX</div>
+  <div class="body">
+    Log per-query cost from day one. Every retrieval has a cost. Every LLM call has a cost. The first question after go-live: what is the cost per query, and who is the top-10% of users by cost?
+  </div>
+
+  <svg class="diagram" viewBox="0 0 880 220" xmlns="http://www.w3.org/2000/svg">
+    <text class="data-label" x="0" y="18">FIG. 3 — $ / QUERY, BEFORE → AFTER CONFIG CHANGE</text>
+    <line class="data-axis" x1="100" y1="190" x2="800" y2="190" />
+    <line class="data-axis" x1="100" y1="40" x2="100" y2="190" />
+    <text class="data-label" x="40" y="115" transform="rotate(-90 50 115)">$ / query</text>
+    <text class="data-label" x="780" y="210">configuration</text>
+
+    <rect class="data-bar" x="140" y="55" width="220" height="135" />
+    <text class="data-label-strong" x="160" y="90">$0.15</text>
+    <text class="data-label" x="160" y="108">/ query</text>
+    <text class="data-label" x="160" y="140" fill="var(--ink-faint)">top-k=20</text>
+    <text class="data-label" x="160" y="155" fill="var(--ink-faint)">+ 70B model</text>
+
+    <rect class="data-bar-orange" x="540" y="170" width="220" height="20" />
+    <text class="data-label-strong" x="560" y="165">$0.037</text>
+    <text class="data-label" x="560" y="155">/ query</text>
+    <text class="data-label" x="560" y="140" fill="var(--ink-faint)">top-k=5 + rerank</text>
+
+    <line class="data-line-orange" x1="380" y1="120" x2="540" y2="180" />
+    <text class="data-label-strong" x="420" y="115">4x cost cut</text>
+    <text class="data-label" x="410" y="132" fill="var(--ink-soft)">quality went up too</text>
+  </svg>
+
+  <div class="num-mono">4x cost cut</div>
+  <div class="num-sub">
+    One configuration change. top-k=20 → top-k=5 + reranker. The team had been paying 4x more for worse answers. Reranker is more selective than dense retrieval: fewer chunks to process, better signal in the context window.
+  </div>
+
+  <div class="footer">
+    <span>FIX 03  ·  COST PER QUERY</span>
+    <span>stefanmanja.com  ·  04 / 06</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 5 — COST-SPIRAL -->
+<section class="slide" id="slide-5">
+  <div class="top-line"></div>
+  <div class="bottom-line"></div>
+  <div class="header">
+    <span>FINDINGS  ·  2026 COST DISCIPLINE</span>
+    <span>stefanmanja.com  ·  05 / 06</span>
+  </div>
+
+  <h1 class="slide-title">The 2026 cost <em>discipline</em>.</h1>
+
+  <div class="lede">
+    Frontier model API prices look stable. They are subsidized by VC funding — the post-IPO price is widely expected to be higher than today's. Build the cost discipline now, while the pricing is in your favor.
+  </div>
+
+  <div class="axis-grid">
+    <div class="axis">
+      <div class="axis-label">F.1  ·  MODEL</div>
+      <div class="axis-body">
+        <em>DeepSeek V4-Pro, GLM 5.2, Qwen 3.7 Max, Kimi K2.6, MiniMax M3</em> ship at <span class="hl">10–30x lower</span> cost than frontier closed-API. Deployable on AWS Bedrock / Azure AI Foundry / Google Vertex / OCI. Deployment flexibility + pricing leverage + the option to self-host on dedicated infrastructure.
+      </div>
+    </div>
+    <div class="axis">
+      <div class="axis-label">F.2  ·  FORMAT</div>
+      <div class="axis-body">
+        <em>Toon</em> cuts input tokens 30–40%, net <span class="hl">+12% cost reduction</span> in the best case. <em>GCF</em> goes further but adds reasoning cost. The net is format-dependent: pick per workload.
+      </div>
+    </div>
+    <div class="axis">
+      <div class="axis-label">F.3  ·  ARCHITECTURE</div>
+      <div class="axis-body">
+        top-k=20 → top-k=5 + reranker cut cost <span class="hl">4x</span>. Prompt caching reduces repeated-prefix cost 5–10x. The RAG-side lever is the cheapest one — 10-line chunker change, not a 10-week migration.
+      </div>
+    </div>
+  </div>
+
+  <div class="closing-q">
+    The era of "as much AI as you can" is over. The era of "as much AI as cost-justified" is here.<br><br>
+    <span class="q">? What's the most expensive RAG mistake you've seen — model problem or operational one?</span>
+  </div>
+
+  <div class="footer">
+    <span>FINDINGS  ·  2026 COST DISCIPLINE</span>
+    <span>stefanmanja.com  ·  05 / 06</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 6 — CITE -->
+<section class="slide" id="slide-6">
+  <div class="top-line"></div>
+  <div class="bottom-line"></div>
+  <div class="header">
+    <span>REFERENCES  ·  n = 4 engagements</span>
+    <span>stefanmanja.com  ·  06 / 06</span>
+  </div>
+
+  <h1 class="slide-title" style="font-size: 38px;">Sources &amp; further reading.</h1>
+
+  <div class="cite">
+    <div class="cite-label">METHODOLOGY</div>
+    4 enterprise RAG engagements, 2024 – 2026, anonymized as "in past enterprise AI projects." The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production.
+
+    <div class="cite-label" style="margin-top: 24px;">PUBLIC-MODEL PRICING  ·  VERIFIED 2026-06-17</div>
+    — MiniMax M3:     <span class="url">platform.minimax.io</span>
+    — GLM 5.2:        <span class="url">docs.z.ai</span>
+    — DeepSeek V4-Pro: <span class="url">api-docs.deepseek.com</span>
+    — Kimi K2.6:      <span class="url">platform.moonshot.ai</span>
+    — Qwen 3.7 Max:   <span class="url">llm-stats.com</span>  (Novita host)
+    — GPT-5.5:        <span class="url">platform.openai.com</span>
+    — Claude Opus 4.8: <span class="url">anthropic.com</span>
+
+    <div class="cite-label" style="margin-top: 24px;">FULL POST</div>
+    methodology + cost data + 3 fixes:<br>
+    <span class="url">stefanmanja.com/writing/rag-pilot-failures/</span>
+  </div>
+
+  <div class="footer">
+    <span>REFERENCES  ·  n = 4 engagements</span>
+    <span>stefanmanja.com  ·  06 / 06</span>
+  </div>
+</section>
+
+</body>
+</html>

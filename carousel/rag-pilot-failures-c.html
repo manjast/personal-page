@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>rag-pilot-failures — variant c: typewriter spec</title>
+<style>
+  /* Variant C — Typewriter Spec
+     Reference: IBM System/360 manual, Bell Labs technical memo, 1970s computing textbook
+     Palette: aged paper, dark brown-black ink, red accent
+     Typography: 100% monospace, letter-spaced headers
+     Diagrams: ASCII-art in code blocks
+  */
+  :root {
+    --paper: #F0EBD8;
+    --ink: #2B2A28;
+    --ink-soft: #5C5A56;
+    --ink-faint: #8A8884;
+    --rule: #B0A99A;
+    --rule-dark: #807A6E;
+    --accent: #B83227;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #1F1E1A; }
+  body { font-family: "IBM Plex Mono", ui-monospace, "Courier New", monospace; color: var(--ink); -webkit-font-smoothing: antialiased; }
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    background: var(--paper);
+    position: relative;
+    margin: 24px auto;
+    padding: 80px 88px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    overflow: hidden;
+    page-break-after: always;
+  }
+  @media print {
+    body { background: white; }
+    .slide { margin: 0; box-shadow: none; page-break-after: always; }
+    @page { size: 1080px 1350px; margin: 0; }
+  }
+  .scanlines {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(43,42,40,0.025) 3px, rgba(43,42,40,0.025) 4px);
+    pointer-events: none;
+  }
+  .stamper {
+    position: absolute;
+    top: 36px;
+    left: 88px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule-dark);
+    padding: 4px 10px;
+  }
+  .stamper-r {
+    top: 36px;
+    right: 88px;
+    left: auto;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  h1.cover-title {
+    font-family: "IBM Plex Mono", "Courier New", monospace;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-top: 100px;
+  }
+  h1.cover-title em { font-style: normal; color: var(--accent); }
+  h1.cover-title .line { display: block; }
+  h1.slide-title {
+    font-family: "IBM Plex Mono", "Courier New", monospace;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-top: 24px;
+  }
+  h1.slide-title em { font-style: italic; }
+  .header {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 8px;
+    font-weight: 700;
+  }
+  .divider-double {
+    border: 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    height: 4px;
+    margin: 24px 0;
+  }
+  .divider { border: 0; border-top: 1px solid var(--rule-dark); margin: 18px 0; }
+  .lede { font-size: 16px; line-height: 1.7; color: var(--ink); margin-top: 24px; max-width: 880px; }
+  .pattern, .fix, .data { margin-top: 24px; }
+  .pattern-label, .fix-label, .data-label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .pattern-body, .fix-body, .data-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .pattern-body em, .fix-body em, .data-body em { font-style: italic; }
+  .data-num {
+    font-size: 36px;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+    margin-top: 12px;
+    line-height: 1;
+  }
+  .data-num-sub {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+  pre {
+    font-family: "IBM Plex Mono", "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: rgba(43,42,40,0.05);
+    border-left: 3px solid var(--rule-dark);
+    padding: 16px 20px;
+    margin: 16px 0;
+    white-space: pre;
+    overflow-x: auto;
+  }
+  pre .dim { color: var(--ink-faint); }
+  pre .accent { color: var(--accent); font-weight: 700; }
+  pre .ok { color: #2B6B2B; font-weight: 700; }
+  pre .bad { color: var(--accent); font-weight: 700; }
+  .axis-grid {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .axis {
+    border: 1px solid var(--rule-dark);
+    padding: 16px;
+  }
+  .axis-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .axis-body { font-size: 13px; line-height: 1.55; color: var(--ink); }
+  .axis-body em { font-style: italic; }
+  .axis-body .hl { color: var(--accent); font-weight: 700; }
+  .closing-q {
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-top: 36px;
+    font-style: italic;
+  }
+  .closing-q .q { color: var(--accent); font-weight: 700; }
+  .footer {
+    position: absolute;
+    bottom: 36px;
+    left: 88px;
+    right: 88px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .cite {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-top: 20px;
+  }
+  .cite .url { color: var(--accent); }
+  .cite-label {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .strikethrough { text-decoration: line-through; color: var(--ink-faint); }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — COVER -->
+<section class="slide" id="slide-1">
+  <div class="scanlines"></div>
+  <div class="stamper">RAG-2026-001</div>
+  <div class="stamper stamper-r">DRAFT / REV 1</div>
+
+  <h1 class="cover-title" style="margin-top: 160px;">
+    <span class="line">3 operational gaps.</span>
+    <span class="line">4 enterprise RAG pilots.</span>
+    <span class="line">&nbsp;</span>
+    <span class="line">The model was <em>rarely</em> the problem.</span>
+  </h1>
+
+  <div class="lede" style="margin-top: 56px;">
+    Drawn from 4 enterprise RAG deployments,<br>
+    2024 – 2026, anonymized as<br>
+    "in past enterprise AI projects."
+  </div>
+
+  <div class="footer">
+    <span>STEFAN MANJA</span>
+    <span>stEFANMANJA.COM</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 2 — FIX 1 -->
+<section class="slide" id="slide-2">
+  <div class="scanlines"></div>
+  <div class="stamper">RAG-2026-001</div>
+  <div class="stamper stamper-r">PAGE 02 / 06</div>
+
+  <div class="header">F I X  ·  N O .  0 1</div>
+  <hr class="divider-double">
+  <h1 class="slide-title">Build the eval <em>before</em> the build.</h1>
+
+  <div class="pattern-label">/ / /  P A T T E R N  / / /</div>
+  <pre><span class="dim">; a team builds a RAG system</span>
+sample = 20–30 questions
+chunk_strategy = "looks right"
+prompt_iterate_until_output_reads_well
+<span class="bad">ship()</span>            <span class="dim">; no measurement</span></pre>
+
+  <div class="fix-label">/ / /  F I X  / / /</div>
+  <pre>eval = build_first()
+eval.questions = 50..100 <span class="dim">; from real users, not synthesized</span>
+eval.grader = 1..5     <span class="dim">; by the people who will use it</span>
+eval.run(after_every_change)
+
+if eval.score_new > eval.score_old:
+    <span class="ok">keep(change)</span>
+else:
+    <span class="bad">revert(change)</span></pre>
+
+  <div class="data-label">/ / /  T H E   D A T A  / / /</div>
+  <pre>chunking_change     →  score: 3.1  →  3.7   (80 questions)
+eval_late_build      →  200+ users in production
+revert_window        →  3 weeks  (prompt + chunking + retrieval)</pre>
+
+  <div class="footer">
+    <span>STEFAN MANJA  ·  NOTES FROM A RAG OPERATOR</span>
+    <span>stEFANMANJA.COM  ·  02 / 06</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 3 — FIX 2 -->
+<section class="slide" id="slide-3">
+  <div class="scanlines"></div>
+  <div class="stamper">RAG-2026-001</div>
+  <div class="stamper stamper-r">PAGE 03 / 06</div>
+
+  <div class="header">F I X  ·  N O .  0 2</div>
+  <hr class="divider-double">
+  <h1 class="slide-title">Trace retrieval on every <em>failed</em> answer.</h1>
+
+  <div class="pattern-label">/ / /  P A T T E R N  / / /</div>
+  <pre>while answer.wrong:
+    prompt = rewrite(prompt)
+    answer = generate(prompt)
+    <span class="dim">; different wrong answer each iteration</span></pre>
+
+  <div class="fix-label">/ / /  F I X  / / /</div>
+  <pre>for every failed_answer:
+    log(top_k_chunks, similarity_scores, source_docs)
+    ask = "did retrieval find right source?"
+    ask = "did the model read it?"
+    <span class="dim">; not "why did the model say this"</span></pre>
+
+  <div class="data-label">/ / /  T H E   D A T A  / / /</div>
+  <pre>case_A: chunker split a table across 2 chunks
+        fix: 10-line chunker change (keep tables atomic)
+        no prompt change. no model change. no embedding change.
+
+case_B: retrieval returned 2022 doc for a 2024 query
+        fix: recency-weighted retriever
+        no prompt change.
+
+<span class="dim"># before the fix:</span>  2–3 weeks  (prompt-engineering rabbit hole)
+<span class="dim"># after the fix:</span>   2–3 days   (the actual fix)</pre>
+
+  <div class="footer">
+    <span>STEFAN MANJA  ·  NOTES FROM A RAG OPERATOR</span>
+    <span>stEFANMANJA.COM  ·  03 / 06</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 4 — FIX 3 -->
+<section class="slide" id="slide-4">
+  <div class="scanlines"></div>
+  <div class="stamper">RAG-2026-001</div>
+  <div class="stamper stamper-r">PAGE 04 / 06</div>
+
+  <div class="header">F I X  ·  N O .  0 3</div>
+  <hr class="divider-double">
+  <h1 class="slide-title">Log cost per query from <em>day one</em>.</h1>
+
+  <div class="pattern-label">/ / /  P A T T E R N  / / /</div>
+  <pre>config = {
+    top_k: 20,
+    model: "70b-parameter",
+    output_tokens: 500,
+}
+ship(group_a); ship(group_b)
+bill = surprise(10x)
+<span class="bad">; $0.15 / query x 50,000 queries / day</span></pre>
+
+  <div class="fix-label">/ / /  F I X  / / /</div>
+  <pre>log(cost_per_query) <span class="dim"># from day one</span>
+log(cost_per_user)
+log(cost_per_team)
+
+first_question_after_golive:
+    "what is the cost per query?"
+    "who is the top-10% of users by cost?"</pre>
+
+  <div class="data-label">/ / /  T H E   D A T A  / / /</div>
+  <pre>before:  top_k=20, 70b model
+        →  $0.15 / query
+
+after:   top_k=5 + reranker
+        →  $0.037 / query
+        →  <span class="ok">4x cost cut</span>
+        →  quality went up too (reranker is more selective)</pre>
+
+  <div class="footer">
+    <span>STEFAN MANJA  ·  NOTES FROM A RAG OPERATOR</span>
+    <span>stEFANMANJA.COM  ·  04 / 06</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 5 — COST-SPIRAL -->
+<section class="slide" id="slide-5">
+  <div class="scanlines"></div>
+  <div class="stamper">RAG-2026-001</div>
+  <div class="stamper stamper-r">PAGE 05 / 06</div>
+
+  <div class="header">F I N D I N G S  ·  2 0 2 6   C O S T   D I S C I P L I N E</div>
+  <hr class="divider-double">
+  <h1 class="slide-title">The 2026 cost <em>discipline</em>.</h1>
+
+  <div class="lede">
+    Frontier model API prices look stable. They are subsidized by VC funding — the post-IPO price is widely expected to be higher than today's. Build the cost discipline now, while the pricing is in your favor.
+  </div>
+
+  <div class="axis-grid">
+    <div class="axis">
+      <div class="axis-label">F.1  ·  M O D E L</div>
+      <div class="axis-body">
+        <em>DeepSeek V4-Pro, GLM 5.2, Qwen 3.7 Max, Kimi K2.6, MiniMax M3</em> ship at <span class="hl">10–30x lower</span> cost than frontier closed-API. Deployable on AWS Bedrock / Azure AI Foundry / Google Vertex / OCI. Deployment flexibility + pricing leverage + the option to self-host on dedicated infrastructure.
+      </div>
+    </div>
+    <div class="axis">
+      <div class="axis-label">F.2  ·  F O R M A T</div>
+      <div class="axis-body">
+        <em>Toon</em> cuts input tokens 30–40%, net <span class="hl">+12% cost reduction</span> in the best case. <em>GCF</em> goes further but adds reasoning cost. The net is format-dependent: pick per workload.
+      </div>
+    </div>
+    <div class="axis">
+      <div class="axis-label">F.3  ·  A R C H I T E C T U R E</div>
+      <div class="axis-body">
+        top-k=20 → top-k=5 + reranker cut cost <span class="hl">4x</span>. Prompt caching reduces repeated-prefix cost 5–10x. The RAG-side lever is the cheapest one — 10-line chunker change, not a 10-week migration.
+      </div>
+    </div>
+  </div>
+
+  <div class="closing-q">
+    The era of "as much AI as you can" is over. The era of "as much AI as cost-justified" is here.<br><br>
+    <span class="q">? What's the most expensive RAG mistake you've seen — model problem or operational one?</span>
+  </div>
+
+  <div class="footer">
+    <span>STEFAN MANJA  ·  NOTES FROM A RAG OPERATOR</span>
+    <span>stEFANMANJA.COM  ·  05 / 06</span>
+  </div>
+</section>
+
+
+<!-- SLIDE 6 — CITE -->
+<section class="slide" id="slide-6">
+  <div class="scanlines"></div>
+  <div class="stamper">RAG-2026-001</div>
+  <div class="stamper stamper-r">PAGE 06 / 06</div>
+
+  <div class="header">S O U R C E S  ·  C I T A T I O N S</div>
+  <hr class="divider-double">
+  <h1 class="slide-title" style="font-size: 30px;">Sources &amp; further reading.</h1>
+
+  <div class="cite">
+    <div class="cite-label">M E T H O D O L O G Y</div>
+    4 enterprise RAG engagements, 2024 – 2026, anonymized as "in past enterprise AI projects." The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production.
+
+    <div class="cite-label" style="margin-top: 24px;">P U B L I C - M O D E L   P R I C I N G   ·   V E R I F I E D   2 0 2 6 - 0 6 - 1 7</div>
+    — MiniMax M3:     <span class="url">platform.minimax.io</span>
+    — GLM 5.2:        <span class="url">docs.z.ai</span>
+    — DeepSeek V4-Pro: <span class="url">api-docs.deepseek.com</span>
+    — Kimi K2.6:      <span class="url">platform.moonshot.ai</span>
+    — Qwen 3.7 Max:   <span class="url">llm-stats.com</span>  (Novita host)
+    — GPT-5.5:        <span class="url">platform.openai.com</span>
+    — Claude Opus 4.8: <span class="url">anthropic.com</span>
+
+    <div class="cite-label" style="margin-top: 24px;">F U L L   P O S T</div>
+    methodology + cost data + 3 fixes:<br>
+    <span class="url">stefanmanja.com/writing/rag-pilot-failures/</span>
+  </div>
+
+  <div class="footer">
+    <span>STEFAN MANJA  ·  NOTES FROM A RAG OPERATOR</span>
+    <span>stEFANMANJA.COM  ·  06 / 06</span>
+  </div>
+</section>
+
+</body>
+</html>

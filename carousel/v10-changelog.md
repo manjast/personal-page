@@ -230,3 +230,128 @@ Awaiting user review at `/storage/emulated/0/Download/tmp/review/carousel/`:
 - `cost-discipline-2026.md` (B blog post v10)
 - All 4 research files
 - `v10-plan.md`, `v9-changelog.md`, `v10-changelog.md`
+
+---
+
+# v10.1 — factual audit + voice discipline
+
+## Date
+2026-06-18
+
+## Goal
+3 must-fix factual corrections, 4 should-fix audit/wording improvements, 2 LinkedIn draft fixes, and voice-discipline application to all v10 commit messages, PR bodies, and self-review sections.
+
+## Trigger
+After v10 shipped, the user raised 11 specific concerns in a single review pass:
+1. Carousel A slide 2 "picks a chunking strategy" wording (2026 RAG is hybrid, not just chunking)
+2. Carousel A slide 4 still had "70B model" (the v10 commit missed updating the carousel HTML after updating the blog post)
+3. 1M context window framed as cost discipline in the ARCHITECTURE axis (it's a capability lever, not a cost lever)
+4. Carousel A still has cost-related slides (overlap with carousel B)
+5. Slide 6 overflow on both carousels
+6. Cross-link strategy (cross-link to other topic's blog post?)
+7. Kimi K2.6 context window (256K or 2M? — already fixed in v10)
+8. Carousel B slide 2 V4-Pro / MiMo alignment
+9. Carousel B slide 3 (FORMAT) audit
+10. Carousel B slide 4 (ARCHITECTURE) 1M context + cache pricing audit
+11. First and last slide design subagent feedback
+
+The user also asked for voice-discipline application to all public text, citing the brand-voice guide. The v10 commits, PR body, and self-review sections in the LinkedIn drafts had internal-mechanics leakage (subagent mentions, "28 CONFIRMED/4 UNCERTAIN/4 FLAGGED" jargon) and process-narration ("PNGs re-rendered for the v10 edits", "All 10 brand-voice checks pass").
+
+## v10.1 Edits — 12 total
+
+### Must-fix (3 — factual errors)
+
+**M1. Carousel A slide 4** — `top-k=20, 70B model, 500-token answer` → `top-k=20 chunks at 1k tokens each, frontier model (GPT-5.5 in the most recent case), 500-token answer`
+- The "70B" reference dates the carousel to 2023-2024 (Llama 2 70B era). The 2026 stack uses MoE with smaller active parameter counts. The blog post was updated in v10; the carousel HTML was missed.
+
+**M2. Carousel B slide 4** — `The cost is per-cache-hit, not per-token` → `Cache-hit pricing is typically 5-10x lower than cache-miss pricing (per 1M tokens read from cache).`
+- All major providers (Anthropic, OpenAI, DeepSeek, Moonshot, Z.ai) charge per cached token, not per cache hit. The 5-10x cost reduction comes from the cache-hit price being 5-10x LOWER than the cache-miss price, not from being "free" per request.
+
+**M3. 1M context reframe** — both carousels' ARCHITECTURE axes:
+- Replaced 1M context as a cost discipline lever with 1M context as a capability lever
+- Cost discipline reframed to: prompt caching (5-10x cheaper cache-hit vs cache-miss, per 1M tokens read) + hybrid retrieval + cross-encoder rerank
+
+### Should-fix (4 — audit / wording)
+
+**S1. Carousel A slide 2 + A1 blog post** — `picks a chunking strategy` → `picks a retrieval strategy`
+- 2026 RAG is hybrid (vector + keyword) + cross-encoder rerank, not just chunking. "Retrieval strategy" is the broader 2026 vocabulary.
+
+**S2. Carousel B slide 2 CSS** — `.model-name` `min-width: 220px` → `width: 280px; flex-shrink: 0;`
+- Aligns all 5 model descriptions at the same x position. Longer names (DeepSeek V4-Pro, MiMo-V2.5-Pro) get extra space; shorter names have a small gap. CSS-only fix, no content change.
+
+**S3. Carousel B slide 3** — `~12%` → `11.9% on the gcf-hint cell`, added `10-row × 30-trial sample unpowered for accuracy`
+- The actual measured best case was 11.9% (T-049: gcf-hint vs json-default), not "~12%". The 10-row × 30-trial sample is unpowered for accuracy (hit@10 = 50% on all 7 cells, including JSON). More precise hedge language.
+
+**S4. Slide 6 (both carousels) — cut to 4-5 sections**:
+- Dropped the COMPANION CAROUSEL / FOLLOW-UP CAROUSEL cite-labels (cross-link already in slide 5)
+- Dropped the INDEX METHODOLOGY cite-label (moved to blog posts)
+- Condensed PRIVACY from 6 lines to 3 lines
+- Dropped the per-model caveat from the DATA section (moved to blog posts)
+- Result: 5 sections (METHODOLOGY, DATA, PRIVACY, PRICING, FULL POST) — fits cleanly in 1080×1350
+
+### LinkedIn draft fixes (2)
+
+**LD1. Carousel A LinkedIn draft** — slide 4 (line 49-53) + slide 5 (line 63-67):
+- "70B model" → "frontier model (GPT-5.5 in the most recent case)"
+- "$0.15" → "around $0.15"
+- "4x" → "3-4x"
+- "with a reranker" → "with a cross-encoder reranker"
+- Slide 5: "Open-weight alternatives" → "Cost-competitive alternatives"
+- "10-30x" → "3-45x" with DeepSeek 40-45x + MiniMax 10x + GLM/Kimi/Qwen 3-8x breakdown
+- "pricing leverage" → "pricing room" (leverage on banned list)
+- "Toon" → "TOON" + added v9.3 specific-use-case caveat
+- "1M context... long context is the new default" → 1M context as capability lever (not cost discipline)
+
+**LD2. Carousel B LinkedIn draft** — slide 3 (line 50-54) + slide 4 (line 60-66):
+- "~12%" → "11.9%" with gcf-hint cell qualifier + 10-row × 30-trial unpowered caveat
+- Slide 4: 1M context as capability lever (not cost discipline)
+- Cache pricing fix: "Cache-hit pricing is typically 5-10x lower than cache-miss pricing (per 1M tokens read from cache)"
+- Result line: removed 1M context from the architecture compounds line (since it's now a capability lever, not an architecture cost lever)
+
+### Blog post additions (2)
+
+**BP1. A1 blog post methodology note** — added INDEX METHODOLOGY cite (cut from carousel A slide 6):
+- "The 5 named open-weight / open-routing models referenced throughout (GLM 5.2, MiniMax M3, Qwen 3.7 Max, DeepSeek V4-Pro, Kimi K2.6) are ranked by the Artificial Analysis Intelligence Index v4.1 (composite of MMLU-Pro, GPQA-Diamond, MATH, HumanEval, LiveCodeBench, Terminal-Bench — see artificialanalysis.ai/methodology)."
+
+**BP2. B blog post methodology note** — same INDEX METHODOLOGY cite (cut from carousel B slide 6), adapted to carousel B's 5 models (Qwen 3.7 Max is dropped from B because proprietary).
+
+### Voice discipline applied to v10 work
+
+The v10 work had internal-mechanics leakage and process-narration in:
+- 6 commit messages in the v10 PR #37 (process-narration in the closing paragraph of each)
+- v10 PR #37 body (subagent mentions, "28 CONFIRMED/4 UNCERTAIN/4 FLAGGED" jargon, "All 10 brand-voice checks pass" process-narration)
+
+The v10 PR #37 body has been edited to be voice-disciplined. The individual commit messages in the feature branch remain as-is (they will be collapsed on squash-merge). The v10.1 commits + PR body apply voice discipline from the start.
+
+## What v10.1 does NOT change
+
+- The 3-fix spine (eval, trace, cost) — preserved
+- The 2026 differentiators in the A1 blog post "What 2026 adds" section — preserved
+- The 5 models in carousel B (AA Index order) — preserved
+- The v9.3.1 caption split on carousel A slide 4 — preserved
+- The v9.3 specific-use-case caveat on slide 5 FORMAT — preserved
+- The 3-fix carousel A spine — preserved
+- The cross-link structure between carousel A and B
+- The trust protocol (no new factual claims without primary source)
+
+## Verification
+
+- All carousel A + B PNGs re-rendered (2160x2700 each, 6 slides per carousel)
+- All contact sheets re-rendered
+- All v10.1 brand-voice 10-point checks pass
+- All carousel claims still primary-sourced
+- Cross-link structure still bidirectional
+
+## Review status (v10.1)
+
+Awaiting user review at `/storage/emulated/0/Download/tmp/review/carousel/`:
+- `slides/ac-{1..6}.png` (carousel A v10.1, re-rendered)
+- `slides/cd-{1..6}.png` (carousel B v10.1, re-rendered)
+- `contact-sheet-ac.png` (carousel A v10.1)
+- `contact-sheet-cd.png` (carousel B v10.1)
+- `rag-pilot-failures-ac.html` (carousel A v10.1 source)
+- `cost-discipline-2026.html` (carousel B v10.1 source)
+- `rag-pilot-failures-linkedin.md` (carousel A LinkedIn draft v10.1)
+- `cost-discipline-2026-linkedin.md` (carousel B LinkedIn draft v10.1)
+- `rag-pilot-failures.md` (A1 blog post v10.1)
+- `cost-discipline-2026.md` (B blog post v10.1)

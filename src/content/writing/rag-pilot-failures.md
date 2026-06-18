@@ -18,7 +18,7 @@ Three of those gaps, with the specific fix that addressed each.
 
 ## 1. No evaluation harness before the build
 
-The pattern: a team builds a RAG system against a sample of 20-30 questions, picks a chunking strategy that "looks right," iterates on the prompt until the sample outputs read well, and ships.
+The pattern: a team builds a RAG system against a sample of 20-30 questions, picks a retrieval strategy that "looks right," iterates on the prompt until the sample outputs read well, and ships.
 
 The fix: build the eval first. A 50-100 question set drawn from real user queries (not synthesized), graded on a 1-5 scale by the people who will actually use the system, and run after every change. The eval answers a specific question: "is the system better than the previous version of the system, on the questions the users will ask?"
 
@@ -78,4 +78,4 @@ If a RAG pilot has not measured any of these three, the pilot is not in producti
 
 ---
 
-**Methodology note**: drawn from 4 enterprise RAG engagements I have worked on, 2024-2026, anonymized as "in past enterprise AI projects." The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production. Names of companies, teams, and projects are not included. The 70% AI pilot stat is from Hyperion, "AI Pilots in Production" (March 2026). The 35-50% retrieval failure reduction is from Anthropic, "Contextual Retrieval" (September 2024).
+**Methodology note**: drawn from 4 enterprise RAG engagements I have worked on, 2024-2026, anonymized as "in past enterprise AI projects." The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production. Names of companies, teams, and projects are not included. The 70% AI pilot stat is from Hyperion, "AI Pilots in Production" (March 2026). The 35-50% retrieval failure reduction is from Anthropic, "Contextual Retrieval" (September 2024). The 5 named open-weight / open-routing models referenced throughout (GLM 5.2, MiniMax M3, Qwen 3.7 Max, DeepSeek V4-Pro, Kimi K2.6) are ranked by the Artificial Analysis Intelligence Index v4.1 (composite of MMLU-Pro, GPQA-Diamond, MATH, HumanEval, LiveCodeBench, Terminal-Bench — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology)).

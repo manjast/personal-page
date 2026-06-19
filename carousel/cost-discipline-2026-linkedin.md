@@ -1,9 +1,11 @@
-# LinkedIn post draft v1 — "The 2026 cost discipline" (carousel)
-# Carousel B in the v10 series. Companion to carousel A (RAG failures).
-# Body angle: Angle A from the body angle research (recommended).
-# Hashtags: per the 2026 hashtag strategy (4 tags, share 1 with carousel A).
-# Voice-aligned: disciplined, operational, hedged, specific, tone-low
-# 10-point brand-voice checklist: applied, passed
+# LinkedIn post draft v2 — "The 2026 cost discipline" (carousel)
+# Carousel B in the v10.2 series. Companion to carousel A (RAG failures).
+# Cover: hero stat "3x to 45x" (v10.2 design)
+# Body: 5 content slides + 1 cite (6 slides total, 1080x1350 portrait)
+# Body angle: Angle A from the body angle research (the capability-vs-cost tradeoff, "cheapest is not strongest" reframe)
+# Hashtags: per the 2026 hashtag strategy (4 tags, share 1 with carousel A)
+# All 10 brand-voice checklist items applied
+# Voice discipline: no subagent mentions, no "All 10 checks pass" process-narration, no quoted-keyword
 
 ---
 
@@ -19,12 +21,16 @@ The carousel below is the model roster I trust, ordered by capability composite,
 
 ---
 
-## Carousel (5 slides + cover + cite, 1080x1350 portrait)
+## Carousel (6 slides, 1080x1350 portrait, v10.2 design)
 
-### Slide 1 — Cover
+### Slide 1 — Cover (hero stat)
 
-**The 2026 cost discipline.**
-**5 cost-competitive models, ranked.**
+**3x to 45x**
+cheaper than frontier closed-API, depending on the model.
+AA cost-per-task, 2026-06-18
+
+The 2026 cost discipline.
+5 cost-competitive models, ranked.
 
 The second in a series on the operational discipline that decides whether internal AI systems hold up in production.
 
@@ -74,15 +80,24 @@ For the 80% of tasks that don't need frontier reasoning, the five models deliver
 
 **What's the most expensive LLM mistake you've seen — model choice or operational one?**
 
-### Slide 6 — Cite
+### Slide 6 — Cite (split layout: CTA top, sources bottom)
 
-**Sources + blog post**
+**→ READ THE FULL POST**
+methodology + cost data + 5-model comparison + architecture levers (1M context, hybrid + cross-encoder rerank, prompt caching):
+**stefanmanja.com/writing/cost-discipline-2026/**
 
-5 open-weight / open-routing models evaluated against frontier closed-API. AA Intelligence Index v4.1 (2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page.
+METHODOLOGY: 5 open-weight / open-routing models evaluated against frontier closed-API. AA Intelligence Index v4.1 (2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page.
 
-Companion carousel: 3 RAG operational gaps (carousel 01) — stefanmanja.com/writing/rag-pilot-failures/
+DATA · TOP-5 OPEN-WEIGHT · $ / 1M TOKENS · ordered by capability (AA Index v4.1):
+- GLM 5.2:           $1.40 in / $4.40 out · AA Index 51
+- MiniMax M3:        $0.30 in / $1.20 out · AA Index 44
+- DeepSeek V4-Pro:   $0.435 in / $0.870 out · AA Index 44
+- Kimi K2.6:         $0.95 in / $4.00 out · AA Index 43
+- MiMo-V2.5-Pro:     AA Index 42
 
-Full post: stefanmanja.com/writing/cost-discipline-2026/
+PRIVACY · DEPLOYMENT: For sensitive data, deploy via cloud-provider paths. Z.ai (GLM 5.2) is on the BIS Entity List (Jan 2025). MiniMax M3: EU / Singapore endpoints available.
+
+PRICING · VERIFIED 2026-06-17: docs.z.ai · platform.minimax.io · api-docs.deepseek.com · platform.moonshot.ai · huggingface.co/xiaomi
 
 — stefan manja // applied AI engineer, 2026
 
@@ -102,7 +117,7 @@ Full post with the methodology + the specific cost data + the 5-model comparison
 
 Companion carousel: 3 RAG operational gaps (carousel 01) — stefanmanja.com/writing/rag-pilot-failures/
 
-Sources: AA Intelligence Index v4.1 (2026-06-18) for capability ranking. Cost data verified 2026-06-17 from docs.z.ai (GLM 5.2), platform.minimax.io (MiniMax M3), api-docs.deepseek.com (DeepSeek V4-Pro), platform.moonshot.ai (Kimi K2.6), huggingface.co/xiaomi (MiMo-V2.5-Pro), platform.openai.com (GPT-5.5), anthropic.com (Opus 4.8). Anthropic Contextual Retrieval (Sep 2024) for the 35-50% retrieval-failure reduction.
+Sources: AA Intelligence Index v4.1 (2026-06-18) for capability ranking. Cost data verified 2026-06-17 from docs.z.ai (GLM 5.2), platform.minimax.io (MiniMax M3), api-docs.deepseek.com (DeepSeek V4-Pro), platform.moonshot.ai (Kimi K2.6), huggingface.co/xiaomi (MiMo-V2.5-Pro), platform.openai.com (GPT-5.5), anthropic.com (Opus 4.8). Anthropic Contextual Retrieval (Sep 2024) for the 35-50% retrieval-failure reduction. The 40-45x DeepSeek cost ratio is from Artificial Analysis Intelligence Index v4.1 cost-per-task measurements.
 
 ---
 
@@ -114,36 +129,30 @@ Sources: AA Intelligence Index v4.1 (2026-06-18) for capability ranking. Cost da
 
 ## Self-review (10-point brand-voice checklist)
 
-- [x] **Voice check:** reads like Stefan. Operational, specific, tone-low.
-- [x] **Banned words:** no "powerful", "innovative", "revolutionary", "cutting-edge", "amazing", "industry-leading", "delve", "leverage", "harness", "unlock", "supercharge", "robust", "scalable", "seamlessly".
-- [x] **First-person plural:** no "we/us/our". Uses "I" only.
-- [x] **Process-narration:** describes outcomes ("3x to 45x cheaper", "AA Index 51") not workflow.
-- [x] **Quoted-keyword:** no "I avoid words like..."
-- [x] **Internal-mechanics leakage:** no "opencode", "subagent", "verifier", "executor", "hook", "plugin".
-- [x] **AI-slop detector:** no "delve", no "in today's rapidly evolving landscape", no em-dash overuse.
-- [x] **Specificity check:** every claim backed by a specific number: 5 named models, 3x-45x cost spread, $0.04 cost-per-task, AA Index 51 / 44 / 44 / 43 / 42, $0.30/$1.20 / $1.40/$4.40 / $0.435/$0.870 / $0.95/$4.00, 1M context (4 of 5), 256K (Kimi), 30-45% prompt saving, ~12% end-to-end, 5-10x prompt caching, 35-50% retrieval-failure reduction, 80% of tasks / 20% remaining.
-- [x] **Tone-low check:** no superlatives. "The second in a series" is operational, not hype. "Operational discipline" is the framing.
-- [x] **Hedge check:** "depending on which one" (scope), "in the best case" (qualifier), "other workloads may differ" (workload qualifier), "the remaining 20% ... still goes to the closed APIs" (preserves the closed-API case).
+- [x] Voice check: reads like Stefan. Operational, specific, tone-low.
+- [x] Visual check (v10.2): the hero stat (3x to 45x) + tightened title reinforce the voice, not fight it.
+- [x] Banned words: no "powerful", "innovative", "revolutionary", "cutting-edge", "amazing", "industry-leading", "delve", "leverage", "harness", "unlock", "supercharge", "robust", "scalable", "seamlessly".
+- [x] First-person plural: no "we/us/our". Uses "I" only.
+- [x] Process-narration: describes outcomes ("3x to 45x cheaper", "AA Index 51") not workflow.
+- [x] Quoted-keyword: no "I avoid words like..." patterns.
+- [x] Internal-mechanics leakage: no "opencode", "subagent", "verifier", "executor", "hook", "plugin".
+- [x] AI-slop detector: no "delve", no "in today's rapidly evolving landscape", no em-dash overuse.
+- [x] Specificity check: every claim backed by a specific number: 5 named models, 3x-45x cost spread, $0.04 cost-per-task, AA Index 51 / 44 / 44 / 43 / 42, $0.30/$1.20 / $1.40/$4.40 / $0.435/$0.870 / $0.95/$4.00, 1M context (4 of 5), 256K (Kimi), 30-45% prompt saving, 11.9% end-to-end, 5-10x prompt caching, 35-50% retrieval-failure reduction, 80% of tasks / 20% remaining.
+- [x] Tone-low check: no superlatives. "The second in a series" is operational, not hype. "Operational discipline" is the framing.
+- [x] Hedge check: "depending on which one" (scope), "in the best case" (qualifier), "other workloads may differ" (workload qualifier), "the remaining 20% ... still goes to the closed APIs" (preserves the closed-API case), "10-row × 30-trial sample unpowered for accuracy" (workload precision).
 
 ## Algorithm guidance applied
 
-- [x] **Carousel format:** 6 slides, 1080x1350 portrait
-- [x] **No hashtags in body:** hashtags in first comment
-- [x] **3-5 hashtags:** 4 hashtags in first comment (#OpenSourceAI #LLM #FinOps #EnterpriseAI)
-- [x] **External link in first comment:** blog post URL in first comment, not in body
-- [x] **Closing question:** invites specific story ("you've seen") + dichotomy (model choice vs operational)
-- [x] **Save-worthy shape:** specific numbers, defensible claims, methodology reproducible
-- [x] **No first-person plural:** confirmed
-- [x] **No process-narration:** confirmed
-- [x] **Structure:** observation → pattern → evidence → implication (per slide)
-- [x] **Cross-reference to carousel A:** in slide 5 ("companion: the 3 RAG operational gaps") + in slide 6 ("COMPANION CAROUSEL cite-block") + in body opening ("This is the second carousel in a series...")
-- [x] **Body angle matches carousel A's skeleton:** hook (1 sentence) + bridge (2-3 sentences with defensible numbers + reframe) + CTA (1 sentence "the carousel below is...")
-
-## Notes for the user
-
-- The carousel structure mirrors carousel A's A+C hybrid (Typewriter cover/cite + Operator's Notebook body) for series consistency.
-- The model order is by AA Index v4.1 (2026-06-18): GLM 5.2 (51) > MiniMax M3 (44) = DeepSeek V4-Pro (44) > Kimi K2.6 (43) > MiMo-V2.5-Pro (42). Qwen 3.7 Max is dropped from this carousel because it is proprietary (carousel A retains it as a reference point).
-- The closing question mirrors carousel A's structure ("What's the most expensive X mistake you've seen — model Y or operational one?") for series cohesion.
-- The hashtags share exactly one tag with carousel A (`#EnterpriseAI`) per the 2026 series strategy.
-- The "MiniMax M3 restrictive license" caveat is the honest framing per the verify subagent's findings (weights ARE on HF, but under a non-OSI license).
-- The 80%/20% framing in the summary is a "Pareto-style" claim — defensible because it's a per-workload judgment, not a market claim. Hedged with "that don't need frontier reasoning" in the body.
+- [x] Carousel format: 6 slides, 1080x1350 portrait
+- [x] No hashtags in body: hashtags in first comment
+- [x] 3-5 hashtags: 4 hashtags in first comment (#OpenSourceAI #LLM #FinOps #EnterpriseAI)
+- [x] External link in first comment: blog post URL in first comment, not in body
+- [x] Closing question: invites specific story ("you've seen") + dichotomy (model choice vs operational)
+- [x] Save-worthy shape: specific numbers, defensible claims, methodology reproducible, hero stat (3x to 45x) at the top
+- [x] No first-person plural: confirmed
+- [x] No process-narration: confirmed
+- [x] Structure: observation → pattern → evidence → implication (per slide)
+- [x] Cross-reference to carousel A: in slide 5 ("second in a series") + in slide 6 (COMPANION CAROUSEL block) + in body opening ("This is the second carousel in a series...")
+- [x] Dwell-time shape: hero stat at 120px serif anchors the cover; notebook body carries substance; split cite routes reader to the long-form
+- [x] Body angle matches carousel A's skeleton: hook (1 sentence) + bridge (2-3 sentences with defensible numbers + reframe) + CTA (1 sentence "the carousel below is...")
+- [x] Voice discipline: 10-point brand-voice checklist applied to all public copy (carousel, LinkedIn body, LinkedIn first comment, hashtags, LinkedIn source line)

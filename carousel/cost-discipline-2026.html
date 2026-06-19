@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>cost-discipline-2026 — variant ac: notebook body + typewriter frame</title>
+<title>cost-discipline-2026 — v10.2 operator's notebook (all 6 slides)</title>
 <style>
   :root {
     --paper: #F5F2EC;
@@ -11,11 +11,6 @@
     --ink-faint: #8A8780;
     --accent: #B85C3D;
     --rule: #C8C2B0;
-    --tw-paper: #F0EBD8;
-    --tw-ink: #2B2A28;
-    --tw-ink-soft: #5C5A56;
-    --tw-rule: #B0A99A;
-    --tw-accent: #B83227;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #2A2924; }
@@ -30,38 +25,39 @@
     page-break-after: always;
   }
   .slide.notebook { background: var(--paper); padding: 80px 88px; }
-  .slide.typewriter { background: var(--tw-paper); padding: 80px 88px; }
   @media print {
     body { background: white; }
     .slide { margin: 0; box-shadow: none; page-break-after: always; }
     @page { size: 1080px 1350px; margin: 0; }
   }
-  .scanlines {
-    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(43,42,40,0.025) 3px, rgba(43,42,40,0.025) 4px);
-    pointer-events: none;
-  }
   .top-rule { position: absolute; top: 64px; left: 88px; right: 88px; height: 1px; background: var(--ink); opacity: 0.85; }
   .bottom-rule { position: absolute; bottom: 64px; left: 88px; right: 88px; height: 1px; background: var(--ink); opacity: 0.85; }
-  .folio { position: absolute; top: 36px; left: 88px; font-size: 18px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); }
+  .folio { position: absolute; top: 36px; left: 88px; font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); }
   .folio-r { left: auto; right: 88px; }
-  .num { font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif; font-style: italic; color: var(--ink-soft); font-size: 20px; }
+  .num { font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif; font-style: italic; color: var(--ink-soft); font-size: 16px; }
   .marker {
     display: inline-block; padding: 2px 0;
-    font-size: 19px; letter-spacing: 0.18em;
+    font-size: 14px; letter-spacing: 0.18em;
     text-transform: uppercase; color: var(--ink-soft);
     border-bottom: 1px solid var(--rule);
   }
   .accent-rule { color: var(--accent); }
 
-  h1.cover-title {
-    font-family: "IBM Plex Mono", "Courier New", monospace;
-    font-weight: 400; font-size: 48px; line-height: 1.22;
-    letter-spacing: -0.01em; color: var(--tw-ink);
-    margin-top: 90px;
+  h1.cover-hero {
+    font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif;
+    font-weight: 400; font-size: 120px; line-height: 1.0;
+    color: var(--accent);
+    margin-top: 60px;
   }
-  h1.cover-title em { font-style: normal; color: var(--tw-accent); }
-  h1.cover-title .line { display: block; }
+  h1.cover-hero em { font-style: normal; color: var(--accent); }
+
+  h1.cover-title {
+    font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif;
+    font-weight: 400; font-size: 56px; line-height: 1.15;
+    letter-spacing: -0.01em; color: var(--ink);
+    margin-top: 36px;
+  }
+  h1.cover-title em { font-style: italic; color: var(--accent); }
 
   h1.slide-title {
     font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif;
@@ -71,15 +67,41 @@
   }
   h1.slide-title em { font-style: italic; color: var(--accent); }
 
-  .subtitle {
-    font-size: 17px; line-height: 1.55; color: var(--tw-ink-soft);
-    margin-top: 40px; max-width: 760px; font-style: italic;
+  h1.cite-title {
+    font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif;
+    font-weight: 400; font-size: 40px; line-height: 1.12;
+    color: var(--ink);
+    margin-top: 70px;
+  }
+
+  .hero-stat-block { margin-top: 60px; }
+  .hero-stat {
+    font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif;
+    font-weight: 400; font-size: 120px; line-height: 1.0;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .hero-stat-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 22px; line-height: 1.4; color: var(--ink);
+    margin-top: 24px;
+  }
+  .hero-stat-attr {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 14px; line-height: 1.4; color: var(--ink-faint);
+    margin-top: 12px; letter-spacing: 0.02em;
   }
 
   .cover-subtitle {
     font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif;
-    font-size: 30px; line-height: 1.35; color: var(--tw-ink-soft);
-    margin-top: 64px; max-width: 880px; font-style: italic;
+    font-size: 26px; line-height: 1.35; color: var(--ink-soft);
+    margin-top: 36px; max-width: 880px; font-style: italic;
+  }
+
+  .cover-byline {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 14px; color: var(--ink-soft); letter-spacing: 0.05em;
+    margin-top: 60px;
   }
 
   .lede {
@@ -105,7 +127,7 @@
   .data-num-sub { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-top: 10px; }
 
   .divider { border: 0; border-top: 1px dashed var(--rule); margin: 24px 0; }
-  .divider-double { border: 0; border-top: 1px solid var(--tw-ink); border-bottom: 1px solid var(--tw-ink); height: 4px; margin: 24px 0; }
+  .divider-double { border: 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); height: 4px; margin: 24px 0; }
 
   .axis-list { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
   .axis { border-top: 2px solid var(--ink); padding-top: 14px; }
@@ -116,13 +138,6 @@
   .axis-body { font-size: 19px; line-height: 1.5; color: var(--ink); }
   .axis-body em { font-style: italic; }
   .axis-body .num { color: var(--accent); font-style: normal; font-weight: 700; }
-
-  .closing-q {
-    font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif;
-    font-style: italic; font-size: 26px; line-height: 1.3;
-    color: var(--ink); margin-top: 36px;
-  }
-  .closing-q .accent { color: var(--accent); font-style: normal; font-weight: 600; }
 
   .model-list { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
   .model-row {
@@ -144,6 +159,13 @@
   .model-detail .num { color: var(--accent); font-weight: 700; }
   .model-detail .caveat { color: var(--ink-soft); font-style: italic; }
 
+  .closing-q {
+    font-family: "IBM Plex Serif", "Charter", "Source Serif Pro", Georgia, serif;
+    font-style: italic; font-size: 26px; line-height: 1.3;
+    color: var(--ink); margin-top: 36px;
+  }
+  .closing-q .accent { color: var(--accent); font-style: normal; font-weight: 600; }
+
   .diagram { margin: 28px 0 0 0; width: 100%; }
   .diagram .step-label {
     font-family: "IBM Plex Mono", ui-monospace, "Courier New", monospace;
@@ -163,45 +185,69 @@
   }
   .result-note em { color: var(--accent); font-style: normal; font-weight: 600; }
 
-  .cite { font-size: 17px; line-height: 1.65; color: var(--tw-ink); margin-top: 18px; font-family: "IBM Plex Mono", ui-monospace, monospace; }
-  .cite .url { color: var(--tw-accent); }
-  .cite-label {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-    font-size: 17px; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--tw-accent); font-weight: 700;
-    margin-bottom: 8px; margin-top: 24px;
+  .cite-cta {
+    margin-top: 32px;
+    padding: 20px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
   }
+  .cite-cta-label {
+    font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 8px;
+  }
+  .cite-cta-body {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 18px; line-height: 1.5; color: var(--ink);
+  }
+  .cite-cta-url {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 20px; line-height: 1.4; color: var(--accent);
+    margin-top: 8px; font-weight: 600;
+  }
+
+  .cite-sources {
+    margin-top: 32px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 15px; line-height: 1.6; color: var(--ink-soft);
+  }
+  .cite-sources-label {
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 600; margin-bottom: 6px;
+  }
+  .cite-sources-body { font-size: 15px; line-height: 1.55; color: var(--ink-soft); margin-top: 4px; }
+  .cite-sources-url { color: var(--ink-soft); text-decoration: underline; }
 
   .byline { position: absolute; bottom: 36px; left: 88px; font-size: 15px; color: var(--ink-soft); letter-spacing: 0.05em; }
   .byline-r { left: auto; right: 88px; text-align: right; }
   .byline .sig { color: var(--accent); }
-
-  .stamper { position: absolute; top: 32px; left: 88px; font-size: 16px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--tw-ink-soft); border: 1px solid var(--tw-rule); padding: 6px 12px; }
-  .stamper-r { top: 32px; right: 88px; left: auto; border-color: var(--tw-accent); color: var(--tw-accent); }
 </style>
 </head>
 <body>
 
-<!-- SLIDE 1 — COVER (Typewriter treatment) -->
-<section class="slide typewriter" id="slide-1">
-  <div class="scanlines"></div>
-  <div class="stamper">STEFAN MANJA · 2026</div>
-  <div class="stamper stamper-r">01 / 06</div>
+<!-- SLIDE 1 — COVER (Notebook treatment with hero stat) -->
+<section class="slide notebook" id="slide-1">
+  <div class="top-rule"></div>
+  <div class="bottom-rule"></div>
+  <div class="folio">STEFAN MANJA · 2026</div>
+  <div class="folio folio-r">01 / 06</div>
 
-  <h1 class="cover-title" style="margin-top: 140px;">
-    <span class="line">The 2026 cost</span>
-    <span class="line"><em>discipline</em>.</span>
-    <span class="line">&nbsp;</span>
-    <span class="line">5 cost-competitive</span>
-    <span class="line">models, ranked.</span>
+  <div class="hero-stat-block">
+    <div class="hero-stat">3x to 45x</div>
+    <div class="hero-stat-label">cheaper than frontier closed-API, depending on the model.</div>
+    <div class="hero-stat-attr">AA cost-per-task, 2026-06-18</div>
+  </div>
+
+  <h1 class="cover-title" style="margin-top: 56px;">
+    The 2026 cost <em>discipline</em>.<br>
+    5 cost-competitive<br>
+    models, ranked.
   </h1>
 
   <div class="cover-subtitle">
     The second in a series on the operational discipline that decides whether internal AI systems hold up in production.
   </div>
 
-  <div class="byline" style="color: var(--tw-ink-soft);"><span class="sig" style="color: var(--tw-accent);">— stefan manja</span>  ·  applied AI engineer, 2026</div>
-  <div class="byline byline-r" style="color: var(--tw-ink-soft);">stefanmanja.com</div>
+  <div class="cover-byline"><span class="sig">— stefan manja</span>  ·  applied AI engineer, 2026  ·  stefanmanja.com</div>
 </section>
 
 
@@ -339,7 +385,7 @@
   </div>
 
   <div class="result-note">
-    result: <em>architecture compounds</em>. 1M context + hybrid + rerank + prompt caching together decide whether the system holds up at 1K+ queries/day. Pick the combination, not the lever.
+    result: <em>architecture compounds</em>. Hybrid + rerank + caching decide whether the system holds up at 1K+ queries/day. Pick the combination, not the lever.
   </div>
 
   <div class="byline">— stefan manja  ·  applied AI engineer</div>
@@ -372,8 +418,7 @@
 
   <div class="closing-q" style="margin-top: 56px;">
     Pick the model that fits the task, not the model with the<br>highest marketing budget.<br><br>
-    <span class="accent">What's the most expensive LLM mistake you've seen — model choice or operational one?</span><br><br>
-    <span style="font-size: 16px; font-style: normal; color: var(--ink-soft);">→ <em>companion:</em> the 3 RAG operational gaps (carousel 01) — same discipline, applied to retrieval.</span>
+    <span class="accent">What's the most expensive LLM mistake you've seen — model choice or operational one?</span>
   </div>
 
   <div class="byline">— stefan manja  ·  applied AI engineer</div>
@@ -381,46 +426,49 @@
 </section>
 
 
-<!-- SLIDE 6 — CITE (Typewriter treatment) -->
-<section class="slide typewriter" id="slide-6">
-  <div class="scanlines"></div>
-  <div class="stamper">STEFAN MANJA · 2026</div>
-  <div class="stamper stamper-r">06 / 06</div>
+<!-- SLIDE 6 — CITE (Notebook treatment with split layout) -->
+<section class="slide notebook" id="slide-6">
+  <div class="top-rule"></div>
+  <div class="bottom-rule"></div>
+  <div class="folio">C I T E  ·  S O U R C E S</div>
+  <div class="folio folio-r"><span class="num">06</span></div>
 
-  <h1 class="slide-title" style="font-family: 'IBM Plex Mono', 'Courier New', monospace; font-size: 40px; color: var(--tw-ink); margin-top: 70px;">
-    Sources &amp; further reading.
-  </h1>
+  <h1 class="cite-title">Sources &amp; further reading.</h1>
 
-  <div class="cite">
-    <div class="cite-label">METHODOLOGY</div>
-    5 open-weight / open-routing models evaluated against frontier closed-API. AA Intelligence Index v4.1 (2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page.
-
-    <div class="cite-label">DATA · TOP-5 OPEN-WEIGHT · $ / 1M TOKENS · ordered by capability (AA Index v4.1)</div>
-    — GLM 5.2:           $1.40 in / $4.40 out · AA Index 51
-    — MiniMax M3:        $0.30 in / $1.20 out · AA Index 44
-    — DeepSeek V4-Pro:   $0.435 in / $0.870 out · AA Index 44
-    — Kimi K2.6:         $0.95 in / $4.00 out · AA Index 43
-    — MiMo-V2.5-Pro:     AA Index 42
-
-    <div class="cite-label">PRIVACY · DEPLOYMENT</div>
-    For sensitive enterprise data, deploy via cloud-provider paths (AWS, Azure, Google Cloud, Oracle Cloud) or self-host. <em>Z.ai (GLM 5.2) is on the BIS Entity List (Jan 2025)</em> — direct API use is restricted for US persons. <em>MiniMax M3: EU / Singapore endpoints available</em> — data outside China.
-
-    <div class="cite-label">PRICING · VERIFIED 2026-06-17</div>
-    — GLM 5.2:           <span class="url">docs.z.ai</span>
-    — MiniMax M3:        <span class="url">platform.minimax.io</span>
-    — DeepSeek V4-Pro:   <span class="url">api-docs.deepseek.com</span>
-    — Kimi K2.6:         <span class="url">platform.moonshot.ai</span>
-    — MiMo-V2.5-Pro:     <span class="url">huggingface.co/xiaomi</span>
-    — GPT-5.5:           <span class="url">platform.openai.com</span>
-    — Claude Opus 4.8:   <span class="url">anthropic.com</span>
-
-    <div class="cite-label">FULL POST</div>
-    methodology + cost data + 5-model comparison:<br>
-    <span class="url">stefanmanja.com/writing/cost-discipline-2026/</span>
+  <div class="cite-cta">
+    <div class="cite-cta-label">→ READ THE FULL POST</div>
+    <div class="cite-cta-body">methodology + cost data + 5-model comparison + architecture levers (1M context, hybrid + cross-encoder rerank, prompt caching):</div>
+    <div class="cite-cta-url">stefanmanja.com/writing/cost-discipline-2026/</div>
   </div>
 
-  <div class="byline" style="color: var(--tw-ink-soft);"><span class="sig" style="color: var(--tw-accent);">— stefan manja</span>  ·  applied AI engineer, 2026</div>
-  <div class="byline byline-r" style="color: var(--tw-ink-soft);">stefanmanja.com  ·  <span class="num">06 / 06</span></div>
+  <div class="cite-sources">
+    <div class="cite-sources-label">METHODOLOGY</div>
+    <div class="cite-sources-body">5 open-weight / open-routing models evaluated against frontier closed-API. AA Intelligence Index v4.1 (2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page.</div>
+
+    <div class="cite-sources-label" style="margin-top: 20px;">DATA · TOP-5 OPEN-WEIGHT · $ / 1M TOKENS · ordered by capability (AA Index v4.1)</div>
+    <div class="cite-sources-body">
+      — GLM 5.2:           $1.40 in / $4.40 out · AA Index 51<br>
+      — MiniMax M3:        $0.30 in / $1.20 out · AA Index 44<br>
+      — DeepSeek V4-Pro:   $0.435 in / $0.870 out · AA Index 44<br>
+      — Kimi K2.6:         $0.95 in / $4.00 out · AA Index 43<br>
+      — MiMo-V2.5-Pro:     AA Index 42
+    </div>
+
+    <div class="cite-sources-label" style="margin-top: 20px;">PRIVACY · DEPLOYMENT</div>
+    <div class="cite-sources-body">For sensitive enterprise data, deploy via cloud-provider paths (AWS, Azure, Google Cloud, Oracle Cloud) or self-host. Z.ai (GLM 5.2) is on the BIS Entity List (Jan 2025) — direct API use is restricted for US persons. MiniMax M3: EU / Singapore endpoints available.</div>
+
+    <div class="cite-sources-label" style="margin-top: 20px;">PRICING · VERIFIED 2026-06-17</div>
+    <div class="cite-sources-body">
+      <span class="cite-sources-url">docs.z.ai</span> ·
+      <span class="cite-sources-url">platform.minimax.io</span> ·
+      <span class="cite-sources-url">api-docs.deepseek.com</span> ·
+      <span class="cite-sources-url">platform.moonshot.ai</span> ·
+      <span class="cite-sources-url">huggingface.co/xiaomi</span>
+    </div>
+  </div>
+
+  <div class="byline">— stefan manja  ·  applied AI engineer, 2026</div>
+  <div class="byline byline-r">stefanmanja.com  ·  <span class="num">06 / 06</span></div>
 </section>
 
 </body>

@@ -355,3 +355,82 @@ Awaiting user review at `/storage/emulated/0/Download/tmp/review/carousel/`:
 - `cost-discipline-2026-linkedin.md` (carousel B LinkedIn draft v10.1)
 - `rag-pilot-failures.md` (A1 blog post v10.1)
 - `cost-discipline-2026.md` (B blog post v10.1)
+
+---
+
+# v10.2 — visual redesign (drop typewriter, hero stat cover, split cite)
+
+## Date
+2026-06-19
+
+## Goal
+- Address the 3 visual concerns raised in the v10.1 review: cover dead space, cite density, style consistency between slides 1/6 and 2-5
+- Drop the vintage typewriter treatment (per the 2026 B2B trend audit: "Vintage typewriter" is NOT a 2026 B2B technical trend; current technical/B2B favor Inter or IBM Plex Sans)
+- Apply Stefan's established Operator's Notebook (variant A) treatment consistently to all 6 slides
+- Modernize the cover + cite with 2026 trends: hero stat (single hero claim, generous negative space) + split layout (soft CTA top, sources bottom in tonal grey)
+- Extend the brand voice guide with a visual identity section (Section 7) that maps the 5 voice adjectives to visual elements
+- Apply voice discipline to all commit messages, PR bodies, and public text
+
+## User direction (locked)
+- Approve v10.2 visual redesign plan (drop typewriter, notebook for all 6 slides, 2026 trends on cover/cite)
+- Add visual identity section to brand voice guide
+- Keep 1080×1350 portrait (valid for organic LinkedIn carousels, mobile-friendly, 2x DPR = 2160×2700 PNGs)
+- Regenerate and re-copy files to review folder (the v10.1 files were byte-for-byte identical per md5, but the user asked for a refresh)
+
+## Edits (5 logical groups)
+
+### Brand voice guide extension
+- **File**: `/root/projects/freelancing/free/01-history/workstream-2026-06-serbian-ai-audit/brand-voice-guide.md` (267 → 336 lines, +69 lines)
+- **New Section 7 "Visual identity"**: maps the 5 voice adjectives (Disciplined, Operational, Hedged, Specific, Tone-low) to visual elements. Codifies the palette (cream paper, ink, terracotta accent), typography (serif h1, mono body, no sans-serif), diagrams (hand-drawn-feel SVG, monochrome with one accent), layout (1080×1350 portrait, generous padding, hairline rules), mood ("operator, not influencer"), and what visual identity is NOT (vintage typewriter, sans-serif + navy, gradients, illustrated icons, emoji, decorative numbers).
+- **Renumbered**: existing Section 7 → Section 8, Section 8 → Section 9, Section 9 → Section 10. The "What this guide is NOT" section is now Section 8; "Self-review checklist" is Section 9 (with one new checklist item: "Visual check" for any visual surface); "Sources / cross-references" is Section 10.
+- **Updated** "Last updated" to 2026-06-19 (Session 5.2).
+
+### Carousel A v10.2 visual redesign
+- **File**: `personal-page/carousel/rag-pilot-failures-ac.html` (28.5 KB → ~24 KB; the typewriter CSS was removed)
+- **Slide 1 (cover)**: dropped typewriter treatment (no scanlines, no dual-stamp pattern, no sepia paper). Added hero stat block: "70%" in 144px serif (terracotta accent), "of AI pilots never reach production" in 22px mono, "Hyperion, March 2026" in 14px ink-faint attribution. Title tightened from 5 lines to 3 lines: "3 operational gaps. / 4 RAG pilots. / The model was rarely the problem." Subtitle: "A field note from the 3 RAG operational gaps that decide whether the pilot ships."
+- **Slides 2-5 (body)**: unchanged. The notebook treatment (cream paper, IBM Plex Serif h1, IBM Plex Mono body, terracotta accent, hand-drawn-feel diagrams) was already the right aesthetic.
+- **Slide 6 (cite)**: dropped typewriter treatment. New split layout: top section = "→ READ THE FULL POST" cite-block (CTA, prominent) + URL; bottom section = sources in tonal grey (15px ink-soft) — METHODOLOGY, DATA, PRIVACY · DEPLOYMENT, PRICING · VERIFIED 2026-06-17. New CSS classes: `.cite-cta`, `.cite-cta-label`, `.cite-cta-body`, `.cite-cta-url`, `.cite-sources`, `.cite-sources-label`, `.cite-sources-body`, `.cite-sources-url`.
+- **LinkedIn draft**: `personal-page/carousel/rag-pilot-failures-linkedin.md` updated to v2 with the v10.2 cover (70% hero stat), tightened title, and split cite. Voice discipline applied: no subagent mentions, no process-narration, no quoted-keyword.
+
+### Carousel B v10.2 visual redesign
+- **File**: `personal-page/carousel/cost-discipline-2026.html` (20.3 KB → ~24 KB)
+- **Slide 1 (cover)**: dropped typewriter treatment. Added hero stat block: "3x to 45x" in 120px serif (terracotta accent), "cheaper than frontier closed-API, depending on the model" in 22px mono, "AA cost-per-task, 2026-06-18" in 14px ink-faint attribution. Title tightened to 2 lines: "The 2026 cost discipline. / 5 cost-competitive / models, ranked."
+- **Slides 2-5 (body)**: unchanged.
+- **Slide 6 (cite)**: dropped typewriter treatment. New split layout (same structure as carousel A cite).
+- **LinkedIn draft**: `personal-page/carousel/cost-discipline-2026-linkedin.md` updated to v2.
+
+### Re-render + re-copy
+- All carousel PNGs re-rendered at 2160×2700 (2x DPR). Carousel A and B both fully redesigned.
+- All contact sheets re-rendered.
+- All 18 v10.2 files re-copied to `/storage/emulated/0/Download/tmp/review/carousel/` (the user asked for a refresh of the v10.1 files even though they were byte-for-byte identical per md5; the refresh forces the phone file viewer to update).
+
+## What v10.2 does NOT change
+- Slide content (the 3 fixes, the cost-spiral, the 5-model comparison, the architecture levers, the closing question, the cite sources)
+- The 3-fix spine (eval, trace, cost) — preserved
+- The 5-model roster in carousel B (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro) — preserved
+- The 2026 differentiators in the A1 blog post "What 2026 adds" section — preserved
+- The cross-link structure between carousel A and B — preserved
+- The trust protocol (every claim primary-sourced) — preserved
+- The 1080×1350 portrait dimensions — preserved
+- The 2x DPR (2160×2700 PNGs) — preserved
+
+## Risk assessment
+- **Low risk**: notebook aesthetic is established. Re-applying consistently is a tightening, not a redesign.
+- **Low risk**: hero stat is a content addition, not a layout change.
+- **Low risk**: split cite layout is well-defined.
+- **Low risk**: 1080×1350 dimensions unchanged.
+- **Low risk**: brand doc extension is additive, doesn't change existing sections.
+
+## Review status (v10.2)
+
+Awaiting user review at `/storage/emulated/0/Download/tmp/review/carousel/`:
+- `slides/ac-{1..6}.png` (carousel A v10.2, re-rendered)
+- `slides/cd-{1..6}.png` (carousel B v10.2, re-rendered)
+- `contact-sheet-ac.png` (carousel A v10.2)
+- `contact-sheet-cd.png` (carousel B v10.2)
+- `rag-pilot-failures-ac.html` (carousel A v10.2 source)
+- `cost-discipline-2026.html` (carousel B v10.2 source)
+- `rag-pilot-failures-linkedin.md` (carousel A LinkedIn draft v10.2)
+- `cost-discipline-2026-linkedin.md` (carousel B LinkedIn draft v10.2)
+- `rag-pilot-failures.md` (A1 blog post v10.1, unchanged)
+- `cost-discipline-2026.md` (B blog post v10.1, unchanged)

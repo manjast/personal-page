@@ -1,6 +1,6 @@
 ---
 title: "The 2026 cost discipline — 5 cost-competitive models, ranked"
-summary: "Five open-weight / open-routing models, ordered by capability composite (AA Index v4.1), covering 3x to 45x cost spread against frontier closed-API. Companion to the 3 RAG operational gaps post."
+summary: "Five open-weight / open-routing models, ordered by capability composite (AA Index v4.1), covering 3x to 45x cost spread against frontier proprietary. Companion to the 3 RAG operational gaps post."
 publishedAt: 2026-06-25
 displayDate: "2026-06-25"
 ogImage: "/og-default.png"
@@ -12,7 +12,7 @@ draft: false
 
 This is the companion to [the 3 RAG operational gaps post](https://stefanmanja.com/writing/rag-pilot-failures/). The first post covered operational cost visibility — log per-query cost, catch the p99 tail, build the eval. This one covers the other half of cost discipline: which model, which format, which architecture.
 
-The thesis: for the 80% of tasks that don't need frontier reasoning, five open-weight / open-routing models deliver at 3x to 45x lower cost than GPT-5.5 or Claude Opus 4.8. The remaining 20% — long-horizon agentic, frontier reasoning, multimodal — still goes to the closed APIs. The mistake I have watched most often is the converse: spending closed-API money on the 80%, then being unable to afford the closed-API spend that the 20% actually requires.
+The thesis: for the 80% of tasks that don't need frontier reasoning, five open-weight / open-routing models deliver at 3x to 45x lower cost than GPT-5.5 or Claude Opus 4.8. The remaining 20% — long-horizon agentic, frontier reasoning, multimodal — still goes to the leading proprietary models. The mistake I have watched most often is the converse: spending frontier-proprietary money on the 80%, then being unable to afford the frontier-proprietary spend that the 20% actually requires.
 
 ## 1. The model roster — capability composite, not single-number ranking
 
@@ -56,6 +56,6 @@ Pick the model that fits the task, not the model with the highest marketing budg
 
 ---
 
-**Methodology note**: 5 open-weight / open-routing models evaluated against frontier closed-API. AA Intelligence Index v4.1 (artificialanalysis.ai, 2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page, with the exception of MiMo-V2.5-Pro where AA blended pricing ($0.18/M tokens) is the only public source. The "open-weight" framing applies to 4 of 5 (GLM 5.2, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro); MiniMax M3 uses a restrictive `minimax-community` license, not an OSI-approved open-source license. The 35-50% retrieval-failure reduction stat is from Anthropic's "Contextual Retrieval" announcement (Sep 2024). The 40-45x DeepSeek cost ratio is from Artificial Analysis's Intelligence Index v4.1 cost-per-task measurements. The 5 named open-weight / open-routing models referenced throughout (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro) are ranked by the Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
+**Methodology note**: 5 open-weight / open-routing models evaluated against frontier proprietary. AA Intelligence Index v4.1 (artificialanalysis.ai, 2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page, with the exception of MiMo-V2.5-Pro where AA blended pricing ($0.18/M tokens) is the only public source. The "open-weight" framing applies to 4 of 5 (GLM 5.2, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro); MiniMax M3 uses a restrictive `minimax-community` license, not an OSI-approved open-source license. The 35-50% retrieval-failure reduction stat is from Anthropic's "Contextual Retrieval" announcement (Sep 2024). The 40-45x DeepSeek cost ratio is from Artificial Analysis's Intelligence Index v4.1 cost-per-task measurements. The 5 named open-weight / open-routing models referenced throughout (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro) are ranked by the Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
 
 **Companion post**: [Why 70% of AI pilots never reach production — and the 3 RAG fixes that worked](https://stefanmanja.com/writing/rag-pilot-failures/) — same operational discipline, applied to retrieval.

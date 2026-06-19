@@ -48,7 +48,7 @@ I have seen one team cut their per-query cost by roughly 3-4x with a single chan
 
 A caveat: the mean cost per query tells a comforting lie. The p99 cost — the worst 1% of queries — is often 10-50x the median, driven by long prompts, long outputs, or retry loops on bad retrieval. Logging the mean is necessary; logging the p99 is what catches a single user with a runaway query before it shows up on the monthly bill. I have seen one team where 1% of users were generating 30% of the bill, and the mean-mask hid the problem for two months.
 
-This post is about operational cost visibility. The other half of cost discipline — which model, which format, which architecture — is a separate question. A follow-up post covers the 2026 cost levers: frontier vs open-weight models, prompt-format tradeoffs, and the 1M-context complement to RAG: [stefanmanja.com/writing/cost-discipline-2026/](https://stefanmanja.com/writing/cost-discipline-2026/).
+This post is about operational cost visibility. The other half of cost discipline — which model, which format, which architecture — is covered separately: frontier vs open-weight models, prompt-format tradeoffs, and the 1M-context complement to RAG: [stefanmanja.com/writing/cost-discipline-2026/](https://stefanmanja.com/writing/cost-discipline-2026/).
 
 ## What 2026 adds
 
@@ -78,4 +78,4 @@ If a RAG pilot has not measured any of these three, the pilot is not in producti
 
 ---
 
-**Methodology note**: drawn from 4 enterprise RAG engagements I have worked on, 2024-2026, anonymized as "in past enterprise AI projects." The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production. Names of companies, teams, and projects are not included. The 70% AI pilot stat is from Hyperion, "AI Pilots in Production" (March 2026). The 49-67% retrieval-failure reduction is from Anthropic, "Contextual Retrieval" (September 2024): hybrid 49%, +rerank 67%. The capability ranking for the model data table in the carousel cite uses the Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
+**Methodology note**: drawn from 4 enterprise RAG engagements I have worked on, 2024-2026, anonymized as "in past enterprise AI projects." The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production. Names of companies, teams, and projects are not included. The 70% AI pilot stat is from Hyperion, "AI Pilots in Production" (March 2026). The 49-67% retrieval-failure reduction is from Anthropic, "Contextual Retrieval" (September 2024): hybrid 49%, +rerank 67%. The 5 named cost-competitive models referenced throughout are ranked by the Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).

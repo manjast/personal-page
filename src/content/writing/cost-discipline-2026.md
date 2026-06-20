@@ -48,9 +48,38 @@ Four architecture levers, applied together, decide whether the system holds up a
 
 The four levers compound. 1M context lets you fit more; hybrid + rerank makes what you fit more relevant; prompt caching makes the repeated parts cheaper; routing matches the right model to the right task. The cheapest lever is still the RAG-side one — a 10-line chunker change, not a 10-week migration.
 
+## 4. Operational sub-levers
+
+Two patterns that operate on conversations (not single queries) or on vendor-managed infrastructure (not user code). Both are cheap to enable, both have sharp failure modes.
+
+### Summarize + tier
+
+For multi-turn workflows, conversation history grows. The naive approach sends the full transcript on every call. A two-step pattern cuts that: a cheap model (gpt-5.4-mini or haiku 4.5) summarizes the conversation history when it crosses a threshold (2,000-32,000 tokens is the common range), the summary is prepended to the strong model's context, and the last 2 turns are kept verbatim for short-term coherence.
+
+On a 10-turn conversation with gpt-5.5 strong + gpt-5.4-mini cheap for summarization, the reduction is 30-50% on multi-turn costs. The cheap model handles the summarization at 5-10% of the strong-model rate; the strong model only sees the summary plus the last few turns. The OpenAI cookbook pattern (context_summarization_with_realtime_api, May 2025) is the reference implementation; the cascade structure follows FrugalGPT (Chen et al., 2023).
+
+Failure modes:
+
+- **Lost in the middle.** The summary may drop a key detail from turn 5.
+- **Reference failure.** The user says "what did you say about X?" — turn 5 is no longer in the context.
+- **Summary cost compounds.** Re-summarization runs every time the threshold is crossed. Cheap model or not, the cost adds up.
+- **Hallucination.** The cheap model invents a fact the user never said.
+
+Use when: long agentic loops, multi-turn research workflows, conversational RAG with follow-up questions. Don't use when: single-turn queries, retrieval-heavy workflows where the answer is in the retrieved documents.
+
+### Server-side compaction
+
+OpenAI's `/responses/compact` endpoint auto-prunes old context when the conversation crosses a threshold. The vendor returns an encrypted opaque compaction item that replaces the old turns; the developer never sees the raw text. Zero Data Retention-friendly when `store=false` — OpenAI does not persist the compacted context. For `previous_response_id` chaining, pass only the new user message each turn; the compaction happens server-side. For stateless input-array chaining, append output items (including compaction items) on each turn; drop items before the latest compaction to control latency.
+
+No equivalent on Anthropic, DeepSeek, Moonshot, or Z.ai as of 2026-06-20. Vendor-specific infrastructure — useful for OpenAI customers, irrelevant elsewhere.
+
+Use when: OpenAI is the strong model, conversation history is volatile, ZDR compliance is required. Don't use when: cross-vendor flexibility matters, you need to audit the compacted context yourself.
+
+The two sub-levers compound with the four architecture levers in §3. Summarize + tier is per-conversation; server-side compaction is per-infrastructure. Both sit on top of the per-query levers (1M context, hybrid + rerank, prompt caching, route by difficulty) — they don't replace them, they reduce the surface area those levers operate on.
+
 ## The pattern
 
-Three categories of cost discipline. The first is operational: log per-query cost, catch the p99 tail, build the eval. The second is model: pick the cheapest model that meets the capability bar, ordered by AA Index, deployed on cloud-provider paths for data governance. The third is architecture: 1M context + hybrid + rerank + prompt caching + routing by query difficulty, in that order.
+Four categories of cost discipline. The first is operational: log per-query cost, catch the p99 tail, build the eval. The second is model: pick the cheapest model that meets the capability bar, ordered by AA Index, deployed on cloud-provider paths for data governance. The third is architecture: 1M context + hybrid + rerank + prompt caching + routing by query difficulty, in that order. The fourth is operational sub-levers: summarize + tier for multi-turn conversations, server-side compaction for OpenAI customers.
 
 The era of "as much AI as you can" is over. The era of "as much AI as cost-justified" is here. The model is rarely the part that decides whether the system ships. The procurement, the architecture, and the operational discipline are.
 
@@ -58,6 +87,6 @@ Pick the model that fits the task, not the model with the highest marketing budg
 
 ---
 
-**Methodology note**: 5 open-weight / open-routing models evaluated against frontier proprietary. AA Intelligence Index v4.1 (artificialanalysis.ai, 2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page, with the exception of MiMo-V2.5-Pro where AA blended pricing ($0.18/M tokens) is the only public source. The "open-weight" framing applies to 4 of 5 (GLM 5.2, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro); MiniMax M3 uses a restrictive `minimax-community` license, not an OSI-approved open-source license. The 49-67% retrieval-failure reduction stat is from Anthropic's "Contextual Retrieval" announcement (Sep 2024): hybrid 49%, +rerank 67%. The 0.1x cache-hit pricing is the standard Anthropic prompt-caching tier (8x the cache-miss input rate). The 40-45x DeepSeek cost ratio is from Artificial Analysis's Intelligence Index v4.1 cost-per-task measurements. The 11.9% end-to-end format saving is from a 30-trial × 7-cell × 10-row canary on gpt-5-mini with reasoning effort high; the matrix best cell, hit@10 = 50% on every cell (including JSON), so the sample is too small to power an accuracy claim. The 5 named open-weight / open-routing models referenced throughout (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro) are ranked by the Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
+**Methodology note**: 5 open-weight / open-routing models evaluated against frontier proprietary. AA Intelligence Index v4.1 (artificialanalysis.ai, 2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page, with the exception of MiMo-V2.5-Pro where AA blended pricing ($0.18/M tokens) is the only public source. The "open-weight" framing applies to 4 of 5 (GLM 5.2, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro); MiniMax M3 uses a restrictive `minimax-community` license, not an OSI-approved open-source license. The 49-67% retrieval-failure reduction stat is from Anthropic's "Contextual Retrieval" announcement (Sep 2024): hybrid 49%, +rerank 67%. The 0.1x cache-hit pricing is the standard Anthropic prompt-caching tier (8x the cache-miss input rate). The 40-45x DeepSeek cost ratio is from Artificial Analysis's Intelligence Index v4.1 cost-per-task measurements. The 11.9% end-to-end format saving is from a 30-trial × 7-cell × 10-row canary on gpt-5-mini with reasoning effort high; the matrix best cell, hit@10 = 50% on every cell (including JSON), so the sample is too small to power an accuracy claim. The 30-50% multi-turn cost reduction from summarize + tier is a worked-example characteristic of the conversation-summarization pattern (OpenAI cookbook, context_summarization_with_realtime_api, May 2025) combined with a cheap-model cascade (FrugalGPT, Chen et al. 2023), measured on a 10-turn gpt-5.5 + gpt-5.4-mini pattern. Server-side compaction is OpenAI-specific (`/responses/compact`, platform.openai.com/docs); no equivalent on Anthropic, DeepSeek, Moonshot, or Z.ai as of 2026-06-20. The 5 named open-weight / open-routing models referenced throughout (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro) are ranked by the Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
 
 **Related**: [Why 70% of AI pilots never reach production — and the 3 RAG fixes that worked](https://stefanmanja.com/writing/rag-pilot-failures/) — same operational discipline, applied to retrieval.

@@ -16,7 +16,7 @@ The thesis: for the 80% of tasks that don't need frontier reasoning, five cost-c
 
 ## 1. The model roster — capability composite, not single-number ranking
 
-I have spent the last 6 months re-pricing the five models I now reach for before the frontier APIs. AA Intelligence Index v4.1 (2026-06-18) gives the capability composite; the cost column is per-vendor verified 2026-06-17, with the exception of MiMo-V2.5-Pro where AA blended pricing is the only public source. Order is by AA Index; the two at 44 are listed by recency + agentic-strength (MiniMax M3 first as the 2026 forward-looking model, then DeepSeek V4-Pro as the cost leader named separately in the result note).
+I have spent the last 6 months re-pricing the five models I now reach for before the frontier APIs. The capability composite is from AA Intelligence Index v4.1 (2026-06-18). The cost column is per-vendor verified 2026-06-17, with MiMo-V2.5-Pro the exception (AA blended pricing is the only public source). Order is by AA Index. The two at 44 are listed by recency + agentic-strength: MiniMax M3 first as the 2026 forward-looking model, then DeepSeek V4-Pro as the cost leader (named separately in the result note).
 
 - **GLM 5.2** (AA Index 51, leading open weights). $1.40 in / $4.40 out per 1M tokens. 1M context. MIT license. Z.ai is on the US BIS Entity List (Jan 2025) — direct API use is restricted for US persons; use cloud-provider paths only. The strongest of the five, but only 3-8x cheaper than frontier, not 40x.
 - **MiniMax M3** (AA Index 44). $0.30 in / $1.20 out (standard tier, ≤512k, "permanent 50% off"). 1M context. Weights are on Hugging Face under a restrictive `minimax-community` license — not OSI-approved, requires "Built with MiniMax M3" attribution for commercial use and prior written authorization for products with >$20M yearly revenue. LMArena categorizes M3 as Proprietary. For most commercial use above $20M ARR, this is effectively a first-party API, not an open-weight model.
@@ -83,10 +83,21 @@ Four categories of cost discipline. The first is operational: log per-query cost
 
 The era of "as much AI as you can" is over. The era of "as much AI as cost-justified" is here. The model is rarely the part that decides whether the system ships. The procurement, the architecture, and the operational discipline are.
 
-Pick the model that fits the task, not the model with the highest marketing budget.
+**Pick the model that fits the task, not the model with the highest marketing budget.**
 
 ---
 
-**Methodology note**: 5 cost-competitive models evaluated against frontier proprietary. AA Intelligence Index v4.1 (artificialanalysis.ai, 2026-06-18) used for capability ranking. Cost data verified 2026-06-17 from each vendor's official pricing page, with the exception of MiMo-V2.5-Pro where AA blended pricing ($0.18/M tokens) is the only public source. The "open-weight" framing applies to 4 of 5 (GLM 5.2, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro); MiniMax M3 uses a restrictive `minimax-community` license, not an OSI-approved open-source license. The 49-67% retrieval-failure reduction stat is from Anthropic's "Contextual Retrieval" announcement (Sep 2024): hybrid 49%, +rerank 67%. The 0.1x cache-hit pricing is the standard Anthropic prompt-caching tier (8x the cache-miss input rate). The 40-45x DeepSeek cost ratio is from Artificial Analysis's Intelligence Index v4.1 cost-per-task measurements. The 11.9% end-to-end format saving is from a 30-trial × 7-cell × 10-row canary on gpt-5-mini with reasoning effort high; the matrix best cell, hit@10 = 50% on every cell (including JSON), so the sample is too small to power an accuracy claim. The 30-50% multi-turn cost reduction from summarize + tier is a worked-example characteristic of the conversation-summarization pattern (OpenAI cookbook, context_summarization_with_realtime_api, May 2025) combined with a cheap-model cascade (FrugalGPT, Chen et al. 2023), measured on a 10-turn gpt-5.5 + gpt-5.4-mini pattern. Server-side compaction is OpenAI-specific (`/responses/compact`, platform.openai.com/docs); no equivalent on Anthropic, DeepSeek, Moonshot, or Z.ai as of 2026-06-20. The 5 named cost-competitive models referenced throughout (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro) are ranked by the Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
+**Methodology note**
 
-**Related**: [Why 70% of AI pilots never reach production — and the 3 RAG fixes that worked](https://stefanmanja.com/writing/rag-pilot-failures/) — same operational discipline, applied to retrieval.
+- 5 cost-competitive models evaluated against frontier proprietary. The "open-weight" framing applies to 4 of 5 (GLM 5.2, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro); MiniMax M3 uses a restrictive `minimax-community` license, not an OSI-approved open-source license.
+- **Capability ranking**: AA Intelligence Index v4.1 (artificialanalysis.ai, 2026-06-18).
+- **Cost data**: verified 2026-06-17 from each vendor's official pricing page, with the exception of MiMo-V2.5-Pro where AA blended pricing ($0.18/M tokens) is the only public source.
+- **49-67% retrieval-failure reduction**: Anthropic's "Contextual Retrieval" announcement (Sep 2024) — hybrid 49%, +rerank 67%.
+- **0.1x cache-hit pricing**: standard Anthropic prompt-caching tier (8x the cache-miss input rate).
+- **40-45x DeepSeek cost ratio**: from Artificial Analysis's Intelligence Index v4.1 cost-per-task measurements.
+- **11.9% end-to-end format saving**: from a 30-trial × 7-cell × 10-row canary on gpt-5-mini with reasoning effort high; the matrix best cell, hit@10 = 50% on every cell (including JSON), so the sample is too small to power an accuracy claim.
+- **30-50% multi-turn cost reduction from summarize + tier**: a worked-example characteristic of the conversation-summarization pattern (OpenAI cookbook, context_summarization_with_realtime_api, May 2025) combined with a cheap-model cascade (FrugalGPT, Chen et al. 2023), measured on a 10-turn gpt-5.5 + gpt-5.4-mini pattern.
+- **Server-side compaction**: OpenAI-specific (`/responses/compact`, platform.openai.com/docs); no equivalent on Anthropic, DeepSeek, Moonshot, or Z.ai as of 2026-06-20.
+- **Models referenced throughout**: GLM 5.2, MiniMax M3, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro — ranked by AA Intelligence Index v4.1, see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
+
+**Related**: [Why 70% of AI pilots never reach production — and the 3 RAG fixes that worked](https://stefanmanja.com/writing/rag-pilot-failures/)

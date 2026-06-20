@@ -14,8 +14,6 @@ I have watched at least four enterprise RAG pilots go from "we have a working de
 
 The pattern is not unique to RAG. Per Hyperion (March 2026), roughly 70% of AI pilots never reach production at all. The four pilots here are part of the 30% that did — by catching and fixing the three gaps below before launch.
 
-Three of those gaps, with the specific fix that addressed each.
-
 ## 1. No evaluation harness before the build
 
 The pattern: a team builds a RAG system against a sample of 20-30 questions, picks a retrieval strategy that "looks right," iterates on the prompt until the sample outputs read well, and ships.
@@ -46,9 +44,9 @@ The fix: log per-query cost from day one. Every retrieval has a cost. Every LLM 
 
 I have seen one team cut their per-query cost to roughly 0.55x with a single change: switching from top-k=20 to top-k=5 with a cross-encoder reranker. The model quality went up (reranker is more selective than dense retrieval) and the cost went down (fewer chunks to process, fewer tokens to the model). On the retrieved context alone, the cut was 4x; the total was 0.55x because the reasoning and output tokens stayed fixed. The team had been paying 4x more on retrieved context — for worse answers.
 
-A caveat: the mean cost per query tells a comforting lie. The p99 cost — the worst 1% of queries — is often 10-50x the median, driven by long prompts, long outputs, or retry loops on bad retrieval. Logging the mean is necessary; logging the p99 is what catches a single user with a runaway query before it shows up on the monthly bill. I have seen one team where 1% of users were generating 30% of the bill, and the mean-mask hid the problem for two months.
+A caveat: the mean cost per query tells a comforting lie. The p99 cost — the worst 1% of queries — is often 10-50x the median, driven by long prompts, long outputs, or retry loops on bad retrieval. Logging the mean is necessary; logging the p99 is what catches a single user with a runaway query before it shows up on the monthly bill. I have seen one team where 1% of users were generating 30% of the bill, and the mean — the average — masked the problem for two months.
 
-Operational cost visibility is one half of cost discipline. The other half — which model, which format, which architecture — is at [stefanmanja.com/writing/cost-discipline-2026/](https://stefanmanja.com/writing/cost-discipline-2026/).
+Operational cost visibility is one half of cost discipline. The other half — which model, which format, which architecture — is the subject of the [cost-discipline-2026 post](https://stefanmanja.com/writing/cost-discipline-2026/).
 
 ## What 2026 adds
 
@@ -74,8 +72,13 @@ The failures are operational:
 
 These are the boring parts of the work. The boring parts are the parts that decide whether the system holds up in production.
 
-If a RAG pilot has not measured any of these three, the pilot is not in production. It is in demo mode.
+If a RAG pilot has not measured any of these three, the pilot is not in production. **It is in demo mode.**
 
 ---
 
-**Methodology note**: drawn from 4 enterprise RAG engagements I have worked on, 2024-2026, anonymized as "in past enterprise AI projects." The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production. Names of companies, teams, and projects are not included. The 70% AI pilot stat is from Hyperion, "AI Pilots in Production" (March 2026). The 49-67% retrieval-failure reduction is from Anthropic, "Contextual Retrieval" (September 2024): hybrid 49%, +rerank 67%. The 5 named cost-competitive models referenced throughout are ranked by the Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
+**Methodology note**
+
+- Drawn from 4 enterprise RAG engagements I have worked on (2024-2026, anonymized as "in past enterprise AI projects"). The 3 fixes are not theoretical — they are the specific changes that took each system from demo mode to production. Names of companies, teams, and projects are not included.
+- **70% AI pilot stat**: Hyperion, "AI Pilots in Production" (March 2026).
+- **49-67% retrieval-failure reduction**: Anthropic, "Contextual Retrieval" (September 2024) — hybrid 49%, +rerank 67%.
+- **5 named cost-competitive models ranked by**: Artificial Analysis Intelligence Index v4.1 — see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).

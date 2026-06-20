@@ -12,7 +12,7 @@ draft: false
 
 I have watched at least four enterprise RAG pilots go from "we have a working demo" to "we cannot put this in front of users." The failure was not the model. The failure was not the embedding choice. The failure was a small number of operational gaps, repeated across pilots, that nobody caught until the system was already in front of users.
 
-The pattern is not unique to RAG. Per Hyperion (March 2026), roughly 70% of AI pilots never reach production at all. The four pilots in this post are part of the 30% that did — the three gaps below are why.
+The pattern is not unique to RAG. Per Hyperion (March 2026), roughly 70% of AI pilots never reach production at all. The four pilots here are part of the 30% that did — by catching and fixing the three gaps below before launch.
 
 Three of those gaps, with the specific fix that addressed each.
 
@@ -48,7 +48,7 @@ I have seen one team cut their per-query cost to roughly 0.55x with a single cha
 
 A caveat: the mean cost per query tells a comforting lie. The p99 cost — the worst 1% of queries — is often 10-50x the median, driven by long prompts, long outputs, or retry loops on bad retrieval. Logging the mean is necessary; logging the p99 is what catches a single user with a runaway query before it shows up on the monthly bill. I have seen one team where 1% of users were generating 30% of the bill, and the mean-mask hid the problem for two months.
 
-This post is about operational cost visibility. The other half of cost discipline — which model, which format, which architecture — is covered separately: frontier vs open-weight models, prompt-format tradeoffs, and the 1M-context complement to RAG: [stefanmanja.com/writing/cost-discipline-2026/](https://stefanmanja.com/writing/cost-discipline-2026/).
+Operational cost visibility is one half of cost discipline. The other half — which model, which format, which architecture — is at [stefanmanja.com/writing/cost-discipline-2026/](https://stefanmanja.com/writing/cost-discipline-2026/).
 
 ## What 2026 adds
 

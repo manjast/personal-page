@@ -1,99 +1,46 @@
 # Stefan Manja
 
-Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.
+> Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.
 
-Site: https://stefanmanja.com
-Default language: English
-Serbian Cyrillic version: https://stefanmanja.com/sr/
-Contact: stefan@stefanmanja.com
-Location: Belgrade, Serbia
-Timezone: Europe/Belgrade (CET/CEST)
-LinkedIn: https://www.linkedin.com/in/stefan-manja/
-GitHub: https://github.com/manjast
+Based in Belgrade, Serbia (Europe/Belgrade, CET/CEST). Engagements are project-scoped for enterprise and mid-market teams; default to in-person or hybrid in Belgrade, remote across Europe otherwise.
 
-## Engagement model
+Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD SSO, LLM APIs, and workflow automation for enterprise environments.
 
-Stefan currently works in an enterprise and industrial AI context.
-
-Current public-safe work signal: applied AI for internal industrial workflows
-and data-intensive engineering contexts.
-
-He is selectively available for project-based work on internal AI systems:
-build, hardening, and scoped advisory work.
-
-Engagements are project-scoped and typically serve enterprise or mid-market
-teams.
-
-## Primary fit
-
-- Project-based build work for internal AI workflows
-- Hardening pilots or prototypes for real use
-- Scoped advisory work tied to real delivery decisions
-- Workflow feasibility review for teams deciding whether an AI system is worth building
-- Internal knowledge assistant readiness review for RAG and enterprise assistant work
-- Evaluation, human review, access boundaries, cost and usage visibility, and
-  handoff for internal AI systems
-
-## Good fit
-
-- Teams with a concrete internal workflow, real users, and a clear owner
-- Internal assistants, knowledge-access systems, and analyst-support tools
-- Work that needs disciplined evaluation, deployment, and post-launch usefulness
-- Prototypes or pilots that need to become reviewable, observable, and operable
-
-## Not a fit
-
-- Pure idea-stage exploration with no workflow owner or adoption path
-- Generic AI transformation requests without a defined problem
-- Marketing chatbot work where visual novelty matters more than operational quality
-
-## Proof points
-
+Public proof points (anonymized where required):
 - ~75% reduction in credit-risk analysis time (Delta Holding)
 - 90%+ recommendation acceptance rate from analysts
 - 4.4/5 analyst-rated quality on credit-risk decision-support workflow
 - 50+ AI workflows assessed across opportunity framing, PoCs, and first scaled rollout
-- Self-hosted internal assistant deployed to roughly 1,500 eligible users, with 300+ actual users and 85%+ positive explicit feedback after launch
+- Self-hosted internal assistant deployed to ~1,500 eligible users (300+ actual, 85%+ positive feedback after launch)
 
 ## Primary pages
 
-- / : overview, proof, fit guidance, services
-- /work/ : internal AI case studies
-- /work/delta-credit-risk-workflow/ : Credit-risk decision-support workflow (Delta Holding)
-- /work/delta-enterprise-rag-assistant/ : Self-hosted internal knowledge assistant (Delta Holding)
-- /services/ : workflow starting points, service modes, and delivery path
-- /contact/ : workflow review and initial inquiry
+- [Home](https://stefanmanja.com/): overview, proof, fit guidance, services
+- [Work](https://stefanmanja.com/work/): internal AI case studies
+- [Credit-risk decision-support workflow](https://stefanmanja.com/work/delta-credit-risk-workflow/): Delta Holding, ~75% reduction in analysis time
+- [Self-hosted internal knowledge assistant](https://stefanmanja.com/work/delta-enterprise-rag-assistant/): Delta Holding, ~1,500 eligible users, 85%+ positive feedback
+- [Services](https://stefanmanja.com/services/): workflow starting points, service modes, and delivery path
+- [Contact](https://stefanmanja.com/contact/): workflow review and initial inquiry
+- [Writing](https://stefanmanja.com/writing/): public writing on AI systems, evaluation, cost discipline
+- [Why 70% of AI pilots never reach production — and the 3 RAG fixes that worked](https://stefanmanja.com/writing/rag-pilot-failures/): three RAG failure modes with the specific fix that addressed each
+- [The 2026 cost discipline — 5 cost-competitive models, ranked](https://stefanmanja.com/writing/cost-discipline-2026/): 5 cost-competitive models, ranked by capability composite
 
 ## Serbian Cyrillic pages
 
-- /sr/ : преглед, докази, смернице уклапања, услуге
-- /sr/work/ : прикази интерних система вештачке интелигенције
-- /sr/work/delta-credit-risk-workflow/ : Радни ток за подршку одлукама о кредитном ризику (Delta Holding)
-- /sr/work/delta-enterprise-rag-assistant/ : Интерни асистент знања у сопственом хостингу (Delta Holding)
-- /sr/services/ : почетне тачке радних токова, начини услуге и пут испоруке
-- /sr/contact/ : преглед радног тока и почетни контакт
+- [Почетна](https://stefanmanja.com/sr/): преглед, докази, смернице уклапања, услуге
+- [Пројекти](https://stefanmanja.com/sr/work/): прикази интерних система вештачке интелигенције
+- [Подршка одлучивању у процени кредитног ризика](https://stefanmanja.com/sr/work/delta-credit-risk-workflow/): Delta Holding
+- [Интерно хостован асистент за приступ знању](https://stefanmanja.com/sr/work/delta-enterprise-rag-assistant/): Delta Holding
+- [Услуге](https://stefanmanja.com/sr/services/): почетне тачке радних токова, начини услуге и пут испоруке
+- [Контакт](https://stefanmanja.com/sr/contact/): преглед радног тока и почетни контакт
 
-## Technical context
+## Profiles
 
-Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD
-SSO, LLM APIs, and workflow automation for enterprise environments.
+- [LinkedIn](https://www.linkedin.com/in/stefan-manja/): professional profile and recent activity
+- [GitHub](https://github.com/manjast): public repositories, including the Agentic Development Playbook
+- [Email](mailto:stefan@stefanmanja.com): direct contact for project inquiries
 
-## Relevant search and LLM terms
+## Optional
 
-- AI pilot hardening
-- AI prototype-to-production
-- RAG production readiness
-- internal knowledge assistant
-- AI workflow evaluation
-- AI cost observability
-- human-in-the-loop AI workflows
-- AI decision-support systems
-- agentic AI readiness
-- AI workflow feasibility
-
-## Public evidence of working method
-
-The Agentic Development Playbook (https://github.com/manjast/agentic-development-playbook)
-is public evidence of scoped, evaluation-gated AI delivery — not a product or tutorial.
-
-Adopting the Playbook into an existing project: https://github.com/manjast/agentic-development-playbook/blob/main/docs/migration.md
+- [Agentic Development Playbook](https://github.com/manjast/agentic-development-playbook): public evidence of scoped, evaluation-gated AI delivery — not a product or tutorial
+- [Adopting the Playbook into an existing project](https://github.com/manjast/agentic-development-playbook/blob/main/docs/migration.md)

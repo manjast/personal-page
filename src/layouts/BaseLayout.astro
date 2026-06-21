@@ -44,7 +44,7 @@ const pageTitle =
     : `${resolvedTitle} | ${localizedSiteConfig.defaultTitle}`;
 const canonicalPath = normalizePath(pathname);
 const canonical = absoluteUrl(siteConfig.siteUrl, canonicalPath);
-const alternatePaths = { ...getAlternatePaths(canonicalPath), ...(alternates ?? {}) };
+const alternatePaths = alternates ?? getAlternatePaths(canonicalPath);
 const socialImage = new URL(image, siteConfig.siteUrl).toString();
 
 const jsonLd = {
@@ -132,8 +132,8 @@ const jsonLd = {
       !noindex && (
         <>
           <link rel="canonical" href={canonical} />
-          <link rel="alternate" hreflang={localeMeta.en.hreflang} href={absoluteUrl(siteConfig.siteUrl, alternatePaths.en)} />
-          <link rel="alternate" hreflang={localeMeta.sr.hreflang} href={absoluteUrl(siteConfig.siteUrl, alternatePaths.sr)} />
+          {alternatePaths.en && <link rel="alternate" hreflang={localeMeta.en.hreflang} href={absoluteUrl(siteConfig.siteUrl, alternatePaths.en)} />}
+          {alternatePaths.sr && <link rel="alternate" hreflang={localeMeta.sr.hreflang} href={absoluteUrl(siteConfig.siteUrl, alternatePaths.sr)} />}
           <link rel="alternate" hreflang="x-default" href={absoluteUrl(siteConfig.siteUrl, alternatePaths['x-default'])} />
         </>
       )
@@ -150,6 +150,8 @@ const jsonLd = {
     <meta property="og:description" content={resolvedDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={locale === 'sr' ? 'sr_RS' : 'en_US'} />
+    {locale === 'en' && alternatePaths.sr && <meta property="og:locale:alternate" content="sr_RS" />}
+    {locale === 'sr' && alternatePaths.en && <meta property="og:locale:alternate" content="en_US" />}
     <meta property="og:image" content={socialImage} />
     {ogType === 'article' && <meta property="article:author" content={siteConfig.linkedinUrl} />}
 

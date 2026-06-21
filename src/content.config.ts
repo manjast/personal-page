@@ -45,6 +45,13 @@ const writing = defineCollection({
     translationKey: z.string(),
     routeSlug: z.string(),
     draft: z.boolean().default(false),
+    heroStat: z
+      .object({
+        value: z.string(),
+        label: z.string(),
+        attr: z.string(),
+      })
+      .optional(),
   }),
 });
 

@@ -541,3 +541,69 @@ html[lang^="sr"] .site-tagline,
     border-radius: 1rem;
   }
 }
+
+@media print {
+  body {
+    background: #fff !important;
+    background-image: none !important;
+    color: #000 !important;
+  }
+
+  header,
+  footer,
+  .language-switcher,
+  .section-marker,
+  .accent-bar,
+  nav[aria-label] {
+    display: none !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  a[href^="http"]::after,
+  a[href^="mailto:"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #555;
+  }
+
+  .panel,
+  .panel-light,
+  .panel-dark {
+    background: #fff !important;
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+
+  .panel-dark,
+  .panel-dark h1,
+  .panel-dark h2,
+  .panel-dark h3,
+  .panel-dark h4,
+  .panel-dark p,
+  .panel-dark .eyebrow,
+  .panel-dark .metric-label {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: #000 !important;
+    page-break-after: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  .section-space {
+    padding: 1rem 0 !important;
+  }
+}

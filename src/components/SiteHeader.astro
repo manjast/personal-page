@@ -47,7 +47,7 @@ function isActive(href: string) {
           navigation.map((item) => (
             <a
               class:list={[
-                'inline-flex min-h-[40px] items-center px-1 py-2 whitespace-nowrap transition hover:text-[color:var(--ink)] sm:min-h-[44px] sm:px-1',
+                'inline-flex min-h-[44px] items-center px-1 py-2 whitespace-nowrap transition hover:text-[color:var(--ink)] sm:px-1',
                 isActive(item.href) && 'text-[color:var(--accent)]',
               ]}
               aria-current={isActive(item.href) ? 'page' : undefined}
@@ -66,7 +66,7 @@ function isActive(href: string) {
           (['en', 'sr'] as const).map((targetLocale) => (
             <a
               class:list={[
-                'inline-flex min-h-[40px] items-center rounded-lg px-2 transition hover:text-[color:var(--ink)] sm:min-h-[44px] sm:px-2.5',
+                'inline-flex min-h-[44px] items-center rounded-lg px-2 transition hover:text-[color:var(--ink)] sm:px-2.5',
                 locale === targetLocale && 'bg-[color:var(--ink)] text-[color:var(--canvas)] hover:text-[color:var(--canvas)]',
               ]}
               href={alternatePaths[targetLocale]}

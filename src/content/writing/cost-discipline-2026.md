@@ -3,12 +3,22 @@ title: "The 2026 cost discipline — 5 cost-competitive models, ranked"
 summary: "Five cost-competitive models, ordered by capability composite (AA Index v4.1), covering 3x to 45x cost spread against frontier proprietary."
 publishedAt: 2026-06-25
 displayDate: "2026-06-25"
-ogImage: "/og-default.png"
+ogImage: "/og-blog-cost-discipline-2026.png"
 locale: "en"
 translationKey: "cost-discipline-2026-06-25"
 routeSlug: "cost-discipline-2026"
 draft: false
+heroStat:
+  value: "3x to 45x"
+  label: "cheaper than frontier proprietary, depending on the model"
+  attr: "Artificial Analysis · cost-per-task, 2026-06-18"
 ---
+
+<div class="blog-hero" role="figure" aria-labelledby="hero-label hero-attr">
+  <span class="blog-hero__stat">3x to 45x</span>
+  <span id="hero-label" class="blog-hero__label">cheaper than frontier proprietary, depending on the model</span>
+  <span id="hero-attr" class="blog-hero__attr">Artificial Analysis · cost-per-task, 2026-06-18</span>
+</div>
 
 Operational cost visibility — log per-query cost, catch the p99 tail, build the eval — is one half of cost discipline. The other half: which model, which format, which architecture.
 
@@ -18,17 +28,79 @@ The thesis: for the 80% of tasks that don't need frontier reasoning, five cost-c
 
 I have spent the last 6 months re-pricing the five models I now reach for before the frontier APIs. The capability composite is from AA Intelligence Index v4.1 (2026-06-18). The cost column is per-vendor verified 2026-06-17, with MiMo-V2.5-Pro the exception (AA blended pricing is the only public source). Order is by AA Index. The two at 44 are listed by recency + agentic-strength: MiniMax M3 first as the 2026 forward-looking model, then DeepSeek V4-Pro as the cost leader (named separately in the result note).
 
-- **GLM 5.2** (AA Index 51, leading open weights). $1.40 in / $4.40 out per 1M tokens. 1M context. MIT license. Z.ai is on the US BIS Entity List (Jan 2025) — direct API use is restricted for US persons; use cloud-provider paths only. The strongest of the five, but only 3-8x cheaper than frontier, not 40x.
-- **MiniMax M3** (AA Index 44). $0.30 in / $1.20 out (standard tier, ≤512k, "permanent 50% off"). 1M context. Weights are on Hugging Face under a restrictive `minimax-community` license — not OSI-approved, requires "Built with MiniMax M3" attribution for commercial use and prior written authorization for products with >$20M yearly revenue. LMArena categorizes M3 as Proprietary. For most commercial use above $20M ARR, this is effectively a first-party API, not an open-weight model.
-- **DeepSeek V4-Pro** (AA Index 44). $0.435 in / $0.870 out per 1M tokens. 1M context. MIT license. AA measured DeepSeek at $0.04 per task (Intelligence Index 44) — 40-45x cheaper than Claude Opus 4.8 ($1.78/task, Index 56) and 20-25x cheaper than GPT-5.5 (xhigh, $0.99/task, Index 50). The cheapest of the five by a wide margin.
-- **Kimi K2.6** (AA Index 43). $0.95 in / $4.00 out (cache-miss rate; $0.16 with cache hit). 256K context — note this is 256K, not 1M. Modified-MIT license with a usage threshold (>100M MAU or $20M monthly revenue requires separate authorization).
-- **MiMo-V2.5-Pro** (AA Index 42, Xiaomi, June 2026). 1M context. New open-weight entrant. $0.18/M tokens blended per AA Intelligence Index v4.1 (2026-06-18) — the only public pricing source for this model as of 2026-06-20.
+<div class="blog-table" role="region" aria-label="Cost-competitive model roster">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Model</th>
+        <th scope="col">AA Index</th>
+        <th scope="col">$ in / out per 1M tok</th>
+        <th scope="col">Context</th>
+        <th scope="col">License</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">GLM 5.2</th>
+        <td>51</td>
+        <td>$1.40 / $4.40</td>
+        <td>1M</td>
+        <td>MIT (BIS-restricted for US persons; cloud-provider paths only)</td>
+      </tr>
+      <tr>
+        <th scope="row">MiniMax M3</th>
+        <td>44</td>
+        <td>$0.30 / $1.20 (standard ≤512k)</td>
+        <td>1M</td>
+        <td>Restrictive (minimax-community, &gt;$20M ARR needs authorization)</td>
+      </tr>
+      <tr>
+        <th scope="row">DeepSeek V4-Pro</th>
+        <td>44</td>
+        <td>$0.435 / $0.870</td>
+        <td>1M</td>
+        <td>MIT</td>
+      </tr>
+      <tr>
+        <th scope="row">Kimi K2.6</th>
+        <td>43</td>
+        <td>$0.95 / $4.00 (cache-miss)</td>
+        <td>256K</td>
+        <td>Modified-MIT (&gt;100M MAU or $20M monthly rev needs authorization)</td>
+      </tr>
+      <tr>
+        <th scope="row">MiMo-V2.5-Pro</th>
+        <td>42</td>
+        <td>$0.18 (blended)</td>
+        <td>1M</td>
+        <td>Open weights (Xiaomi, June 2026)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 The cheapest model is not the most capable model, and the most capable is not the cheapest. The decision rule is: pick by workload, not by index number.
 
 ## 2. Format — the smallest lever
 
 Prompt format gets discussed more than it delivers. TOON (Token-Oriented Object Notation) and GCF (Graph Compact Format) cut prompt tokens 45-48% on uniform-array payloads, in a 30-trial test on gpt-5-mini high. End-to-end cost saving is smaller — 11.9% in the best case (matrix best cell). Other workloads may differ.
+
+<figure>
+  <svg class="blog-svg-frame" viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-format-title fig-format-desc">
+    <title id="fig-format-title">TOON and GCF format savings: prompt versus end-to-end</title>
+    <desc id="fig-format-desc">Two horizontal bars. Top bar in terracotta shows 45 to 48 percent prompt-token saving from TOON and GCF. Bottom bar in muted ink shows 11.9 percent end-to-end cost saving in the best case. A short connector between the two bars indicates the gap is reasoning tokens, priced as output.</desc>
+    <text class="blog-svg-text-faint" x="0" y="14">FORMAT · PROMPT vs END-TO-END</text>
+    <line x1="0" y1="20" x2="220" y2="20" stroke="var(--ink-faint)" stroke-width="0.5" />
+    <text class="blog-svg-text" x="0" y="60" style="font-size: 14px;">PROMPT-TOKEN SAVING (TOON / GCF)</text>
+    <rect x="0" y="72" width="528" height="40" fill="var(--accent)" />
+    <text class="blog-svg-text-accent" x="544" y="98">45–48%</text>
+    <text class="blog-svg-text" x="0" y="148" style="font-size: 14px;">END-TO-END COST SAVING (best case, gpt-5-mini high)</text>
+    <rect x="0" y="160" width="131" height="40" fill="var(--ink-faint)" opacity="0.7" />
+    <text class="blog-svg-text-accent" x="147" y="186">11.9%</text>
+    <text class="blog-svg-text-faint" x="0" y="222" style="font-style: italic;">gap = reasoning tokens priced as output (8x the input rate for gpt-5-mini)</text>
+  </svg>
+  <figcaption>TOON and GCF save 45 to 48 percent of prompt tokens on uniform-array payloads, but only 11.9 percent of end-to-end cost in the best case. The gap is reasoning tokens, priced as output.</figcaption>
+</figure>
 
 The gap between prompt-token saving and end-to-end saving is reasoning tokens. The 45-48% prompt saving assumes the model still produces the same number of output tokens, including any chain-of-thought. On reasoning-heavy workloads, the prompt saving is partially offset by the reasoning cost. Reasoning tokens are priced as output (8x the input rate for gpt-5-mini), and the model spent extra reasoning parsing the unfamiliar TOON/GCF section header and delimiter. The 10-row × 30-trial × 7-cell sample is too small to power an accuracy claim either way (hit@10 = 50% on every cell, including JSON).
 
@@ -38,15 +110,37 @@ Format saves tokens, not dollars. The 11.9% is a snapshot for gpt-5-mini high; f
 
 Four architecture levers, applied together, decide whether the system holds up at 1K+ queries/day.
 
-**1M context.** Standard for 4 of 5 (GLM 5.2, MiniMax M3, DeepSeek V4-Pro, MiMo-V2.5-Pro); Kimi K2.6 at 256K. Long context is the lever for single-document ingest (one or a few large docs); RAG is still the lever for cross-document scale (10K+ documents). The two are complementary, not substitutes. Anthropic's Contextual Retrieval (Sep 2024) — adding 50-100 tokens of context to each chunk at index time — reduces retrieval failures by 49-67% (hybrid 49%, +rerank 67%) on top of the long-context window.
+<div class="blog-section-marker">F O U R  ·  A R C H I T E C T U R E  ·  L E V E R S</div>
 
-**Hybrid retrieval + cross-encoder reranking.** Dense retrieval alone misses exact-phrase and code-symbol queries; keyword alone misses semantic paraphrase. The combination, with a cross-encoder reranker on top, is now the default — not a research project. Per the same Anthropic reference work, hybrid + rerank closes most of the remaining 49-67% retrieval-failure gap.
-
-**Prompt caching.** 0.1x the cache-miss input price on cache hits. Anthropic, OpenAI, DeepSeek, Moonshot, and Z.ai all offer prompt caching. The cost is per-cache-hit, not per-token. For RAG systems with stable system prompts + long context windows, the savings are material. Self-host: vLLM APC (v0.4.0+), SGLang RadixAttention.
-
-**Route by query difficulty.** 2-10x blend-cost reduction by routing queries to the cheapest model that meets the bar. The 5 models span $0.04-$0.46 per task (11.5x spread, AA Intelligence Index v4.1, June 2026). vLLM Semantic Router v0.3.0, OpenRouter, LiteLLM. Per FrugalGPT (Chen et al., 2023) and RouteLLM (2024) on real workloads.
+<div class="blog-flow" role="group" aria-label="Four architecture levers that compound; all four apply together, order is not prescribed.">
+  <div class="blog-flow__cell">
+    <span class="blog-flow__marker">L E V E R  ·  1</span>
+    <span class="blog-flow__title">1M context</span>
+    <span class="blog-flow__copy">Standard for 4 of 5 cost-competitive models (Kimi K2.6 at 256K). Lever for single-document ingest; RAG is the lever for cross-document scale. The two are complementary, not substitutes.</span>
+  </div>
+  <div class="blog-flow__cell">
+    <span class="blog-flow__marker">L E V E R  ·  2</span>
+    <span class="blog-flow__title">Hybrid retrieval + cross-encoder rerank</span>
+    <span class="blog-flow__copy">Dense alone misses exact-phrase + code-symbol; keyword alone misses semantic paraphrase. Default in 2026, not a research project. 49-67% retrieval-failure reduction per Anthropic (Sep 2024).</span>
+  </div>
+  <div class="blog-flow__cell">
+    <span class="blog-flow__marker">L E V E R  ·  3</span>
+    <span class="blog-flow__title">Prompt caching</span>
+    <span class="blog-flow__copy">0.1x the cache-miss input price on cache hits. Anthropic, OpenAI, DeepSeek, Moonshot, Z.ai all offer it. Self-host: vLLM APC, SGLang RadixAttention.</span>
+  </div>
+  <div class="blog-flow__cell">
+    <span class="blog-flow__marker">L E V E R  ·  4</span>
+    <span class="blog-flow__title">Route by query difficulty</span>
+    <span class="blog-flow__copy">2-10x blend-cost reduction by routing queries to the cheapest model that meets the bar. vLLM Semantic Router v0.3.0, OpenRouter, LiteLLM. FrugalGPT, RouteLLM.</span>
+  </div>
+  <p class="blog-flow__caption">All 4 levers apply together; order is not prescribed.</p>
+</div>
 
 The four levers compound. 1M context lets you fit more; hybrid + rerank makes what you fit more relevant; prompt caching makes the repeated parts cheaper; routing matches the right model to the right task. The cheapest lever is still the RAG-side one — a 10-line chunker change, not a 10-week migration.
+
+<aside class="blog-pullquote" role="note">
+  <p>Pick the model that fits the task, not the model with the highest marketing budget.</p>
+</aside>
 
 ## 4. Operational sub-levers
 
@@ -82,6 +176,11 @@ The two sub-levers compound with the four architecture levers in §3. Summarize 
 Four categories of cost discipline. The first is operational: log per-query cost, catch the p99 tail, build the eval. The second is model: pick the cheapest model that meets the capability bar, ordered by AA Index, deployed on cloud-provider paths for data governance. The third is architecture: 1M context + hybrid + rerank + prompt caching + routing by query difficulty, in that order. The fourth is operational sub-levers: summarize + tier for multi-turn conversations, server-side compaction for OpenAI customers.
 
 The era of "as much AI as you can" is over. The era of "as much AI as cost-justified" is here. The model is rarely the part that decides whether the system ships. The procurement, the architecture, and the operational discipline are.
+
+<aside class="blog-stat" role="note">
+  <span class="blog-stat__value">30–50%</span>
+  <span class="blog-stat__label">multi-turn cost reduction from a summarize + tier pattern. The cheap model handles summarization at 5-10% of the strong-model rate; the strong model only sees the summary plus the last few turns.</span>
+</aside>
 
 **Pick the model that fits the task, not the model with the highest marketing budget.**
 

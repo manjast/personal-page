@@ -72,7 +72,7 @@ function isActive(href: string) {
               href={alternatePaths[targetLocale]}
               hreflang={localeMeta[targetLocale].hreflang}
               lang={localeMeta[targetLocale].lang}
-              aria-current={locale === targetLocale ? 'true' : undefined}
+              aria-current={locale === targetLocale ? 'page' : undefined}
               aria-label={`${content.ui.switchLanguageLabel}: ${localeMeta[targetLocale].label}`}
             >
               <span class="sm:hidden">{localeMeta[targetLocale].shortLabel}</span>

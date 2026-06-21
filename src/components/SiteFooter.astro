@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
       </p>
     </div>
 
-    <div class="space-y-2 text-sm text-stone-400 sm:text-right">
+    <address class="space-y-2 not-italic text-sm text-stone-400 sm:text-right">
       <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={`mailto:${siteConfig.email}`}>
         {siteConfig.email}
       </a>
@@ -32,6 +32,6 @@ const year = new Date().getFullYear();
         GitHub
       </a>
       <p>© {year} {siteConfig.name}</p>
-    </div>
+    </address>
   </div>
 </footer>

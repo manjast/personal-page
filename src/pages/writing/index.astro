@@ -8,6 +8,11 @@ const entries = (await getCollection('writing'))
   .filter((entry) => !entry.data.draft && entry.data.locale === 'en')
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
 
+const alternates = {
+  en: '/writing/',
+  'x-default': '/writing/',
+};
+
 const pageSchema = [
   {
     '@type': 'CollectionPage',
@@ -27,9 +32,10 @@ const pageSchema = [
   title="Selected writing"
   description="Long-form posts on internal AI for enterprise workflows."
   ogType="website"
+  alternates={alternates}
   pageSchema={pageSchema}
 >
-  <SiteHeader />
+  <SiteHeader alternates={alternates} />
 
   <main id="main">
     <section class="section-space">

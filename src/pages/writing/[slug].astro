@@ -5,6 +5,7 @@ import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import CTASection from '../../components/CTASection.astro';
 import { getSiteContent, siteConfig } from '../../config/site';
+import { type Locale } from '../../i18n/routing';
 
 export async function getStaticPaths() {
   const entries = await getCollection('writing');
@@ -21,6 +22,22 @@ const { Content } = await render(entry);
 const content = getSiteContent(entry.data.locale);
 const detailPath = `/writing/${entry.data.routeSlug}/`;
 const canonicalUrl = `${siteConfig.siteUrl}${detailPath}`;
+
+const allWriting = (await getCollection('writing')).filter((e) => !e.data.draft);
+const siblings = allWriting.filter(
+  (candidate) => candidate.data.translationKey === entry.data.translationKey,
+);
+const translatedAlternates = siblings.reduce(
+  (paths, candidate) => ({
+    ...paths,
+    [candidate.data.locale]: `/writing/${candidate.data.routeSlug}/`,
+  }),
+  {} as Partial<Record<Locale, string>>,
+);
+const alternates = {
+  ...translatedAlternates,
+  'x-default': translatedAlternates.en ?? detailPath,
+};
 ---
 
 <BaseLayout
@@ -29,6 +46,7 @@ const canonicalUrl = `${siteConfig.siteUrl}${detailPath}`;
   title={entry.data.title}
   description={entry.data.summary}
   ogType="article"
+  alternates={alternates}
   pageSchema={[
     {
       '@type': 'Article',
@@ -44,7 +62,7 @@ const canonicalUrl = `${siteConfig.siteUrl}${detailPath}`;
     },
   ]}
 >
-  <SiteHeader />
+  <SiteHeader alternates={alternates} />
 
   <main id="main">
     <section class="section-space">

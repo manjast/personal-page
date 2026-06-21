@@ -17,7 +17,7 @@ const { locale = 'en', alternates } = Astro.props;
 const pathname = Astro.url.pathname;
 const content = getSiteContent(locale);
 const { navigation, siteConfig } = content;
-const alternatePaths = { ...getAlternatePaths(pathname), ...(alternates ?? {}) };
+const alternatePaths = alternates ?? getAlternatePaths(pathname);
 
 function isActive(href: string) {
   const currentBasePath = stripLocalePrefix(pathname);
@@ -63,22 +63,36 @@ function isActive(href: string) {
         class="language-switcher col-start-2 row-start-1 self-start flex w-fit items-center rounded-xl border border-[color:var(--rule)] bg-white/60 p-1 text-[0.68rem] font-semibold uppercase tracking-[0.06em] text-[color:var(--muted)] sm:text-[0.72rem] sm:tracking-[0.08em] lg:self-auto"
       >
         {
-          (['en', 'sr'] as const).map((targetLocale) => (
-            <a
-              class:list={[
-                'inline-flex min-h-[44px] items-center rounded-lg px-2 transition hover:text-[color:var(--ink)] sm:px-2.5',
-                locale === targetLocale && 'bg-[color:var(--ink)] text-[color:var(--canvas)] hover:text-[color:var(--canvas)]',
-              ]}
-              href={alternatePaths[targetLocale]}
-              hreflang={localeMeta[targetLocale].hreflang}
-              lang={localeMeta[targetLocale].lang}
-              aria-current={locale === targetLocale ? 'page' : undefined}
-              aria-label={`${content.ui.switchLanguageLabel}: ${localeMeta[targetLocale].label}`}
-            >
-              <span class="sm:hidden">{localeMeta[targetLocale].shortLabel}</span>
-              <span class="hidden sm:inline">{localeMeta[targetLocale].label}</span>
-            </a>
-          ))
+          (['en', 'sr'] as const).map((targetLocale) => {
+            const href = alternatePaths[targetLocale];
+            const disabled = !href;
+            return disabled ? (
+              <span
+                class="inline-flex min-h-[44px] cursor-not-allowed items-center rounded-lg px-2 opacity-50 sm:px-2.5"
+                aria-disabled="true"
+                title="Translation pending"
+                lang={localeMeta[targetLocale].lang}
+              >
+                <span class="sm:hidden">{localeMeta[targetLocale].shortLabel}</span>
+                <span class="hidden sm:inline">{localeMeta[targetLocale].label}</span>
+              </span>
+            ) : (
+              <a
+                class:list={[
+                  'inline-flex min-h-[44px] items-center rounded-lg px-2 transition hover:text-[color:var(--ink)] sm:px-2.5',
+                  locale === targetLocale && 'bg-[color:var(--ink)] text-[color:var(--canvas)] hover:text-[color:var(--canvas)]',
+                ]}
+                href={href}
+                hreflang={localeMeta[targetLocale].hreflang}
+                lang={localeMeta[targetLocale].lang}
+                aria-current={locale === targetLocale ? 'page' : undefined}
+                aria-label={`${content.ui.switchLanguageLabel}: ${localeMeta[targetLocale].label}`}
+              >
+                <span class="sm:hidden">{localeMeta[targetLocale].shortLabel}</span>
+                <span class="hidden sm:inline">{localeMeta[targetLocale].label}</span>
+              </a>
+            );
+          })
         }
       </div>
       <a class="button-primary hidden xl:inline-flex" href={localizedHref(locale, siteConfig.heroPrimaryCta.href)}>

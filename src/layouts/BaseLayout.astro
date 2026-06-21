@@ -134,7 +134,7 @@ const jsonLd = {
           <link rel="canonical" href={canonical} />
           {alternatePaths.en && <link rel="alternate" hreflang={localeMeta.en.hreflang} href={absoluteUrl(siteConfig.siteUrl, alternatePaths.en)} />}
           {alternatePaths.sr && <link rel="alternate" hreflang={localeMeta.sr.hreflang} href={absoluteUrl(siteConfig.siteUrl, alternatePaths.sr)} />}
-          <link rel="alternate" hreflang="x-default" href={absoluteUrl(siteConfig.siteUrl, alternatePaths['x-default'])} />
+          <link rel="alternate" hreflang="x-default" href={absoluteUrl(siteConfig.siteUrl, alternatePaths['x-default'] ?? canonicalPath)} />
         </>
       )
     }

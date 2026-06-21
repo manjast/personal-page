@@ -496,18 +496,21 @@ html[lang^="sr"] h4,
   }
 
   .blog-table {
-    @apply my-8 w-full overflow-hidden rounded-lg border text-sm;
+    @apply my-8 w-full overflow-x-auto rounded-lg border text-sm;
     border-color: var(--rule);
   }
 
   .blog-table table {
     @apply w-full border-collapse;
+    table-layout: fixed;
+    word-break: break-word;
   }
 
   .blog-table th,
   .blog-table td {
-    @apply border-b px-4 py-3 text-left align-top last:border-b-0;
+    @apply border-b px-3 py-2 text-left align-top align-text-top last:border-b-0;
     border-color: var(--rule);
+    overflow-wrap: anywhere;
   }
 
   .blog-table thead th {

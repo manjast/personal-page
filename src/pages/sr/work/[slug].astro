@@ -81,9 +81,9 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
             <p class="eyebrow">{entry.data.organization}</p>
             <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">{entry.data.title}</h1>
             <p class="text-lg leading-8 muted-copy">{entry.data.summary}</p>
-            <div class="flex flex-wrap gap-2">
-              {entry.data.technologies.map((technology) => <span class="rounded-full border border-[color:var(--rule)] bg-white/55 px-3 py-1 text-[0.75rem] uppercase tracking-[0.08em] text-[color:var(--muted)]">{technology}</span>)}
-            </div>
+            <ul class="flex flex-wrap gap-2" role="list">
+              {entry.data.technologies.map((technology) => <li class="rounded-full border border-[color:var(--rule)] bg-white/55 px-3 py-1 text-[0.75rem] uppercase tracking-[0.08em] text-[color:var(--muted)]">{technology}</li>)}
+            </ul>
           </div>
 
           <div class="panel panel-dark p-6">

@@ -46,13 +46,13 @@ const href = caseStudyPath(locale, entry.data.routeSlug);
     </div>
   </dl>
 
-  <div class="mt-6 flex flex-wrap gap-2 pb-4">
+  <ul class="mt-6 flex flex-wrap gap-2 pb-4" role="list">
     {
       entry.data.technologies.map((technology) => (
-        <span class="rounded-lg border border-[color:var(--rule)] bg-white/45 px-3 py-1 text-[0.75rem] uppercase tracking-[0.08em] text-[color:var(--muted)]">{technology}</span>
+        <li class="rounded-lg border border-[color:var(--rule)] bg-white/45 px-3 py-1 text-[0.75rem] uppercase tracking-[0.08em] text-[color:var(--muted)]">{technology}</li>
       ))
     }
-  </div>
+  </ul>
 
   <div class="mt-auto border-t border-[color:var(--rule)] pt-4">
     <a class="inline-flex min-h-[44px] items-center py-2 text-sm font-semibold text-[color:var(--ink)] transition hover:text-[color:var(--accent)]" href={href}>

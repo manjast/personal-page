@@ -9,7 +9,7 @@ import { getSiteContent, siteConfig } from '../../config/site';
 export async function getStaticPaths() {
   const entries = await getCollection('writing');
   return entries
-    .filter((entry) => !entry.data.draft)
+    .filter((entry) => !entry.data.draft && entry.data.locale === 'en')
     .map((entry) => ({
       params: { slug: entry.data.routeSlug },
       props: { entry },

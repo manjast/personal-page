@@ -323,6 +323,11 @@ html[lang^="sr"] h4,
     color: var(--ink);
   }
 
+  .content-body h4 {
+    @apply mt-6 text-lg font-semibold tracking-tight;
+    color: var(--ink);
+  }
+
   .content-body p {
     @apply mt-4;
   }
@@ -331,9 +336,263 @@ html[lang^="sr"] h4,
     @apply mt-4 list-disc space-y-2 pl-6;
   }
 
+  .content-body ol {
+    @apply mt-4 list-decimal space-y-2 pl-6;
+  }
+
+  .content-body li {
+    @apply leading-7;
+  }
+
+  .content-body blockquote {
+    @apply mt-6 border-l-4 pl-5 italic;
+    border-color: var(--accent);
+    color: var(--ink-soft);
+  }
+
+  .content-body pre {
+    @apply mt-4 overflow-x-auto rounded-lg p-4 text-sm;
+    background: var(--canvas-strong);
+    color: var(--ink);
+  }
+
+  .content-body code {
+    @apply rounded px-1.5 py-0.5 text-[0.9em];
+    background: var(--canvas-strong);
+    color: var(--ink);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .content-body pre code {
+    @apply rounded-none bg-transparent p-0;
+  }
+
+  .content-body a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .content-body a:hover {
+    color: var(--accent-strong);
+  }
+
+  .content-body figure {
+    @apply mt-8;
+  }
+
+  .content-body figcaption {
+    @apply mt-3 text-sm leading-6;
+    color: var(--muted-soft);
+  }
+
+  .content-body img {
+    @apply h-auto max-w-full rounded-lg;
+  }
+
+  .content-body table {
+    @apply mt-4 w-full border-collapse text-sm;
+  }
+
+  .content-body th,
+  .content-body td {
+    @apply border px-3 py-2 text-left align-top;
+    border-color: var(--rule);
+  }
+
+  .content-body th {
+    background: var(--canvas-strong);
+    color: var(--ink);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
   .content-body strong {
     @apply font-semibold;
     color: var(--ink);
+  }
+
+  /* blog visuals (added 2026-06-21) -----------------------------------------
+     16 classes total: 4 .blog-hero* + 6 layout + 6 SVG element.
+     Site-wide visual pattern, not per-post. Extends .panel-light family
+     (one file, one source of design tokens). */
+  .blog-hero {
+    @apply relative my-10 overflow-hidden rounded-[1.2rem] border px-6 py-10 sm:px-10 sm:py-12;
+    background: var(--paper);
+    border-color: var(--rule);
+  }
+
+  .blog-hero__stat {
+    @apply block font-semibold leading-none tracking-tight;
+    color: var(--accent);
+    font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(3.5rem, 9vw, 6rem);
+  }
+
+  .blog-hero__label {
+    @apply mt-4 block text-xl leading-7 sm:text-2xl;
+    color: var(--ink);
+  }
+
+  .blog-hero__attr {
+    @apply mt-4 block text-sm uppercase tracking-[0.12em];
+    color: var(--ink-faint);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-stat {
+    @apply relative my-8 border-l-[3px] pl-5;
+    border-color: var(--accent);
+  }
+
+  .blog-stat__value {
+    @apply block text-3xl font-semibold leading-tight sm:text-4xl;
+    color: var(--ink);
+  }
+
+  .blog-stat__label {
+    @apply mt-2 block text-sm leading-6;
+    color: var(--muted-soft);
+  }
+
+  .blog-pullquote {
+    @apply my-12 border-y py-8 text-center;
+    border-color: var(--rule);
+  }
+
+  .blog-pullquote p {
+    @apply mx-auto max-w-2xl text-2xl font-semibold leading-snug italic sm:text-3xl;
+    color: var(--ink-soft);
+    font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .blog-step {
+    @apply my-6 flex gap-5 border-t pt-6;
+    border-color: var(--rule);
+  }
+
+  .blog-step__marker {
+    @apply flex shrink-0 items-center justify-center rounded-md px-3 py-1.5 text-xs uppercase tracking-[0.12em];
+    color: var(--accent);
+    background: var(--accent-soft);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    min-height: 28px;
+  }
+
+  .blog-step__body {
+    @apply flex-1;
+  }
+
+  .blog-step__title {
+    @apply text-lg font-semibold leading-snug;
+    color: var(--ink);
+  }
+
+  .blog-step__copy {
+    @apply mt-2 text-base leading-7;
+    color: var(--muted);
+  }
+
+  .blog-table {
+    @apply my-8 w-full overflow-hidden rounded-lg border text-sm;
+    border-color: var(--rule);
+  }
+
+  .blog-table table {
+    @apply w-full border-collapse;
+  }
+
+  .blog-table th,
+  .blog-table td {
+    @apply border-b px-4 py-3 text-left align-top last:border-b-0;
+    border-color: var(--rule);
+  }
+
+  .blog-table thead th {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .blog-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .blog-flow {
+    @apply my-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .blog-flow__cell {
+    @apply relative rounded-lg border p-5;
+    background: var(--paper);
+    border-color: var(--rule);
+  }
+
+  .blog-flow__marker {
+    @apply block text-xs uppercase tracking-[0.12em];
+    color: var(--accent);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-flow__title {
+    @apply mt-2 block text-base font-semibold leading-snug;
+    color: var(--ink);
+  }
+
+  .blog-flow__copy {
+    @apply mt-2 block text-sm leading-6;
+    color: var(--muted-soft);
+  }
+
+  .blog-flow__caption {
+    @apply mt-4 col-span-full text-center text-sm italic;
+    color: var(--muted-soft);
+  }
+
+  .blog-section-marker {
+    @apply mt-10 mb-4 inline-flex items-center rounded-lg border px-3 py-1.5 text-xs uppercase tracking-[0.12em];
+    border-color: rgba(143, 73, 47, 0.2);
+    background: var(--paper);
+    color: var(--accent);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-svg-frame {
+    @apply block h-auto w-full rounded-lg border;
+    border-color: var(--rule);
+    background: var(--paper);
+  }
+
+  .blog-svg-text {
+    @apply text-sm;
+    fill: var(--ink);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-svg-text-accent {
+    @apply text-sm font-medium;
+    fill: var(--accent);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-svg-text-faint {
+    @apply text-xs;
+    fill: var(--ink-faint);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-svg-line {
+    stroke: var(--ink);
+    stroke-width: 1.5;
+  }
+
+  .blog-svg-arrow {
+    fill: var(--accent);
   }
 
   .muted-copy {

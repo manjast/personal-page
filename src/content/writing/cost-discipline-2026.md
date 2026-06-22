@@ -86,18 +86,18 @@ The cheapest model is not the most capable model, and the most capable is not th
 Prompt format gets discussed more than it delivers. TOON (Token-Oriented Object Notation) and GCF (Graph Compact Format) cut prompt tokens 45-48% on uniform-array payloads, in a 30-trial test on gpt-5-mini high. End-to-end cost saving is smaller — 11.9% in the best case (matrix best cell). Other workloads may differ.
 
 <figure>
-  <svg class="blog-svg-frame" viewBox="0 0 880 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-format-title fig-format-desc">
+  <svg class="blog-svg-frame" viewBox="0 0 320 87" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-format-title fig-format-desc">
     <title id="fig-format-title">TOON and GCF format savings: prompt versus end-to-end</title>
     <desc id="fig-format-desc">Two horizontal bars. Top bar in terracotta shows 45 to 48 percent prompt-token saving from TOON and GCF. Bottom bar in muted ink shows 11.9 percent end-to-end cost saving in the best case. A short connector between the two bars indicates the gap is reasoning tokens, priced as output.</desc>
-    <text class="blog-svg-text-faint" x="0" y="14">FORMAT · PROMPT vs END-TO-END</text>
-    <line x1="0" y1="20" x2="220" y2="20" stroke="var(--ink-faint)" stroke-width="0.5" />
-    <text class="blog-svg-text" x="0" y="60" style="font-size: 14px;">PROMPT-TOKEN SAVING (TOON / GCF)</text>
-    <rect x="0" y="72" width="528" height="40" fill="var(--accent)" />
-    <text class="blog-svg-text-accent" x="544" y="98">45–48%</text>
-    <text class="blog-svg-text" x="0" y="148" style="font-size: 14px;">END-TO-END COST SAVING (best case, gpt-5-mini high)</text>
-    <rect x="0" y="160" width="131" height="40" fill="var(--ink-faint)" opacity="0.7" />
-    <text class="blog-svg-text-accent" x="147" y="186">11.9%</text>
-    <text class="blog-svg-text-faint" x="0" y="222" style="font-style: italic;">gap = reasoning tokens priced as output (8x the input rate for gpt-5-mini)</text>
+    <text class="blog-svg-text-faint" x="0" y="5">FORMAT · PROMPT vs END-TO-END</text>
+    <line x1="0" y1="7" x2="80" y2="7" stroke="var(--ink-faint)" stroke-width="0.2" />
+    <text class="blog-svg-text" x="0" y="22" style="font-size: 5px;">PROMPT-TOKEN SAVING (TOON / GCF)</text>
+    <rect x="0" y="26" width="192" height="14" fill="var(--accent)" />
+    <text class="blog-svg-text-accent" x="198" y="36">45–48%</text>
+    <text class="blog-svg-text" x="0" y="54" style="font-size: 5px;">END-TO-END COST SAVING (best case, gpt-5-mini high)</text>
+    <rect x="0" y="58" width="48" height="14" fill="var(--ink-faint)" opacity="0.7" />
+    <text class="blog-svg-text-accent" x="53" y="68">11.9%</text>
+    <text class="blog-svg-text-faint" x="0" y="81" style="font-style: italic;">gap = reasoning tokens priced as output (8x the input rate for gpt-5-mini)</text>
   </svg>
   <figcaption>TOON and GCF save 45 to 48 percent of prompt tokens on uniform-array payloads, but only 11.9 percent of end-to-end cost in the best case. The gap is reasoning tokens, priced as output.</figcaption>
 </figure>

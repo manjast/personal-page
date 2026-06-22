@@ -570,26 +570,26 @@ html[lang^="sr"] h4,
     @apply block h-auto w-full rounded-lg border;
     border-color: var(--rule);
     background: var(--paper);
-    padding: 32px 40px;
+    padding: 8px 12px;
   }
 
   .blog-svg-text {
     fill: var(--ink);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-    font-size: 15px;
+    font-size: 9px;
   }
 
   .blog-svg-text-accent {
     @apply font-medium;
     fill: var(--accent);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-    font-size: 15px;
+    font-size: 9px;
   }
 
   .blog-svg-text-faint {
     fill: var(--ink-faint);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-    font-size: 13px;
+    font-size: 8px;
   }
 
   .blog-svg-line {

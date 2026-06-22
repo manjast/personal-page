@@ -573,23 +573,30 @@ html[lang^="sr"] h4,
     padding: 8px 12px;
   }
 
+  /* SVG diagram spec: see 00-current-state/brand-voice-guide.md
+     §7 "Diagram spec (4 reusable templates for blog SVG diagrams)".
+     Each template has a locked viewBox + font + dimensions; these
+     CSS classes are the shared design tokens (mono font, terracotta
+     accent, paper background, 8/12 padding, 0.5/0.7/0.2 strokes).
+     Future blog posts follow the 4 templates (5-step, 2-row, bar chart,
+     distribution) instead of hand-crafting each diagram. */
   .blog-svg-text {
     fill: var(--ink);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .blog-svg-text-accent {
     @apply font-medium;
     fill: var(--accent);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-    font-size: 9px;
+    font-size: 12px;
   }
 
   .blog-svg-text-faint {
     fill: var(--ink-faint);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-    font-size: 8px;
+    font-size: 9px;
   }
 
   .blog-svg-line {

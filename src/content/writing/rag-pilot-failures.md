@@ -96,7 +96,7 @@ In another pilot, the retrieval was returning a document from 2022 when the user
 Both were 2-3 day fixes once the diagnostic was in place. Before the diagnostic, both had been prompt-engineering rabbit holes lasting 2-3 weeks.
 
 <figure>
-  <svg class="blog-svg-frame" viewBox="0 0 320 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-retrieval-title fig-retrieval-desc">
+  <svg class="blog-svg-frame" viewBox="0 0 340 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-retrieval-title fig-retrieval-desc">
     <title id="fig-retrieval-title">Retrieval diagnostics: prompt rabbit hole vs 2 to 3 day fix</title>
     <desc id="fig-retrieval-desc">Two horizontal flows. Top, in faint dashed lines: BEFORE, wrong answer, rewrite prompt, different wrong answer, then a feedback loop back to the start, labelled repeat 2 to 3 weeks. Bottom, in solid lines: AFTER, wrong answer, log top-k plus scores (highlighted), find issue, 2 to 3 day fix.</desc>
     <defs>
@@ -107,37 +107,37 @@ Both were 2-3 day fixes once the diagnostic was in place. Before the diagnostic,
         <path d="M0,0 L2.2,1.5 L0,3 Z" fill="var(--ink-faint)" />
       </marker>
     </defs>
-    <text class="blog-svg-text-faint" x="3" y="10">BEFORE</text>
+    <text class="blog-svg-text-faint" x="10" y="10">BEFORE</text>
     <line x1="0" y1="14" x2="55" y2="14" stroke="var(--ink-faint)" stroke-width="0.2" />
-    <rect x="3" y="22" width="72" height="28" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" rx="0.7" />
-    <rect x="77" y="22" width="72" height="28" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" rx="0.7" />
-    <rect x="151" y="22" width="72" height="28" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" rx="0.7" />
-    <text class="blog-svg-text-faint" x="39" y="32" text-anchor="middle">wrong</text>
-    <text class="blog-svg-text-faint" x="39" y="42" text-anchor="middle">answer</text>
-    <text class="blog-svg-text-faint" x="113" y="32" text-anchor="middle">rewrite</text>
-    <text class="blog-svg-text-faint" x="113" y="42" text-anchor="middle">prompt</text>
-    <text class="blog-svg-text-faint" x="187" y="32" text-anchor="middle">different</text>
-    <text class="blog-svg-text-faint" x="187" y="42" text-anchor="middle">wrong</text>
-    <line x1="75" y1="36" x2="82" y2="36" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
-    <line x1="149" y1="36" x2="156" y2="36" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
-    <path d="M 223 50 Q 223 70 113 70 Q 39 70 39 50" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
-    <text class="blog-svg-text-faint" x="115" y="65" text-anchor="middle">repeat 2–3 weeks</text>
-    <text class="blog-svg-text" x="3" y="78">AFTER</text>
+    <rect x="10" y="22" width="58" height="28" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" rx="0.7" />
+    <rect x="82" y="22" width="58" height="28" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" rx="0.7" />
+    <rect x="154" y="22" width="58" height="28" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" rx="0.7" />
+    <text class="blog-svg-text-faint" x="39" y="32" text-anchor="middle" style="font-size: 11px;">wrong</text>
+    <text class="blog-svg-text-faint" x="39" y="42" text-anchor="middle" style="font-size: 11px;">answer</text>
+    <text class="blog-svg-text-faint" x="111" y="32" text-anchor="middle" style="font-size: 11px;">rewrite</text>
+    <text class="blog-svg-text-faint" x="111" y="42" text-anchor="middle" style="font-size: 11px;">prompt</text>
+    <text class="blog-svg-text-faint" x="183" y="32" text-anchor="middle" style="font-size: 11px;">different</text>
+    <text class="blog-svg-text-faint" x="183" y="42" text-anchor="middle" style="font-size: 11px;">wrong</text>
+    <line x1="68" y1="36" x2="80" y2="36" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
+    <line x1="140" y1="36" x2="152" y2="36" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
+    <path d="M 212 50 Q 212 70 111 70 Q 39 70 39 50" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
+    <text class="blog-svg-text-faint" x="113" y="65" text-anchor="middle">repeat 2–3 weeks</text>
+    <text class="blog-svg-text" x="10" y="78">AFTER</text>
     <line x1="0" y1="82" x2="55" y2="82" stroke="var(--accent)" stroke-width="0.2" />
-    <rect x="3" y="90" width="72" height="28" fill="none" stroke="var(--ink)" stroke-width="0.5" rx="0.7" />
-    <rect x="77" y="90" width="72" height="28" fill="none" stroke="var(--accent)" stroke-width="0.7" rx="0.7" />
-    <rect x="151" y="90" width="72" height="28" fill="none" stroke="var(--accent)" stroke-width="0.7" rx="0.7" />
-    <rect x="225" y="90" width="72" height="28" fill="none" stroke="var(--ink)" stroke-width="0.5" rx="0.7" />
-    <text class="blog-svg-text" x="39" y="100" text-anchor="middle">wrong</text>
-    <text class="blog-svg-text" x="39" y="110" text-anchor="middle">answer</text>
-    <text class="blog-svg-text-accent" x="113" y="100" text-anchor="middle">log</text>
-    <text class="blog-svg-text-accent" x="113" y="110" text-anchor="middle">top-k</text>
-    <text class="blog-svg-text-accent" x="187" y="100" text-anchor="middle">find</text>
-    <text class="blog-svg-text-accent" x="187" y="110" text-anchor="middle">issue</text>
-    <text class="blog-svg-text" x="261" y="104" text-anchor="middle" style="font-size: 11px;">2-3 day fix</text>
-    <line x1="75" y1="104" x2="82" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
-    <line x1="149" y1="104" x2="156" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
-    <line x1="223" y1="104" x2="230" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
+    <rect x="10" y="90" width="58" height="28" fill="none" stroke="var(--ink)" stroke-width="0.5" rx="0.7" />
+    <rect x="82" y="90" width="58" height="28" fill="none" stroke="var(--accent)" stroke-width="0.7" rx="0.7" />
+    <rect x="154" y="90" width="58" height="28" fill="none" stroke="var(--accent)" stroke-width="0.7" rx="0.7" />
+    <rect x="226" y="90" width="58" height="28" fill="none" stroke="var(--ink)" stroke-width="0.5" rx="0.7" />
+    <text class="blog-svg-text" x="39" y="100" text-anchor="middle" style="font-size: 11px;">wrong</text>
+    <text class="blog-svg-text" x="39" y="110" text-anchor="middle" style="font-size: 11px;">answer</text>
+    <text class="blog-svg-text-accent" x="111" y="100" text-anchor="middle" style="font-size: 11px;">log</text>
+    <text class="blog-svg-text-accent" x="111" y="110" text-anchor="middle" style="font-size: 11px;">top-k</text>
+    <text class="blog-svg-text-accent" x="183" y="100" text-anchor="middle" style="font-size: 11px;">find</text>
+    <text class="blog-svg-text-accent" x="183" y="110" text-anchor="middle" style="font-size: 11px;">issue</text>
+    <line x1="68" y1="104" x2="80" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
+    <line x1="140" y1="104" x2="152" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
+    <line x1="212" y1="104" x2="224" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
+    <text class="blog-svg-text-accent" x="290" y="108" text-anchor="start" style="font-size: 10px;">2-3 day fix</text>
   </svg>
   <figcaption>Retrieval diagnostics turn a 2 to 3 week prompt-rewriting loop into a 2 to 3 day targeted fix. The bottleneck was never the prompt.</figcaption>
 </figure>
@@ -158,7 +158,7 @@ The fix: log per-query cost from day one. Every retrieval has a cost. Every LLM 
 I have seen one team cut their per-query cost to roughly 0.55x with a single change: switching from top-k=20 to top-k=5 with a cross-encoder reranker. The model quality went up (reranker is more selective than dense retrieval) and the cost went down (fewer chunks to process, fewer tokens to the model). On the retrieved context alone, the cut was 4x; the total was 0.55x because the reasoning and output tokens stayed fixed. The team had been paying 4x more on retrieved context — for worse answers.
 
 <figure>
-  <svg class="blog-svg-frame" viewBox="-10 0 450 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-cost-title fig-cost-desc">
+  <svg class="blog-svg-frame" viewBox="-10 0 450 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-cost-title fig-cost-desc">
     <title id="fig-cost-title">Cost per query before and after</title>
     <desc id="fig-cost-desc">Bar chart on a dollars-per-query axis. Left bar in muted ink shows 0.17 dollars for top-k equals 20 with 1k chunks. Right bar in terracotta shows 0.09 dollars for top-k equals 5 with reranker, also 1k chunks. A curved arrow from the first bar to the second is labelled 0.55x on total.</desc>
     <defs>
@@ -167,17 +167,17 @@ I have seen one team cut their per-query cost to roughly 0.55x with a single cha
       </marker>
     </defs>
     <text class="blog-svg-text-faint" x="0" y="10">COST / QUERY · BEFORE → AFTER</text>
-    <text class="blog-svg-text" x="-7" y="50" transform="rotate(-90 -7 50)" text-anchor="middle">$ / query</text>
+    <text class="blog-svg-text" x="2" y="50" transform="rotate(-90 2 50)" text-anchor="middle">$ / query</text>
     <line x1="20" y1="80" x2="420" y2="80" stroke="var(--ink)" stroke-width="0.5" />
     <line x1="20" y1="22" x2="20" y2="80" stroke="var(--ink)" stroke-width="0.5" />
-    <rect x="50" y="26" width="120" height="50" fill="var(--ink-faint)" opacity="0.7" />
-    <text class="blog-svg-text-accent" x="110" y="22" text-anchor="middle">$0.17</text>
-    <text class="blog-svg-text" x="110" y="94" text-anchor="middle" style="font-size: 10px;">top-k=20 · 1k chunks</text>
-    <rect x="290" y="50" width="120" height="26" fill="var(--accent)" />
-    <text class="blog-svg-text-accent" x="350" y="46" text-anchor="middle">$0.09</text>
-    <text class="blog-svg-text" x="350" y="94" text-anchor="middle" style="font-size: 10px;">top-k=5 · 1k chunks</text>
-    <path d="M 170 38 C 230 38 230 55 290 55" fill="none" stroke="var(--accent)" stroke-width="0.7" marker-end="url(#arrow-blog-cost)" />
-    <text class="blog-svg-text-accent" x="230" y="34" text-anchor="middle">0.55x on total</text>
+    <rect x="50" y="32" width="120" height="44" fill="var(--ink-faint)" opacity="0.7" />
+    <text class="blog-svg-text-accent" x="110" y="26" text-anchor="middle">$0.17</text>
+    <text class="blog-svg-text" x="110" y="98" text-anchor="middle" style="font-size: 10px;">top-k=20 · 1k chunks</text>
+    <rect x="290" y="54" width="120" height="22" fill="var(--accent)" />
+    <text class="blog-svg-text-accent" x="350" y="50" text-anchor="middle">$0.09</text>
+    <text class="blog-svg-text" x="350" y="98" text-anchor="middle" style="font-size: 10px;">top-k=5 · 1k chunks</text>
+    <path d="M 170 42 C 230 42 230 56 290 56" fill="none" stroke="var(--accent)" stroke-width="0.7" marker-end="url(#arrow-blog-cost)" />
+    <text class="blog-svg-text-accent" x="230" y="38" text-anchor="middle">0.55x on total</text>
   </svg>
   <figcaption>Top-k reduction with a cross-encoder reranker: fewer chunks to the model, more relevant chunks, lower cost, higher quality. The headline is 0.55x on total; the retrieved-context cost alone falls by 4x. Both bars compared at GPT-5.5, 1k chunks per query, 50K queries per day, with reasoning tokens at ~1.5k (varies 1.5k–3k with task). Reasoning tokens are priced as output (8x the input rate for gpt-5-mini), so the gap from 45-48% prompt-token savings to 11.9% end-to-end cost saving is reasoning cost, not the format itself.</figcaption>
 </figure>
@@ -192,7 +192,7 @@ A caveat: the mean cost per query tells a comforting lie. The p99 cost — the w
     <line x1="2" y1="14" x2="140" y2="14" stroke="var(--ink-faint)" stroke-width="0.2" />
     <line x1="2" y1="82" x2="290" y2="82" stroke="var(--ink)" stroke-width="0.5" />
     <line x1="2" y1="22" x2="2" y2="82" stroke="var(--ink)" stroke-width="0.5" />
-    <text class="blog-svg-text" x="-7" y="52" transform="rotate(-90 -7 52)" text-anchor="middle">$ / query</text>
+    <text class="blog-svg-text" x="2" y="52" transform="rotate(-90 2 52)" text-anchor="middle">$ / query</text>
     <text class="blog-svg-text-faint" x="6" y="24">p99</text>
     <text class="blog-svg-text-faint" x="6" y="78">median</text>
     <rect x="10" y="60" width="248" height="22" fill="var(--ink-faint)" opacity="0.5" />

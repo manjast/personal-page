@@ -664,6 +664,23 @@ html[lang^="sr"] h4,
   .blog-fix-card__body > :last-child {
     margin-bottom: 0;
   }
+  /* full-bleed media: figures break out of the body column to span the full
+     card width. Recovers the column-narrowing loss when the card is inside
+     a narrower content area (mobile). Caption stays in body column. */
+  .blog-fix-card figure {
+    grid-column: 1 / -1;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+  .blog-fix-card figcaption {
+    grid-column: 2;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
 
   /* lever card: stacked block with top monospace label + bold title + body
      used for the 4 cost-post architecture levers; pattern matches S6 reference */

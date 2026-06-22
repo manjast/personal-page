@@ -427,13 +427,14 @@ html[lang^="sr"] h4,
   .blog-hero__stat {
     @apply block font-semibold leading-none tracking-tight;
     color: var(--accent);
-    font-family: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "IBM Plex Serif", "IBM Plex Sans Condensed", "Charter", "Georgia", serif;
     font-size: clamp(3.5rem, 9vw, 6rem);
   }
 
   .blog-hero__label {
     @apply mt-4 block text-xl leading-7 sm:text-2xl;
     color: var(--ink);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
   }
 
   .blog-hero__attr {
@@ -569,24 +570,26 @@ html[lang^="sr"] h4,
     @apply block h-auto w-full rounded-lg border;
     border-color: var(--rule);
     background: var(--paper);
+    padding: 32px 40px;
   }
 
   .blog-svg-text {
-    @apply text-sm;
     fill: var(--ink);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    font-size: 15px;
   }
 
   .blog-svg-text-accent {
-    @apply text-sm font-medium;
+    @apply font-medium;
     fill: var(--accent);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    font-size: 15px;
   }
 
   .blog-svg-text-faint {
-    @apply text-xs;
     fill: var(--ink-faint);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    font-size: 13px;
   }
 
   .blog-svg-line {

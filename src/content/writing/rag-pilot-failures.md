@@ -139,7 +139,7 @@ The fix: log per-query cost from day one. Every retrieval has a cost. Every LLM 
 I have seen one team cut their per-query cost to roughly 0.55x with a single change: switching from top-k=20 to top-k=5 with a cross-encoder reranker. The model quality went up (reranker is more selective than dense retrieval) and the cost went down (fewer chunks to process, fewer tokens to the model). On the retrieved context alone, the cut was 4x; the total was 0.55x because the reasoning and output tokens stayed fixed. The team had been paying 4x more on retrieved context — for worse answers.
 
 <figure>
-  <svg class="blog-svg-frame" viewBox="0 0 880 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-cost-title fig-cost-desc">
+  <svg class="blog-svg-frame" viewBox="-15 0 895 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-cost-title fig-cost-desc">
     <title id="fig-cost-title">Cost per query before and after</title>
     <desc id="fig-cost-desc">Bar chart on a dollars-per-query axis. Left bar in muted ink shows 0.17 dollars for top-k equals 20 with 1k chunks. Right bar in terracotta shows 0.09 dollars for top-k equals 5 with reranker, also 1k chunks. A curved arrow from the first bar to the second is labelled 0.55x on total. Subtitle: reasoning tokens vary 1.5k to 3k; total 0.55x, retrieved context alone 4x.</desc>
     <defs>
@@ -170,7 +170,7 @@ I have seen one team cut their per-query cost to roughly 0.55x with a single cha
 A caveat: the mean cost per query tells a comforting lie. The p99 cost — the worst 1% of queries — is often 10-50x the median, driven by long prompts, long outputs, or retry loops on bad retrieval. Logging the mean is necessary; logging the p99 is what catches a single user with a runaway query before it shows up on the monthly bill. I have seen one team where 1% of users were generating 30% of the bill, and the mean — the average — masked the problem for two months.
 
 <figure>
-  <svg class="blog-svg-frame" viewBox="0 0 880 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-p99-title fig-p99-desc">
+  <svg class="blog-svg-frame" viewBox="-15 0 895 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-p99-title fig-p99-desc">
     <title id="fig-p99-title">p99 cost distribution across 1k queries</title>
     <desc id="fig-p99-desc">A horizontal bar with 99 small query bars at the median cost, followed by one tall terracotta bar at the far right labelled p99, 10 to 50x the median. The annotation points out that the mean of all 1k queries looks like the median, masking the p99 cost driver.</desc>
     <text class="blog-svg-text-faint" x="0" y="14">p99 / MEDIAN · 10–50x RATIO</text>

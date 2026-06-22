@@ -24,7 +24,13 @@ I have watched at least four enterprise RAG pilots go from "we have a working de
 
 The pattern is not unique to RAG. Per Hyperion (March 2026), roughly 70% of AI pilots never reach production at all. The four pilots here are part of the 30% that did — by catching and fixing the three gaps below before launch.
 
-## 1. No evaluation harness before the build
+<div class="blog-section-eyebrow">T H E · 3 · F I X E S</div>
+
+<div class="blog-fix-card">
+<span class="blog-fix-card__num">01</span>
+<div class="blog-fix-card__body">
+
+## No evaluation harness before the build
 
 The pattern: a team builds a RAG system against a sample of 20-30 questions, picks a retrieval strategy that "looks right," iterates on the prompt until the sample outputs read well, and ships.
 
@@ -55,12 +61,12 @@ I have seen two pilots where the eval was built late, after the system was alrea
     <text class="blog-svg-text" x="190" y="30" text-anchor="middle" dominant-baseline="middle">after</text>
     <text class="blog-svg-text" x="190" y="42" text-anchor="middle" dominant-baseline="middle">change</text>
     <text class="blog-svg-text-accent" x="265" y="30" text-anchor="middle" dominant-baseline="middle">score</text>
-    <text class="blog-svg-text-accent" x="265" y="42" text-anchor="middle" dominant-baseline="middle">3.1 → 3.7</text>
-    <text class="blog-svg-text-faint" x="340" y="36" text-anchor="middle" dominant-baseline="middle">keep?</text>
-    <line class="blog-svg-line" x1="75" y1="36" x2="79" y2="36" marker-end="url(#arrow-blog-eval)" />
-    <line class="blog-svg-line" x1="150" y1="36" x2="154" y2="36" marker-end="url(#arrow-blog-eval)" />
-    <line class="blog-svg-line" x1="225" y1="36" x2="229" y2="36" marker-end="url(#arrow-blog-eval)" />
-    <line class="blog-svg-line" x1="300" y1="36" x2="304" y2="36" marker-end="url(#arrow-blog-eval)" />
+    <text class="blog-svg-text-accent" x="265" y="42" text-anchor="middle" dominant-baseline="middle" style="font-size: 11px;">3.1 → 3.7</text>
+    <text class="blog-svg-text" x="340" y="36" text-anchor="middle" dominant-baseline="middle">keep?</text>
+    <line class="blog-svg-line" x1="75" y1="36" x2="82" y2="36" marker-end="url(#arrow-blog-eval)" />
+    <line class="blog-svg-line" x1="150" y1="36" x2="157" y2="36" marker-end="url(#arrow-blog-eval)" />
+    <line class="blog-svg-line" x1="225" y1="36" x2="232" y2="36" marker-end="url(#arrow-blog-eval)" />
+    <line class="blog-svg-line" x1="300" y1="36" x2="307" y2="36" marker-end="url(#arrow-blog-eval)" />
     <line x1="0" y1="65" x2="380" y2="65" stroke="var(--rule)" stroke-width="0.2" stroke-dasharray="0.7 1.1" />
     <text class="blog-svg-text-faint" x="5" y="78">WITHOUT THE EVAL</text>
     <text class="blog-svg-text" x="100" y="78">"looks better" is the only signal</text>
@@ -70,7 +76,14 @@ I have seen two pilots where the eval was built late, after the system was alrea
   <figcaption>The eval-driven loop answers a single question per iteration: did the last change make the system better on real user questions, yes or no? On 80 questions, a 1-chunking change is the measurable diff that distinguishes "looks better" from a real signal.</figcaption>
 </figure>
 
-## 2. No retrieval diagnostics on failed answers
+</div>
+</div>
+
+<div class="blog-fix-card">
+<span class="blog-fix-card__num">02</span>
+<div class="blog-fix-card__body">
+
+## No retrieval diagnostics on failed answers
 
 The pattern: when the system gives a wrong answer, the team debugs the prompt. They rewrite the prompt. The system gives a different wrong answer. They rewrite the prompt again.
 
@@ -83,7 +96,7 @@ In another pilot, the retrieval was returning a document from 2022 when the user
 Both were 2-3 day fixes once the diagnostic was in place. Before the diagnostic, both had been prompt-engineering rabbit holes lasting 2-3 weeks.
 
 <figure>
-  <svg class="blog-svg-frame" viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-retrieval-title fig-retrieval-desc">
+  <svg class="blog-svg-frame" viewBox="0 0 320 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-retrieval-title fig-retrieval-desc">
     <title id="fig-retrieval-title">Retrieval diagnostics: prompt rabbit hole vs 2 to 3 day fix</title>
     <desc id="fig-retrieval-desc">Two horizontal flows. Top, in faint dashed lines: BEFORE, wrong answer, rewrite prompt, different wrong answer, then a feedback loop back to the start, labelled repeat 2 to 3 weeks. Bottom, in solid lines: AFTER, wrong answer, log top-k plus scores (highlighted), find issue, 2 to 3 day fix.</desc>
     <defs>
@@ -105,8 +118,8 @@ Both were 2-3 day fixes once the diagnostic was in place. Before the diagnostic,
     <text class="blog-svg-text-faint" x="113" y="42" text-anchor="middle">prompt</text>
     <text class="blog-svg-text-faint" x="187" y="32" text-anchor="middle">different</text>
     <text class="blog-svg-text-faint" x="187" y="42" text-anchor="middle">wrong</text>
-    <line x1="75" y1="36" x2="76" y2="36" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
-    <line x1="149" y1="36" x2="150" y2="36" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
+    <line x1="75" y1="36" x2="82" y2="36" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
+    <line x1="149" y1="36" x2="156" y2="36" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
     <path d="M 223 50 Q 223 70 113 70 Q 39 70 39 50" fill="none" stroke="var(--ink-faint)" stroke-width="0.4" stroke-dasharray="1.1 0.7" marker-end="url(#arrow-blog-ret-faint)" />
     <text class="blog-svg-text-faint" x="115" y="65" text-anchor="middle">repeat 2–3 weeks</text>
     <text class="blog-svg-text" x="3" y="78">AFTER</text>
@@ -121,15 +134,22 @@ Both were 2-3 day fixes once the diagnostic was in place. Before the diagnostic,
     <text class="blog-svg-text-accent" x="113" y="110" text-anchor="middle">top-k</text>
     <text class="blog-svg-text-accent" x="187" y="100" text-anchor="middle">find</text>
     <text class="blog-svg-text-accent" x="187" y="110" text-anchor="middle">issue</text>
-    <text class="blog-svg-text" x="261" y="104" text-anchor="middle">2-3 day fix</text>
-    <line x1="75" y1="104" x2="76" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
-    <line x1="149" y1="104" x2="150" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
-    <line x1="223" y1="104" x2="224" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
+    <text class="blog-svg-text" x="261" y="104" text-anchor="middle" style="font-size: 11px;">2-3 day fix</text>
+    <line x1="75" y1="104" x2="82" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
+    <line x1="149" y1="104" x2="156" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
+    <line x1="223" y1="104" x2="230" y2="104" stroke="var(--ink)" stroke-width="0.5" marker-end="url(#arrow-blog-ret)" />
   </svg>
   <figcaption>Retrieval diagnostics turn a 2 to 3 week prompt-rewriting loop into a 2 to 3 day targeted fix. The bottleneck was never the prompt.</figcaption>
 </figure>
 
-## 3. No cost visibility per query
+</div>
+</div>
+
+<div class="blog-fix-card">
+<span class="blog-fix-card__num">03</span>
+<div class="blog-fix-card__body">
+
+## No cost visibility per query
 
 The pattern: the team builds a RAG system, ships to a small group, then to a larger group, then is surprised when the monthly bill jumps 10x. The system is doing what it was told — every query is retrieving top-k=20 chunks at 1k tokens each, sending them to a frontier model (GPT-5.5 in the most recent case), returning a 500-token answer plus ~1.5k reasoning tokens — but the cost per query is around $0.17 and the team is running 50,000 queries a day.
 
@@ -138,7 +158,7 @@ The fix: log per-query cost from day one. Every retrieval has a cost. Every LLM 
 I have seen one team cut their per-query cost to roughly 0.55x with a single change: switching from top-k=20 to top-k=5 with a cross-encoder reranker. The model quality went up (reranker is more selective than dense retrieval) and the cost went down (fewer chunks to process, fewer tokens to the model). On the retrieved context alone, the cut was 4x; the total was 0.55x because the reasoning and output tokens stayed fixed. The team had been paying 4x more on retrieved context — for worse answers.
 
 <figure>
-  <svg class="blog-svg-frame" viewBox="-10 0 450 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-cost-title fig-cost-desc">
+  <svg class="blog-svg-frame" viewBox="-10 0 450 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-cost-title fig-cost-desc">
     <title id="fig-cost-title">Cost per query before and after</title>
     <desc id="fig-cost-desc">Bar chart on a dollars-per-query axis. Left bar in muted ink shows 0.17 dollars for top-k equals 20 with 1k chunks. Right bar in terracotta shows 0.09 dollars for top-k equals 5 with reranker, also 1k chunks. A curved arrow from the first bar to the second is labelled 0.55x on total.</desc>
     <defs>
@@ -146,18 +166,18 @@ I have seen one team cut their per-query cost to roughly 0.55x with a single cha
         <path d="M0,0 L2.2,1.5 L0,3 Z" fill="var(--accent)" />
       </marker>
     </defs>
-    <text class="blog-svg-text-faint" x="0" y="12">COST / QUERY · BEFORE → AFTER</text>
-    <text class="blog-svg-text" x="-3" y="50" transform="rotate(-90 -3 50)" text-anchor="middle">$ / query</text>
+    <text class="blog-svg-text-faint" x="0" y="10">COST / QUERY · BEFORE → AFTER</text>
+    <text class="blog-svg-text" x="-7" y="50" transform="rotate(-90 -7 50)" text-anchor="middle">$ / query</text>
     <line x1="20" y1="80" x2="420" y2="80" stroke="var(--ink)" stroke-width="0.5" />
     <line x1="20" y1="22" x2="20" y2="80" stroke="var(--ink)" stroke-width="0.5" />
     <rect x="50" y="26" width="120" height="50" fill="var(--ink-faint)" opacity="0.7" />
     <text class="blog-svg-text-accent" x="110" y="22" text-anchor="middle">$0.17</text>
-    <text class="blog-svg-text" x="110" y="92" text-anchor="middle">top-k=20 · 1k chunks</text>
+    <text class="blog-svg-text" x="110" y="94" text-anchor="middle" style="font-size: 10px;">top-k=20 · 1k chunks</text>
     <rect x="290" y="50" width="120" height="26" fill="var(--accent)" />
     <text class="blog-svg-text-accent" x="350" y="46" text-anchor="middle">$0.09</text>
-    <text class="blog-svg-text" x="350" y="92" text-anchor="middle">top-k=5 · 1k chunks</text>
-    <path d="M 170 38 C 220 38 220 55 290 55" fill="none" stroke="var(--accent)" stroke-width="0.7" marker-end="url(#arrow-blog-cost)" />
-    <text class="blog-svg-text-accent" x="220" y="34" text-anchor="middle">0.55x on total</text>
+    <text class="blog-svg-text" x="350" y="94" text-anchor="middle" style="font-size: 10px;">top-k=5 · 1k chunks</text>
+    <path d="M 170 38 C 230 38 230 55 290 55" fill="none" stroke="var(--accent)" stroke-width="0.7" marker-end="url(#arrow-blog-cost)" />
+    <text class="blog-svg-text-accent" x="230" y="34" text-anchor="middle">0.55x on total</text>
   </svg>
   <figcaption>Top-k reduction with a cross-encoder reranker: fewer chunks to the model, more relevant chunks, lower cost, higher quality. The headline is 0.55x on total; the retrieved-context cost alone falls by 4x. Both bars compared at GPT-5.5, 1k chunks per query, 50K queries per day, with reasoning tokens at ~1.5k (varies 1.5k–3k with task). Reasoning tokens are priced as output (8x the input rate for gpt-5-mini), so the gap from 45-48% prompt-token savings to 11.9% end-to-end cost saving is reasoning cost, not the format itself.</figcaption>
 </figure>
@@ -172,7 +192,7 @@ A caveat: the mean cost per query tells a comforting lie. The p99 cost — the w
     <line x1="2" y1="14" x2="140" y2="14" stroke="var(--ink-faint)" stroke-width="0.2" />
     <line x1="2" y1="82" x2="290" y2="82" stroke="var(--ink)" stroke-width="0.5" />
     <line x1="2" y1="22" x2="2" y2="82" stroke="var(--ink)" stroke-width="0.5" />
-    <text class="blog-svg-text" x="-5" y="52" transform="rotate(-90 -5 52)" text-anchor="middle">$ / query</text>
+    <text class="blog-svg-text" x="-7" y="52" transform="rotate(-90 -7 52)" text-anchor="middle">$ / query</text>
     <text class="blog-svg-text-faint" x="6" y="24">p99</text>
     <text class="blog-svg-text-faint" x="6" y="78">median</text>
     <rect x="10" y="60" width="248" height="22" fill="var(--ink-faint)" opacity="0.5" />
@@ -180,10 +200,13 @@ A caveat: the mean cost per query tells a comforting lie. The p99 cost — the w
     <rect x="264" y="22" width="20" height="60" fill="var(--accent)" />
     <text class="blog-svg-text-accent" x="284" y="18" text-anchor="end">10–50x</text>
     <text class="blog-svg-text" x="284" y="92" text-anchor="end">10 queries</text>
-    <text class="blog-svg-text-faint" x="142" y="96" text-anchor="middle" style="font-size: 7px;">1k queries · mean ≈ median</text>
+    <text class="blog-svg-text-faint" x="142" y="96" text-anchor="middle" style="font-size: 8px;">1k queries · mean ≈ median</text>
   </svg>
   <figcaption>The p99 cost is often 10–50x the median, driven by long prompts, long outputs, or retry loops on bad retrieval. Mean masks the problem; p99 catches a single user with a runaway query before the monthly bill. Across 1k queries, the mean looks like the median — but the bill doesn't, because 10 queries at 10-50x the median dominate the total.</figcaption>
 </figure>
+
+</div>
+</div>
 
 Operational cost visibility is one half of cost discipline. The other half — which model, which format, which architecture — is the subject of the [cost-discipline-2026 post](https://stefanmanja.com/writing/cost-discipline-2026/).
 

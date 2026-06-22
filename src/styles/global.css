@@ -608,6 +608,98 @@ html[lang^="sr"] h4,
     fill: var(--accent);
   }
 
+  /* section header: beige-bordered eyebrow with monospace terracotta label
+     pattern: "T H E · 3 · F I X E S" or "F O U R · A R C H I T E C T U R E · L E V E R S"
+     used to introduce a section that has multiple sub-items (fixes, levers) */
+  .blog-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--accent);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.875rem;
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 1.75rem;
+  }
+
+  /* fix card: 2-col grid with monospace number stripe on left + body on right
+     used for the 3 RAG-post fixes; pattern matches S4 reference design */
+  .blog-fix-card {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    border: 1px solid var(--rule);
+    background: color-mix(in srgb, var(--paper) 60%, transparent);
+    border-radius: 0.75rem;
+    padding: 1.5rem 1.5rem 1.25rem;
+    margin: 2rem 0;
+  }
+  .blog-fix-card__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    color: var(--accent);
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.5rem;
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    align-self: start;
+    margin-top: 0.15rem;
+  }
+  .blog-fix-card__body > :first-child {
+    margin-top: 0;
+  }
+  .blog-fix-card__body > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* lever card: stacked block with top monospace label + bold title + body
+     used for the 4 cost-post architecture levers; pattern matches S6 reference */
+  .blog-lever-card {
+    border: 1px solid var(--rule);
+    background: color-mix(in srgb, var(--paper) 60%, transparent);
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+  .blog-lever-card__label {
+    display: inline-block;
+    color: var(--accent);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 0.625rem;
+  }
+  .blog-lever-card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 0.625rem;
+  }
+  .blog-lever-card__body > :first-child {
+    margin-top: 0;
+  }
+  .blog-lever-card__body > :last-child {
+    margin-bottom: 0;
+  }
+
   .muted-copy {
     color: var(--muted);
   }

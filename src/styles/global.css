@@ -379,6 +379,9 @@ html[lang^="sr"] h4,
 
   .content-body figure {
     @apply mt-8;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .content-body figcaption {
@@ -571,6 +574,9 @@ html[lang^="sr"] h4,
     border-color: var(--rule);
     background: var(--paper);
     padding: 8px 12px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* SVG diagram spec: see 00-current-state/brand-voice-guide.md

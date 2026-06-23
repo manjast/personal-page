@@ -91,12 +91,12 @@ Prompt format gets discussed more than it delivers. TOON (Token-Oriented Object 
     <desc id="fig-format-desc">Two horizontal bars. Top bar in terracotta shows 45 to 48 percent prompt-token saving from TOON and GCF. Bottom bar in muted ink shows 11.9 percent end-to-end cost saving in the best case.</desc>
     <text class="blog-svg-text-faint" x="0" y="10">FORMAT · PROMPT vs END-TO-END</text>
     <line x1="0" y1="14" x2="90" y2="14" stroke="var(--ink-faint)" stroke-width="0.2" />
-    <text class="blog-svg-text" x="0" y="26">PROMPT SAVING</text>
+    <text class="blog-svg-text" x="0" y="26" style="font-size: 8px;">PROMPT SAVING</text>
     <rect x="0" y="32" width="160" height="18" fill="var(--accent)" />
-    <text class="blog-svg-text-accent" x="165" y="44">45–48%</text>
-    <text class="blog-svg-text" x="0" y="66">END-TO-END SAVING (best case)</text>
+    <text class="blog-svg-text-accent" x="165" y="44" style="font-size: 8px;">45–48%</text>
+    <text class="blog-svg-text" x="0" y="66" style="font-size: 8px;">END-TO-END SAVING (best case)</text>
     <rect x="0" y="72" width="40" height="18" fill="var(--ink-faint)" opacity="0.7" />
-    <text class="blog-svg-text-accent" x="45" y="84">11.9%</text>
+    <text class="blog-svg-text-accent" x="45" y="84" style="font-size: 8px;">11.9%</text>
   </svg>
   <figcaption>TOON and GCF save 45 to 48 percent of prompt tokens on uniform-array payloads, but only 11.9 percent of end-to-end cost in the best case. The gap is reasoning tokens, priced as output (8x the input rate for gpt-5-mini).</figcaption>
 </figure>

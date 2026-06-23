@@ -124,14 +124,14 @@ Both were 2-3 day fixes once the diagnostic was in place. Before the diagnostic,
     <rect x="84" y="90" width="56" height="28" fill="none" stroke="var(--accent)" stroke-width="0.7" rx="0.7" />
     <rect x="158" y="90" width="56" height="28" fill="none" stroke="var(--accent)" stroke-width="0.7" rx="0.7" />
     <rect x="232" y="90" width="56" height="28" fill="none" stroke="var(--ink)" stroke-width="0.7" rx="0.7" />
-    <text class="blog-svg-text" x="38" y="100" text-anchor="middle" style="font-size: 10px;">wrong</text>
-    <text class="blog-svg-text" x="38" y="110" text-anchor="middle" style="font-size: 10px;">answer</text>
-    <text class="blog-svg-text-accent" x="112" y="100" text-anchor="middle" style="font-size: 10px;">log</text>
-    <text class="blog-svg-text-accent" x="112" y="110" text-anchor="middle" style="font-size: 10px;">top-k</text>
-    <text class="blog-svg-text-accent" x="186" y="100" text-anchor="middle" style="font-size: 10px;">find</text>
-    <text class="blog-svg-text-accent" x="186" y="110" text-anchor="middle" style="font-size: 10px;">issue</text>
-    <text class="blog-svg-text-accent" x="260" y="100" text-anchor="middle" style="font-size: 10px;">2-3 day</text>
-    <text class="blog-svg-text-accent" x="260" y="110" text-anchor="middle" style="font-size: 10px;">fix</text>
+    <text class="blog-svg-text" x="38" y="102" text-anchor="middle" style="font-size: 10px;">wrong</text>
+    <text class="blog-svg-text" x="38" y="112" text-anchor="middle" style="font-size: 10px;">answer</text>
+    <text class="blog-svg-text-accent" x="112" y="102" text-anchor="middle" style="font-size: 10px;">log</text>
+    <text class="blog-svg-text-accent" x="112" y="112" text-anchor="middle" style="font-size: 10px;">top-k</text>
+    <text class="blog-svg-text-accent" x="186" y="102" text-anchor="middle" style="font-size: 10px;">find</text>
+    <text class="blog-svg-text-accent" x="186" y="112" text-anchor="middle" style="font-size: 10px;">issue</text>
+    <text class="blog-svg-text-accent" x="260" y="102" text-anchor="middle" style="font-size: 10px;">2-3 day</text>
+    <text class="blog-svg-text-accent" x="260" y="112" text-anchor="middle" style="font-size: 10px;">fix</text>
     <line x1="66" y1="104" x2="82" y2="104" stroke="var(--ink)" stroke-width="0.7" marker-end="url(#arrow-blog-ret)" />
     <line x1="140" y1="104" x2="156" y2="104" stroke="var(--ink)" stroke-width="0.7" marker-end="url(#arrow-blog-ret)" />
     <line x1="214" y1="104" x2="230" y2="104" stroke="var(--ink)" stroke-width="0.7" marker-end="url(#arrow-blog-ret)" />
@@ -179,7 +179,7 @@ I have seen one team cut their per-query cost to roughly 0.55x with a single cha
 A caveat: the mean cost per query tells a comforting lie. The p99 cost — the worst 1% of queries — is often 10-50x the median, driven by long prompts, long outputs, or retry loops on bad retrieval. Logging the mean is necessary; logging the p99 is what catches a single user with a runaway query before it shows up on the monthly bill. I have seen one team where 1% of users were generating 30% of the bill, and the mean — the average — masked the problem for two months.
 
 <figure>
-  <svg class="blog-svg-frame" viewBox="-20 0 300 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-p99-title fig-p99-desc">
+  <svg class="blog-svg-frame" viewBox="-20 0 320 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig-p99-title fig-p99-desc">
     <title id="fig-p99-title">p99 cost distribution across 1k queries</title>
     <desc id="fig-p99-desc">A horizontal bar with 990 small query bars at the median cost, followed by one tall terracotta bar at the far right labelled p99, 10 to 50x the median. The annotation points out that the mean of all 1k queries looks like the median, masking the p99 cost driver.</desc>
     <text class="blog-svg-text-faint" x="12" y="10">p99 / MEDIAN · 10–50x RATIO</text>

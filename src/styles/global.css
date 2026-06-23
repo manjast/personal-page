@@ -583,14 +583,14 @@ html[lang^="sr"] h4,
   .blog-svg-text {
     fill: var(--ink);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .blog-svg-text-accent {
     @apply font-medium;
     fill: var(--accent);
     font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .blog-svg-text-faint {

@@ -531,7 +531,7 @@ html[lang^="sr"] h4,
   }
 
   .blog-flow {
-    @apply my-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4;
+    @apply mt-4 mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4;
   }
 
   .blog-flow__cell {
@@ -562,7 +562,7 @@ html[lang^="sr"] h4,
   }
 
   .blog-section-marker {
-    @apply mt-10 mb-4 inline-flex items-center rounded-lg border px-3 py-1.5 text-xs uppercase tracking-[0.12em];
+    @apply mt-10 mb-2 inline-flex items-center rounded-lg border px-3 py-1.5 text-xs uppercase tracking-[0.12em];
     border-color: rgba(143, 73, 47, 0.2);
     background: var(--paper);
     color: var(--accent);
@@ -777,6 +777,14 @@ html[lang^="sr"] h4,
 .site-nav,
 .language-switcher {
   font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* language switcher shows BOTH 'ENGLISH' and 'српски' simultaneously,
+   so the font-family must include the Serbian (Cyrillic) variant
+   regardless of the page's current language. Without this, 'српски'
+   falls back to a system font on EN pages. */
+.language-switcher {
+  font-family: "IBM Plex Mono Serbian", "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 html[lang^="sr"] .eyebrow,

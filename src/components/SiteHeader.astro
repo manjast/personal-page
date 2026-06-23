@@ -28,7 +28,7 @@ function isActive(href: string) {
 ---
 
 <header class="sticky top-0 z-50 border-b border-[color:var(--rule)] bg-[rgba(243,240,232,0.9)] backdrop-blur-sm">
-  <div class="shell grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-3 py-3 sm:py-5 lg:flex lg:items-baseline lg:justify-between lg:gap-5">
+  <div class="shell grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-2 py-2 sm:gap-y-3 sm:py-5 lg:flex lg:items-baseline lg:justify-between lg:gap-5">
     <a href={localizedHref(locale, '/')} class="group col-start-1 row-start-1 inline-flex min-h-[44px] min-w-0 flex-col justify-center gap-0.5">
       <span class="text-lg font-semibold tracking-tight text-[color:var(--ink)]">{siteConfig.name}</span>
       <span
@@ -60,7 +60,7 @@ function isActive(href: string) {
       </nav>
       <div
         aria-label={content.ui.languageSwitcherLabel}
-        class="language-switcher col-start-2 row-start-1 self-start flex w-fit items-center rounded-xl border border-[color:var(--rule)] bg-white/60 p-1 text-[0.68rem] font-semibold uppercase tracking-[0.06em] text-[color:var(--muted)] sm:text-[0.72rem] sm:tracking-[0.08em] lg:self-auto"
+        class="language-switcher col-start-2 row-start-1 self-start flex w-fit items-center rounded-xl border border-[color:var(--rule)] bg-white/60 p-0.5 text-[0.68rem] font-semibold uppercase tracking-[0.06em] text-[color:var(--muted)] sm:p-1 sm:text-[0.72rem] sm:tracking-[0.08em] lg:self-auto"
       >
         {
           (['en', 'sr'] as const).map((targetLocale) => {
@@ -68,7 +68,7 @@ function isActive(href: string) {
             const disabled = !href;
             return disabled ? (
               <span
-                class="inline-flex min-h-[44px] cursor-not-allowed items-center rounded-lg px-2 opacity-50 sm:px-2.5"
+                class="inline-flex min-h-[44px] cursor-not-allowed items-center rounded-lg px-1.5 opacity-50 sm:px-2.5"
                 aria-disabled="true"
                 title="Translation pending"
                 lang={localeMeta[targetLocale].lang}
@@ -79,7 +79,7 @@ function isActive(href: string) {
             ) : (
               <a
                 class:list={[
-                  'inline-flex min-h-[44px] items-center rounded-lg px-2 transition hover:text-[color:var(--ink)] sm:px-2.5',
+                  'inline-flex min-h-[44px] items-center rounded-lg px-1.5 transition hover:text-[color:var(--ink)] sm:px-2.5',
                   locale === targetLocale && 'bg-[color:var(--ink)] text-[color:var(--canvas)] hover:text-[color:var(--canvas)]',
                 ]}
                 href={href}

@@ -7,3 +7,9 @@ dist/
 .env.*
 npm-debug.log*
 .codex
+
+# Dev tools (not part of the site)
+_dev-serve.py
+audit-*.cjs
+screenshot-*.cjs
+blog-pr2-screenshots/

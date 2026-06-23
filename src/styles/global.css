@@ -184,6 +184,10 @@ html[lang^="sr"] h4,
     @apply py-16 sm:py-20;
   }
 
+  .page-start {
+    @apply pt-10 sm:pt-20;
+  }
+
   .section-break {
     position: relative;
     padding-top: 2rem;

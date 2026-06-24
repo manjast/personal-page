@@ -1,0 +1,125 @@
+---
+import type { BarChartProps, ColorToken } from '../../types/charts';
+
+interface Props extends BarChartProps {}
+
+const {
+  title,
+  yAxisLabel,
+  bars,
+  annotation,
+  yMax,
+  variant = 'cost',
+  caption,
+  ariaLabel = 'barchart',
+} = Astro.props as Props;
+
+const titleId = `fig-${ariaLabel}-title`;
+const descId = `fig-${ariaLabel}-desc`;
+const markerId = `arrow-${ariaLabel}`;
+
+const colorToVar = (c: ColorToken): string => {
+  switch (c) {
+    case 'accent': return 'var(--accent)';
+    case 'ink-faint': return 'var(--ink-faint)';
+    case 'ink-soft': return 'var(--ink-soft)';
+    case 'ink': return 'var(--ink)';
+    case 'paper': return 'var(--paper)';
+    case 'canvas': return 'var(--canvas)';
+    default: return 'var(--ink)';
+  }
+};
+
+const isCost = variant === 'cost';
+const computedMax = yMax ?? Math.max(...bars.map((b) => b.value), 0.01);
+const viewBox = isCost ? '-10 0 450 120' : '0 0 220 100';
+---
+
+<figure>
+  {isCost ? (
+    <svg
+      class="blog-svg-frame"
+      viewBox={viewBox}
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-labelledby={`${titleId} ${descId}`}
+    >
+      <title id={titleId}>{title}</title>
+      <desc id={descId}>Bar chart titled {title}: {bars.length} bars, y-axis label {yAxisLabel}, {annotation ? `annotation: ${annotation.label}` : 'no annotation'}.</desc>
+      <defs>
+        <marker id={markerId} markerWidth="3" markerHeight="3" refX="2.2" refY="1.5" orient="auto">
+          <path d="M0,0 L2.2,1.5 L0,3 Z" fill="var(--accent)" />
+        </marker>
+      </defs>
+      <text class="blog-svg-text-faint" x="0" y="10">{title}</text>
+      <text class="blog-svg-text" x="2" y="50" transform="rotate(-90 2 50)" text-anchor="middle">{yAxisLabel}</text>
+      <line x1="20" y1="80" x2="420" y2="80" stroke="var(--ink)" stroke-width="0.5" />
+      <line x1="20" y1="22" x2="20" y2="80" stroke="var(--ink)" stroke-width="0.5" />
+      {bars.map((bar, i) => {
+        const x = bar.x ?? (50 + i * 240);
+        const h = bar.h ?? Math.max(2, (bar.value / computedMax) * 56);
+        const y = bar.y ?? (80 - h);
+        const opacity = bar.opacity ?? (bar.color === 'ink-faint' ? 0.7 : undefined);
+        const labelY = bar.labelY ?? (y - 6);
+        return (
+          <Fragment>
+            <rect x={x} y={y} width="120" height={h} fill={colorToVar(bar.color)} opacity={opacity} />
+            <text class="blog-svg-text-accent" x={x + 60} y={labelY} text-anchor="middle">{bar.label}</text>
+            <text class="blog-svg-text" x={x + 60} y="98" text-anchor="middle" style="font-size: 10px;">{bar.xLabel}</text>
+          </Fragment>
+        );
+      })}
+      {annotation && bars.length === 2 ? (() => {
+        const b0 = bars[0];
+        const b1 = bars[1];
+        if (!b0 || !b1) return null;
+        const x0 = b0.x ?? 50;
+        const x1 = b1.x ?? 290;
+        const h0 = b0.h ?? Math.max(2, (b0.value / computedMax) * 56);
+        const h1 = b1.h ?? Math.max(2, (b1.value / computedMax) * 56);
+        const y0 = b0.y ?? (80 - h0);
+        const y1 = b1.y ?? (80 - h1);
+        const arrowStartX = x0 + 120;
+        const arrowEndX = x1;
+        const arrowStartY = annotation.arrowYStart ?? (y0 + 2);
+        const arrowEndY = annotation.arrowYEnd ?? (y1 + 2);
+        const annX = annotation.position === 'midpoint' || annotation.position === undefined
+          ? (arrowStartX + arrowEndX) / 2
+          : annotation.position;
+        const labelY = annotation.labelY ?? (arrowStartY - 4);
+        return (
+          <Fragment>
+            <path d={`M ${arrowStartX} ${arrowStartY} C ${annX} ${arrowStartY} ${annX} ${arrowEndY} ${arrowEndX} ${arrowEndY}`} fill="none" stroke="var(--accent)" stroke-width="0.7" marker-end={`url(#${markerId})`} />
+            <text class="blog-svg-text-accent" x={annX} y={labelY} text-anchor="middle">{annotation.label}</text>
+          </Fragment>
+        );
+      })() : null}
+    </svg>
+  ) : (
+    <svg
+      class="blog-svg-frame"
+      viewBox={viewBox}
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-labelledby={`${titleId} ${descId}`}
+    >
+      <title id={titleId}>{title}</title>
+      <desc id={descId}>Two horizontal bars titled {title}: {bars.map((b) => `${b.label} ${b.xLabel}`).join('; ')}.</desc>
+      <text class="blog-svg-text-faint" x="0" y="10">{title}</text>
+      <line x1="0" y1="14" x2="90" y2="14" stroke="var(--ink-faint)" stroke-width="0.2" />
+      {bars.map((bar, i) => {
+        const y = bar.y ?? (32 + i * 40);
+        const w = bar.w ?? Math.max(2, (bar.value / computedMax) * 200);
+        const opacity = bar.opacity ?? (bar.color === 'ink-faint' ? 0.7 : undefined);
+        return (
+          <Fragment>
+            <text class="blog-svg-text" x="0" y={y - 6} style="font-size: 8px;">{bar.xLabel}</text>
+            <rect x="0" y={y} width={w} height="18" fill={colorToVar(bar.color)} opacity={opacity} />
+            <text class="blog-svg-text-accent" x={w + 5} y={y + 12} style="font-size: 8px;">{bar.label}</text>
+          </Fragment>
+        );
+      })}
+    </svg>
+  )}
+  <figcaption>{caption}</figcaption>
+</figure>

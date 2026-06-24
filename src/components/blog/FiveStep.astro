@@ -1,0 +1,96 @@
+---
+import type { FiveStepProps } from '../../types/charts';
+
+interface Props extends FiveStepProps {}
+
+const { steps, caption, ariaLabel = 'fivestep' } = Astro.props as Props;
+
+const titleId = `fig-${ariaLabel}-title`;
+const descId = `fig-${ariaLabel}-desc`;
+const markerId = `arrow-${ariaLabel}`;
+
+const boxX = [5, 80, 155, 230, 305];
+const boxCenters = [40, 115, 190, 265, 340];
+const arrowXs: Array<[number, number]> = [
+  [75, 80],
+  [150, 155],
+  [225, 230],
+  [300, 305],
+];
+
+const desc = `Five boxes in sequence: ${steps.map((s) => `${s.line1} ${s.line2 ?? ''}`.trim()).join(', ')}. ${steps[3]?.emphasis ? 'The fourth box is highlighted in terracotta.' : ''}`.trim();
+---
+
+<figure>
+  <svg
+    class="blog-svg-frame"
+    viewBox="0 0 380 110"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-labelledby={`${titleId} ${descId}`}
+  >
+    <title id={titleId}>Eval-driven iteration loop</title>
+    <desc id={descId}>{desc}</desc>
+    <defs>
+      <marker id={markerId} markerWidth="3" markerHeight="3" refX="2.2" refY="1.5" orient="auto">
+        <path d="M0,0 L2.2,1.5 L0,3 Z" class="blog-svg-arrow" />
+      </marker>
+    </defs>
+    {steps.map((step, i) => (
+      <rect
+        x={boxX[i]}
+        y="20"
+        width="70"
+        height="32"
+        fill="none"
+        stroke={step.emphasis ? 'var(--accent)' : 'var(--ink)'}
+        stroke-width={step.emphasis ? '0.7' : '0.5'}
+        rx="0.7"
+      />
+    ))}
+    {steps.map((step, i) => {
+      const hasLine2 = step.line2 != null && step.line2 !== '';
+      const line1Y = step.line1Y ?? 30;
+      const line1Size = step.line1Size ?? 10;
+      const line2Y = step.line2Y ?? 42;
+      const line2Size = step.line2Size ?? 10;
+      const cls = step.emphasis ? 'blog-svg-text-accent' : 'blog-svg-text';
+      const cx = boxCenters[i];
+      return (
+        <Fragment>
+          <text
+            class={cls}
+            x={cx}
+            y={line1Y}
+            text-anchor="middle"
+            dominant-baseline="middle"
+            style={`font-size: ${line1Size}px;`}
+          >{step.line1}</text>
+          {hasLine2 ? (
+            <text
+              class={cls}
+              x={cx}
+              y={line2Y}
+              text-anchor="middle"
+              dominant-baseline="middle"
+              style={`font-size: ${line2Size}px;`}
+            >{step.line2}</text>
+          ) : null}
+        </Fragment>
+      );
+    })}
+    {arrowXs.map(([x1, x2]) => (
+      <line
+        class="blog-svg-line"
+        x1={x1}
+        y1="36"
+        x2={x2}
+        y2="36"
+        marker-end={`url(#${markerId})`}
+      />
+    ))}
+    <line x1="0" y1="65" x2="380" y2="65" stroke="var(--rule)" stroke-width="0.2" stroke-dasharray="0.7 1.1" />
+    <slot name="below" />
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>

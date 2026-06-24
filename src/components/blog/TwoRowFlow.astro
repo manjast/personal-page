@@ -1,0 +1,160 @@
+---
+import type { TwoRowFlowProps } from '../../types/charts';
+
+interface Props extends TwoRowFlowProps {}
+
+const {
+  topLabel,
+  topBoxes,
+  cycleText,
+  bottomLabel,
+  bottomBoxes,
+  caption,
+  ariaLabel = 'tworow',
+} = Astro.props as Props;
+
+const titleId = `fig-${ariaLabel}-title`;
+const descId = `fig-${ariaLabel}-desc`;
+const markerSolidId = `arrow-${ariaLabel}-solid`;
+const markerFaintId = `arrow-${ariaLabel}-faint`;
+
+const topBoxX = [10, 84, 158];
+const topBoxCenters = [38, 112, 186];
+const bottomBoxX = [10, 84, 158, 232];
+const bottomBoxCenters = [38, 112, 186, 260];
+
+const topArrows: Array<[number, number]> = [
+  [66, 82],
+  [140, 156],
+];
+const bottomArrows: Array<[number, number]> = [
+  [66, 82],
+  [140, 156],
+  [214, 230],
+];
+
+const desc = `Two horizontal flows. Top: ${topLabel}, ${topBoxes.map((b) => `${b.line1} ${b.line2 ?? ''}`.trim()).join(', ')}, with a cycle labelled ${cycleText ?? ''}. Bottom: ${bottomLabel}, ${bottomBoxes.map((b) => `${b.line1} ${b.line2 ?? ''}`.trim()).join(', ')}.`;
+---
+
+<figure>
+  <svg
+    class="blog-svg-frame"
+    viewBox="0 0 330 130"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-labelledby={`${titleId} ${descId}`}
+  >
+    <title id={titleId}>Retrieval diagnostics: prompt rabbit hole vs targeted fix</title>
+    <desc id={descId}>{desc}</desc>
+    <defs>
+      <marker id={markerSolidId} markerWidth="3" markerHeight="3" refX="2.2" refY="1.5" orient="auto">
+        <path d="M0,0 L2.2,1.5 L0,3 Z" fill="var(--ink)" />
+      </marker>
+      <marker id={markerFaintId} markerWidth="3" markerHeight="3" refX="2.2" refY="1.5" orient="auto">
+        <path d="M0,0 L2.2,1.5 L0,3 Z" fill="var(--ink-faint)" />
+      </marker>
+    </defs>
+    <text class="blog-svg-text-faint" x="10" y="10">{topLabel}</text>
+    <line x1="0" y1="14" x2="55" y2="14" stroke="var(--ink-faint)" stroke-width="0.2" />
+    {topBoxes.map((box, i) => (
+      <rect
+        x={topBoxX[i]}
+        y="22"
+        width="56"
+        height="28"
+        fill="none"
+        stroke={box.emphasis ? 'var(--accent)' : 'var(--ink-faint)'}
+        stroke-width={box.emphasis ? '0.7' : '0.6'}
+        stroke-dasharray={box.emphasis ? undefined : '1.1 0.7'}
+        rx="0.7"
+      />
+    ))}
+    {topBoxes.map((box, i) => (
+      <Fragment>
+        <text
+          class={box.emphasis ? 'blog-svg-text-accent' : 'blog-svg-text-faint'}
+          x={topBoxCenters[i]}
+          y={box.line1Y ?? 33}
+          text-anchor="middle"
+          style={`font-size: ${box.line1Size ?? 10}px;`}
+        >{box.line1}</text>
+        <text
+          class={box.emphasis ? 'blog-svg-text-accent' : 'blog-svg-text-faint'}
+          x={topBoxCenters[i]}
+          y={box.line2Y ?? 43}
+          text-anchor="middle"
+          style={`font-size: ${box.line2Size ?? 10}px;`}
+        >{box.line2}</text>
+      </Fragment>
+    ))}
+    {topArrows.map(([x1, x2]) => (
+      <line
+        x1={x1}
+        y1="36"
+        x2={x2}
+        y2="36"
+        stroke="var(--ink-faint)"
+        stroke-width="0.6"
+        stroke-dasharray="1.1 0.7"
+        marker-end={`url(#${markerFaintId})`}
+      />
+    ))}
+    {topBoxes.length === 3 ? (
+      <path
+        d="M 214 50 Q 214 70 112 70 Q 38 70 38 50"
+        fill="none"
+        stroke="var(--ink-faint)"
+        stroke-width="0.6"
+        stroke-dasharray="1.1 0.7"
+        marker-end={`url(#${markerFaintId})`}
+      />
+    ) : null}
+    {cycleText ? (
+      <text class="blog-svg-text-faint" x="114" y="65" text-anchor="middle">{cycleText}</text>
+    ) : null}
+    <text class="blog-svg-text" x="10" y="78">{bottomLabel}</text>
+    <line x1="0" y1="82" x2="55" y2="82" stroke="var(--accent)" stroke-width="0.2" />
+    {bottomBoxes.map((box, i) => (
+      <rect
+        x={bottomBoxX[i]}
+        y="90"
+        width="56"
+        height="28"
+        fill="none"
+        stroke={box.emphasis ? 'var(--accent)' : 'var(--ink)'}
+        stroke-width="0.7"
+        rx="0.7"
+      />
+    ))}
+    {bottomBoxes.map((box, i) => (
+      <Fragment>
+        <text
+          class={box.emphasis ? 'blog-svg-text-accent' : 'blog-svg-text'}
+          x={bottomBoxCenters[i]}
+          y={box.line1Y ?? 102}
+          text-anchor="middle"
+          style={`font-size: ${box.line1Size ?? 10}px;`}
+        >{box.line1}</text>
+        <text
+          class={box.emphasis ? 'blog-svg-text-accent' : 'blog-svg-text'}
+          x={bottomBoxCenters[i]}
+          y={box.line2Y ?? 112}
+          text-anchor="middle"
+          style={`font-size: ${box.line2Size ?? 10}px;`}
+        >{box.line2}</text>
+      </Fragment>
+    ))}
+    {bottomArrows.map(([x1, x2]) => (
+      <line
+        x1={x1}
+        y1="104"
+        x2={x2}
+        y2="104"
+        stroke="var(--ink)"
+        stroke-width="0.7"
+        marker-end={`url(#${markerSolidId})`}
+      />
+    ))}
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>

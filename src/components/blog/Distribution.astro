@@ -1,0 +1,71 @@
+---
+import type { DistributionProps, ColorToken } from '../../types/charts';
+
+interface Props extends DistributionProps {}
+
+const {
+  title,
+  yAxisLabel,
+  median,
+  outlier,
+  subAxis,
+  caption,
+  ariaLabel = 'dist',
+} = Astro.props as Props;
+
+const titleId = `fig-${ariaLabel}-title`;
+const descId = `fig-${ariaLabel}-desc`;
+
+const colorToVar = (c: ColorToken): string => {
+  switch (c) {
+    case 'accent': return 'var(--accent)';
+    case 'ink-faint': return 'var(--ink-faint)';
+    case 'ink-soft': return 'var(--ink-soft)';
+    case 'ink': return 'var(--ink)';
+    case 'paper': return 'var(--paper)';
+    case 'canvas': return 'var(--canvas)';
+    default: return 'var(--ink)';
+  }
+};
+
+const medianColor = colorToVar(median.color);
+const medianOpacity = median.opacity ?? (median.color === 'ink-faint' ? 0.5 : undefined);
+const outlierX = outlier.x ?? 274;
+const outlierY = outlier.y ?? 22;
+const outlierW = outlier.w ?? 20;
+const outlierH = outlier.h ?? 60;
+const medianX = median.x ?? 20;
+const medianY = median.y ?? 60;
+const medianW = median.w ?? 248;
+const medianH = median.h ?? 22;
+const outlierTopLabel = outlier.label === 'p99' ? '10–50x' : outlier.label;
+---
+
+<figure>
+  <svg
+    class="blog-svg-frame"
+    viewBox="-20 0 320 100"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-labelledby={`${titleId} ${descId}`}
+  >
+    <title id={titleId}>{title}</title>
+    <desc id={descId}>A horizontal bar with {median.label} at {median.xLabel}, followed by one tall bar at the far right labelled {outlier.label}, {outlier.xLabel}.</desc>
+    <text class="blog-svg-text-faint" x="12" y="10">{title}</text>
+    <line x1="12" y1="14" x2="140" y2="14" stroke="var(--ink-faint)" stroke-width="0.2" />
+    <line x1="12" y1="82" x2="290" y2="82" stroke="var(--ink)" stroke-width="0.5" />
+    <line x1="12" y1="22" x2="12" y2="82" stroke="var(--ink)" stroke-width="0.5" />
+    <text class="blog-svg-text" x="-7" y="52" transform="rotate(-90 -7 52)" text-anchor="middle">{yAxisLabel}</text>
+    <text class="blog-svg-text-faint" x="18" y="24">{outlier.label}</text>
+    <text class="blog-svg-text-faint" x="18" y="78">{median.label}</text>
+    <rect x={medianX} y={medianY} width={medianW} height={medianH} fill={medianColor} opacity={medianOpacity} />
+    <text class="blog-svg-text" x={medianX + medianW / 2} y={medianY + medianH - 8} text-anchor="middle">{median.xLabel}</text>
+    <text class="blog-svg-text-accent" x="294" y="18" text-anchor="end">{outlierTopLabel}</text>
+    <text class="blog-svg-text" x="294" y="92" text-anchor="end">{outlier.xLabel}</text>
+    <rect x={outlierX} y={outlierY} width={outlierW} height={outlierH} fill="var(--accent)" />
+    {subAxis ? (
+      <text class="blog-svg-text-faint" x="152" y="96" text-anchor="middle" style="font-size: 8px;">{subAxis}</text>
+    ) : null}
+  </svg>
+  <figcaption>{caption}</figcaption>
+</figure>

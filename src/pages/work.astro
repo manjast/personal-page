@@ -49,6 +49,7 @@ const caseStudies = (await getCollection('case-studies'))
           </p>
         </div>
 
+        <h2 class="visually-hidden">Case studies</h2>
         <div class="mt-10 grid gap-4 lg:grid-cols-2">
           {caseStudies.map((entry) => <CaseStudyCard entry={entry} locale="en" />)}
         </div>

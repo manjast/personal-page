@@ -54,6 +54,7 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
           </p>
         </div>
 
+        <h2 class="visually-hidden">Пројекти</h2>
         <div class="mt-10 grid gap-4 lg:grid-cols-2">
           {caseStudies.map((entry) => <CaseStudyCard entry={entry} locale={locale} />)}
         </div>

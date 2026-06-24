@@ -14,7 +14,7 @@ const enSiteConfig = {
   tagline: 'Internal AI systems for enterprise workflows',
   defaultTitle: 'Stefan Manja',
   defaultDescription:
-    'Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.',
+    'Internal AI systems for enterprise workflows. Stefan Manja builds and hardens systems with disciplined evaluation, cost visibility, and real-world usefulness.',
   locationBadge: 'Belgrade, Serbia · works internationally',
   heroTitle: 'Internal AI systems that hold up in real use',
   heroDescription:
@@ -35,7 +35,7 @@ const srSiteConfig = {
   tagline: 'Интерни AI системи за пословне процесе',
   defaultTitle: 'Стефан Мања',
   defaultDescription:
-    'Интерни AI системи за велике и средње организације. Стефан Мања развија и доводи до продукције системе који морају да имају јасну евалуацију, увид у трошкове и коришћење, поуздан пут до продукције и стварну употребну вредност.',
+    'Интерни AI системи за велике организације. Стефан Мања развија и стабилизује системе са јасном евалуацијом, увидом у трошкове и стварном употребљивошћу.',
   locationBadge: 'Београд, Србија · ради са међународним тимовима',
   heroTitle: 'Интерни AI системи који раде и када је важно',
   heroDescription:

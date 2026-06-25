@@ -1,6 +1,6 @@
 ---
-title: "Why 70% of AI pilots never reach production — 3 RAG fixes"
-summary: "Three RAG gaps I see: missing evaluation, retrieval diagnostics, per-query cost logging. 70% of AI pilots never reach production (Hyperion, March 2026)."
+title: "The model was rarely the problem — 3 RAG fixes"
+summary: "The model was rarely the problem in 4 RAG engagements. The 3 operational gaps — eval, retrieval, cost — decided which pilots reached production."
 publishedAt: 2026-06-17
 displayDate: "2026-06-17"
 ogImage: "/og-blog-rag-pilot-failures.png"
@@ -9,9 +9,9 @@ translationKey: "rag-pilot-failures-2026-06-17"
 routeSlug: "rag-pilot-failures"
 draft: false
 heroStat:
-  value: "70%"
-  label: "of AI pilots never reach production"
-  attr: "Hyperion · AI Pilots in Production, March 2026"
+  value: "rarely"
+  label: "the model was the problem"
+  attr: "Across 4 enterprise RAG engagements, 2024–2026"
 ---
 
 import FiveStep from '../../components/blog/FiveStep.astro';
@@ -20,9 +20,9 @@ import BarChart from '../../components/blog/BarChart.astro';
 import Distribution from '../../components/blog/Distribution.astro';
 
 <div class="blog-hero" role="figure" aria-labelledby="hero-label hero-attr">
-  <span class="blog-hero__stat">70%</span>
-  <span id="hero-label" class="blog-hero__label">of AI pilots never reach production</span>
-  <span id="hero-attr" class="blog-hero__attr">Hyperion · AI Pilots in Production, March 2026</span>
+  <span class="blog-hero__stat">rarely</span>
+  <span id="hero-label" class="blog-hero__label">the model was the problem</span>
+  <span id="hero-attr" class="blog-hero__attr">Across 4 enterprise RAG engagements, 2024–2026</span>
 </div>
 
 I have watched at least four enterprise RAG pilots go from "we have a working demo" to "we cannot put this in front of users." The failure was not the model. The failure was not the embedding choice. The failure was a small number of operational gaps, repeated across pilots, that nobody caught until the system was already in front of users.

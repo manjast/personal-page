@@ -456,7 +456,7 @@ html[lang^="sr"] h4,
     @apply block font-semibold leading-none tracking-tight;
     color: var(--accent);
     font-family: "IBM Plex Serif", "IBM Plex Sans Condensed", "Charter", "Georgia", serif;
-    font-size: clamp(3.5rem, 9vw, 6rem);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
   }
 
   .blog-hero__label {

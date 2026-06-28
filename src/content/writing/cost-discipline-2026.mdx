@@ -10,16 +10,16 @@ routeSlug: "cost-discipline-2026"
 draft: false
 heroStat:
   value: "mismatched"
-  label: "tasks. the bills are the symptom."
-  attr: "AA Intelligence Index v4.1, 2026-06-18"
+  label: "to your workload."
+  attr: "AA Intelligence Index v4.1 — see methodology below"
 ---
 
 import BarChart from '../../components/blog/BarChart.astro';
 
 <div class="blog-hero" role="figure" aria-labelledby="hero-label hero-attr">
   <span class="blog-hero__stat">mismatched</span>
-  <span id="hero-label" class="blog-hero__label">tasks. the bills are the symptom.</span>
-  <span id="hero-attr" class="blog-hero__attr">AA Intelligence Index v4.1, 2026-06-18</span>
+  <span id="hero-label" class="blog-hero__label">to your workload.</span>
+  <span id="hero-attr" class="blog-hero__attr">AA Intelligence Index v4.1 — see methodology below</span>
 </div>
 
 Operational cost visibility — log per-query cost, catch the p99 tail, build the eval — is one half of cost discipline. The other half: which model, which format, which architecture.
@@ -186,7 +186,7 @@ The era of "as much AI as you can" is over. The era of "as much AI as cost-justi
 **Methodology note**
 
 - 5 cost-competitive models evaluated against frontier proprietary. The "open-weight" framing applies to 4 of 5 (GLM 5.2, DeepSeek V4-Pro, Kimi K2.6, MiMo-V2.5-Pro); MiniMax M3 uses a restrictive `minimax-community` license, not an OSI-approved open-source license.
-- **Capability ranking**: AA Intelligence Index v4.1 (artificialanalysis.ai, 2026-06-18).
+- **Capability ranking**: AA Intelligence Index v4.1 (artificialanalysis.ai, 2026-06-18) — a weighted composite of MMLU-Pro, GPQA-Diamond, SWE-bench Verified, and a proprietary agentic eval. Ranks the 5 cost-competitive models in this deck; cost-per-task measurements come from the AA cost-per-task panel (DeepSeek V4-Pro at $0.04/task, Claude Opus 4.8 at $1.78/task — 44x gap, the 40-45x figure in the result note).
 - **Cost data**: verified 2026-06-17 from each vendor's official pricing page, with the exception of MiMo-V2.5-Pro where AA blended pricing ($0.18/M tokens) is the only public source.
 - **49-67% retrieval-failure reduction**: Anthropic's "Contextual Retrieval" announcement (Sep 2024) — hybrid 49%, +rerank 67%.
 - **0.1x cache-hit pricing**: standard Anthropic prompt-caching tier (8x the cache-miss input rate).

@@ -16,6 +16,7 @@ Public proof points (anonymized where required):
 ## Primary pages
 
 - [Home](https://stefanmanja.com/): overview, proof, fit guidance, services
+- [About](https://stefanmanja.com/about/): compact trust page on workflow judgment, proof and how to read the site
 - [Work](https://stefanmanja.com/work/): internal AI case studies
 - [Credit-risk decision-support workflow](https://stefanmanja.com/work/delta-credit-risk-workflow/): Delta Holding, ~75% reduction in analysis time
 - [Self-hosted internal knowledge assistant](https://stefanmanja.com/work/delta-enterprise-rag-assistant/): Delta Holding, ~1,500 eligible users, 85%+ positive feedback
@@ -28,6 +29,7 @@ Public proof points (anonymized where required):
 ## Serbian Cyrillic pages
 
 - [Почетна](https://stefanmanja.com/sr/): преглед, докази, смернице уклапања, услуге
+- [О мени](https://stefanmanja.com/sr/about/): кратак преглед начина рада, доказа и процене интерних AI система
 - [Пројекти](https://stefanmanja.com/sr/work/): прикази интерних система вештачке интелигенције
 - [Подршка одлучивању у процени кредитног ризика](https://stefanmanja.com/sr/work/delta-credit-risk-workflow/): Delta Holding
 - [Интерно хостован асистент за приступ знању](https://stefanmanja.com/sr/work/delta-enterprise-rag-assistant/): Delta Holding

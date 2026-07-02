@@ -12,14 +12,14 @@ const { siteConfig } = getSiteContent(locale);
   locale={locale}
   pathname="/sr/about/"
   title="О раду"
-  description="Кратка страница поверења о раду Стефана Мање: интерни AI системи, процена процеса, докази и како читати сајт."
+  description="Кратак преглед начина рада, доказа и процене интерних AI система."
   pageSchema={[
     {
       '@type': 'AboutPage',
       '@id': `${siteConfig.siteUrl}/sr/about/#webpage`,
       url: `${siteConfig.siteUrl}/sr/about/`,
       name: 'О раду | Стефан Мања',
-      description: 'Кратка страница поверења о раду Стефана Мање: интерни AI системи, процена процеса, докази и како читати сајт.',
+      description: 'Кратак преглед начина рада, доказа и процене интерних AI система.',
       author: { '@id': `${siteConfig.siteUrl}/#person` },
       inLanguage: 'sr-Cyrl',
     },
@@ -40,10 +40,10 @@ const { siteConfig } = getSiteContent(locale);
           </h1>
           <p class="text-base leading-8 muted-copy">
             То су системи за подршку одлучивању, интерни асистенти, RAG системи и прототипови који треба да постану довољно
-            проверљиви за стварне кориснике.
+            јасни и стабилни за стварне кориснике.
           </p>
           <p class="text-base leading-8 muted-copy">
-            Корисно питање најчешће није да ли AI функционалност може да се покаже у демонстрацији. Корисно питање је да ли су
+            Право питање најчешће није да ли AI функционалност може да се покаже у демоу. Право питање је да ли су
             процес, евалуација, правила приступа, увид у трошкове и предаја тиму довољно јасни да систем издржи стварну употребу.
           </p>
         </div>
@@ -81,11 +81,11 @@ const { siteConfig } = getSiteContent(locale);
       <div class="shell">
         <div class="section-break max-w-3xl space-y-4">
           <div class="flex flex-wrap items-center gap-3">
-            <span class="section-marker">02 / уклапање</span>
+            <span class="section-marker">02 / фокус</span>
             <p class="eyebrow">На чему радим</p>
           </div>
           <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Најбоље уклапање је пројектни рад око интерних система у којима су власник, корисници и ограничења конкретни.
+            Највише смисла има пројектни рад око интерних система у којима су власник, корисници и ограничења конкретни.
           </h2>
         </div>
 
@@ -141,7 +141,7 @@ const { siteConfig } = getSiteContent(locale);
             <p class="eyebrow">Провере</p>
             <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
               <li>који процес систем мења</li>
-              <li>ко је власник процеса и ко користи излаз</li>
+              <li>ко је власник процеса и ко користи резултат</li>
               <li>како се грешке препознају и проверавају</li>
               <li>где су правила приступа</li>
               <li>како се трошак види на нивоу процеса</li>

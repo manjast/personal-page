@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { getSiteContent } from '../../config/site';
+
+const locale = 'sr';
+const { siteConfig } = getSiteContent(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  pathname="/sr/about/"
+  title="О раду"
+  description="Кратка страница поверења о раду Стефана Мање: интерни AI системи, процена процеса, докази и како читати сајт."
+  pageSchema={[
+    {
+      '@type': 'AboutPage',
+      '@id': `${siteConfig.siteUrl}/sr/about/#webpage`,
+      url: `${siteConfig.siteUrl}/sr/about/`,
+      name: 'О раду | Стефан Мања',
+      description: 'Кратка страница поверења о раду Стефана Мање: интерни AI системи, процена процеса, докази и како читати сајт.',
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
+      inLanguage: 'sr-Cyrl',
+    },
+  ]}
+>
+  <SiteHeader locale={locale} />
+
+  <main id="main">
+    <section class="section-space page-start">
+      <div class="shell">
+        <div class="page-lead">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">01 / поверење</span>
+            <p class="eyebrow">О мени</p>
+          </div>
+          <h1 class="page-title">
+            Радим на интерним AI системима за конкретне пословне процесе — системима који морају да издрже стварну употребу.
+          </h1>
+          <p class="text-base leading-8 muted-copy">
+            То су системи за подршку одлучивању, интерни асистенти, RAG системи и прототипови који треба да постану довољно
+            проверљиви за стварне кориснике.
+          </p>
+          <p class="text-base leading-8 muted-copy">
+            Корисно питање најчешће није да ли AI функционалност може да се покаже у демонстрацији. Корисно питање је да ли су
+            процес, евалуација, правила приступа, увид у трошкове и предаја тиму довољно јасни да систем издржи стварну употребу.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-[0.92fr_1.08fr]">
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Садашњи контекст</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Интерни AI рад зависи од власништва, провере, приступа, трошкова и предаје тиму.
+            </h2>
+          </article>
+
+          <article class="panel panel-light p-6 sm:p-8">
+            <p class="text-sm leading-7 text-[color:var(--ink-soft)]">
+              Мој садашњи рад је везан за AI системе у интерним индустријским процесима у великом организационом окружењу.
+              Тај контекст је важан зато што интерни AI системи ретко зависе само од модела. Обично зависе од власништва над
+              процесом, правила приступа, начина провере, квалитета података, оперативних трошкова и тога шта тим може да одржава после испоруке.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              И овај сајт полази од исте логике. Рад почиње од процеса, не од избора модела. Неким процесима треба ограничен AI слој.
+              Некима треба боља претрага знања и јаснији пут провере. Некима треба класична аутоматизација, боља интеграција података
+              или никакав AI систем.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">02 / уклапање</span>
+            <p class="eyebrow">На чему радим</p>
+          </div>
+          <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Најбоље уклапање је пројектни рад око интерних система у којима су власник, корисници и ограничења конкретни.
+          </h2>
+        </div>
+
+        <div class="mt-8 grid gap-4 lg:grid-cols-2">
+          <article class="panel panel-light p-6">
+            <div class="accent-bar"></div>
+            <p class="metric-label text-[color:var(--accent)]">Подршка одлучивању</p>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Процеси у којима аналитичари прикупљају контекст пре препорука или одлука.
+            </p>
+          </article>
+          <article class="panel panel-light p-6">
+            <div class="accent-bar"></div>
+            <p class="metric-label text-[color:var(--accent)]">Интерни асистенти</p>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              RAG системи у којима су правила приступа, квалитет проналажења информација, повратне информације и власништво важнији од чет интерфејса.
+            </p>
+          </article>
+          <article class="panel panel-light p-6">
+            <div class="accent-bar"></div>
+            <p class="metric-label text-[color:var(--accent)]">Стабилизација прототипа</p>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Прототипи који раде у демоу, али још немају довољно јасну евалуацију, надзор, трошкове, људску проверу или предају тиму.
+            </p>
+          </article>
+          <article class="panel panel-light p-6">
+            <div class="accent-bar"></div>
+            <p class="metric-label text-[color:var(--accent)]">Ограничено саветовање</p>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Случајеви у којима користан одговор може бити: израдити, стабилизовати, поједноставити или зауставити.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
+          <article class="panel panel-light p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Како процењујем рад</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Мање демо утиска, више процене стварне употребе.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Мање ме занима да ли систем делује убедљиво изоловано, а више да ли може да се користи, проверава и одржава.
+            </p>
+          </article>
+
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Провере</p>
+            <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
+              <li>који процес систем мења</li>
+              <li>ко је власник процеса и ко користи излаз</li>
+              <li>како се грешке препознају и проверавају</li>
+              <li>где су правила приступа</li>
+              <li>како се трошак види на нивоу процеса</li>
+              <li>шта остаје тиму после испоруке</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break panel panel-light px-6 py-8 sm:px-10">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">03 / докази</span>
+            <p class="eyebrow">Докази</p>
+          </div>
+          <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+            Изабрани јавни прикази пројеката показују тренутну основу доказа.
+          </h2>
+          <div class="mt-8 grid gap-4 lg:grid-cols-3">
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
+              <p class="metric-label text-[color:var(--accent)]">Исход</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">~75% брже</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+                Анализа у процесу процене кредитног ризика.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
+              <p class="metric-label text-[color:var(--accent)]">Коришћење</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">300+ корисника</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+                Интерно хостован асистент од око 1.500 људи са правом приступа.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
+              <p class="metric-label text-[color:var(--accent)]">Обим</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">50+ процеса</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+                Процењено од оквира прилике, преко PoC фаза, до првих одлука о увођењу.
+              </p>
+            </article>
+          </div>
+          <p class="mt-8 border-t border-[color:var(--rule)] pt-6 text-sm leading-7 text-[color:var(--muted)]">
+            Јавни Agentic Development Playbook је посебан доказ рада: практичан репозиторијум о AI испоруци са јасним
+            опсегом и евалуацијом, не производ и не туторијал.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break panel panel-dark p-6 sm:p-8">
+          <div class="accent-bar"></div>
+          <p class="eyebrow">Како читати овај сајт</p>
+          <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight">
+            Ако гледате конкретан процес, крените од доказа, уклапања и контакта.
+          </h2>
+          <div class="mt-8 grid gap-4 md:grid-cols-3">
+            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/sr/work/">
+              <p class="metric-label text-[color:var(--accent-strong)]">Пројекти</p>
+              <p class="mt-3 text-sm leading-7 text-stone-300">Изабрани докази и јавни прикази рада.</p>
+            </a>
+            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/sr/services/">
+              <p class="metric-label text-[color:var(--accent-strong)]">Услуге</p>
+              <p class="mt-3 text-sm leading-7 text-stone-300">Полазне тачке и модели испоруке који имају смисла.</p>
+            </a>
+            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/sr/contact/">
+              <p class="metric-label text-[color:var(--accent-strong)]">Контакт</p>
+              <p class="mt-3 text-sm leading-7 text-stone-300">Пошаљите кратак опис процеса на прву процену.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter locale={locale} />
+</BaseLayout>

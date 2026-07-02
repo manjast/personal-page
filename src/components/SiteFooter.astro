@@ -1,5 +1,6 @@
 ---
 import { getSiteContent } from '../config/site';
+import { localizedHref } from '../i18n/routing';
 import type { Locale } from '../i18n/routing';
 
 interface Props {
@@ -9,6 +10,19 @@ interface Props {
 const { locale = 'en' } = Astro.props;
 const { siteConfig, ui } = getSiteContent(locale);
 const year = new Date().getFullYear();
+const footerLinks = locale === 'sr'
+  ? [
+      { href: '/about', label: 'О мени' },
+      { href: '/work', label: 'Пројекти' },
+      { href: '/services', label: 'Услуге' },
+      { href: '/contact', label: 'Контакт' },
+    ]
+  : [
+      { href: '/about', label: 'About' },
+      { href: '/work', label: 'Work' },
+      { href: '/services', label: 'Services' },
+      { href: '/contact', label: 'Contact' },
+    ];
 ---
 
 <footer class="border-t-2 border-[color:var(--accent)] bg-[color:var(--dark)] text-stone-100">
@@ -21,17 +35,30 @@ const year = new Date().getFullYear();
       </p>
     </div>
 
-    <address class="space-y-2 not-italic text-sm text-stone-400 sm:text-right">
-      <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={`mailto:${siteConfig.email}`}>
-        {siteConfig.email}
-      </a>
-      <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer">
-        LinkedIn
-      </a>
-      <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
-        GitHub
-      </a>
-      <p>© {year} {siteConfig.name}</p>
-    </address>
+    <div class="space-y-4 text-sm text-stone-400 sm:text-right">
+      <nav aria-label={locale === 'sr' ? 'Везе у подножју' : 'Footer links'}>
+        <ul class="flex flex-wrap items-center gap-x-4 gap-y-1 sm:justify-end">
+          {footerLinks.map((item) => (
+            <li>
+              <a class="inline-flex min-h-[44px] items-center transition hover:text-[color:var(--accent-strong)]" href={localizedHref(locale, item.href)}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <address class="space-y-2 not-italic">
+        <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={`mailto:${siteConfig.email}`}>
+          {siteConfig.email}
+        </a>
+        <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={siteConfig.linkedinUrl} target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
+        <a class="flex h-11 items-center transition hover:text-[color:var(--accent-strong)] sm:justify-end" href={siteConfig.githubUrl} target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+        <p>© {year} {siteConfig.name}</p>
+      </address>
+    </div>
   </div>
 </footer>

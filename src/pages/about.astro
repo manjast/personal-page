@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { siteConfig } from '../config/site';
+---
+
+<BaseLayout
+  locale="en"
+  pathname="/about/"
+  title="About the Work"
+  description="A compact trust page for Stefan Manja: internal AI systems, workflow judgment, proof and how to read the site."
+  pageSchema={[
+    {
+      '@type': 'AboutPage',
+      '@id': `${siteConfig.siteUrl}/about/#webpage`,
+      url: `${siteConfig.siteUrl}/about/`,
+      name: 'About the Work | Stefan Manja',
+      description: 'A compact trust page for Stefan Manja: internal AI systems, workflow judgment, proof and how to read the site.',
+      author: { '@id': `${siteConfig.siteUrl}/#person` },
+      inLanguage: 'en',
+    },
+  ]}
+>
+  <SiteHeader />
+
+  <main id="main">
+    <section class="section-space page-start">
+      <div class="shell">
+        <div class="page-lead">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">01 / trust surface</span>
+            <p class="eyebrow">About</p>
+          </div>
+          <h1 class="page-title">
+            Internal AI systems, judged by whether they hold up in real use.
+          </h1>
+          <p class="text-base leading-8 muted-copy">
+            I work on internal AI systems for concrete enterprise workflows: decision-support tools,
+            internal assistants, RAG systems and prototypes that need to become reviewable enough for real users.
+          </p>
+          <p class="text-base leading-8 muted-copy">
+            The useful question is rarely whether an AI feature can be demonstrated. It is whether the workflow,
+            evaluation, access boundaries, cost visibility and handoff are clear enough for the system to survive
+            contact with actual work.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-[0.92fr_1.08fr]">
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Current context</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Internal AI work is constrained by ownership, review, access, cost and handoff.
+            </h2>
+          </article>
+
+          <article class="panel panel-light p-6 sm:p-8">
+            <p class="text-sm leading-7 text-[color:var(--ink-soft)]">
+              My current work is in applied AI for internal industrial workflows in an enterprise setting. That context
+              matters because internal AI work is usually constrained by ownership, access, review paths, data quality,
+              operational cost and what the team can actually maintain after launch.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              This site keeps that same bias. The work starts from the workflow, not from a model choice. Some workflows
+              need a constrained AI layer. Some need a better retrieval setup and review path. Some need classical
+              automation, better data plumbing or no AI system at all.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">02 / fit</span>
+            <p class="eyebrow">What I work on</p>
+          </div>
+          <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+            The strongest fit is project-based work around internal systems with a concrete owner, users and constraints.
+          </h2>
+        </div>
+
+        <div class="mt-8 grid gap-4 lg:grid-cols-2">
+          <article class="panel panel-light p-6">
+            <div class="accent-bar"></div>
+            <p class="metric-label text-[color:var(--accent)]">Decision support</p>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Workflows where analysts assemble context before recommendations or decisions.
+            </p>
+          </article>
+          <article class="panel panel-light p-6">
+            <div class="accent-bar"></div>
+            <p class="metric-label text-[color:var(--accent)]">Internal assistants</p>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              RAG systems where access, retrieval quality, feedback loops and ownership matter more than the chat interface.
+            </p>
+          </article>
+          <article class="panel panel-light p-6">
+            <div class="accent-bar"></div>
+            <p class="metric-label text-[color:var(--accent)]">Prototype hardening</p>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Demos that work but still need evaluation, observability, cost, review or handoff discipline.
+            </p>
+          </article>
+          <article class="panel panel-light p-6">
+            <div class="accent-bar"></div>
+            <p class="metric-label text-[color:var(--accent)]">Scoped advisory</p>
+            <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Cases where the useful answer may be build, harden, simplify or stop.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
+          <article class="panel panel-light p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">How I judge the work</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Less demo optics, more operating judgment.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              I care less about whether a system looks impressive in isolation and more about whether it can be operated,
+              reviewed and owned.
+            </p>
+          </article>
+
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Checks</p>
+            <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
+              <li>what workflow the system changes</li>
+              <li>who owns the workflow and who uses the output</li>
+              <li>how mistakes are detected and reviewed</li>
+              <li>where access boundaries sit</li>
+              <li>how cost is visible at workflow level</li>
+              <li>what is left behind for the team after delivery</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break panel panel-light px-6 py-8 sm:px-10">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">03 / proof</span>
+            <p class="eyebrow">Proof</p>
+          </div>
+          <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
+            Selected public case studies show the current proof base.
+          </h2>
+          <div class="mt-8 grid gap-4 lg:grid-cols-3">
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
+              <p class="metric-label text-[color:var(--accent)]">Outcome</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">~75% faster</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+                Credit-risk decision-support workflow analysis.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
+              <p class="metric-label text-[color:var(--accent)]">Adoption</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">300+ users</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+                Self-hosted internal knowledge assistant out of roughly 1,500 eligible users.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
+              <p class="metric-label text-[color:var(--accent)]">Scale</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">50+ workflows</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
+                Assessed across opportunity framing, PoCs and first rollout decisions.
+              </p>
+            </article>
+          </div>
+          <p class="mt-8 border-t border-[color:var(--rule)] pt-6 text-sm leading-7 text-[color:var(--muted)]">
+            The public Agentic Development Playbook is a separate proof artifact: a practical repository about scoped,
+            evaluation-gated AI delivery, not a product or tutorial.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break panel panel-dark p-6 sm:p-8">
+          <div class="accent-bar"></div>
+          <p class="eyebrow">How to read this site</p>
+          <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight">
+            If you are looking at a concrete workflow, start with proof, fit, then contact.
+          </h2>
+          <div class="mt-8 grid gap-4 md:grid-cols-3">
+            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/work/">
+              <p class="metric-label text-[color:var(--accent-strong)]">Work</p>
+              <p class="mt-3 text-sm leading-7 text-stone-300">Selected proof and public-safe case studies.</p>
+            </a>
+            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/services/">
+              <p class="metric-label text-[color:var(--accent-strong)]">Services</p>
+              <p class="mt-3 text-sm leading-7 text-stone-300">Starting points and delivery modes that fit.</p>
+            </a>
+            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/contact/">
+              <p class="metric-label text-[color:var(--accent-strong)]">Contact</p>
+              <p class="mt-3 text-sm leading-7 text-stone-300">Send a workflow outline for review.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

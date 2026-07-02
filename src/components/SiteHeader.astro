@@ -18,6 +18,7 @@ const pathname = Astro.url.pathname;
 const content = getSiteContent(locale);
 const { navigation, siteConfig } = content;
 const alternatePaths = alternates ?? getAlternatePaths(pathname);
+const aboutLabel = locale === 'sr' ? 'О мени' : 'About';
 
 function isActive(href: string) {
   const currentBasePath = stripLocalePrefix(pathname);
@@ -45,16 +46,30 @@ function isActive(href: string) {
       >
         {
           navigation.map((item) => (
-            <a
-              class:list={[
-                'inline-flex min-h-[44px] items-center px-1 py-2 whitespace-nowrap transition hover:text-[color:var(--ink)] sm:px-1',
-                isActive(item.href) && 'text-[color:var(--accent)]',
-              ]}
-              aria-current={isActive(item.href) ? 'page' : undefined}
-              href={localizedHref(locale, item.href)}
-            >
-              {item.label}
-            </a>
+            <>
+              <a
+                class:list={[
+                  'inline-flex min-h-[44px] items-center px-1 py-2 whitespace-nowrap transition hover:text-[color:var(--ink)] sm:px-1',
+                  isActive(item.href) && 'text-[color:var(--accent)]',
+                ]}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                href={localizedHref(locale, item.href)}
+              >
+                {item.label}
+              </a>
+              {item.href === '/' && (
+                <a
+                  class:list={[
+                    'hidden min-h-[44px] items-center px-1 py-2 whitespace-nowrap transition hover:text-[color:var(--ink)] lg:inline-flex',
+                    isActive('/about') && 'text-[color:var(--accent)]',
+                  ]}
+                  aria-current={isActive('/about') ? 'page' : undefined}
+                  href={localizedHref(locale, '/about')}
+                >
+                  {aboutLabel}
+                </a>
+              )}
+            </>
           ))
         }
       </nav>

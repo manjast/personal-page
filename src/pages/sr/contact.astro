@@ -212,12 +212,12 @@ const formSuccessPath = '/sr/contact/sent/';
                   <p id="contact-form-status" class="text-sm leading-7 text-[color:var(--accent)]" hidden aria-live="polite"></p>
                 </form>
                 <div class="mt-8 border-t border-[color:var(--rule)] pt-6">
-                    <p class="text-sm font-semibold text-[color:var(--ink)]">Шта се дешава даље</p>
+                    <p class="text-sm font-semibold text-[color:var(--ink)]">После слања описа</p>
                     <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
-                      <li>Прегледам процес, тренутну фазу и ограничења.</li>
-                      <li>Ако делује као пројекат где могу да допринесем, одговарам у року од 3 радна дана.</li>
-                      <li>Ако је корисно, указујем на вероватан следећи корак: израда система, стабилизација, поједностављење, заустављање или краћи саветодавни разговор.</li>
-                      <li>Ако није прави тип пројекта, обично то кажем директно.</li>
+                      <li>Прегледам процес, тренутну фазу, власника, кориснике и ограничења.</li>
+                      <li>Ако делује као добар тип ангажмана, одговарам у року од 3 радна дана.</li>
+                      <li>Ако би дубља процена била корисна, предлажем вероватан пут: процену са јасним опсегом, израду или стабилизацију.</li>
+                      <li>Ако је процес још у фази идеје, ако је боље решив без AI система или ако није прави тип ангажмана, обично то кажем директно.</li>
                     </ul>
                 </div>
               </div>
@@ -226,11 +226,11 @@ const formSuccessPath = '/sr/contact/sent/';
                 <div class="accent-bar"></div>
                 <p class="text-sm font-semibold text-stone-50">Шта укључити у опис процеса</p>
                 <p class="mt-3 text-sm leading-7 text-stone-300">{contactExpectations.emailPrompt}</p>
-                <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
-                  <li>Процес и ко га данас користи</li>
-                    <li>Главна брига: изводљивост, стабилизација, спремност асистента, подршка доношењу одлука или додатно мишљење</li>
-                    <li>Шта би морало да буде поуздано да би систем био користан</li>
-                    <li>Рокови, хостинг, управљање приступом или ограничења усклађености која су већ важна</li>
+                  <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
+                    <li>Процес, кориснике, власника и тренутну фазу</li>
+                    <li>Да ли је реч о изводљивости, постојећем прототипу, интерном асистенту/RAG систему, аналитичком процесу или додатном мишљењу</li>
+                    <li>Ограничења која су важна: приступ, људска провера, трошкови, усклађеност, предаја тиму или рокови</li>
+                    <li>Који би следећи корак био користан: процена са јасним опсегом, израда, стабилизација, поједностављење или заустављање</li>
                   </ul>
                   <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Процена примене AI у интерном процесу`}>
                     Пошаљите опис процеса

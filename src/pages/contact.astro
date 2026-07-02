@@ -211,10 +211,10 @@ const formSuccessPath = '/contact/sent/';
                 <div class="mt-8 border-t border-[color:var(--rule)] pt-6">
                   <p class="text-sm font-semibold text-[color:var(--ink)]">What happens next</p>
                   <ul class="mt-4 list-disc space-y-3 pl-5 text-sm leading-7 text-[color:var(--ink-soft)] marker:text-[color:var(--muted-soft)]">
-                    <li>I review the workflow, current stage, and constraints.</li>
+                    <li>I review the workflow, current stage, owner, users and constraints.</li>
                     <li>If it looks like a fit, I reply within 3 business days.</li>
-                    <li>If useful, I point to the likely next path: build, harden, simplify, stop, or a scoped advisory conversation.</li>
-                    <li>If it is not the right shape, I will usually say that directly.</li>
+                    <li>If deeper review would help, I suggest the likely path: a scoped diagnostic, a build path or a hardening path.</li>
+                    <li>If the workflow is too early, better solved without AI or not the right fit, I usually say that directly.</li>
                   </ul>
                 </div>
               </div>
@@ -223,12 +223,12 @@ const formSuccessPath = '/contact/sent/';
                 <div class="accent-bar"></div>
                 <p class="text-sm font-semibold text-stone-50">What to include in a workflow review</p>
                 <p class="mt-3 text-sm leading-7 text-stone-300">{contactExpectations.emailPrompt}</p>
-                <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
-                  <li>The workflow and who uses it today</li>
-                  <li>The primary concern: feasibility, hardening, assistant readiness, decision-support, or second opinion</li>
-                  <li>What would need to be trustworthy for the system to be useful</li>
-                  <li>Any timeline, hosting, identity, or compliance constraints that already matter</li>
-                </ul>
+                  <ul class="mt-6 list-disc space-y-3 pl-5 text-sm leading-7 text-stone-300 marker:text-stone-500">
+                    <li>The workflow, users, owner and current stage</li>
+                    <li>Whether this is a feasibility question, existing prototype, internal assistant or RAG system, analyst workflow or second opinion</li>
+                    <li>The constraints that matter: access, human review, cost, compliance, handoff or timeline</li>
+                    <li>Which next step would be useful: scoped diagnostic, build, hardening, simplification or stop recommendation</li>
+                  </ul>
                 <a class="button-primary-invert mt-8" href={`mailto:${siteConfig.email}?subject=Workflow review`}>
                   Email workflow outline
                 </a>

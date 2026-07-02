@@ -49,6 +49,37 @@ const caseStudies = (await getCollection('case-studies'))
           </p>
         </div>
 
+        <div class="section-break panel panel-light mt-10 px-6 py-8 sm:px-10">
+          <div class="max-w-3xl space-y-4">
+            <p class="eyebrow">How to read the proof</p>
+            <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Read these cases by what changed, not by volume of claims.
+            </h2>
+            <p class="text-sm leading-7 text-[color:var(--ink-soft)]">
+              Each case is public-safe and selective. The useful proof is the workflow shape, the constraint set,
+              the operating choices and the measured signal.
+            </p>
+          </div>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+              <p class="metric-label text-[color:var(--accent)]">Workflow changed</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">What process changed, who used the output and where human judgment stayed in the loop.</p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+              <p class="metric-label text-[color:var(--accent)]">System shape</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">Why the work became a recommendation layer, internal assistant, hardening path or no-build decision instead of generic chatbot work.</p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+              <p class="metric-label text-[color:var(--accent)]">Operating constraints</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">Access, review, ownership, cost visibility and handoff are part of the proof, not implementation detail.</p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+              <p class="metric-label text-[color:var(--accent)]">Measured signal</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">Outcome or adoption is shown only where the measurement is public-safe.</p>
+            </article>
+          </div>
+        </div>
+
         <h2 class="visually-hidden">Case studies</h2>
         <div class="mt-10 grid gap-4 lg:grid-cols-2">
           {caseStudies.map((entry) => <CaseStudyCard entry={entry} locale="en" />)}

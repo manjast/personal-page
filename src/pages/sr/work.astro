@@ -54,6 +54,37 @@ const primaryCta = { ...siteConfig.heroPrimaryCta, href: localizedHref(locale, s
           </p>
         </div>
 
+        <div class="section-break panel panel-light mt-10 px-6 py-8 sm:px-10">
+          <div class="max-w-3xl space-y-4">
+            <p class="eyebrow">Како читати доказе</p>
+            <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Ове приказе треба читати по томе шта се променило, не по броју тврдњи.
+            </h2>
+            <p class="text-sm leading-7 text-[color:var(--ink-soft)]">
+              Сваки приказ је јавно безбедан и намерно селективан. Корисни доказ је облик процеса, скуп ограничења,
+              оперативне одлуке и мерљив резултат.
+            </p>
+          </div>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+              <p class="metric-label text-[color:var(--accent)]">Промењени процес</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">Који процес се променио, ко користи резултат и где је људско расуђивање остало у петљи.</p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+              <p class="metric-label text-[color:var(--accent)]">Облик система</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">Зашто је решење постало слој препорука, интерни асистент, стабилизација или одлука да AI систем није потребан.</p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+              <p class="metric-label text-[color:var(--accent)]">Оперативна ограничења</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">Приступ, провера, власништво, увид у трошкове и предаја тиму део су доказа, не споредни детаљи имплементације.</p>
+            </article>
+            <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-4">
+              <p class="metric-label text-[color:var(--accent)]">Мерљив резултат</p>
+              <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">Исход или коришћење приказују се само тамо где је мерење јавно безбедно.</p>
+            </article>
+          </div>
+        </div>
+
         <h2 class="visually-hidden">Пројекти</h2>
         <div class="mt-10 grid gap-4 lg:grid-cols-2">
           {caseStudies.map((entry) => <CaseStudyCard entry={entry} locale={locale} />)}

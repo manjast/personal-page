@@ -160,35 +160,44 @@ const { siteConfig } = getSiteContent(locale);
             <p class="eyebrow">Докази</p>
           </div>
           <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Ово су јавни примери рада који најбоље показују досадашње резултате.
+            Јавни докази су уски, али показују различите типове сигнала.
           </h2>
+          <p class="mt-4 max-w-3xl text-sm leading-7 text-[color:var(--ink-soft)]">
+            Јавни примери долазе из интерног рада у великом организационом окружењу. Треба их читати по типу
+            сигнала: исход процеса, систем у употреби и дисциплина испоруке.
+          </p>
           <div class="mt-8 grid gap-4 lg:grid-cols-3">
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
-              <p class="metric-label text-[color:var(--accent)]">Исход</p>
-              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">~75% брже</p>
+              <p class="metric-label text-[color:var(--accent)]">Исход процеса</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">~75% брже · 4,4/5 · 90%+</p>
               <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-                Анализа у процесу процене кредитног ризика.
+                Систем за подршку одлучивању у процени кредитног ризика, са структурисаним препорукама и задржаном провером аналитичара.
               </p>
+              <a class="ink-link mt-4 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/sr/work/delta-credit-risk-workflow/">
+                Прочитајте приказ кредитног ризика →
+              </a>
             </article>
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
-              <p class="metric-label text-[color:var(--accent)]">Коришћење</p>
-              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">300+ корисника</p>
+              <p class="metric-label text-[color:var(--accent)]">Систем у употреби</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">300+ корисника · 85%+</p>
               <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-                Интерно хостован асистент од око 1.500 људи са правом приступа.
+                Интерно хостован асистент са правилима приступа, прегледом повратних оцена, администраторским делом система и увидом у коришћење и трошкове.
               </p>
+              <a class="ink-link mt-4 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/sr/work/delta-enterprise-rag-assistant/">
+                Прочитајте приказ асистента →
+              </a>
             </article>
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
-              <p class="metric-label text-[color:var(--accent)]">Обим</p>
-              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">50+ процеса</p>
+              <p class="metric-label text-[color:var(--accent)]">Дисциплина испоруке</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">Јаван репозиторијум</p>
               <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-                Процењено од оквира прилике, преко PoC фаза, до првих одлука о увођењу.
+                Agentic Development Playbook показује ограничене task-ове, проверу пре commit-а и водич за примену на постојећи пројекат. То је доказ начина рада, не главни доказ испоруке.
               </p>
+              <a class="ink-link mt-4 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href={siteConfig.playbookUrl} target="_blank" rel="noreferrer">
+                Погледајте Playbook →
+              </a>
             </article>
           </div>
-          <p class="mt-8 border-t border-[color:var(--rule)] pt-6 text-sm leading-7 text-[color:var(--muted)]">
-            Јавни Agentic Development Playbook је посебан доказ рада: практичан репозиторијум о AI испоруци са јасним
-            опсегом и евалуацијом, не производ и не туторијал.
-          </p>
         </div>
       </div>
     </section>

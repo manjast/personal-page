@@ -67,43 +67,43 @@ const srNavigation = [
 
 const enProofPoints = [
   {
-    eyebrow: 'Outcome',
+    eyebrow: 'Workflow outcome',
     value: '~75% faster',
-    label: 'credit-risk workflow analysis',
-    copy: 'Analyst-assistive workflow combining public-company risk signals with internal context into structured recommendations.',
+    label: 'credit-risk analysis',
+    copy: 'Structured recommendation layer with analyst review retained; 4.4/5 quality and 90%+ recommendation acceptance.',
   },
   {
-    eyebrow: 'Adoption',
+    eyebrow: 'Operated system',
     value: '300+ users',
-    label: 'self-hosted internal assistant',
-    copy: '300+ users out of roughly 1,500 eligible, with 85%+ positive explicit feedback after launch.',
+    label: 'self-hosted assistant',
+    copy: 'Azure AD access, operator/admin surfaces, feedback loops, usage and cost visibility; 85%+ positive feedback after launch.',
   },
   {
-    eyebrow: 'Scale',
-    value: '50+ workflows assessed',
-    label: 'from opportunity framing to rollout decisions',
-    copy: 'AI work across finance, operations, logistics, and adjacent teams, separating useful systems from interesting ideas across assessment, PoCs, and first scaled rollout.',
+    eyebrow: 'Delivery range',
+    value: '50+ workflows',
+    label: 'assessed before rollout decisions',
+    copy: 'Opportunity framing, PoCs and first rollout decisions across finance, operations, logistics and adjacent teams.',
   },
 ] as const;
 
 const srProofPoints = [
   {
-    eyebrow: 'Исход',
+    eyebrow: 'Исход процеса',
     value: '~75% брже',
     label: 'анализа кредитног ризика',
-    copy: 'AI систем за подршку аналитичарима: јавни сигнали ризика и интерни контекст обједињени у структурисане препоруке.',
+    copy: 'Ограничен слој препорука уз задржану проверу аналитичара; квалитет 4,4/5 и више од 90% прихваћених препорука.',
   },
   {
-    eyebrow: 'Коришћење',
+    eyebrow: 'Систем у употреби',
     value: '300+ корисника',
-    label: 'интерно хостован асистент',
-    copy: 'Више од 300 активних корисника од око 1.500 са правом приступа, уз преко 85% позитивних оцена на одговоре.',
+    label: 'интерни асистент',
+    copy: 'Azure AD приступ, администраторски део система, повратне оцене, увид у коришћење и трошкове; преко 85% позитивних оцена после пуштања у рад.',
   },
   {
-    eyebrow: 'Обим',
-    value: '50+ процеса процењено',
-    label: 'од процене прилике до одлуке о увођењу',
-    copy: 'AI пројекти у финансијама, операцијама, логистици и сродним тимовима — уз јасно раздвајање корисних система од занимљивих идеја.',
+    eyebrow: 'Опсег рада',
+    value: '50+ процеса',
+    label: 'процењено пре одлука о увођењу',
+    copy: 'Процена прилика, PoC фазе и прве одлуке о увођењу у финансијама, операцијама, логистици и сродним тимовима.',
   },
 ] as const;
 

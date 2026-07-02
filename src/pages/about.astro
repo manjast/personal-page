@@ -159,35 +159,44 @@ import { siteConfig } from '../config/site';
             <p class="eyebrow">Proof</p>
           </div>
           <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            Selected public case studies show the current proof base.
+            The public proof base is narrow, but the signals are different.
           </h2>
+          <p class="mt-4 max-w-3xl text-sm leading-7 text-[color:var(--ink-soft)]">
+            The public cases come from in-house enterprise work. They should be read by signal type: workflow outcome,
+            operated system and delivery discipline.
+          </p>
           <div class="mt-8 grid gap-4 lg:grid-cols-3">
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
-              <p class="metric-label text-[color:var(--accent)]">Outcome</p>
-              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">~75% faster</p>
+              <p class="metric-label text-[color:var(--accent)]">Workflow outcome</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">~75% faster · 4.4/5 · 90%+</p>
               <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-                Credit-risk decision-support workflow analysis.
+                Credit-risk decision-support workflow with structured recommendations and analyst review retained.
               </p>
+              <a class="ink-link mt-4 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/work/delta-credit-risk-workflow/">
+                Read credit-risk case →
+              </a>
             </article>
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
-              <p class="metric-label text-[color:var(--accent)]">Adoption</p>
-              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">300+ users</p>
+              <p class="metric-label text-[color:var(--accent)]">Operated system</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">300+ users · 85%+</p>
               <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-                Self-hosted internal knowledge assistant out of roughly 1,500 eligible users.
+                Self-hosted internal assistant with scoped access, feedback review, operator/admin surfaces and usage/cost visibility.
               </p>
+              <a class="ink-link mt-4 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href="/work/delta-enterprise-rag-assistant/">
+                Read assistant case →
+              </a>
             </article>
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
-              <p class="metric-label text-[color:var(--accent)]">Scale</p>
-              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">50+ workflows</p>
+              <p class="metric-label text-[color:var(--accent)]">Delivery discipline</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">Public repo</p>
               <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-                Assessed across opportunity framing, PoCs and first rollout decisions.
+                The Agentic Development Playbook shows scoped tasks, verification before commit and migration guidance. It is supporting proof, not the main delivery proof.
               </p>
+              <a class="ink-link mt-4 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href={siteConfig.playbookUrl} target="_blank" rel="noreferrer">
+                View Playbook →
+              </a>
             </article>
           </div>
-          <p class="mt-8 border-t border-[color:var(--rule)] pt-6 text-sm leading-7 text-[color:var(--muted)]">
-            The public Agentic Development Playbook is a separate proof artifact: a practical repository about scoped,
-            evaluation-gated AI delivery, not a product or tutorial.
-          </p>
         </div>
       </div>
     </section>

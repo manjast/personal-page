@@ -46,7 +46,7 @@ The model shortlist is the visible layer. The findings below show where that sho
   <span class="blog-step__marker">02</span>
   <div class="blog-step__body">
     <p class="blog-step__title">Hosting path.</p>
-    <p class="blog-step__copy">AWS Bedrock, Azure AI Foundry, Vertex Model Garden, self-host on European cloud. Four paths, four data-residency and lock-in postures. The default choice is itself a procurement decision.</p>
+    <p class="blog-step__copy">AWS Bedrock, Azure AI Foundry, Vertex Model Garden, self-host on EU-region cloud infrastructure. Four paths, four data-residency and lock-in postures. The default choice is itself a procurement decision.</p>
   </div>
 </div>
 
@@ -76,7 +76,7 @@ The model shortlist is the visible layer. The findings below show where that sho
 
 ## 1. Multi-cloud is the first fork, not the second
 
-AWS Bedrock docs list 18 first-party model providers as of July 2026. That is provider count, not foundation-model count; AWS separately describes access to hundreds of FMs. Azure AI Foundry and Vertex Model Garden carry their own rosters. Self-hosting open weights on European cloud is a fourth path.
+AWS Bedrock docs list 18 first-party model providers as of July 2026. That is provider count, not foundation-model count; AWS separately describes access to hundreds of FMs. Azure AI Foundry and Vertex Model Garden carry their own rosters. Self-hosting open weights on EU-region cloud infrastructure is a fourth path.
 
 Many teams default to Bedrock before weighing the other paths, even when the other paths change data residency, billing model and lock-in posture. The default is itself a procurement decision. Per-vendor pricing tiers differ; per-region inference routing differs; per-provider contract terms differ, especially around export-control variants and customer-specific access terms.
 
@@ -108,7 +108,7 @@ For API customers, fallback is a configuration choice. For Claude and Claude Cod
 
 ## 5. Self-hosting open weights is the under-evaluated path
 
-For latency-insensitive, high-volume, internal document workflows, the cost economics on European cloud flipped in the last six months. DeepSeek V4-Pro and GLM-5.2 at self-host hardware costs versus Bedrock pass-through billing, plus the data-residency benefit, plus the eval-portability benefit, beat hosted pass-through at scale.
+For latency-insensitive, high-volume, internal document workflows, the cost economics on EU-region cloud infrastructure shifted decisively in the last six months. DeepSeek V4-Pro and GLM-5.2 at self-host hardware costs versus Bedrock pass-through billing, plus the data-residency benefit, plus the eval-portability benefit, beat hosted pass-through at scale.
 
 The procurement error most teams make is treating all cost-competitive models as the same procurement path. Self-hostable models include permissive/open-weight options and restrictive self-hostable options. MiniMax M3, for example, is downloadable and self-hostable, but its `minimax-community` license adds attribution, notice, a yearly-revenue threshold that requires separate prior written authorization from MiniMax, and a prohibited-use appendix. DeepSeek V4-Pro and MiMo-V2.5-Pro follow different license terms. Proprietary hosted but cost-competitive models are a different path again: different capex, different data-residency posture, different eval-portability story. Most enterprises skip the distinction because the procurement team does not run a hosting questionnaire. They should.
 
@@ -150,6 +150,7 @@ For teams in the same posture:
 - **EU AI Act procurement context**: GPAI obligations applied from 2 August 2025 (per the [AI Act Service Desk timeline](https://ai-act-service-desk.ec.europa.eu/en/ai-act/timeline/timeline-implementation-eu-ai-act)). 2 August 2026 remains a live date for Article 50 transparency and broader AI Act enforcement. High-risk system obligations were delayed under the AI Omnibus political agreement (7 May 2026) to 2 December 2027 (Annex III) and 2 August 2028 (Annex I). The earlier 2026-12-02 figure sometimes seen in substrate notes referred to the same 2 December 2027 Annex III delay and should not be confused with the 2026 transparency/Article 50 date. Source: digital-strategy.ec.europa.eu.
 - **MiniMax M3 license**: per the [Hugging Face model card](https://huggingface.co/MiniMaxAI/MiniMax-M3) and the [LICENSE file](https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/main/LICENSE). M3 weights are downloadable/self-hostable under the `minimax-community` license, not OSI open-source. Commercial use below the revenue threshold requires attribution/notice; above the threshold, separate prior written authorization from MiniMax is required. Treat M3 as a restrictive self-hostable option, not a permissive open-weight.
 - **Self-hostable vs proprietary hosted separation**: cost-competitive tier includes permissive/open-weight options (e.g. DeepSeek V4-Pro, MiMo-V2.5-Pro), restrictive self-hostable options (e.g. MiniMax M3 under `minimax-community`), and proprietary hosted options (e.g. Qwen3.7 Max). Do not collapse them into one "open-weight" procurement path.
+- **EU-region cloud infrastructure**: in this post, this term means buyer-controlled deployment of model weights on compute located in an EU/European region, whether via a hyperscaler EU region (e.g. AWS Frankfurt/Ireland, Azure Sweden/Netherlands, Google Belgium/Finland) or via an EU-based cloud provider. It is not the same as first-party managed model inference, and it is not by itself a guarantee of sovereign-cloud or GDPR compliance. Data-residency, lawful-access, and contract posture depend on the buyer’s cloud contract and deployment region, not on the model name.
 - **Five cost-competitive models referenced**: AA Intelligence Index v4.1, see [artificialanalysis.ai/methodology](https://artificialanalysis.ai/methodology).
 
 **Related**: [Frontier pricing isn't your problem — 5 cost-competitive models, ranked](https://stefanmanja.com/writing/cost-discipline-2026/) · [Why 70% of AI pilots never reach production — and the 3 RAG fixes that worked](https://stefanmanja.com/writing/rag-pilot-failures/)

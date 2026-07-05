@@ -23,6 +23,7 @@ Public proof points (anonymized where required):
 - [Services](https://stefanmanja.com/services/): workflow starting points, service modes, and delivery path
 - [Contact](https://stefanmanja.com/contact/): workflow review and initial inquiry
 - [Writing](https://stefanmanja.com/writing/): public writing on AI systems, evaluation, cost discipline
+- [What I learned running enterprise AI procurement in 2026: 5 surprises](https://stefanmanja.com/writing/enterprise-ai-procurement-2026/): five procurement filters around hosting path, access gates, fallback routing, and self-host economics
 - [The model was rarely the problem — 3 RAG fixes](https://stefanmanja.com/writing/rag-pilot-failures/): three RAG failure modes with the specific fix that addressed each
 - [Frontier pricing isn't your problem — 5 cost-competitive models, ranked](https://stefanmanja.com/writing/cost-discipline-2026/): 5 cost-competitive models, ranked by capability composite
 

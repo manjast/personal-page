@@ -443,9 +443,8 @@ html[lang^="sr"] h4,
   }
 
   /* blog visuals (added 2026-06-21) -----------------------------------------
-     16 classes total: 4 .blog-hero* + 6 layout + 6 SVG element.
-     Site-wide visual pattern, not per-post. Extends .panel-light family
-     (one file, one source of design tokens). */
+     Reusable hero, layout, stack and SVG families. Site-wide visual pattern,
+     not per-post. Extends .panel-light (one source of design tokens). */
   .blog-hero {
     @apply relative my-10 overflow-hidden rounded-[1.2rem] border px-6 py-10 sm:px-10 sm:py-12;
     background: var(--paper);
@@ -522,6 +521,75 @@ html[lang^="sr"] h4,
   .blog-step__copy {
     @apply mt-2 text-base leading-7;
     color: var(--muted);
+  }
+
+  .blog-stack {
+    @apply my-10 rounded-[1.2rem] border px-4 py-5 sm:px-7 sm:py-7;
+    background: var(--paper);
+    border-color: var(--rule);
+  }
+
+  .blog-stack__axis {
+    @apply mb-5 text-center text-[0.78rem] uppercase tracking-[0.12em];
+    color: var(--ink-faint);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-stack__title {
+    @apply mb-5 text-2xl font-semibold leading-tight;
+    color: var(--ink);
+    font-family: "IBM Plex Serif", "IBM Plex Sans Condensed", "Charter", "Georgia", serif;
+  }
+
+  .blog-stack__layers {
+    @apply flex flex-col items-center gap-2;
+  }
+
+  .blog-stack__layer {
+    @apply flex min-h-12 items-center gap-3 rounded-md border px-4 py-3;
+    border-color: var(--rule);
+    background: var(--canvas);
+    color: var(--ink);
+  }
+
+  .blog-stack__layer span {
+    @apply text-xs tracking-[0.12em];
+    color: var(--accent);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-stack__layer strong {
+    @apply text-sm leading-snug sm:text-base;
+  }
+
+  .blog-stack__layer em {
+    @apply ml-auto text-[0.68rem] not-italic tracking-[0.08em] sm:text-xs;
+    color: var(--muted-soft);
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  .blog-stack__layer--1 { width: 58%; }
+  .blog-stack__layer--2 { width: 68%; }
+  .blog-stack__layer--3 { width: 78%; }
+  .blog-stack__layer--4 { width: 89%; }
+  .blog-stack__layer--5 {
+    width: 100%;
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .blog-stack figcaption {
+    @apply mt-5 border-t pt-4 text-sm leading-6;
+    border-color: var(--rule);
+    color: var(--muted-soft);
+  }
+
+  @media (max-width: 639px) {
+    .blog-stack__layer { width: 100%; }
+    .blog-stack__layer--1 { margin-inline: 18%; width: 64%; }
+    .blog-stack__layer--2 { margin-inline: 13%; width: 74%; }
+    .blog-stack__layer--3 { margin-inline: 8%; width: 84%; }
+    .blog-stack__layer--4 { margin-inline: 3%; width: 94%; }
   }
 
   .blog-table {

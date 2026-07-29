@@ -1,36 +1,36 @@
 # Stefan Manja
 
-> Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment, and real-world usefulness.
+> Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment and real-world usefulness.
 
 Based in Belgrade, Serbia (Europe/Belgrade, CET/CEST). Engagements are project-scoped for enterprise and mid-market teams; default to in-person or hybrid in Belgrade, remote across Europe otherwise.
 
-Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD SSO, LLM APIs, and workflow automation for enterprise environments.
+Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD SSO, LLM APIs and workflow automation for enterprise environments.
 
 Public proof points (anonymized where required):
 - ~75% reduction in credit-risk analysis time (Delta Holding)
 - 90%+ recommendation acceptance rate from analysts
 - 4.4/5 analyst-rated quality on credit-risk decision-support workflow
-- 50+ AI workflows assessed across opportunity framing, PoCs, and first scaled rollout
-- Self-hosted internal assistant deployed to ~1,500 eligible users (300+ actual, 85%+ positive feedback after launch)
+- 50+ AI workflows assessed across opportunity framing, PoCs and first scaled rollout
+- Self-hosted internal assistant used by 300+ unique employees during the first month after launch, with 85%+ positive explicit feedback
 
 ## Primary pages
 
-- [Home](https://stefanmanja.com/): overview, proof, fit guidance, services
+- [Home](https://stefanmanja.com/): overview, proof, fit guidance and services
 - [About](https://stefanmanja.com/about/): compact trust page on workflow judgment, proof and how to read the site
 - [Work](https://stefanmanja.com/work/): internal AI case studies
 - [Credit-risk decision-support workflow](https://stefanmanja.com/work/delta-credit-risk-workflow/): Delta Holding, ~75% reduction in analysis time
-- [Self-hosted internal knowledge assistant](https://stefanmanja.com/work/delta-enterprise-rag-assistant/): Delta Holding, ~1,500 eligible users, 85%+ positive feedback
-- [Services](https://stefanmanja.com/services/): workflow starting points, service modes, and delivery path
+- [Self-hosted internal knowledge assistant](https://stefanmanja.com/work/delta-enterprise-rag-assistant/): Delta Holding, 300+ first-month users and 85%+ positive explicit feedback
+- [Services](https://stefanmanja.com/services/): workflow starting points, service modes and delivery path
 - [Contact](https://stefanmanja.com/contact/): workflow review and initial inquiry
-- [Writing](https://stefanmanja.com/writing/): public writing on AI systems, evaluation, cost discipline
+- [Writing](https://stefanmanja.com/writing/): public writing on AI systems, evaluation and cost discipline
 - [The worst lock-in isn't the API: 5 architectural patterns](https://stefanmanja.com/writing/vendor-lockin-2026/): five architectural patterns — workflow abstraction, eval suite, route by complexity, cost telemetry, continuous re-evaluation — to survive the procurement shift
-- [What I learned running enterprise AI procurement in 2026: 5 surprises](https://stefanmanja.com/writing/enterprise-ai-procurement-2026/): five procurement filters around hosting path, access gates, fallback routing, and self-host economics
+- [What I learned running enterprise AI procurement in 2026: 5 surprises](https://stefanmanja.com/writing/enterprise-ai-procurement-2026/): five procurement filters around hosting path, access gates, fallback routing and self-host economics
 - [The model was rarely the problem — 3 RAG fixes](https://stefanmanja.com/writing/rag-pilot-failures/): three RAG failure modes with the specific fix that addressed each
 - [Frontier pricing isn't your problem — 5 cost-competitive models, ranked](https://stefanmanja.com/writing/cost-discipline-2026/): 5 cost-competitive models, ranked by capability composite
 
 ## Serbian Cyrillic pages
 
-- [Почетна](https://stefanmanja.com/sr/): преглед, докази, смернице уклапања, услуге
+- [Почетна](https://stefanmanja.com/sr/): преглед, докази, смернице уклапања и услуге
 - [О мени](https://stefanmanja.com/sr/about/): кратак преглед начина рада, доказа и процене интерних AI система
 - [Пројекти](https://stefanmanja.com/sr/work/): прикази интерних система вештачке интелигенције
 - [Подршка одлучивању у процени кредитног ризика](https://stefanmanja.com/sr/work/delta-credit-risk-workflow/): Delta Holding

@@ -81,7 +81,7 @@ PUBLIC_FORMSPREE_FORM_ID=your_form_id
 
 If the variable is not set, the site still builds and the direct email path remains active.
 
-For GitHub Pages deployments, add the same value as a repository **Actions variable** named `PUBLIC_FORMSPREE_FORM_ID` so the form is active in the production build.
+For GitHub Pages deployments, add the same value as a repository **Actions secret** named `PUBLIC_FORMSPREE_FORM_ID` so the form is active in the production build. CI validation uses a non-production placeholder.
 
 ## What stays out of this repo
 

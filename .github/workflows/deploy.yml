@@ -38,14 +38,24 @@ jobs:
       - name: Check types
         run: npm run check
 
+      - name: Validate production Formspree configuration
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          PUBLIC_FORMSPREE_FORM_ID: ${{ secrets.PUBLIC_FORMSPREE_FORM_ID }}
+        run: |
+          if [ -z "$PUBLIC_FORMSPREE_FORM_ID" ]; then
+            echo "Production Formspree configuration is unavailable." >&2
+            exit 1
+          fi
+
       - name: Build site
         env:
-          PUBLIC_FORMSPREE_FORM_ID: ${{ vars.PUBLIC_FORMSPREE_FORM_ID }}
+          PUBLIC_FORMSPREE_FORM_ID: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.PUBLIC_FORMSPREE_FORM_ID || 'ci-validation-placeholder' }}
         run: npm run build
 
       - name: Verify contact form configuration
         env:
-          PUBLIC_FORMSPREE_FORM_ID: ${{ vars.PUBLIC_FORMSPREE_FORM_ID }}
+          PUBLIC_FORMSPREE_FORM_ID: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.PUBLIC_FORMSPREE_FORM_ID || 'ci-validation-placeholder' }}
         run: |
           test -n "$PUBLIC_FORMSPREE_FORM_ID"
           grep -Fq "action=\"https://formspree.io/f/${PUBLIC_FORMSPREE_FORM_ID}\"" dist/contact/index.html

@@ -18,6 +18,7 @@ concurrency:
 
 jobs:
   build:
+    name: ${{ github.event_name == 'pull_request' && 'build' || format('build ({0})', github.event_name) }}
     permissions:
       contents: read
     runs-on: ubuntu-latest

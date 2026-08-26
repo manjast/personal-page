@@ -20,10 +20,10 @@
     "node": "24.x"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.6",
+    "@astrojs/mdx": "^7.0.8",
     "@astrojs/sitemap": "~3.7.3",
     "@tailwindcss/vite": "~4.3.3",
-    "astro": "~6.4.8",
+    "astro": "~7.2.7",
     "tailwindcss": "~4.3.3"
   },
   "devDependencies": {

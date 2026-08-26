@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://stefanmanja.com',
   output: 'static',
+  compressHTML: true,
   i18n: {
     defaultLocale: 'en',
     locales: ['en', { path: 'sr', codes: ['sr-Cyrl', 'sr-Cyrl-RS'] }],

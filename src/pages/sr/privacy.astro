@@ -71,15 +71,18 @@ const privacyDescription = 'Како сајт stefanmanja.com поступа с�
             <div class="accent-bar"></div>
             <p class="eyebrow">Formspree</p>
             <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
-              Formspree обрађује пријаву из форме и прослеђује је на имејл адресу коју сам подесио за пријем порука.
+              Formspree обрађује поруку послату преко форме и прослеђује је на имејл адресу коју сам подесио за пријем порука.
             </p>
             <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
-              Историја пријава на Formspree налогу чува се 30 дана. То је период чувања историје пријава за овај налог;
-              то није тврдња да се свака копија код Formspree-а, у његовој инфраструктури или резервним системима брише
-              тачно после 30 дана.
+              Formspree може да обрађује и техничке податке о захтеву, као што су IP адреса, подаци о прегледачу и извор
+              посете, у складу са својим обавештењем о приватности.
             </p>
             <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
-              Не одржавам посебан Formspree извоз нити засебан скуп података преко њиховог API-ја, ван Formspree-а и
+              Историја порука на Formspree налогу чува се 30 дана. Formspree у свом обавештењу о приватности засебно
+              описује како поступа са другим техничким подацима и подацима потребним за рад сервиса.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Не чувам засебне извозе нити посебан скуп података преузет преко Formspree API-ја, ван Formspree-а и
               уобичајене имејл преписке.
             </p>
             <a
@@ -117,7 +120,7 @@ const privacyDescription = 'Како сајт stefanmanja.com поступа с�
               <div class="accent-bar"></div>
               <p class="eyebrow">Укључене категорије</p>
               <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
-                Аналитика може да обухвати реферер, прегледач и систем, величину екрана, државу и регион, језик и збирне
+                Аналитика може да обухвати извор посете, прегледач и систем, величину екрана, државу и регион, језик и збирне
                 информације на нивоу сесије.
               </p>
               <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
@@ -130,13 +133,13 @@ const privacyDescription = 'Како сајт stefanmanja.com поступа с�
               <div class="accent-bar"></div>
               <p class="eyebrow">Обрада код провајдера и чување</p>
               <p class="mt-4 text-sm leading-7 text-stone-300">
-                Да би пратио поновљене посете и уклонио дупликате у сесијама, GoatCounter може до осам сати привремено
-                држати у меморији повезаност сајта, IP адресе и User-Agent-а. Сирове IP адресе и цео User-Agent не чувају
-                се у његовој бази.
+                Да би препознао поновљене посете и избегао дупло бројање у оквиру сесије, GoatCounter може до осам сати
+                привремено да чува у меморији везу између сајта, IP адресе и User-Agent заглавља. Сирове IP адресе и цео
+                User-Agent не чувају се у његовој бази.
               </p>
               <p class="mt-4 text-sm leading-7 text-stone-300">
-                Подешено чување аналитичких података траје 730 дана. Нисам извозио, преузимао, правио резервне копије
-                нити на други начин чувао GoatCounter аналитику као засебну спољну копију.
+                Подешено чување аналитичких података траје 730 дана. Не чувам засебне извозе нити резервне копије
+                GoatCounter аналитичких података.
               </p>
               <a
                 class="mt-5 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold text-stone-100 underline decoration-[color:var(--accent-strong)] underline-offset-4 transition hover:text-[color:var(--accent-strong)]"
@@ -169,9 +172,6 @@ const privacyDescription = 'Како сајт stefanmanja.com поступа с�
               други однос који траје, повезана преписка може да се чува дуже када је то потребно за тај посао или из
               стварних административних, рачуноводствених, уговорних или правних разлога.
             </p>
-            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
-              Тренутно немам обичне упите са сајта старије од 12 месеци који не потпадају под ове изузетке.
-            </p>
           </article>
 
           <article class="panel panel-dark p-6 sm:p-8">
@@ -200,11 +200,8 @@ const privacyDescription = 'Како сајт stefanmanja.com поступа с�
             <p class="eyebrow">Измене</p>
           </div>
           <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Обавештење треба да се промени када се промени пракса сајта.
+            Ово обавештење ажурирам када се промени начин на који сајт поступа са подацима.
           </h2>
-          <p class="text-base leading-8 muted-copy">
-            Ово обавештење могу да ажурирам када се пракса сајта промени.
-          </p>
           <p class="text-sm leading-7 text-[color:var(--ink-soft)]">Последње ажурирање: 28. август 2026.</p>
         </div>
       </div>

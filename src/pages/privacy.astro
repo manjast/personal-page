@@ -1,0 +1,210 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { siteConfig } from '../config/site';
+
+const privacyDescription = 'How stefanmanja.com handles contact inquiries and basic website analytics.';
+---
+
+<BaseLayout
+  locale="en"
+  pathname="/privacy/"
+  title="Privacy"
+  description={privacyDescription}
+  pageSchema={[
+    {
+      '@type': 'WebPage',
+      '@id': siteConfig.siteUrl + '/privacy/#webpage',
+      url: siteConfig.siteUrl + '/privacy/',
+      name: 'Privacy | Stefan Manja',
+      description: privacyDescription,
+      author: { '@id': siteConfig.siteUrl + '/#person' },
+      inLanguage: 'en',
+    },
+  ]}
+>
+  <SiteHeader />
+
+  <main id="main">
+    <section class="section-space page-start">
+      <div class="shell">
+        <div class="page-lead">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">01 / transparency</span>
+            <p class="eyebrow">Privacy</p>
+          </div>
+          <h1 class="page-title">Privacy</h1>
+          <p class="text-base leading-8 muted-copy">
+            I run this site personally. I use a small number of third-party services to operate the contact form and
+            understand basic site usage.
+          </p>
+          <p class="text-base leading-8 muted-copy">
+            This notice explains what I receive, what those services handle, and how long the relevant records are kept.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-[0.92fr_1.08fr]">
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Contact messages</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              The form starts a conversation, not a separate marketing list.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-stone-300">
+              The required fields are your name, work email, use case, primary concern, current stage, and relevant
+              context. Company or team and known constraints are optional.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-stone-300">
+              I use the information to review the inquiry, reply to it, and continue the resulting correspondence where
+              that is relevant.
+            </p>
+          </article>
+
+          <article class="panel panel-light p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Formspree</p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Formspree processes the form submission and forwards it to my configured email destination.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Formspree may also process technical request information, such as IP address, browser information, and
+              referrer data, as described in its Privacy Policy.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              The Formspree account keeps submission history for 30 days. Formspree's Privacy Policy separately
+              describes how it handles and retains other technical and service information.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              I do not keep separate exports or API copies of Formspree submissions outside Formspree and my normal
+              email correspondence.
+            </p>
+            <a
+              class="ink-link mt-5 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition"
+              href="https://formspree.io/legal/privacy-policy/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Formspree Privacy Policy →
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break">
+          <div class="max-w-3xl space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-marker">02 / site usage</span>
+              <p class="eyebrow">Website analytics</p>
+            </div>
+            <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Basic usage signals, with individual pageview storage disabled.
+            </h2>
+            <p class="text-base leading-8 muted-copy">
+              I use GoatCounter for basic site analytics. The account is configured for sessions and aggregate technical
+              dimensions rather than storing individual pageviews.
+            </p>
+          </div>
+
+          <div class="mt-8 grid gap-4 lg:grid-cols-2">
+            <article class="panel panel-light p-6 sm:p-8">
+              <div class="accent-bar"></div>
+              <p class="eyebrow">Categories enabled</p>
+              <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+                Analytics may include the referrer, browser and system, screen size, country and region, language, and
+                session-level aggregate information.
+              </p>
+              <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+                GoatCounter's visitor tracking does not use cookies or browser localStorage. Individual pageview storage
+                is disabled for this account.
+              </p>
+            </article>
+
+            <article class="panel panel-dark p-6 sm:p-8">
+              <div class="accent-bar"></div>
+              <p class="eyebrow">Provider handling and retention</p>
+              <p class="mt-4 text-sm leading-7 text-stone-300">
+                To handle repeated visits and session deduplication, GoatCounter may temporarily keep a site, IP address,
+                and User-Agent mapping in memory for up to eight hours. Raw IP addresses and full User-Agent strings are
+                not stored in its database.
+              </p>
+              <p class="mt-4 text-sm leading-7 text-stone-300">
+                The configured analytics retention is 730 days. I do not keep separate exports or backups of GoatCounter
+                analytics data.
+              </p>
+              <a
+                class="mt-5 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold text-stone-100 underline decoration-[color:var(--accent-strong)] underline-offset-4 transition hover:text-[color:var(--accent-strong)]"
+                href="https://www.goatcounter.com/help/privacy"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GoatCounter privacy documentation →
+              </a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
+          <article class="panel panel-light p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-marker">03 / retention</span>
+              <p class="eyebrow">Retention</p>
+            </div>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Owner-held correspondence follows a separate practical rule.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              I keep ordinary contact inquiries for up to 12 months after the last interaction. If an inquiry develops
+              into ongoing work or another continuing relationship, related correspondence may be kept longer where
+              necessary for that work or for genuine administrative, accounting, contractual, or legal reasons.
+            </p>
+          </article>
+
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Your choices and contact</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Questions or deletion requests can come directly to me.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-stone-300">
+              Privacy questions or requests to delete owner-held correspondence may be sent to
+              <a class="font-semibold text-stone-100 underline decoration-[color:var(--accent-strong)] underline-offset-4 transition hover:text-[color:var(--accent-strong)]" href={'mailto:' + siteConfig.email}>
+                {siteConfig.email}
+              </a>
+              . I will review them against the retention rule and exceptions above.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">04 / changes</span>
+            <p class="eyebrow">Changes</p>
+          </div>
+          <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+            I update this notice when the way this site handles information changes.
+          </h2>
+          <p class="text-sm leading-7 text-[color:var(--ink-soft)]">Last updated: 28 August 2026</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

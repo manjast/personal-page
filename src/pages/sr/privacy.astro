@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import { getSiteContent } from '../../config/site';
+
+const locale = 'sr';
+const { siteConfig } = getSiteContent(locale);
+const privacyDescription = 'Како сајт stefanmanja.com поступа са контактним упитима и основним подацима о коришћењу.';
+---
+
+<BaseLayout
+  locale={locale}
+  pathname="/sr/privacy/"
+  title="Приватност"
+  description={privacyDescription}
+  pageSchema={[
+    {
+      '@type': 'WebPage',
+      '@id': siteConfig.siteUrl + '/sr/privacy/#webpage',
+      url: siteConfig.siteUrl + '/sr/privacy/',
+      name: 'Приватност | Стефан Мања',
+      description: privacyDescription,
+      author: { '@id': siteConfig.siteUrl + '/#person' },
+      inLanguage: 'sr-Cyrl',
+    },
+  ]}
+>
+  <SiteHeader locale={locale} />
+
+  <main id="main">
+    <section class="section-space page-start">
+      <div class="shell">
+        <div class="page-lead">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">01 / транспарентност</span>
+            <p class="eyebrow">Приватност</p>
+          </div>
+          <h1 class="page-title">Обавештење о приватности</h1>
+          <p class="text-base leading-8 muted-copy">
+            Овај сајт лично водим. Користим мали број спољних сервиса за рад контактне форме и основни увид у коришћење
+            сајта.
+          </p>
+          <p class="text-base leading-8 muted-copy">
+            Овде објашњавам које податке примам, шта ти сервиси обрађују и колико дуго се релевантни записи чувају.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-[0.92fr_1.08fr]">
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Контактне поруке</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Форма покреће разговор, а не засебну маркетиншку листу.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-stone-300">
+              Обавезна поља су име, пословни имејл, опис онога што желите да развијете или побољшате, главна брига,
+              тренутна фаза и релевантан контекст. Компанија или тим и позната ограничења су опциона.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-stone-300">
+              Подаци ми служе да прегледам упит, одговорим на њега и, када је релевантно, наставим преписку која из тога
+              проистекне.
+            </p>
+          </article>
+
+          <article class="panel panel-light p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Formspree</p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Formspree обрађује поруку послату преко форме и прослеђује је на имејл адресу коју сам подесио за пријем порука.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Formspree може да обрађује и техничке податке о захтеву, као што су IP адреса, подаци о прегледачу и извор
+              посете, у складу са својим обавештењем о приватности.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Историја порука на Formspree налогу чува се 30 дана. Formspree у свом обавештењу о приватности засебно
+              описује како поступа са другим техничким подацима и подацима потребним за рад сервиса.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Не чувам засебне извозе нити посебан скуп података преузет преко Formspree API-ја, ван Formspree-а и
+              уобичајене имејл преписке.
+            </p>
+            <a
+              class="ink-link mt-5 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition"
+              href="https://formspree.io/legal/privacy-policy/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Formspree обавештење о приватности →
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break">
+          <div class="max-w-3xl space-y-4">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-marker">02 / коришћење сајта</span>
+              <p class="eyebrow">Аналитика сајта</p>
+            </div>
+            <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+              Основни сигнали о коришћењу, без чувања појединачних приказа страница.
+            </h2>
+            <p class="text-base leading-8 muted-copy">
+              GoatCounter користим за основну аналитику сајта. Налог је подешен за сесије и збирне техничке податке,
+              а не за чување појединачних приказа страница.
+            </p>
+          </div>
+
+          <div class="mt-8 grid gap-4 lg:grid-cols-2">
+            <article class="panel panel-light p-6 sm:p-8">
+              <div class="accent-bar"></div>
+              <p class="eyebrow">Укључене категорије</p>
+              <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+                Аналитика може да обухвати извор посете, прегледач и систем, величину екрана, државу и регион, језик и збирне
+                информације на нивоу сесије.
+              </p>
+              <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+                GoatCounter не користи колачиће нити localStorage у прегледачу за праћење посетилаца. Чување
+                појединачних приказа страница искључено је на овом налогу.
+              </p>
+            </article>
+
+            <article class="panel panel-dark p-6 sm:p-8">
+              <div class="accent-bar"></div>
+              <p class="eyebrow">Обрада код провајдера и чување</p>
+              <p class="mt-4 text-sm leading-7 text-stone-300">
+                Да би препознао поновљене посете и избегао дупло бројање у оквиру сесије, GoatCounter може до осам сати
+                привремено да чува у меморији везу између сајта, IP адресе и User-Agent заглавља. Сирове IP адресе и цео
+                User-Agent не чувају се у његовој бази.
+              </p>
+              <p class="mt-4 text-sm leading-7 text-stone-300">
+                Подешено чување аналитичких података траје 730 дана. Не чувам засебне извозе нити резервне копије
+                GoatCounter аналитичких података.
+              </p>
+              <a
+                class="mt-5 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold text-stone-100 underline decoration-[color:var(--accent-strong)] underline-offset-4 transition hover:text-[color:var(--accent-strong)]"
+                href="https://www.goatcounter.com/help/privacy"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GoatCounter документација о приватности →
+              </a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
+          <article class="panel panel-light p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="section-marker">03 / чување</span>
+              <p class="eyebrow">Чување преписке</p>
+            </div>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Преписка коју чувам прати засебно практично правило.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-[color:var(--ink-soft)]">
+              Обичне контактне упите чувам до 12 месеци од последње интеракције. Ако се упит развије у текући посао или
+              други однос који траје, повезана преписка може да се чува дуже када је то потребно за тај посао или из
+              стварних административних, рачуноводствених, уговорних или правних разлога.
+            </p>
+          </article>
+
+          <article class="panel panel-dark p-6 sm:p-8">
+            <div class="accent-bar"></div>
+            <p class="eyebrow">Ваши избори и контакт</p>
+            <h2 class="mt-4 text-3xl font-semibold tracking-tight">
+              Питања и захтеве за брисање можете послати директно мени.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-stone-300">
+              Питања о приватности или захтеве за брисање преписке коју чувам можете послати на
+              <a class="font-semibold text-stone-100 underline decoration-[color:var(--accent-strong)] underline-offset-4 transition hover:text-[color:var(--accent-strong)]" href={'mailto:' + siteConfig.email}>
+                {siteConfig.email}
+              </a>
+              . Размотрићу их у складу са правилом чувања и изузецима наведеним изнад.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-space pt-0">
+      <div class="shell">
+        <div class="section-break max-w-3xl space-y-4">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="section-marker">04 / измене</span>
+            <p class="eyebrow">Измене</p>
+          </div>
+          <h2 class="text-3xl font-semibold tracking-tight sm:text-4xl">
+            Ово обавештење ажурирам када се промени начин на који сајт поступа са подацима.
+          </h2>
+          <p class="text-sm leading-7 text-[color:var(--ink-soft)]">Последње ажурирање: 28. август 2026.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter locale={locale} />
+</BaseLayout>

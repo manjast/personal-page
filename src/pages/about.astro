@@ -162,8 +162,8 @@ import { siteConfig } from '../config/site';
             The public proof base is narrow, but the signals are different.
           </h2>
           <p class="mt-4 max-w-3xl text-sm leading-7 text-[color:var(--ink-soft)]">
-            The public cases come from in-house enterprise work. They should be read by signal type: workflow outcome,
-            operated system and delivery discipline.
+            The case studies come from in-house enterprise work and are the primary delivery proof. Supporting public
+            evidence of engineering method and judgment sits alongside them.
           </p>
           <div class="mt-8 grid gap-4 lg:grid-cols-3">
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
@@ -187,10 +187,13 @@ import { siteConfig } from '../config/site';
               </a>
             </article>
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
-              <p class="metric-label text-[color:var(--accent)]">Delivery discipline</p>
-              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">Public repo</p>
+              <p class="metric-label text-[color:var(--accent)]">Engineering judgment</p>
+              <p class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">Public protocol</p>
               <p class="mt-3 text-sm leading-7 text-[color:var(--ink-soft)]">
-                The Agentic Development Playbook shows scoped tasks, verification before commit and migration guidance. It is supporting proof, not the main delivery proof.
+                The Agentic Development Playbook is a small written software change-acceptance protocol for agent-assisted
+                development. It sets out how I distinguish check results, judgment from any required review and the
+                authority to accept a specific change for merge, release or deployment. The core protocol is defined
+                and maintained; platform-specific guidance remains limited.
               </p>
               <a class="ink-link mt-4 inline-flex min-h-[44px] items-center py-2 text-sm font-semibold transition" href={siteConfig.playbookUrl} target="_blank" rel="noreferrer">
                 View Playbook →

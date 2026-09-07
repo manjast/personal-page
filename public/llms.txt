@@ -41,10 +41,10 @@ Public proof points (anonymized where required):
 ## Profiles
 
 - [LinkedIn](https://www.linkedin.com/in/stefan-manja/): professional profile and recent activity
-- [GitHub](https://github.com/manjast): public repositories, including the Agentic Development Playbook
+- [GitHub](https://github.com/manjast): public repositories
 - [Email](mailto:stefan@stefanmanja.com): direct contact for project inquiries
 
 ## Optional
 
-- [Agentic Development Playbook](https://github.com/manjast/agentic-development-playbook): public evidence of scoped, evaluation-gated AI delivery — not a product or tutorial
-- [Adopting the Playbook into an existing project](https://github.com/manjast/agentic-development-playbook/blob/main/docs/migration.md)
+- [Agentic Development Playbook](https://github.com/manjast/agentic-development-playbook): small written software change-acceptance protocol for agent-assisted development; authorized acceptance of an identified change for merge, release or deployment. Supporting public evidence of engineering method and judgment; case studies are the primary delivery proof. The core protocol is defined and maintained, with limited platform-specific guidance. Uses existing project systems; no installation or mandatory file layout.
+- [Adopting the Playbook into an existing project](https://github.com/manjast/agentic-development-playbook/blob/main/docs/migration.md): adoption and v1 migration guidance

@@ -27,7 +27,7 @@ Writing is English-only on the site. The Serbian language switcher on `/writing`
 - `src/components/blog/` — shared chart components for blog posts: `BarChart`, `Distribution`, `FiveStep`, `TwoRowFlow`.
 - `public/llms.txt` — LLM-readable site index. Lists primary pages, case studies, writing, and the Serbian Cyrillic mirror.
 
-A featured methodology artifact is surfaced from the home page but lives in a separate companion repository: [manjast/agentic-development-playbook](https://github.com/manjast/agentic-development-playbook).
+The [Agentic Development Playbook](https://github.com/manjast/agentic-development-playbook) is a small written software change-acceptance protocol for agent-assisted development. The home and About pages link to it as supporting evidence of engineering method and judgment; case studies remain the primary delivery proof.
 
 ## Project standards
 

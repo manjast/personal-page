@@ -9,14 +9,14 @@ import { siteConfig } from '../config/site';
   locale="en"
   pathname="/about/"
   title="About the Work"
-  description="A compact trust page for Stefan Manja: internal AI systems, workflow judgment, proof and how to read the site."
+  description="A compact trust page for Stefan Manja: internal AI systems, workflow judgment and the public proof behind the work."
   pageSchema={[
     {
       '@type': 'AboutPage',
       '@id': `${siteConfig.siteUrl}/about/#webpage`,
       url: `${siteConfig.siteUrl}/about/`,
       name: 'About the Work | Stefan Manja',
-      description: 'A compact trust page for Stefan Manja: internal AI systems, workflow judgment, proof and how to read the site.',
+      description: 'A compact trust page for Stefan Manja: internal AI systems, workflow judgment and the public proof behind the work.',
       author: { '@id': `${siteConfig.siteUrl}/#person` },
       inLanguage: 'en',
     },
@@ -159,11 +159,12 @@ import { siteConfig } from '../config/site';
             <p class="eyebrow">Proof</p>
           </div>
           <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight sm:text-4xl">
-            The public proof base is narrow, but the signals are different.
+            Three signals from real internal AI work.
           </h2>
           <p class="mt-4 max-w-3xl text-sm leading-7 text-[color:var(--ink-soft)]">
-            The case studies come from in-house enterprise work and are the primary delivery proof. Supporting public
-            evidence of engineering method and judgment sits alongside them.
+            One case shows measured change in an analyst decision-support workflow. One shows an internal assistant
+            operated with access, feedback, usage and cost controls. The Playbook shows how I approach verification,
+            review and acceptance in AI-assisted software work.
           </p>
           <div class="mt-8 grid gap-4 lg:grid-cols-3">
             <article class="rounded-2xl border border-[color:var(--rule)] bg-white/80 p-5">
@@ -199,32 +200,6 @@ import { siteConfig } from '../config/site';
                 View Playbook →
               </a>
             </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-space pt-0">
-      <div class="shell">
-        <div class="section-break panel panel-dark p-6 sm:p-8">
-          <div class="accent-bar"></div>
-          <p class="eyebrow">How to read this site</p>
-          <h2 class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight">
-            If you are looking at a concrete workflow, start with proof, fit, then contact.
-          </h2>
-          <div class="mt-8 grid gap-4 md:grid-cols-3">
-            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/work/">
-              <p class="metric-label text-[color:var(--accent-strong)]">Work</p>
-              <p class="mt-3 text-sm leading-7 text-stone-300">Selected proof and public-safe case studies.</p>
-            </a>
-            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/services/">
-              <p class="metric-label text-[color:var(--accent-strong)]">Services</p>
-              <p class="mt-3 text-sm leading-7 text-stone-300">Starting points and delivery modes that fit.</p>
-            </a>
-            <a class="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-[color:var(--accent)]" href="/contact/">
-              <p class="metric-label text-[color:var(--accent-strong)]">Contact</p>
-              <p class="mt-3 text-sm leading-7 text-stone-300">Send a workflow outline for review.</p>
-            </a>
           </div>
         </div>
       </div>

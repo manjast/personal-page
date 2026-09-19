@@ -51,8 +51,6 @@ The practical result was a governed internal assistant that employees could use
 against approved knowledge while operators could review feedback, knowledge
 gaps, usage, cost and system health after launch.
 
-The public-safe adoption and feedback signal is summarized below.
-
 The visible layer was chat and retrieval. The more important part was the
 operator/admin layer around it, including:
 
@@ -67,7 +65,7 @@ operator/admin layer around it, including:
 The point was not to collect infrastructure labels. It was to support a system
 that could be operated, reviewed and improved after launch.
 
-At a public-safe level, the operating model looked roughly like this:
+The operating model looked roughly like this:
 
 <figure class="panel panel-light technical-grid" style="margin-top: 1.5rem; padding: 1rem;">
   <div class="panel" style="margin-bottom: 0.9rem; border: 1px solid var(--rule); background: rgba(255, 252, 247, 0.72); border-radius: 1rem; padding: 0.8rem 0.95rem;">
@@ -148,9 +146,9 @@ not just something employees could try.
 
 ### My role
 
-I implemented the assistant and the operator-facing surfaces around retrieval,
-access, quality signals and operational visibility needed for real internal
-use.
+I owned the application and AI architecture end to end and implemented the
+assistant and the operator-facing surfaces around retrieval, access, quality
+signals and operational visibility needed for real internal use.
 
 This work was done in-house at Delta Holding, where I progressed from AI
 Specialist to AI Innovation Lead, led a small AI team and stayed hands-on in
@@ -199,8 +197,8 @@ launch, and explicit thumbs-up/down feedback was more than 85% positive.
 The post-launch period also showed that technical readiness does not create
 sustained use by itself. Continued use needs clear product and content
 ownership, plus a structured enablement path for employees. Workflow-time
-impact was not measured at v1. The public-safe measurement scope was
-first-month use and explicit feedback.
+impact was not measured at v1. The measurement scope here was first-month use
+and explicit feedback.
 
 ## Why this case matters
 

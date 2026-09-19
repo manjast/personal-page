@@ -2,12 +2,12 @@
 
 > Internal AI systems for enterprise and mid-market workflows. Stefan Manja builds and hardens systems that need disciplined evaluation, cost and usage visibility, reliable deployment and real-world usefulness.
 
-Based in Belgrade, Serbia (Europe/Belgrade, CET/CEST). Engagements are project-scoped for enterprise and mid-market teams; default to in-person or hybrid in Belgrade, remote across Europe otherwise.
+Based in Belgrade, Serbia (Europe/Belgrade, CET/CEST). Works internationally on project-scoped internal AI systems for enterprise and mid-market teams.
 
 Stack includes Python, Flask, Docker, PostgreSQL, pgvector, LangChain, Azure AD SSO, LLM APIs and workflow automation for enterprise environments.
 
-Public proof points (anonymized where required):
-- ~75% reduction in credit-risk analysis time (Delta Holding)
+Public proof points:
+- ~75% reduction in analysis and report preparation time versus an existing RPA-supported process, in a five-analyst, three-company credit-risk POC (Delta Holding)
 - 90%+ recommendation acceptance rate from analysts
 - 4.4/5 analyst-rated quality on credit-risk decision-support workflow
 - 50+ AI workflows assessed across opportunity framing, PoCs and first scaled rollout
@@ -16,9 +16,9 @@ Public proof points (anonymized where required):
 ## Primary pages
 
 - [Home](https://stefanmanja.com/): overview, proof, fit guidance and services
-- [About](https://stefanmanja.com/about/): compact trust page on workflow judgment, proof and how to read the site
+- [About](https://stefanmanja.com/about/): compact trust page on workflow judgment and the public proof behind the work
 - [Work](https://stefanmanja.com/work/): internal AI case studies
-- [Credit-risk decision-support workflow](https://stefanmanja.com/work/delta-credit-risk-workflow/): Delta Holding, ~75% reduction in analysis time
+- [Credit-risk decision-support workflow](https://stefanmanja.com/work/delta-credit-risk-workflow/): Delta Holding, ~75% reduction in analysis and report preparation time versus an existing RPA-supported process in a five-analyst, three-company POC
 - [Self-hosted internal knowledge assistant](https://stefanmanja.com/work/delta-enterprise-rag-assistant/): Delta Holding, 300+ first-month users and 85%+ positive explicit feedback
 - [Services](https://stefanmanja.com/services/): workflow starting points, service modes and delivery path
 - [Contact](https://stefanmanja.com/contact/): workflow review and initial inquiry
@@ -46,5 +46,5 @@ Public proof points (anonymized where required):
 
 ## Optional
 
-- [Agentic Development Playbook](https://github.com/manjast/agentic-development-playbook): small written software change-acceptance protocol for agent-assisted development; authorized acceptance of an identified change for merge, release or deployment. Supporting public evidence of engineering method and judgment; case studies are the primary delivery proof. The core protocol is defined and maintained, with limited platform-specific guidance. Uses existing project systems; no installation or mandatory file layout.
+- [Agentic Development Playbook](https://github.com/manjast/agentic-development-playbook): small written software change-acceptance protocol for agent-assisted development; authorized acceptance of an identified change for merge, release or deployment. Shows how I approach verification, review and acceptance in AI-assisted software work. The core protocol is defined and maintained, with limited platform-specific guidance. Uses existing project systems; no installation or mandatory file layout.
 - [Adopting the Playbook into an existing project](https://github.com/manjast/agentic-development-playbook/blob/main/docs/adoption.md): adoption and v1 migration guidance

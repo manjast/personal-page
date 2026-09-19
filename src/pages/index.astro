@@ -112,7 +112,7 @@ const caseStudies = (await getCollection('case-studies'))
               </div>
               <div class="technical-rule">
                 <p class="metric-label">Current work</p>
-                <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Applied AI for internal industrial workflows and data-intensive engineering contexts. Public description is intentionally limited to workflow and problem shape.</p>
+                <p class="mt-2 text-sm leading-7 text-[color:var(--ink-soft)]">Applied AI for internal industrial workflows and data-intensive engineering contexts.</p>
               </div>
               <div class="technical-rule">
                 <p class="metric-label">Delivery environments</p>
@@ -193,8 +193,8 @@ const caseStudies = (await getCollection('case-studies'))
               Project-based build first, with hardening and advisory work where they improve reliability, reviewability, and handoff.
             </h2>
             <p class="text-base leading-8 muted-copy">
-              Build is the main entry point. The service page goes deeper on workflow starting points, engagement flow, and where
-              hardening or advisory work help a system survive real operating conditions.
+              Build is the main delivery mode. When the workflow and system shape are already clear, work can move directly
+              into build or hardening. When important uncertainty remains, the first paid step is usually a scoped diagnostic.
             </p>
             <p class="text-base leading-8 muted-copy">
               Teams usually reach out when they need to decide whether an AI workflow is worth building, harden a prototype
@@ -227,8 +227,8 @@ const caseStudies = (await getCollection('case-studies'))
             <p class="text-base leading-8 muted-copy">
               The Agentic Development Playbook is a small written software change-acceptance protocol for agent-assisted
               development. It describes what must be established for an authorized decision to accept an identified change
-              for merge, release or deployment. The case studies remain the primary delivery proof; the Playbook provides
-              supporting public evidence of my engineering method and judgment.
+              for merge, release or deployment. It shows how I approach verification, review and acceptance in AI-assisted
+              software work.
             </p>
           </div>
 
@@ -286,7 +286,7 @@ const caseStudies = (await getCollection('case-studies'))
 
     <CTASection
       title="If the workflow is concrete enough to describe, I can usually tell quickly whether a build or advisory conversation makes sense."
-      description="I take on project-based build, hardening, and advisory work for internal AI systems. A short description of the workflow, the current stage, and the key constraints is enough to tell whether the engagement makes sense."
+      description="I take on project-based build, hardening and advisory work for internal AI systems. A short description of the workflow, the current stage and the key constraints is enough for a first fit review: a scoped diagnostic when important uncertainty remains, a build or hardening path when the shape is already clear, or a recommendation to simplify or not build."
       primary={siteConfig.heroPrimaryCta}
       secondary={{ href: '/services', label: 'See workflow starting points' }}
     />

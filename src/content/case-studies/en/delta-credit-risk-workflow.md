@@ -6,7 +6,7 @@ title: "Credit-risk decision-support workflow"
 summary: "A credit-risk decision-support workflow built in-house at Delta Holding. Combines public-company risk signals with internal context into recommendations."
 organization: "Delta Holding"
 workContext: "B2B credit-risk analysis and limit-setting workflow inside a multi-entity enterprise finance function."
-outcome: "Observed workflow outcomes included ~75% faster analysis, 4.4/5 analyst-rated quality, and 90%+ recommendation acceptance."
+outcome: "Observed workflow outcomes included ~75% faster analysis and report preparation versus the existing RPA-supported process, 4.4/5 analyst-rated quality and 90%+ recommendation acceptance."
 order: 1
 featured: true
 services:
@@ -31,6 +31,9 @@ The opportunity was not to replace analysts with a generic chatbot. It was to
 make the existing process faster and more usable by combining both signal
 layers into a structured workflow without removing the need for judgment.
 
+The system ran as a proof of concept used by five analysts across three Delta
+member companies.
+
 ## Problem
 
 The core challenge was operational, not cosmetic: analysts still needed useful
@@ -54,15 +57,9 @@ The system was designed to support analyst judgment, not replace it. Trust
 came from workflow fit, constrained output shapes, and the reviewability of
 every recommendation.
 
-At a public-safe level, the workflow shape looked roughly like this:
+The workflow shape looked roughly like this:
 
 <figure class="panel panel-light technical-grid" style="margin-top: 1.5rem; padding: 1rem;">
-  <div class="panel" style="margin-bottom: 0.9rem; border: 1px solid var(--rule); background: rgba(255, 252, 247, 0.72); border-radius: 1rem; padding: 0.8rem 0.95rem;">
-    <p class="metric-label" style="margin: 0;">Platform framing</p>
-    <p style="margin: 0.45rem 0 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6;">
-      Reusable platform guardrails sat around the workflow: tenant-specific normalization, governed templates, run history, and reviewable outputs.
-    </p>
-  </div>
   <div style="display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
     <div class="panel" style="border: 1px solid var(--rule); background: rgba(255, 255, 255, 0.86); border-radius: 1rem; padding: 0.95rem;">
       <p class="metric-label" style="margin: 0;">01 / signals</p>
@@ -140,15 +137,13 @@ pushing black-box automation.
   acceptance rather than novelty.
 - The implementation had to earn trust from users, because a speed gain
   without trust would not hold in practice.
-- The work evolved from tenant-specific proofs of concept toward a shared
-  internal platform shape, with reusable architecture and governance
-  considerations built in from early stages.
 
 ## Outcome
 
-The strongest public outcome evidence from this case was workflow-level:
-analysis time dropped by roughly **75%**, analyst-rated quality reached
-**4.4/5**, and recommendation acceptance was above **90%**.
+The strongest outcome evidence from this case was workflow-level: analysis and
+report preparation time fell by roughly **75%** versus the existing
+RPA-supported process, analyst-rated quality reached **4.4/5** and
+recommendation acceptance was above **90%**.
 
 Those signals matter because they point not only to speed, but to trust,
 consistency, and real workflow adoption.

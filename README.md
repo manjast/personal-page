@@ -32,7 +32,7 @@ The [Agentic Development Playbook](https://github.com/manjast/agentic-developmen
 ## Project standards
 
 - **Runtime:** Node 24 LTS (`.nvmrc`)
-- **Framework:** Astro 6 with the `@astrojs/mdx` integration
+- **Framework:** Astro 7 with the `@astrojs/mdx` integration
 - **Styling:** Tailwind 4 via `@tailwindcss/vite`
 - **Discovery:** `@astrojs/sitemap` (the `/contact/sent/` thank-you state is filtered out of the sitemap)
 - **Hosting target:** GitHub Pages + custom domain
@@ -51,6 +51,15 @@ npm run dev
 - `npm run build` — create the production static build in `dist/`
 - `npm run preview` — preview the built site locally
 - `npm run check` — run Astro's project checks
+
+## Dependency update policy
+
+Dependabot's monthly npm updates retain routine minor/patch proposals and supported major proposals. Two narrow exceptions are checked in under the npm entry in `.github/dependabot.yml`:
+
+- TypeScript `7.x` is excluded while the current Astro/check toolchain does not support it (deferred PR #85). TypeScript 6 proposals remain eligible; revisit TypeScript 7 when the supported toolchain supports it.
+- `@types/node` semantic-major updates are excluded while the runtime stays on Node 24 (deferred PR #93). Node 24 minor/patch updates remain eligible. Revisit this filter in the same PR that changes the runtime major.
+
+The Node-types semantic-major filter does not itself exclude security-only updates. The explicit TypeScript `7.x` version exclusion also applies to security candidates: a TypeScript-7-only fix requires a supported toolchain migration or explicit manual remediation, never a forced install. These are separate rules, not an intersection or blanket major-update block.
 
 ## Writing publication posture
 

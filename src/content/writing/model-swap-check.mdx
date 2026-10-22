@@ -222,7 +222,13 @@ Jev is the most interesting result, because its answers are good. On in-scope de
 
 It is also fast. From Belgrade, Jev answered in 0.28 seconds at the median, with the tightest tail of anything I tested: 95% of answers within 0.35 seconds. The small LLMs took 1.0 to 1.3 seconds. That is four times faster, a real advantage for anything a customer waits on. It is not the "193.6x Faster" on TypeSafe's homepage, whose own example puts an LLM at 8.6 seconds per task. Small models without reasoning answer a router in about one second.
 
-Its confidence is blunt. Jev rounds its probabilities to two decimals, so answers pile up at exactly 1.00. On the test set, 43% of all messages landed at 1.00, and one in 19 of those was wrong. There is nothing above 1.00 to tighten the gate with. Under a 2% limit, Jev automates nothing at all. The new 1.14 preview rounds the same way.
+Its confidence is blunt. Jev rounds its probabilities to two decimals, so answers pile up at exactly 1.00. On the test set, 43% of all messages landed at 1.00, and one in 19 of those went to the wrong queue. The new 1.14 preview rounds the same way.
+
+Here is the twist: the LLMs give the same wrong answers. Of the 217 messages Jev misrouted at 1.00, Luna picked the same wrong queue for 216, Haiku for 214 and `gpt-4o-mini` for 212. They are the hard cases. On 423 test messages, every model I tested picked the same queue and the label said otherwise.
+
+The difference is what each model does next. Luna gives those messages a slightly lower score than its easy ones, so its gate at 0.99 lets through about a fifth of them and still routes half of its right answers. Jev's strictest gate, 1.00, lets through two in five, and there is no stricter one. Under a 2% limit, Jev automates nothing at all.
+
+Jev is not less accurate. Its scale stops too early.
 
 I tried a rescue with Jev's second signal, a separate yes/no probability that the message belongs to the catalog. It landed at 2.03% misroutes. Close, and a fail. It is published next to everything else, because a method that only reports its wins is marketing.
 
@@ -254,7 +260,7 @@ If you own a `gpt-4o-mini` classifier, the work is short:
 
 ## Methodology note
 
-- Data: Banking77 (PolyAI), pinned commit; 50 intents as queues, the rest as "none of these"; 3,075 development and 9,758 test messages. Clean, single-turn English; real support traffic is messier.
+- Data: Banking77 (PolyAI), pinned commit; 50 intents as queues, the rest as "none of these"; 3,075 development and 9,758 test messages. Clean, single-turn English; real support traffic is messier. Misroutes count against Banking77's labels; on 4.3% of test messages all six configurations agree with each other and not with the label, and every model is scored against the same labels.
 - Models: `gpt-4o-mini-2024-07-18`, `gpt-6-luna` (Responses API without reasoning, and Decisions API), `claude-haiku-5-5` (no thinking), `jev-1.13.0` (TypeSafe's stable release; 1.14 was in preview). Test runs on October 22, 2026.
 - Rates are shares of all test messages. \* marks a one-sided 95% Wilson upper bound at or above the limit. The 2% analysis was declared before any replacement ran; the Jev rescue and the five-limit table after the first test results.
 - Cost: mean token usage per message at list prices on October 22, 2026. Warm cache prices the shared prompt as a cache read, cold as uncached input. Traffic figures assume random arrivals and one cache per prompt.

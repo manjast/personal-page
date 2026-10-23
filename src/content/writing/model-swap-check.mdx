@@ -230,7 +230,9 @@ The difference is what each model does next. Luna gives those messages a slightl
 
 Jev's answers are fine. Its scale stops too early.
 
-I tried a rescue with Jev's second signal, a separate yes/no probability that the message belongs to the catalog. It landed at 2.03% misroutes. Close, and a fail. It is published next to everything else, because a method that only reports its wins is marketing.
+I asked TypeSafe whether the rounding is deliberate. Their team answered on Discord: if a threshold has to be set to the last 0.01, the approach needs to change. Their advice for tied answers is to work out what separates them, as you would explain it to a person, and ask Jev about that in another question.
+
+My rescue was exactly that kind of question: a second Jev question, the probability that the message belongs to the catalog at all. It landed at 2.03% misroutes. Close, and a fail. A sharper second question might get under the line, but that is question design work, where Luna and Haiku needed only a threshold. The failed rescue is published next to everything else, because a method that only reports its wins is marketing.
 
 That is the lesson I would carry to any classifier, LLM or not: **a calibrated confidence score can still be useless for a risk gate.** The gate lives at the top of the scale, where you stop asking a human. If 40% of answers share the top value, your gate has one setting, and it is the wrong one.
 

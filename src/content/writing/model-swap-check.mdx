@@ -28,6 +28,8 @@ The obvious migration is one line. Replace the model ID with the named successor
 
 I ran exactly that on a support-message router. Same prompt, same confidence threshold of 0.95, new model ID. Before the change, no message went to the wrong team without a human check. After it, 3.9% did. That is 39 customers in every 1,000: the person whose card was just stolen, waiting in the queue for address changes. No error, no alert. Every response was valid JSON with a confident answer.
 
+How did the old model manage zero? By almost never deciding alone. `gpt-4o-mini` was 0.95 sure about only 2 messages in 100, and it got those right; a person read the other 98. Luna is 0.95 sure about half of all messages and routes them on its own. That half includes the 39.
+
 The threshold is the problem. A 0.95 from `gpt-4o-mini` and a 0.95 from Luna are different promises, and nothing in your code knows that.
 
 ## Two numbers run a router

@@ -1,0 +1,273 @@
+---
+title: "Replacing gpt-4o-mini: one line of code sends 39 in 1,000 customers to the wrong team"
+summary: "I tested four replacements for a gpt-4o-mini support router on 9,758 Banking77 messages. Swapping the model ID took misroutes from 0% to 3.9%. The best replacement depends on how many mistakes you accept, and the token price on the vendor's website says almost nothing about your bill."
+publishedAt: 2026-10-23
+displayDate: "2026-10-23"
+ogImage: "/og-blog-model-swap-check.png"
+locale: "en"
+translationKey: "model-swap-check-2026-10-23"
+routeSlug: "model-swap-check"
+draft: false
+heroStat:
+  value: "3.9%"
+  label: "of customers sent to the wrong team after changing only the model ID."
+  attr: "Banking77 test set, 9,758 messages - see methodology below"
+---
+
+import BarChart from '../../components/blog/BarChart.astro';
+
+<div class="blog-hero" role="figure" aria-labelledby="hero-label hero-attr">
+  <span class="blog-hero__stat">3.9%</span>
+  <span id="hero-label" class="blog-hero__label">of customers sent to the wrong team after changing only the model ID.</span>
+  <span id="hero-attr" class="blog-hero__attr">Banking77 test set, 9,758 messages - see methodology below</span>
+</div>
+
+OpenAI switches off `gpt-4o-mini` on January 14, 2027. A lot of quiet production code runs on it: classifiers, extractors and routers built in 2024 that worked well enough and were never touched again.
+
+The obvious migration is one line. Replace the model ID with the named successor, `gpt-6-luna`, and ship.
+
+I ran exactly that on a support-message router. Same prompt, same confidence threshold of 0.95, new model ID. Before the change, no message went to the wrong team without a human check. After it, 3.9% did. That is 39 customers in every 1,000: the person whose card was just stolen, waiting in the queue for address changes. No error, no alert. Every response was valid JSON with a confident answer.
+
+How did the old model manage zero? By almost never deciding alone. `gpt-4o-mini` was 0.95 sure about only 2 messages in 100, and it got those right; a person read the other 98. Luna is 0.95 sure about half of all messages and routes them on its own. That half includes the 39.
+
+The threshold is the problem. A 0.95 from `gpt-4o-mini` and a 0.95 from Luna are different promises, and nothing in your code knows that.
+
+## Two numbers run a router
+
+A customer message comes in. The model picks one of 50 team queues and says how sure it is. Above a threshold, the message is routed automatically. Below it, a person reads it.
+
+- **Misroute rate**: the share of all messages sent automatically to the wrong queue. This is the risk.
+- **Automation rate**: the share of all messages nobody has to read. This is the value.
+
+Turn the threshold up and both drop. The whole game is: how much can you automate while misroutes stay under a limit you are willing to live with?
+
+I tested four ways out of `gpt-4o-mini` on 9,758 Banking77 test messages:
+
+- **Luna** (`gpt-6-luna`), OpenAI's named successor, run twice: with `gpt-4o-mini`'s prompt unchanged, and with a prompt I rewrote for Luna in three rounds on the tuning set (sharper borders between look-alike queues, stricter rules for its top confidence scores);
+- **Claude Haiku 5.5**, the obvious rival;
+- **Jev**, TypeSafe's decision model, which returns probabilities instead of text;
+- **OpenAI's Decisions API**, the same Luna behind a decision-model interface.
+
+Every model got its own threshold, fitted on a separate tuning set of 3,075 labelled messages. The 9,758 test messages stayed untouched until the rules were written down and frozen in git.
+
+## gpt-4o-mini jumps from 2% to 72%
+
+Look at the old model first. It is worse than most teams think.
+
+`gpt-4o-mini` speaks in steps of 0.05, and it is confident about almost everything. On the tuning set it said 0.90 for 76% of the answers it routed. 470 of those 1,994 answers were wrong. Only 50 answers got 0.95.
+
+So its threshold has two useful settings:
+
+- **0.95**: 2% of messages automated. Safe and useless.
+- **0.90**: 72% automated, and 15% of all messages misrouted. One in five of the messages it routes on its own goes to the wrong team.
+
+Nothing in between. If your `gpt-4o-mini` classifier's threshold is 0.9, go and count what it lets through.
+
+## The winner depends on how many mistakes you accept
+
+A 2% misroute limit means 20 customers in 1,000 sent to the wrong desk. Where to draw that line is a business choice. A fraud queue might tolerate 1%. A queue where a wrong route costs a 30-second handover might tolerate 10%.
+
+So I ran the comparison at five limits. Each model gets its own threshold per limit. The table shows automation; higher is better.
+
+<div class="blog-table" role="region" aria-label="Share automated at each misroute limit">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Share automated at a misroute limit of</th>
+        <th scope="col">1%</th>
+        <th scope="col">2%</th>
+        <th scope="col">5%</th>
+        <th scope="col">10%</th>
+        <th scope="col">15%</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><code>gpt-4o-mini</code> (today)</th>
+        <td>2.1%</td>
+        <td>2.1%</td>
+        <td>2.1%</td>
+        <td>2.1%</td>
+        <td>72.4%&#42;</td>
+      </tr>
+      <tr>
+        <th scope="row">Luna, <code>gpt-4o-mini</code>'s prompt</th>
+        <td>0.1%</td>
+        <td>34.8%</td>
+        <td>50.2%</td>
+        <td>50.2%</td>
+        <td>71.3%</td>
+      </tr>
+      <tr>
+        <th scope="row">Luna, rewritten prompt</th>
+        <td>13.2%</td>
+        <td><strong>42.9%</strong></td>
+        <td>42.9%</td>
+        <td>63.9%</td>
+        <td><strong>73.2%</strong></td>
+      </tr>
+      <tr>
+        <th scope="row">Claude Haiku 5.5</th>
+        <td><strong>20.0%</strong></td>
+        <td>34.8%</td>
+        <td>46.9%</td>
+        <td>63.0%</td>
+        <td>63.0%</td>
+      </tr>
+      <tr>
+        <th scope="row">Decisions API (Luna)</th>
+        <td>15.9%</td>
+        <td>25.3%</td>
+        <td>47.3%&#42;</td>
+        <td>62.7%&#42;</td>
+        <td>70.4%</td>
+      </tr>
+      <tr>
+        <th scope="row">Jev</th>
+        <td>0%</td>
+        <td>0%</td>
+        <td><strong>53.6%</strong></td>
+        <td><strong>66.2%</strong></td>
+        <td>74.9%&#42;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+\* Within the limit on the test set, but too close to call. **Bold**: the most automation among models that stay clearly within the limit.
+
+**The migration is free capacity.** Between a 2% and a 10% limit, every LLM replacement automates 25-64% of messages. `gpt-4o-mini` automates 2%. On a router handling 10,000 messages a day, that is up to 6,000 more messages a day that nobody has to read, within the same misroute limit.
+
+<BarChart
+  title="AUTOMATION · 2% MISROUTE LIMIT"
+  yAxisLabel=""
+  variant="format"
+  yMax={50}
+  bars={[
+    { label: '2.05%', value: 2.05, color: 'ink-faint', xLabel: 'gpt-4o-mini', y: 32 },
+    { label: '42.89%', value: 42.89, color: 'accent', xLabel: 'LUNA · REWRITTEN PROMPT', y: 72 }
+  ]}
+  ariaLabel="model-swap-automation"
+  caption="At the 2% misroute limit, gpt-4o-mini automates 2.05% of messages and Luna with the rewritten prompt automates 42.89%. Each configuration has its own threshold fitted on the tuning set."
+/>
+
+**There is no best model.** Haiku leads at 1%. Luna with the rewritten prompt leads at 2%. Jev leads at 5% and 10%. Any leaderboard that names one winner for this job answers a question nobody asked.
+
+**At 15%, the race is over.** If your business already lives with `gpt-4o-mini` at 0.90, a replacement buys you little beyond staying online.
+
+So the order of decisions is fixed. First the misroute limit, agreed with whoever owns the queue. Then a threshold per model, on your own data. Only then the model.
+
+## The token price is not your bill
+
+TypeSafe sells Jev as "193.6x Faster, 444.6x Cheaper" than LLMs, with an input price "238x lower" than Claude Fable 5.1. At $0.042 per million input tokens, it is cheap per token.
+
+But a router does not pay per token. It pays per message, and every message carries the same baggage: the descriptions of all 50 queues, a few thousand tokens, sent again with every customer message.
+
+Luna and Haiku can keep that baggage in a prompt cache and read it back at a tenth of the price. Jev and the Decisions API cannot. Think of a single ticket against a season pass: the single ticket is cheaper on the price board, and the season pass wins as soon as you travel every day.
+
+<div class="blog-table" role="region" aria-label="Cost per 1,000 messages with warm and cold caches">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Model</th>
+        <th scope="col">Cost per 1,000 messages, busy router (cache warm)</th>
+        <th scope="col">Quiet router (cache cold)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Luna</th>
+        <td>$0.039</td>
+        <td>$0.277</td>
+      </tr>
+      <tr>
+        <th scope="row">Claude Haiku 5.5</th>
+        <td>$0.059</td>
+        <td>$0.452</td>
+      </tr>
+      <tr>
+        <th scope="row">Jev</th>
+        <td>$0.146</td>
+        <td>$0.146</td>
+      </tr>
+      <tr>
+        <th scope="row"><code>gpt-4o-mini</code></th>
+        <td>$0.218</td>
+        <td>$0.410</td>
+      </tr>
+      <tr>
+        <th scope="row">Decisions API (Luna)</th>
+        <td>$0.232</td>
+        <td>$0.232</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+On a busy router, Jev costs 3.7 times as much as Luna. On a quiet one, about half. The crossover comes early: at about two messages an hour, cached Luna is already the cheaper one.
+
+And here is what the price board hides. **Jev wins on cost exactly where cost does not matter.** At 50 messages a day, every option on this list costs under a dollar a month. At 10,000 a day, the cache is always warm: Luna costs about $12 a month, Jev $44. At that volume, the difference between automating 2% and 43% of messages is 4,000 messages a day that nobody has to read. That is the real bill, and no API price comes close.
+
+## Same model, two doors
+
+The Decisions API is the cleanest experiment here: same Luna, different door.
+
+I timed both doors from Belgrade, one request at a time, interleaved with every other model. Behind the Decisions door, Luna spent 0.08 seconds on OpenAI's servers at the median. Behind the normal API, 0.96 seconds. Twelve times faster, more than OpenAI's own "up to 10x". End to end, an answer took 0.28 seconds instead of 1.26.
+
+It also cost six times as much per message as cached Luna, and it automated less: 25% of messages at a 2% limit, against 35%. Its confidence is rounded to two decimals and piles up at the top, just like Jev's.
+
+So the Decisions API sells speed. For a ticket queue, where nobody notices a quarter of a second against a second and a quarter, that is money spent on the wrong thing. For live chat or voice, it could be the whole point.
+
+## Jev: right answers, blunt confidence
+
+Jev is the most interesting result, because its answers are good. On tuning messages that belong to one of the 50 queues, its top pick was right 85.6% of the time, against 84.2% for `gpt-4o-mini`.
+
+It is also fast. From Belgrade, Jev answered in 0.28 seconds at the median, with the tightest tail of anything I tested: 95% of answers within 0.35 seconds. The small LLMs took 1.0 to 1.3 seconds. That is four times faster, a real advantage for anything a customer waits on. It is not the "193.6x Faster" on TypeSafe's homepage, whose own example puts an LLM at 8.6 seconds per task. Small models without reasoning answer a router in about one second.
+
+Its confidence is blunt. Jev rounds its probabilities to two decimals, so answers pile up at exactly 1.00. On the test set, 43% of all messages landed at 1.00, and one in 19 of those went to the wrong queue. The new 1.14 preview rounds the same way.
+
+Here is the twist: the LLMs give the same wrong answers. Of the 217 messages Jev misrouted at 1.00, Luna picked the same wrong queue for 216, Haiku for 214 and `gpt-4o-mini` for 212. They are the hard cases. On 423 test messages, every model I tested picked the same queue and the dataset's answer key said otherwise.
+
+The difference is what each model does next. Luna gives those messages a slightly lower score than its easy ones, so its threshold at 0.99 lets through about a fifth of them and still routes half of its right answers. Jev's strictest threshold, 1.00, lets through two in five, and there is no stricter one. Under a 2% limit, Jev automates nothing at all.
+
+Jev's answers are fine. Its scale stops too early.
+
+I asked TypeSafe whether the rounding is deliberate. Their team answered on Discord: if a threshold has to be set to the last 0.01, the approach needs to change. Their advice for tied answers is to work out what separates them, as you would explain it to a person, and ask Jev about that in another question.
+
+My rescue was exactly that kind of question: a second Jev question, the probability that the message fits any of the 50 queues at all. It landed at 2.03% misroutes. Close, and a fail. A sharper second question might get under the line, but that is question design work, where Luna and Haiku needed only a threshold. The failed rescue is published next to everything else, because a method that only reports its wins is marketing.
+
+That is the lesson I would carry to any classifier, LLM or not: **a confidence score can be right on average and still useless for a threshold.** The threshold sits at the top of the scale, where you stop asking a human. If 40% of answers share the top value, the threshold has one setting, and it is the wrong one.
+
+## How it was run
+
+Results like these are only worth something if the rules could not bend to fit them.
+
+- The metrics, the threshold rule and the pass rules for each replacement were written in a specification before any test message was sent.
+- The rules were frozen with a git tag. Every test run records the tag it ran under, and the runner refuses to run the same model setup twice.
+- Every result file is generated from the raw recorded responses. CI regenerates all of them on every change and checks them byte for byte.
+- The 2% analysis, the Jev rescue and the five-limit comparison were each written down as additions to the rules before their test numbers existed. The shared-mistakes comparison came after all results.
+
+The whole study cost about $14.50 in API calls.
+
+## What I got wrong
+
+The verdicts I wrote down in advance said nothing. All five came back "ship it", because the automation rule could not fail: it let each replacement automate up to 3 points less than `gpt-4o-mini`, and `gpt-4o-mini` automated only 2%. I saw it after running `gpt-4o-mini` on the tuning set. Changing the rule then would have been moving the goalposts, so it stayed, and the real analysis went in as written additions.
+
+My 100-message trial run before the study already had the evidence. `gpt-4o-mini` gave 74 of those messages a confidence of 0.90 and exactly one a 0.95. Five minutes with that count would have saved the rules I wrote in advance. It is now the first thing I would check in any classifier migration.
+
+If you own a `gpt-4o-mini` classifier, the work is short:
+
+1. Agree on the misroute limit with the queue owner.
+2. Refit the threshold for every candidate on your own labelled messages. Never carry the old one over.
+3. Count how many answers share the top confidence score before you trust a threshold.
+4. Price the model per message at your real traffic, not per token.
+
+## Methodology note
+
+- Data: Banking77 (PolyAI), pinned commit; 50 intents as queues, the rest as "none of these"; 3,075 tuning (development) and 9,758 test messages. Clean, single-turn English; real support traffic is messier. Misroutes count against Banking77's labels; on 4.3% of test messages all six configurations agree with each other and not with the label, and every model is scored against the same labels.
+- Models: `gpt-4o-mini-2024-07-18`, `gpt-6-luna` (Responses API without reasoning, and Decisions API), `claude-haiku-5-5` (no thinking), `jev-1.13.0` (TypeSafe's stable release; 1.14 was in preview). Test runs on October 22, 2026.
+- Rates are shares of all test messages. \* marks a one-sided 95% Wilson upper bound at or above the limit. The 2% analysis was declared before any replacement ran; the Jev rescue and the five-limit table after the first test results.
+- Cost: mean token usage per message at list prices on October 22, 2026. Warm cache prices the shared prompt as a cache read, cold as uncached input. Traffic figures assume random arrivals and one cache per prompt.
+- Speed: a separate study from Belgrade over home Wi-Fi, 200 rounds with all six configurations interleaved, one request at a time, on October 22, 2026; server time from OpenAI's `openai-processing-ms` header. Latency was reported, never gated: a ticket queue does not need sub-second answers.
+- Vendor claims as read on typesafe.ai and OpenAI's Decisions API guide on October 22, 2026.
+- Code, specification, run records and decision records: [model-swap-check on GitHub](https://github.com/manjast/model-swap-check).

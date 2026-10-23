@@ -23,6 +23,7 @@ Public proof points:
 - [Services](https://stefanmanja.com/services/): workflow starting points, service modes and delivery path
 - [Contact](https://stefanmanja.com/contact/): workflow review and initial inquiry
 - [Writing](https://stefanmanja.com/writing/): public writing on AI systems, evaluation and cost discipline
+- [Replacing gpt-4o-mini: one line of code sends 39 in 1,000 customers to the wrong team](https://stefanmanja.com/writing/model-swap-check/): pre-registered Banking77 support-router comparison covering model-specific confidence thresholds, automation at fixed misroute limits, per-message costs and latency
 - [The worst lock-in isn't the API: 5 architectural patterns](https://stefanmanja.com/writing/vendor-lockin-2026/): five architectural patterns — workflow abstraction, eval suite, route by complexity, cost telemetry, continuous re-evaluation — to survive the procurement shift
 - [What I learned running enterprise AI procurement in 2026: 5 surprises](https://stefanmanja.com/writing/enterprise-ai-procurement-2026/): five procurement filters around hosting path, access gates, fallback routing and self-host economics
 - [The model was rarely the problem — 3 RAG fixes](https://stefanmanja.com/writing/rag-pilot-failures/): three RAG failure modes with the specific fix that addressed each

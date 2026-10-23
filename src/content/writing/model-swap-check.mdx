@@ -59,7 +59,7 @@ So its threshold has two useful settings:
 - **0.95**: 2% of messages automated. Safe and useless.
 - **0.90**: 72% automated, and 15% of all messages misrouted. One in five of the messages it routes on its own goes to the wrong team.
 
-Nothing in between. If your `gpt-4o-mini` classifier gates at 0.9, go and count what that gate lets through.
+Nothing in between. If your `gpt-4o-mini` classifier's threshold is 0.9, go and count what it lets through.
 
 ## The winner depends on how many mistakes you accept
 
@@ -224,40 +224,40 @@ It is also fast. From Belgrade, Jev answered in 0.28 seconds at the median, with
 
 Its confidence is blunt. Jev rounds its probabilities to two decimals, so answers pile up at exactly 1.00. On the test set, 43% of all messages landed at 1.00, and one in 19 of those went to the wrong queue. The new 1.14 preview rounds the same way.
 
-Here is the twist: the LLMs give the same wrong answers. Of the 217 messages Jev misrouted at 1.00, Luna picked the same wrong queue for 216, Haiku for 214 and `gpt-4o-mini` for 212. They are the hard cases. On 423 test messages, every model I tested picked the same queue and the label said otherwise.
+Here is the twist: the LLMs give the same wrong answers. Of the 217 messages Jev misrouted at 1.00, Luna picked the same wrong queue for 216, Haiku for 214 and `gpt-4o-mini` for 212. They are the hard cases. On 423 test messages, every model I tested picked the same queue and the dataset's answer key said otherwise.
 
-The difference is what each model does next. Luna gives those messages a slightly lower score than its easy ones, so its gate at 0.99 lets through about a fifth of them and still routes half of its right answers. Jev's strictest gate, 1.00, lets through two in five, and there is no stricter one. Under a 2% limit, Jev automates nothing at all.
+The difference is what each model does next. Luna gives those messages a slightly lower score than its easy ones, so its threshold at 0.99 lets through about a fifth of them and still routes half of its right answers. Jev's strictest threshold, 1.00, lets through two in five, and there is no stricter one. Under a 2% limit, Jev automates nothing at all.
 
 Jev's answers are fine. Its scale stops too early.
 
 I asked TypeSafe whether the rounding is deliberate. Their team answered on Discord: if a threshold has to be set to the last 0.01, the approach needs to change. Their advice for tied answers is to work out what separates them, as you would explain it to a person, and ask Jev about that in another question.
 
-My rescue was exactly that kind of question: a second Jev question, the probability that the message belongs to the catalog at all. It landed at 2.03% misroutes. Close, and a fail. A sharper second question might get under the line, but that is question design work, where Luna and Haiku needed only a threshold. The failed rescue is published next to everything else, because a method that only reports its wins is marketing.
+My rescue was exactly that kind of question: a second Jev question, the probability that the message fits any of the 50 queues at all. It landed at 2.03% misroutes. Close, and a fail. A sharper second question might get under the line, but that is question design work, where Luna and Haiku needed only a threshold. The failed rescue is published next to everything else, because a method that only reports its wins is marketing.
 
-That is the lesson I would carry to any classifier, LLM or not: **a calibrated confidence score can still be useless for a risk gate.** The gate lives at the top of the scale, where you stop asking a human. If 40% of answers share the top value, your gate has one setting, and it is the wrong one.
+That is the lesson I would carry to any classifier, LLM or not: **a confidence score can be right on average and still useless for a threshold.** The threshold sits at the top of the scale, where you stop asking a human. If 40% of answers share the top value, the threshold has one setting, and it is the wrong one.
 
 ## How it was run
 
 Results like these are only worth something if the rules could not bend to fit them.
 
-- The metrics, the threshold rule and the acceptance gates were written in a specification before any test message was sent.
-- The rules were frozen with a git tag. Every test run records the tag it ran under, and the runner refuses to run the same configuration twice.
-- Every decision record is generated from the raw recorded responses. CI regenerates all of them on every change and checks them byte for byte.
-- Every later analysis was declared as an amendment before its test numbers existed, including the one that failed.
+- The metrics, the threshold rule and the pass rules for each replacement were written in a specification before any test message was sent.
+- The rules were frozen with a git tag. Every test run records the tag it ran under, and the runner refuses to run the same model setup twice.
+- Every result file is generated from the raw recorded responses. CI regenerates all of them on every change and checks them byte for byte.
+- Every later analysis was written down as an addition to the rules before its test numbers existed, including the one that failed.
 
 The whole study cost about $14.50 in API calls.
 
 ## What I got wrong
 
-The registered verdicts said nothing. All five came back SHIP, because the gate only required each replacement not to automate 3 points less than the incumbent's 2%, and nothing can. I saw it after running `gpt-4o-mini` on the tuning set. Changing the gate then would have been moving the goalposts, so it stayed, and the real analysis went in as declared amendments.
+The verdicts I wrote down in advance said nothing. All five came back "ship it", because the pass rule only required each replacement not to automate 3 points less than `gpt-4o-mini`'s 2%, and nothing can. I saw it after running `gpt-4o-mini` on the tuning set. Changing the rule then would have been moving the goalposts, so it stayed, and the real analysis went in as written additions.
 
-The pilot already had the evidence. Of its 100 messages, `gpt-4o-mini` gave 74 a confidence of 0.90 and exactly one a 0.95. Five minutes with that histogram would have saved the registered analysis. It is now the first thing I would check in any classifier migration.
+My 100-message trial run before the study already had the evidence. `gpt-4o-mini` gave 74 of those messages a confidence of 0.90 and exactly one a 0.95. Five minutes with that count would have saved the rules I wrote in advance. It is now the first thing I would check in any classifier migration.
 
 If you own a `gpt-4o-mini` classifier, the work is short:
 
 1. Agree on the misroute limit with the queue owner.
 2. Refit the threshold for every candidate on your own labelled messages. Never carry the old one over.
-3. Look at the top of the confidence histogram before you trust a gate.
+3. Count how many answers share the top confidence score before you trust a threshold.
 4. Price the model per message at your real traffic, not per token.
 
 ## Methodology note

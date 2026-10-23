@@ -134,9 +134,9 @@ So I ran the comparison at five limits. Each model gets its own threshold per li
   </table>
 </div>
 
-\* Within the limit on the test set, but too close to call. **Bold**: the leader at that limit.
+\* Within the limit on the test set, but too close to call. **Bold**: the most automation among models that stay clearly within the limit.
 
-**The migration is free capacity.** Between a 2% and a 10% limit, every LLM replacement automates 25-64% of messages. `gpt-4o-mini` automates 2%. On a router handling 10,000 messages a day, that is up to 6,000 messages a day that nobody has to read, at the same risk.
+**The migration is free capacity.** Between a 2% and a 10% limit, every LLM replacement automates 25-64% of messages. `gpt-4o-mini` automates 2%. On a router handling 10,000 messages a day, that is up to 6,000 more messages a day that nobody has to read, within the same misroute limit.
 
 <BarChart
   title="AUTOMATION · 2% MISROUTE LIMIT"
@@ -245,13 +245,13 @@ Results like these are only worth something if the rules could not bend to fit t
 - The metrics, the threshold rule and the pass rules for each replacement were written in a specification before any test message was sent.
 - The rules were frozen with a git tag. Every test run records the tag it ran under, and the runner refuses to run the same model setup twice.
 - Every result file is generated from the raw recorded responses. CI regenerates all of them on every change and checks them byte for byte.
-- Every later analysis was written down as an addition to the rules before its test numbers existed, including the one that failed.
+- The 2% analysis, the Jev rescue and the five-limit comparison were each written down as additions to the rules before their test numbers existed. The shared-mistakes comparison came after all results.
 
 The whole study cost about $14.50 in API calls.
 
 ## What I got wrong
 
-The verdicts I wrote down in advance said nothing. All five came back "ship it", because the pass rule only required each replacement not to automate 3 points less than `gpt-4o-mini`'s 2%, and nothing can. I saw it after running `gpt-4o-mini` on the tuning set. Changing the rule then would have been moving the goalposts, so it stayed, and the real analysis went in as written additions.
+The verdicts I wrote down in advance said nothing. All five came back "ship it", because the automation rule could not fail: it let each replacement automate up to 3 points less than `gpt-4o-mini`, and `gpt-4o-mini` automated only 2%. I saw it after running `gpt-4o-mini` on the tuning set. Changing the rule then would have been moving the goalposts, so it stayed, and the real analysis went in as written additions.
 
 My 100-message trial run before the study already had the evidence. `gpt-4o-mini` gave 74 of those messages a confidence of 0.90 and exactly one a 0.95. Five minutes with that count would have saved the rules I wrote in advance. It is now the first thing I would check in any classifier migration.
 

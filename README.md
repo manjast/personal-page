@@ -72,6 +72,8 @@ Writing is shipped as individual English-only posts under `/writing`. Each post 
 - Custom domain file: `public/CNAME`
 - Search metadata baseline: `public/robots.txt` + `@astrojs/sitemap`
 - Sitemap filter: `/contact/sent/` is excluded so the thank-you state is not indexed.
+- Rollback: open a PR that reverts the merge commit (`git revert -m 1 <merge-sha>`) and merge it like any other change; the push to `main` deploys the reverted site. Re-running an older workflow run does not roll back: the freshness check skips deployment for any commit that is no longer `main`.
+- A release is done when the `Deploy to GitHub Pages` step succeeded (not skipped) for the merge commit or a later `main` commit that contains it, and a read-only check of the live site passes: each public surface in the table above loads in every language it has, both contact pages render the Formspree form, and `/sitemap-index.xml` resolves. Do not submit the form.
 
 ## Analytics
 

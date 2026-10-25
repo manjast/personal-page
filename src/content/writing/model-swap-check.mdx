@@ -26,7 +26,7 @@ OpenAI switches off `gpt-4o-mini` on January 14, 2027. A lot of quiet production
 
 The obvious migration is one line. Replace the model ID with the named successor, `gpt-6-luna`, and ship.
 
-I ran exactly that on a support-message router. Same prompt, same confidence threshold of 0.95, new model ID. Before the change, no message went to the wrong team without a human check. After it, 3.9% did. That is 39 customers in every 1,000: the person whose card was just stolen, waiting in the queue for address changes. No error, no alert. Every response was valid JSON with a confident answer.
+I ran that on a support-message router. Same prompt, same confidence threshold of 0.95, new model ID, reasoning off. Before the change, no message went to the wrong team without a human check. After it, 3.9% did. That is 39 customers in every 1,000: the person whose card was just stolen, waiting in the queue for address changes. No error, no alert. Each of those misroutes came back as valid JSON with a confident answer.
 
 How did the old model manage zero? By almost never deciding alone. `gpt-4o-mini` was 0.95 sure about only 2 messages in 100, and it got those right; a person read the other 98. Luna is 0.95 sure about half of all messages and routes them on its own. That half includes the 39.
 
@@ -48,7 +48,7 @@ I tested four ways out of `gpt-4o-mini` on 9,758 Banking77 test messages:
 - **Jev**, TypeSafe's decision model, which returns probabilities instead of text;
 - **OpenAI's Decisions API**, the same Luna behind a decision-model interface.
 
-Every model got its own threshold, fitted on a separate tuning set of 3,075 labelled messages. The 9,758 test messages stayed untouched until the rules were written down and frozen in git.
+Every model got its own threshold, fitted on a separate tuning set of 3,075 labelled messages. The 9,758 test messages stayed untouched until the original rules were written down and frozen in git.
 
 ## gpt-4o-mini jumps from 2% to 72%
 
@@ -159,7 +159,7 @@ So the order of decisions is fixed. First the misroute limit, agreed with whoeve
 
 ## The token price is not your bill
 
-TypeSafe sells Jev as "193.6x Faster, 444.6x Cheaper" than LLMs, with an input price "238x lower" than Claude Fable 5.1. At $0.042 per million input tokens, it is cheap per token.
+TypeSafe sells Jev as "193.6x Faster, 444.6x Cheaper" than LLMs, "based on workflows for System One tasks", with an input price "238x lower" than Claude Fable 5.1. At $0.042 per million input tokens, it is cheap per token.
 
 But a router does not pay per token. It pays per message, and every message carries the same baggage: the descriptions of all 50 queues, a few thousand tokens, sent again with every customer message.
 
@@ -176,7 +176,7 @@ Luna and Haiku can keep that baggage in a prompt cache and read it back at a ten
     </thead>
     <tbody>
       <tr>
-        <th scope="row">Luna</th>
+        <th scope="row">Luna, <code>gpt-4o-mini</code>'s prompt</th>
         <td>$0.039</td>
         <td>$0.277</td>
       </tr>
@@ -212,7 +212,7 @@ And here is what the price board hides. **Jev wins on cost exactly where cost do
 
 The Decisions API is the cleanest experiment here: same Luna, different door.
 
-I timed both doors from Belgrade, one request at a time, interleaved with every other model. Behind the Decisions door, Luna spent 0.08 seconds on OpenAI's servers at the median. Behind the normal API, 0.96 seconds. Twelve times faster, more than OpenAI's own "up to 10x". End to end, an answer took 0.28 seconds instead of 1.26.
+I timed both doors from Belgrade, one request at a time, interleaved with every other model. Behind the Decisions door, Luna spent 0.08 seconds on OpenAI's servers at the median. Behind the normal API, 0.96 seconds. Twelve times less server time, in line with OpenAI's own "up to 10x". End to end, an answer took 0.28 seconds instead of 1.26.
 
 It also cost six times as much per message as cached Luna, and it automated less: 25% of messages at a 2% limit, against 35%. Its confidence is rounded to two decimals and piles up at the top, just like Jev's.
 
@@ -244,14 +244,14 @@ Results like these are only worth something if the rules could not bend to fit t
 
 - The metrics, the threshold rule and the pass rules for each replacement were written in a specification before any test message was sent.
 - The rules were frozen with a git tag. Every test run records the tag it ran under, and the runner refuses to run the same model setup twice.
-- Every result file is generated from the raw recorded responses. CI regenerates all of them on every change and checks them byte for byte.
-- The 2% analysis, the Jev rescue and the five-limit comparison were each written down as additions to the rules before their test numbers existed. The shared-mistakes comparison came after all results.
+- The decision records, which hold each verdict and the five-limit table, are generated from the raw recorded responses. CI regenerates all of them on every change and checks them byte for byte.
+- The 2% analysis and the Jev rescue were each written down as additions to the rules before their test numbers existed. The five-limit comparison was added after the first test results, before any number at the other limits was computed. The shared-mistakes comparison came after all results.
 
 The whole study cost about $14.50 in API calls.
 
 ## What I got wrong
 
-The verdicts I wrote down in advance said nothing. All five came back "ship it", because the automation rule could not fail: it let each replacement automate up to 3 points less than `gpt-4o-mini`, and `gpt-4o-mini` automated only 2%. I saw it after running `gpt-4o-mini` on the tuning set. Changing the rule then would have been moving the goalposts, so it stayed, and the real analysis went in as written additions.
+The verdicts I wrote down in advance said little. All five came back "ship it", because the automation rule could not fail: it let each replacement automate up to 3 points less than `gpt-4o-mini`, and `gpt-4o-mini` automated only 2%. I saw it after running `gpt-4o-mini` on the tuning set. Changing the rule then would have been moving the goalposts, so it stayed, and the real analysis went in as written additions.
 
 My 100-message trial run before the study already had the evidence. `gpt-4o-mini` gave 74 of those messages a confidence of 0.90 and exactly one a 0.95. Five minutes with that count would have saved the rules I wrote in advance. It is now the first thing I would check in any classifier migration.
 
